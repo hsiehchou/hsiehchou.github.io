@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -275,6 +275,70 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2019/07/19/sparkstreaming_kafka_de_liang_chong_mo_shi_receiver_mo_shi_he_direct_mo_shi/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/medias/featureimages/5.jpg" class="responsive-img" alt="SparkStreaming+Kafka的两种模式Receiver模式和Direct模式">
+                            
+                            <span class="card-title">SparkStreaming+Kafka的两种模式Receiver模式和Direct模式</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                SparkStreming + Kafka Receiver模式理解
+Receiver模式理解在SparkStreaming程序运行起来后，Executor中会有Receiver Tasks接收Kafka推送过来的数据。数据会被持久化，默认
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-19
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-category">
+                                    大数据
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                            <span class="chip bg-color">大数据</span>
+                        </a>
+                        
+                        <a href="/tags/Kafka/">
+                            <span class="chip bg-color">Kafka</span>
+                        </a>
+                        
+                        <a href="/tags/SparkStreaming/">
+                            <span class="chip bg-color">SparkStreaming</span>
+                        </a>
+                        
+                        <a href="/tags/Receiver/">
+                            <span class="chip bg-color">Receiver</span>
+                        </a>
+                        
+                        <a href="/tags/Direct/">
+                            <span class="chip bg-color">Direct</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2019/07/18/elasticsearch_de_9200_duan_kou_he_9300_duan_kou_de_qu_bie/">
                         <div class="card-image">
                             
@@ -342,10 +406,9 @@ ES集群之间是通过9300端口进行通讯
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                安装Elasticsearch
-mkdir /opt/software/elasticsearch/data/
+                                安装Elasticsearchmkdir /opt/software/elasticsearch/data/
 mkdir /opt/software/elasticsearch/logs/
-chmod 777 /opt/software/
+chmod 777 /opt/software/e
                             
                         </div>
                         <div class="publish-info">
@@ -397,8 +460,7 @@ chmod 777 /opt/software/
                         <div class="summary block-with-text">
                             
                                 一万小时天才理论（阅读笔记）
-前言
-上大一时，我就听人讲过一个人只要在一个领域专攻1万小时，那么这个人便会成为这个领域的专家，把时间分配到每天3小时，需要10年，每天8小时（当然这很不现实，不可能工作的所有时间都花在学习上，还有周末休息啥的
+前言上大一时，我就听人讲过一个人只要在一个领域专攻1万小时，那么这个人便会成为这个领域的专家，把时间分配到每天3小时，需要10年，每天8小时（当然这很不现实，不可能工作的所有时间都花在学习上，还有周末休息啥的）
                             
                         </div>
                         <div class="publish-info">
@@ -449,15 +511,8 @@ chmod 777 /opt/software/
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                crond系统定时任务
-1、crond服务管理
-service crond restart 			（重新启动服务）
-2、crontab定时任务设置
-1）基本语法
-crontab [选项]
-选项：
--e：  编辑crontab定时任务
--l：
+                                crond系统定时任务1、crond服务管理service crond restart 			（重新启动服务）
+2、crontab定时任务设置1）基本语法crontab [选项]选项：  -e：  编辑crontab定时任务  -l：  查
                             
                         </div>
                         <div class="publish-info">
@@ -508,8 +563,7 @@ crontab [选项]
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                一、项目背景
-通信运营商每时每刻会产生大量的通信数据，例如通话记录，短信记录，彩信记录，第三方服务资费等等繁多信息。数据量如此巨大，除了要满足用户的实时查询和展示之外，还需要定时定期的对已有数据进行离线的分析处理。例如，当日话单，月度话单，
+                                一、项目背景通信运营商每时每刻会产生大量的通信数据，例如通话记录，短信记录，彩信记录，第三方服务资费等等繁多信息。数据量如此巨大，除了要满足用户的实时查询和展示之外，还需要定时定期的对已有数据进行离线的分析处理。例如，当日话单，月度话单，季
                             
                         </div>
                         <div class="publish-info">
@@ -538,64 +592,6 @@ crontab [选项]
                         
                         <a href="/tags/%E7%94%B5%E4%BF%A1/">
                             <span class="chip bg-color">电信</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/05/18/flink_lian_xi/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/medias/featureimages/5.jpg" class="responsive-img" alt="Flink练习">
-                            
-                            <span class="card-title">Flink练习</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                一、Flink开发IDEA环境搭建与测试
-1、IDEA开发环境
-先虚拟机联网，然后执行yum -y install nc
-nc是用来打开端口的工具
-然后nc -l 9000
-1.pom文件设置
-&lt;properties&gt;
-    
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-05-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-category">
-                                    大数据
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
-                            <span class="chip bg-color">大数据</span>
-                        </a>
-                        
-                        <a href="/tags/Flink/">
-                            <span class="chip bg-color">Flink</span>
                         </a>
                         
                     </div>
@@ -646,7 +642,7 @@ nc是用来打开端口的工具
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

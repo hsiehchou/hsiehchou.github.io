@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -356,19 +356,10 @@
                 </a>
                 
                 
-                <a href="/categories/Matlab/" title="Matlab: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #85C1E9;">Matlab
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/npm/" title="npm: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">npm
+                            style="background-color: #85C1E9;">npm
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -377,17 +368,17 @@
                 <a href="/categories/pip/" title="pip: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9E79F;">pip
+                            style="background-color: #F8C471;">pip
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E8%AF%BB%E4%B9%A6/" title="读书: 3">
+                <a href="/categories/%E8%AF%BB%E4%B9%A6/" title="读书: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">读书
-                        <span class="tag-length">3</span>
+                            style="background-color: #F9E79F;">读书
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -401,11 +392,11 @@
                 </a>
                 
                 
-                <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习: 3">
+                <a href="/categories/Matlab/" title="Matlab: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">机器学习
-                        <span class="tag-length">3</span>
+                            style="background-color: #85C1E9;">Matlab
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -419,11 +410,11 @@
                 </a>
                 
                 
-                <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%A1%B9%E7%9B%AE/" title="大数据项目: 2">
+                <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">大数据项目
-                        <span class="tag-length">2</span>
+                            style="background-color: #E8F8F5;">机器学习
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -433,6 +424,15 @@
                              chip-default "
                             style="background-color: #F5EEF8;">Python
                         <span class="tag-length">5</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%A1%B9%E7%9B%AE/" title="大数据项目: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">大数据项目
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -470,11 +470,10 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、hdfs的副本的配置
-修改hdfs-site.xml文件
+                                1、hdfs的副本的配置修改hdfs-site.xml文件
 &lt;!-- 注释配置数据块的冗余度，默认是3 --&gt;
 &lt;property&gt;
-    &lt;name&gt;dfs.replication&lt;/name
+    &lt;name&gt;dfs.replication&lt;/name&
                             
                         </div>
                         <div class="publish-info">
@@ -524,17 +523,7 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、HDFS下载文件原理
-1、请求
-2、创建client
-DFS –&gt;DFSClient
-3、建立RPC通信
-4、得到代理对象proxy，通过代理对象请求得到文件元信息
-5、查找元信息
-6、返回元信息
-7、创建输入流
-8、下载数据块
-
+                                1、HDFS下载文件原理1、请求2、创建clientDFS –&gt;DFSClient3、建立RPC通信4、得到代理对象proxy，通过代理对象请求得到文件元信息5、查找元信息6、返回元信息7、创建输入流8、下载数据块FSDataInpu
                             
                         </div>
                         <div class="publish-info">
@@ -584,11 +573,7 @@ DFS –&gt;DFSClient
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、免密码登录的原理和配置
-ssh不对称加密算法（加密和解密是两个文件）（对称加密： 加密和解密文件是同一个）
-（1）公钥–锁：给出去 给其他机器
-（2）私钥–钥匙：自己留着，解密
-step1:ssh-keygen -t rsa(3次回车)
+                                1、免密码登录的原理和配置ssh不对称加密算法（加密和解密是两个文件）（对称加密： 加密和解密文件是同一个）（1）公钥–锁：给出去 给其他机器（2）私钥–钥匙：自己留着，解密step1:ssh-keygen -t rsa(3次回车)step
                             
                         </div>
                         <div class="publish-info">
@@ -638,14 +623,7 @@ step1:ssh-keygen -t rsa(3次回车)
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、什么是大数据？
-2002 大数据提出 美国引入。—麦肯锡报告
-维克托·迈尔-舍恩伯格—大数据之父
-4V特征：
-即
-Volume（数据量大）：PB级
-Variety（数据多样性）：文本、图像、视频、音频等
-Velocity（输入和处理速度
+                                1、什么是大数据？2002 大数据提出 美国引入。—麦肯锡报告维克托·迈尔-舍恩伯格—大数据之父4V特征：即Volume（数据量大）：PB级Variety（数据多样性）：文本、图像、视频、音频等Velocity（输入和处理速度快）：流式数据
                             
                         </div>
                         <div class="publish-info">
@@ -691,11 +669,9 @@ Velocity（输入和处理速度
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、Linux下命令行中的复制和粘贴
-安装gpm：yum install -y gpm*
+                                1、Linux下命令行中的复制和粘贴安装gpm：yum install -y gpm*
 开启gpm服务：systemctl start gpm
-2、打开网卡
-vi /etc/sysconfig/network-scripts/ifcfg-
+2、打开网卡vi /etc/sysconfig/network-scripts/ifcfg-en
                             
                         </div>
                         <div class="publish-info">
@@ -768,7 +744,7 @@ vi /etc/sysconfig/network-scripts/ifcfg-
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

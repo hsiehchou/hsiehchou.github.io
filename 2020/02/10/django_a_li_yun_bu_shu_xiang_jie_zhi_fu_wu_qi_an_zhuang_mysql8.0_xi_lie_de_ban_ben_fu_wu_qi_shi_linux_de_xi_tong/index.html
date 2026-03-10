@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    493
+                    492
                 </div>
                 
 
@@ -403,14 +403,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Django阿里云部署详解之服务器安装MySQL8-0系列的版本（服务器是Linux的系统）">Django阿里云部署详解之服务器安装MySQL8.0系列的版本（服务器是Linux的系统）</h3>
-<h4 id="（本系统就是阿里云部署的）">（本系统就是阿里云部署的）</h4>
-<h4 id="大家照做就行，这我试了很多次才总结出来的">大家照做就行，这我试了很多次才总结出来的</h4>
-<pre><code class="highlight plaintext">wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+                <h3 id="Django阿里云部署详解之服务器安装MySQL8-0系列的版本（服务器是Linux的系统）"><a href="#Django阿里云部署详解之服务器安装MySQL8-0系列的版本（服务器是Linux的系统）" class="headerlink" title="Django阿里云部署详解之服务器安装MySQL8.0系列的版本（服务器是Linux的系统）"></a>Django阿里云部署详解之服务器安装MySQL8.0系列的版本（服务器是Linux的系统）</h3><h4 id="（本系统就是阿里云部署的）"><a href="#（本系统就是阿里云部署的）" class="headerlink" title="（本系统就是阿里云部署的）"></a>（本系统就是阿里云部署的）</h4><h4 id="大家照做就行，这我试了很多次才总结出来的"><a href="#大家照做就行，这我试了很多次才总结出来的" class="headerlink" title="大家照做就行，这我试了很多次才总结出来的"></a>大家照做就行，这我试了很多次才总结出来的</h4><pre><code class="highlight plaintext">wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
 rpm -ivh mysql80-community-release-el7-3.noarch.rpm
 yum -y install mysql-community-server</code></pre>
-<h4 id="修改-etc-my-cnf">修改/etc/my.cnf</h4>
-<pre><code class="highlight plaintext">[mysqld]
+
+<h4 id="修改-etc-my-cnf"><a href="#修改-etc-my-cnf" class="headerlink" title="修改/etc/my.cnf"></a>修改/etc/my.cnf</h4><pre><code class="highlight plaintext">[mysqld]
 # 设置mysql的安装目录
 basedir=/usr/local/mysql
 # 设置mysql数据库的数据的存放目录
@@ -440,19 +437,20 @@ lc_messages=en_US
 
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid</code></pre>
-<h4 id="创建目录（一定要，不然初始化不成功，因为是你自己设定好的文件夹）">创建目录（一定要，不然初始化不成功，因为是你自己设定好的文件夹）</h4>
-<p>这里要自己创建/usr/local/mysql和/usr/local/mysql/share<br>
-报错的时候这里加（看自己报什么错，可选）</p>
+
+<h4 id="创建目录（一定要，不然初始化不成功，因为是你自己设定好的文件夹）"><a href="#创建目录（一定要，不然初始化不成功，因为是你自己设定好的文件夹）" class="headerlink" title="创建目录（一定要，不然初始化不成功，因为是你自己设定好的文件夹）"></a>创建目录（一定要，不然初始化不成功，因为是你自己设定好的文件夹）</h4><p>这里要自己创建/usr/local/mysql和/usr/local/mysql/share<br>报错的时候这里加（看自己报什么错，可选）</p>
 <pre><code class="highlight plaintext">copy /usr/share/mysql-8.0/bulgarian/errmsg.sys /usr/local/mysql/share</code></pre>
+
 <pre><code class="highlight plaintext">systemctl start mysqld
 systemctl status mysqld
 systemctl stop mysqld</code></pre>
+
 <p>初始化MySQL(有时候不一定要，在/var/log/mysqld.log里面可能有，基本上systemctl start mysqld是可以找到临时密码的)</p>
 <pre><code class="highlight plaintext">mysqld --initialize --user=mysql</code></pre>
-<h4 id="重置root密码">重置root密码</h4>
-<pre><code class="highlight plaintext">alter user  'root'@'localhost' identified by 'your passwoed';</code></pre>
-<h4 id="新建新账户针对一个数据库（为了安全起见的）">新建新账户针对一个数据库（为了安全起见的）</h4>
-<pre><code class="highlight plaintext">show databases;
+
+<h4 id="重置root密码"><a href="#重置root密码" class="headerlink" title="重置root密码"></a>重置root密码</h4><pre><code class="highlight plaintext">alter user  'root'@'localhost' identified by 'your passwoed';</code></pre>
+
+<h4 id="新建新账户针对一个数据库（为了安全起见的）"><a href="#新建新账户针对一个数据库（为了安全起见的）" class="headerlink" title="新建新账户针对一个数据库（为了安全起见的）"></a>新建新账户针对一个数据库（为了安全起见的）</h4><pre><code class="highlight plaintext">show databases;
 create database ?_db default charset=utf8 default collate utf8_unicode_ci;
 create user ''@'localhost' identified by '';
 grant all privileges on ?_db.* to 'xiezhouHCH'@'localhost';
@@ -704,14 +702,7 @@ flush privileges;</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Django阿里云部署详解之服务器安装安装uwsgi
-（本系统就是阿里云部署的）
-大家照做就行，这我试了很多次才总结出来的
-1、安装uwsgi
-注意：
-1）在系统环境安装，非虚拟环境
-2）使用对应python版本安装
-3）要先安装pytho
+                            Django阿里云部署详解之服务器安装安装uwsgi（本系统就是阿里云部署的）大家照做就行，这我试了很多次才总结出来的1、安装uwsgi注意：	1）在系统环境安装，非虚拟环境	2）使用对应python版本安装	3）要先安装python开发包
                         
                     </div>
                     <div class="publish-info">
@@ -760,12 +751,9 @@ flush privileges;</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Django阿里云部署详解之服务器安装虚拟环境、Python
-（本系统就是阿里云部署的）
-大家照做就行，这我试了很多次才总结出来的
-yum update -y
+                            Django阿里云部署详解之服务器安装虚拟环境、Python（本系统就是阿里云部署的）大家照做就行，这我试了很多次才总结出来的yum update -y
 yum -y install gcc gcc-c++
-yum -y groupi
+yum -y groupinst
                         
                     </div>
                     <div class="publish-info">
@@ -975,7 +963,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

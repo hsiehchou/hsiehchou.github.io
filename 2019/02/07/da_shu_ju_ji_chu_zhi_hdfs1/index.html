@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -407,50 +407,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、免密码登录的原理和配置">1、免密码登录的原理和配置</h4>
-<p>ssh不对称加密算法（加密和解密是两个文件）（对称加密： 加密和解密文件是同一个）<br>
-（1）公钥–锁：给出去 给其他机器<br>
-（2）私钥–钥匙：自己留着，解密<br>
-step1:ssh-keygen -t rsa(3次回车)<br>
-step2:ssh-copy-id -i ~/.ssh/id_rsa.pub root@hsiehchou121(自己也要拷贝给自己)</p>
-<h4 id="2、Hadoop安装—全分布模式-（重点）">2、Hadoop安装—全分布模式 （重点）</h4>
-<p>（1）规划：<br>
-192.168.116.121 hsiehchou121 ：主节点<br>
-192.168.116.122 hsiehchou122 ：从节点<br>
-192.168.116.123 hsiehchou123 ：从节点<br>
-192.168.116.124 hsiehchou124 ：从节点</p>
-<p>（2）准备工作:<br>
-step 1: jdk、防火墙、ssh免密码登录（3次拷贝）、在etc/hosts 添加主机名<br>
-对于同时操作多台机器可通过 工具-》发送键输入到所有会话 在选项卡排列 实现 水平排列</p>
-<p>step 2:时间同步（如果能够上网） 使用网络时间（GUI设置）默认的都是一致的<br>
-不能上网： date -s 2019-01-10(同时操作多台机器) 集群紊乱<br>
-ntp：在机器里面指定一个服务器 作为时钟服务器</p>
+                <h4 id="1、免密码登录的原理和配置"><a href="#1、免密码登录的原理和配置" class="headerlink" title="1、免密码登录的原理和配置"></a>1、免密码登录的原理和配置</h4><p>ssh不对称加密算法（加密和解密是两个文件）（对称加密： 加密和解密文件是同一个）<br>（1）公钥–锁：给出去 给其他机器<br>（2）私钥–钥匙：自己留着，解密<br>step1:ssh-keygen -t rsa(3次回车)<br>step2:ssh-copy-id -i ~/.ssh/id_rsa.pub root@hsiehchou121(自己也要拷贝给自己)</p>
+<h4 id="2、Hadoop安装—全分布模式-（重点）"><a href="#2、Hadoop安装—全分布模式-（重点）" class="headerlink" title="2、Hadoop安装—全分布模式 （重点）"></a>2、Hadoop安装—全分布模式 （重点）</h4><p>（1）规划：<br>192.168.116.121 hsiehchou121 ：主节点<br>192.168.116.122 hsiehchou122 ：从节点<br>192.168.116.123 hsiehchou123 ：从节点<br>192.168.116.124 hsiehchou124 ：从节点 </p>
+<p>（2）准备工作:<br>step 1: jdk、防火墙、ssh免密码登录（3次拷贝）、在etc/hosts 添加主机名<br>对于同时操作多台机器可通过 工具-》发送键输入到所有会话 在选项卡排列 实现 水平排列 </p>
+<p>step 2:时间同步（如果能够上网） 使用网络时间（GUI设置）默认的都是一致的<br>不能上网： date -s 2019-01-10(同时操作多台机器) 集群紊乱<br>ntp：在机器里面指定一个服务器 作为时钟服务器 </p>
 <p>step 3: 修改配置文件</p>
 <p>主要在hsiehchou 121操作，其他机器通过scp拷贝</p>
-<h4 id="3、slaves-和自己的从节点机器名字一致">3、slaves(和自己的从节点机器名字一致)</h4>
-<p>hsiehchou122<br>
-hsiehchou123<br>
-hsiehchou124</p>
-<h4 id="4、通过hdfs-namenode-格式化">4、通过hdfs namenode 格式化</h4>
-<p>hdfs namenode -format<br>
-成功的标志： Storage directory /opt/module/hadoop-2.7.3/tmp/dfs/name has been successfully formatted</p>
-<h4 id="5、通过scp拷贝">5、通过scp拷贝</h4>
-<p>scp -r /opt/module/hadoop-2.7.3/ root@hsiehchou122:/opt/module/<br>
-scp -r /opt/module/hadoop-2.7.3/ root@hsiehchou123:/opt/module/<br>
-scp -r /opt/module/hadoop-2.7.3/ root@hsiehchou124:/opt/module/<br>
-学会看 vi /opt/module/hadoop-2.7.3/logs/hadoop-root-datanode-hsiehchou123.log<br>
-Shift+G 看启动日志<br>
-hdfs体系架构（Yarn资源放在后面）</p>
-<h4 id="6、HDFS-NameNode：名称节点">6、HDFS-NameNode：名称节点</h4>
-<p>（1）职责：对HDFS的节点进行管理，管理员<br>
-接收客户端（命令行、Java）的请求：创建目录、上传数据、下载数据和删除数据<br>
-管理和维护hdfs的日志和元信息</p>
-<p>（2）dfs/name:<br>
-a、current：主要存放日志和元信息 存贮路径：/opt/module/hadoop-2.7.3/tmp/dfs/name/current<br>
-edits文件：二进制文件，体现了hdfs的最新状态</p>
-<p>hdfs oev -i edits_inprogress_0000000000000000003 -o ~/a.xml<br>
-o:表示 offline<br>
-inprogress:表示最新的</p>
+<h4 id="3、slaves-和自己的从节点机器名字一致"><a href="#3、slaves-和自己的从节点机器名字一致" class="headerlink" title="3、slaves(和自己的从节点机器名字一致)"></a>3、slaves(和自己的从节点机器名字一致)</h4><p>hsiehchou122<br>hsiehchou123<br>hsiehchou124</p>
+<h4 id="4、通过hdfs-namenode-格式化"><a href="#4、通过hdfs-namenode-格式化" class="headerlink" title="4、通过hdfs namenode 格式化"></a>4、通过hdfs namenode 格式化</h4><p>  hdfs namenode -format<br>  成功的标志： Storage directory /opt/module/hadoop-2.7.3/tmp/dfs/name has been successfully formatted</p>
+<h4 id="5、通过scp拷贝"><a href="#5、通过scp拷贝" class="headerlink" title="5、通过scp拷贝"></a>5、通过scp拷贝</h4><p>scp -r /opt/module/hadoop-2.7.3/ root@hsiehchou122:/opt/module/<br>scp -r /opt/module/hadoop-2.7.3/ root@hsiehchou123:/opt/module/<br>scp -r /opt/module/hadoop-2.7.3/ root@hsiehchou124:/opt/module/<br>学会看 vi /opt/module/hadoop-2.7.3/logs/hadoop-root-datanode-hsiehchou123.log<br>Shift+G 看启动日志<br>hdfs体系架构（Yarn资源放在后面）</p>
+<h4 id="6、HDFS-NameNode：名称节点"><a href="#6、HDFS-NameNode：名称节点" class="headerlink" title="6、HDFS-NameNode：名称节点"></a>6、HDFS-NameNode：名称节点</h4><p>（1）职责：对HDFS的节点进行管理，管理员<br>接收客户端（命令行、Java）的请求：创建目录、上传数据、下载数据和删除数据<br>管理和维护hdfs的日志和元信息 </p>
+<p>（2）dfs/name:<br>a、current：主要存放日志和元信息 存贮路径：/opt/module/hadoop-2.7.3/tmp/dfs/name/current<br>edits文件：二进制文件，体现了hdfs的最新状态</p>
+<p>hdfs oev -i edits_inprogress_0000000000000000003 -o ~/a.xml<br>o:表示 offline<br>inprogress:表示最新的</p>
 <pre><code class="highlight plaintext">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;EDITS&gt;
   &lt;EDITS_VERSION&gt;-63&lt;/EDITS_VERSION&gt;
@@ -476,122 +444,42 @@ inprogress:表示最新的</p>
     &lt;/DATA&gt;
   &lt;/RECORD&gt;
 &lt;/EDITS&gt;</code></pre>
+
 <p>b、元信息文件 fsimage：记录的数据块的位置信息和数据块冗余信息，没有体现hdfs的最新状态，二进制文件</p>
-<p>hdfs oiv -i fsimage_0000000000000000002 -o ~/b.xml -p XML</p>
+<p> hdfs oiv -i fsimage_0000000000000000002 -o ~/b.xml -p XML</p>
 <p>（3）in_use.lock 避免同一文件被多使用，只能启动一个namenode</p>
-<h4 id="7、hdfs-DataNode：数据节点">7、hdfs-DataNode：数据节点</h4>
-<p>（1）主要用来进行数据的存储<br>
-1.x 64M<br>
-2.x 128M( hdfs-site.xml 可以修改 blocksize)</p>
-<p>（2）数据块的表现形式就是一个个的blk文件<br>
-位置：/opt/module/hadoop-2.7.3/tmp/dfs/data/current/BP-298124919-192.168.116.121-1550208140930 ###/current/finalized/subdir0/subdir0<br>
-尝试上传一个 大于128M的文件（128<em>1024</em>1024）<br>
-Hadoop 3.x 有 纠删码技术，节约存储空间</p>
-<h4 id="8、上传文件">8、上传文件</h4>
-<p>首先创建文件夹<br>
-hdfs dfs -mkdir /software/input<br>
-上传我本地文件到hdfs上<br>
-hdfs dfs -put hdfs dfs -put /opt/software/hadoop-2.7.3.tar.gz /software/input<br>
-就OK了<br>
-之后可以使用上面的命令查看</p>
-<h4 id="9、hdfs-SecondaryNameNode：第二名称节点">9、hdfs-SecondaryNameNode：第二名称节点</h4>
-<p>（1）进行日志信息的合并，根据checkpoint或者时间间隔（3600s）或者edits文件达到64M</p>
-<p>（2）edits文件合并到fsimage里面 edits文件可以清空<br>
-看日志<br>
-/opt/moudle/hadoop-2.7.3/logs vi shift+G</p>
-<h4 id="10、hdfs-Web-Console">10、hdfs-Web Console</h4>
-<p>hdfs dfsadmin -report<br>
-<a target="_blank" rel="noopener" href="http://192.168.116.125:50070/dfshealth.html#tab-overview">http://192.168.116.125:50070/dfshealth.html#tab-overview</a></p>
-<p>（1） Overview–展示hdfs的基本信息<br>
-Safemode is off.—高级特性</p>
-<p>（2）DataNodes-数据节点信息<br>
-增加和删除数据节点（Decomissioning–&gt;Dead）</p>
-<p>（3）Datanode Volume Failures–数据节点 硬件错误</p>
-<p>（4）Snapshot（快照）—高级特性<br>
-快照实现数据的备份，防止数据的误操作和丢失。默认是关闭的</p>
-<p>（5）Startup Progress–启动过程</p>
-<p>（6）Uitlities:<br>
-Browse 文件 —hdfs -dfs -ls /<br>
-logs—查看日志</p>
-<h4 id="11、hdfs-普通操作命令–hdfs-dfs-hadoop-dfs">11、hdfs 普通操作命令–hdfs dfs(hadoop dfs)</h4>
-<p>（1）创建目录–mkdir<br>
-hdfs dfs -mkdir /</p>
-<p>（2）查看–ls<br>
-查看目录和子目录 hdfs dfs -ls -R /<br>
-hdfs dfs -lsr /</p>
-<p>（3）上传数据<br>
-hdfs dfs -put hadoop-root-namenode-hsiehchou125.log /test1<br>
--put ：<br>
--copyFromLocal： 本地路径 hdfs路径<br>
-hdfs dfs -copyFromLocal ~/temp/a.txt /test0113/<br>
--moveFromLocal: 会删除本地文件 剪切</p>
-<p>（4）下载数据<br>
--get:<br>
--copyToLocal:从hdfs下载到本地</p>
-<p>（5）删除数据<br>
--rm<br>
--rmr: 删除hdfs的目录和子目录<br>
-删除日志： Deleted /test1<br>
-回收站—高级特性 默认是关闭</p>
-<p>（6）合并数据–（为hive表数据操作做准备）<br>
--getmerge :hdfs 把某个hdfs的目录下的文件进行先合并后下载<br>
-*：通配符 ？<br>
-hdfs dfs -getmerge /students /root/students.txt</p>
-<p>（7）计数和文件大小<br>
--count 显示 文件夹、文件个数 文件总的大小<br>
--du 显示每个文件夹和文件的大小<br>
-[root@hsiehchou125 ~]# hdfs dfs -count /students<br>
-1 4 38/students<br>
-hdfs[root@hsiehchou125 ~]# hdfs dfs -du /students<br>
-25 /students/students01.txt<br>
-13 /students/students02.txt</p>
-<p>（8）负载均衡 balancer<br>
-实现DataNode 数据存储均衡</p>
+<h4 id="7、hdfs-DataNode：数据节点"><a href="#7、hdfs-DataNode：数据节点" class="headerlink" title="7、hdfs-DataNode：数据节点"></a>7、hdfs-DataNode：数据节点</h4><p>（1）主要用来进行数据的存储<br>1.x 64M<br>2.x 128M( hdfs-site.xml 可以修改 blocksize) </p>
+<p>（2）数据块的表现形式就是一个个的blk文件<br>位置：/opt/module/hadoop-2.7.3/tmp/dfs/data/current/BP-298124919-192.168.116.121-1550208140930 ###/current/finalized/subdir0/subdir0<br>尝试上传一个 大于128M的文件（128<em>1024</em>1024）<br>Hadoop 3.x 有 纠删码技术，节约存储空间</p>
+<h4 id="8、上传文件"><a href="#8、上传文件" class="headerlink" title="8、上传文件"></a>8、上传文件</h4><p>首先创建文件夹<br>hdfs dfs -mkdir /software/input<br>上传我本地文件到hdfs上<br>hdfs dfs -put hdfs dfs -put /opt/software/hadoop-2.7.3.tar.gz /software/input<br>就OK了<br>之后可以使用上面的命令查看</p>
+<h4 id="9、hdfs-SecondaryNameNode：第二名称节点"><a href="#9、hdfs-SecondaryNameNode：第二名称节点" class="headerlink" title="9、hdfs-SecondaryNameNode：第二名称节点"></a>9、hdfs-SecondaryNameNode：第二名称节点</h4><p>（1）进行日志信息的合并，根据checkpoint或者时间间隔（3600s）或者edits文件达到64M </p>
+<p>（2）edits文件合并到fsimage里面 edits文件可以清空<br>看日志<br>/opt/moudle/hadoop-2.7.3/logs vi shift+G</p>
+<h4 id="10、hdfs-Web-Console"><a href="#10、hdfs-Web-Console" class="headerlink" title="10、hdfs-Web Console"></a>10、hdfs-Web Console</h4><p>hdfs dfsadmin -report<br><a target="_blank" rel="noopener" href="http://192.168.116.125:50070/dfshealth.html#tab-overview">http://192.168.116.125:50070/dfshealth.html#tab-overview</a> </p>
+<p>（1） Overview–展示hdfs的基本信息<br>Safemode is off.—高级特性 </p>
+<p>（2）DataNodes-数据节点信息<br>增加和删除数据节点（Decomissioning–&gt;Dead） </p>
+<p>（3）Datanode Volume Failures–数据节点 硬件错误 </p>
+<p>（4）Snapshot（快照）—高级特性<br>快照实现数据的备份，防止数据的误操作和丢失。默认是关闭的</p>
+<p>（5）Startup Progress–启动过程 </p>
+<p>（6）Uitlities:<br>Browse 文件 —hdfs -dfs -ls /<br>logs—查看日志</p>
+<h4 id="11、hdfs-普通操作命令–hdfs-dfs-hadoop-dfs"><a href="#11、hdfs-普通操作命令–hdfs-dfs-hadoop-dfs" class="headerlink" title="11、hdfs 普通操作命令–hdfs dfs(hadoop dfs)"></a>11、hdfs 普通操作命令–hdfs dfs(hadoop dfs)</h4><p>（1）创建目录–mkdir<br>hdfs dfs -mkdir / </p>
+<p>（2）查看–ls<br>查看目录和子目录 hdfs dfs -ls -R /<br>hdfs dfs -lsr / </p>
+<p>（3）上传数据<br>hdfs dfs -put hadoop-root-namenode-hsiehchou125.log /test1<br>-put ：<br>-copyFromLocal： 本地路径 hdfs路径<br>hdfs dfs -copyFromLocal ~/temp/a.txt /test0113/<br>-moveFromLocal: 会删除本地文件 剪切 </p>
+<p>（4）下载数据<br>-get:<br>-copyToLocal:从hdfs下载到本地 </p>
+<p>（5）删除数据<br>-rm<br>-rmr: 删除hdfs的目录和子目录<br>删除日志： Deleted /test1<br>回收站—高级特性 默认是关闭</p>
+<p>（6）合并数据–（为hive表数据操作做准备）<br>-getmerge :hdfs 把某个hdfs的目录下的文件进行先合并后下载<br>*：通配符 ？<br>hdfs dfs -getmerge /students /root/students.txt </p>
+<p>（7）计数和文件大小<br>-count 显示 文件夹、文件个数 文件总的大小<br>-du 显示每个文件夹和文件的大小<br>[root@hsiehchou125 ~]# hdfs dfs -count /students<br>1 4 38/students<br>hdfs[root@hsiehchou125 ~]# hdfs dfs -du /students<br>25 /students/students01.txt<br>13 /students/students02.txt </p>
+<p>（8）负载均衡 balancer<br>实现DataNode 数据存储均衡 </p>
 <p><code>##hdfs balancer ##</code></p>
-<h4 id="12、hdfs-管理员命令">12、hdfs 管理员命令</h4>
-<p>（1）hdfs dfsadmin -report 打印报告</p>
-<p>（2） -safemode &lt;enter | leave | get | wait&gt;<br>
-enter:手动进入安全模式<br>
-leave:手动离开安全模式<br>
-get:获得当前安全模式的状态<br>
-hdfs dfsadmin -safemode get<br>
-[root@hsiehchou125 ~]# hdfs dfsadmin -safemode enter<br>
-Safe mode is ON</p>
-<p>（3）快照命令<br>
-[-allowSnapshot <code>&lt;snapshotDir&gt;</code>]<br>
-[-disallowSnapshot <code>&lt;snapshotDir&gt;</code>]</p>
-<p>（4）Quota 配额<br>
-a、名称配额–数量<br>
-[-setQuota <code>&lt;quota&gt; &lt;dirname&gt;...&lt;dirname&gt;</code>]<br>
-[-clrQuota <code>&lt;dirname&gt;...&lt;dirname&gt;</code>]</p>
+<h4 id="12、hdfs-管理员命令"><a href="#12、hdfs-管理员命令" class="headerlink" title="12、hdfs 管理员命令"></a>12、hdfs 管理员命令</h4><p>（1）hdfs dfsadmin -report 打印报告 </p>
+<p>（2） -safemode &lt;enter | leave | get | wait&gt;<br>enter:手动进入安全模式<br>leave:手动离开安全模式<br>get:获得当前安全模式的状态<br>hdfs dfsadmin -safemode get<br>[root@hsiehchou125 ~]# hdfs dfsadmin -safemode enter<br>Safe mode is ON </p>
+<p>（3）快照命令<br>[-allowSnapshot <code>&lt;snapshotDir&gt;</code>]<br>[-disallowSnapshot <code>&lt;snapshotDir&gt;</code>]</p>
+<p>（4）Quota 配额<br>a、名称配额–数量<br>[-setQuota <code>&lt;quota&gt; &lt;dirname&gt;...&lt;dirname&gt;</code>]<br>[-clrQuota <code>&lt;dirname&gt;...&lt;dirname&gt;</code>]</p>
 <p>b、空间配额–空间大小</p>
-<p>[-setSpaceQuota <code>&lt;quota&gt;</code> [-storageType <code>&lt;storagetype&gt;</code>] <code>&lt;dirname&gt;...&lt;dirname&gt;</code>]<br>
-[-clrSpaceQuota [-storageType <code>&lt;storagetype&gt;</code>] <code>&lt;dirname&gt;...&lt;dirname&gt;</code>]</p>
-<h4 id="13、IDEA-Maven工程简介">13、IDEA Maven工程简介</h4>
-<p>（1）IDEA 下载地址：<br>
-<a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download/">https://www.jetbrains.com/idea/download/</a><br>
-破解方法自行查找</p>
-<p>（2）File-new Project-&gt;Maven<br>
-GroupID: 公司名字<br>
-artifactId：工程名字<br>
-java程序在：src-》main-&gt;java 右键 新建 java class文件<br>
-target: 是运行程序生成的class文件</p>
-<p>（3）管理包<br>
-/opt/moudle/hadoop-2.7.3/share/hadoop/common/<em>.jar<br>
-/opt/moudle/hadoop-2.7.3/share/hadoop/common/lib/</em>.jar<br>
-/opt/moudle/hadoop-2.7.3/share/hadoop/hdfs/<em>.jar<br>
-/opt/moudle/hadoop-2.7.3/share/hadoop/hdfs/lib/</em>.jar<br>
-通过maven只需要配置POM文件<br>
-a、 下载一个maven版本<br>
-<a target="_blank" rel="noopener" href="http://maven.apache.org/index.html">http://maven.apache.org/index.html</a></p>
-<p>b、通过 File-settings-Maven<br>
-修改： E:\apache-maven-3.6.0\conf\settings.xml<br>
-55行：<br>
-<code>&lt;localRepository&gt;</code>E:\Maven\m2\Repository<code>&lt;/localRepository&gt;</code><br>
-MaveHome：E:\apache-maven-3.6.0<br>
-User settings:E:\apache-maven-3.6.0\conf\settings.xml</p>
-<p>c、POM中写入包的依赖<br>
-参考：<a target="_blank" rel="noopener" href="https://mvnrepository.com/search?q=hadoop">https://mvnrepository.com/search?q=hadoop</a></p>
+<p>[-setSpaceQuota <code>&lt;quota&gt;</code> [-storageType <code>&lt;storagetype&gt;</code>] <code>&lt;dirname&gt;...&lt;dirname&gt;</code>]<br>[-clrSpaceQuota [-storageType <code>&lt;storagetype&gt;</code>] <code>&lt;dirname&gt;...&lt;dirname&gt;</code>]</p>
+<h4 id="13、IDEA-Maven工程简介"><a href="#13、IDEA-Maven工程简介" class="headerlink" title="13、IDEA Maven工程简介"></a>13、IDEA Maven工程简介</h4><p>（1）IDEA 下载地址：<br><a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download/">https://www.jetbrains.com/idea/download/</a><br>破解方法自行查找 </p>
+<p>（2）File-new Project-&gt;Maven<br>GroupID: 公司名字<br>artifactId：工程名字<br>java程序在：src-》main-&gt;java 右键 新建 java class文件<br>target: 是运行程序生成的class文件 </p>
+<p>（3）管理包<br>/opt/moudle/hadoop-2.7.3/share/hadoop/common/<em>.jar<br>/opt/moudle/hadoop-2.7.3/share/hadoop/common/lib/</em>.jar<br>/opt/moudle/hadoop-2.7.3/share/hadoop/hdfs/<em>.jar<br>/opt/moudle/hadoop-2.7.3/share/hadoop/hdfs/lib/</em>.jar<br>通过maven只需要配置POM文件<br>a、 下载一个maven版本<br><a target="_blank" rel="noopener" href="http://maven.apache.org/index.html">http://maven.apache.org/index.html</a> </p>
+<p>b、通过 File-settings-Maven<br>修改： E:\apache-maven-3.6.0\conf\settings.xml<br>55行：<br><code>&lt;localRepository&gt;</code>E:\Maven\m2\Repository<code>&lt;/localRepository&gt;</code><br> MaveHome：E:\apache-maven-3.6.0<br> User settings:E:\apache-maven-3.6.0\conf\settings.xml</p>
+<p>c、POM中写入包的依赖<br>参考：<a target="_blank" rel="noopener" href="https://mvnrepository.com/search?q=hadoop">https://mvnrepository.com/search?q=hadoop</a></p>
 <pre><code class="highlight plaintext">&lt;dependencies&gt;
       &lt;!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common --&gt;
       &lt;dependency&gt;
@@ -610,8 +498,8 @@ User settings:E:\apache-maven-3.6.0\conf\settings.xml</p>
           &lt;version&gt;2.7.3&lt;/version&gt;
       &lt;/dependency&gt;
   &lt;/dependencies&gt;</code></pre>
-<h4 id="14、文件夹的创建">14、文件夹的创建</h4>
-<pre><code class="highlight plaintext">import org.apache.hadoop.conf.Configuration;
+
+<h4 id="14、文件夹的创建"><a href="#14、文件夹的创建" class="headerlink" title="14、文件夹的创建"></a>14、文件夹的创建</h4><pre><code class="highlight plaintext">import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
@@ -631,16 +519,15 @@ client.close();
 System.out.println("Successful");
    }
 }</code></pre>
-<h4 id="15、hdfs权限问题">15、hdfs权限问题</h4>
-<p>针对用户操作没有权限 permission denied：<br>
-（1）修改 hdfs-site.xml 去掉权限检查（关闭hdfs服务 <a target="_blank" rel="noopener" href="http://stop-all.sh">stop-all.sh</a>;修改后 重新 <a target="_blank" rel="noopener" href="http://Start-all.sh">Start-all.sh</a>）</p>
+
+<h4 id="15、hdfs权限问题"><a href="#15、hdfs权限问题" class="headerlink" title="15、hdfs权限问题"></a>15、hdfs权限问题</h4><p>针对用户操作没有权限 permission denied：<br>（1）修改 hdfs-site.xml 去掉权限检查（关闭hdfs服务 stop-all.sh;修改后 重新 Start-all.sh）</p>
 <pre><code class="highlight plaintext">&lt;property&gt;
     &lt;name&gt;dfs.permissions&lt;/name&gt;
     &lt;value&gt;false&lt;/value&gt;
 &lt;/property&gt;</code></pre>
+
 <p>（2）通过设定用户名字 rootSystem.setProperty(“HADOOP_USER_NAME”,”root”);</p>
-<p>（3）通过java的-D参数传递。 HADOOP_USER_NAME=root （命令行的方式）<br>
-public static void main(String[] args)</p>
+<p>（3）通过java的-D参数传递。 HADOOP_USER_NAME=root （命令行的方式）<br>public static void main(String[] args)</p>
 <p>Java -D命令对应的代码中获取-D后面的参数 和 多个参数时-D命令的使用</p>
 <p>Java代码：</p>
 <pre><code class="highlight plaintext">public class DP {
@@ -649,10 +536,8 @@ public static void main(String[] args)</p>
 	  System.err.println(fg);
     }
 }</code></pre>
-<p>cmd命令：<br>
-java -DP=hdfshdfs DP</p>
-<p>执行命令后输出：hdfshdfs<br>
-注意：-D和Para之间不能有空格</p>
+<p>cmd命令：<br>java -DP=hdfshdfs DP</p>
+<p>执行命令后输出：hdfshdfs<br>注意：-D和Para之间不能有空格</p>
 <p>使用多个参数，如P、P1</p>
 <pre><code class="highlight plaintext">public class DP {
 	public static void main(String[] args) {
@@ -662,17 +547,11 @@ java -DP=hdfshdfs DP</p>
 		System.out.println(fg1);
     }
 }</code></pre>
-<p>java -DP=hdfshdfs -DP1=1212 DP<br>
-执行命令后输出：<br>
-hdfshdfs<br>
-1212</p>
+
+<p>java -DP=hdfshdfs -DP1=1212 DP<br>执行命令后输出：<br>hdfshdfs<br>1212</p>
 <p>（4）hdfs dfs -chmod 777 /input 让所有用户访问</p>
-<p>（5）针对hdfs权限问题，有kerberos认证<br>
-Kerberos: The Network Authentication Protocol<br>
-<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wukenaihe/p/3732141.html">https://www.cnblogs.com/wukenaihe/p/3732141.html</a></p>
-<h4 id="16、IDEA-Maven工程实现hdfs的文件上传与下载">16、IDEA Maven工程实现hdfs的文件上传与下载</h4>
-<p>Maven环境中 只有当 POM文件中所有的依赖包全部变成白色<br>
-pom.xml</p>
+<p>（5）针对hdfs权限问题，有kerberos认证<br>Kerberos: The Network Authentication Protocol<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wukenaihe/p/3732141.html">https://www.cnblogs.com/wukenaihe/p/3732141.html</a></p>
+<h4 id="16、IDEA-Maven工程实现hdfs的文件上传与下载"><a href="#16、IDEA-Maven工程实现hdfs的文件上传与下载" class="headerlink" title="16、IDEA Maven工程实现hdfs的文件上传与下载"></a>16、IDEA Maven工程实现hdfs的文件上传与下载</h4><p>Maven环境中 只有当 POM文件中所有的依赖包全部变成白色<br>pom.xml</p>
 <pre><code class="highlight plaintext">&lt;dependencies&gt;
         &lt;!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common --&gt;
         &lt;dependency&gt;
@@ -701,16 +580,8 @@ pom.xml</p>
         &lt;/dependency&gt;
 
     &lt;/dependencies&gt;</code></pre>
-<p>（1）hdfs文件上传<br>
-查看源码：crtl+鼠标左键<br>
-<code>## Failed to locate the winutils binary in the hadoop binary path java.io.IOException: Could not locate executable null\bin\winutils.exe in the Hadoop binaries. ## </code><br>
-step1:<br>
-下载：hadoop2.7.3 winutils binary<br>
-<a target="_blank" rel="noopener" href="https://github.com/rucyang/hadoop.dll-and-winutils.exe-for-hadoop2.7.3-on-windows_X64">https://github.com/rucyang/hadoop.dll-and-winutils.exe-for-hadoop2.7.3-on-windows_X64</a></p>
-<p>step2: 配置环境变量 拷贝进入 D:\hadoop-2.7.3\bin文件下<br>
-hadoop.home.dir —bin/winutils.exe<br>
-HADOOP_HOME:D:\hadoop-2.7.3,然后再path里面增加 %HADOOP_HOME%\bin<br>
-或者：System.setProperty(“hadoop.home.dir”, “D:\hadoop-2.7.3”);</p>
+<p>（1）hdfs文件上传<br>查看源码：crtl+鼠标左键<br><code>## Failed to locate the winutils binary in the hadoop binary path java.io.IOException: Could not locate executable null\bin\winutils.exe in the Hadoop binaries. ## </code><br>step1:<br>下载：hadoop2.7.3 winutils binary<br><a target="_blank" rel="noopener" href="https://github.com/rucyang/hadoop.dll-and-winutils.exe-for-hadoop2.7.3-on-windows_X64">https://github.com/rucyang/hadoop.dll-and-winutils.exe-for-hadoop2.7.3-on-windows_X64</a> </p>
+<p>step2: 配置环境变量 拷贝进入 D:\hadoop-2.7.3\bin文件下<br>hadoop.home.dir —bin/winutils.exe<br>HADOOP_HOME:D:\hadoop-2.7.3,然后再path里面增加 %HADOOP_HOME%\bin<br>或者：System.setProperty(“hadoop.home.dir”, “D:\hadoop-2.7.3”);</p>
 <pre><code class="highlight plaintext">import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -749,9 +620,8 @@ public class hdfsUpload {
         IOUtils.copyBytes(input,output,1024);
     }
 }</code></pre>
-<p>（2）hdfs文件下载<br>
-<code>### 使用IOUtils 输入路径 输出路径### </code><br>
-IOUtils.copyBytes(input,output,1024);</p>
+
+<p>（2）hdfs文件下载<br><code>### 使用IOUtils 输入路径 输出路径### </code><br>IOUtils.copyBytes(input,output,1024);</p>
 <pre><code class="highlight plaintext">import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -778,7 +648,7 @@ public class hdfsDownload {
         IOUtils.copyBytes(input,output,1024);
     }
 }</code></pre>
-<p>文件元信息</p>
+<p>文件元信息 </p>
 <pre><code class="highlight plaintext">{ 
 	文件名: *.txt 
 	路径: /text 
@@ -787,20 +657,8 @@ public class hdfsDownload {
 	数据块1: DNS1,DNS2,DNS3 
 	(如果文件大切分) 
 }</code></pre>
-<h4 id="17、hdfs上传文件原理">17、hdfs上传文件原理</h4>
-<p>1、请求上传数据<br>
-2、创建客户端<br>
-3、建立RPC通信<br>
-4、NameNode对象<br>
-代理对象NameNodeProxies<br>
-5、请求创建文件元信息<br>
-6、创建文件元信息<br>
-7、缓存文件元信息(1000M)<br>
-8、返回元信息<br>
-9、根据元信息创建输出流<br>
-10、上传第一个数据块<br>
-11、数据块自动复制<br>
-12、循环上传</p>
+
+<h4 id="17、hdfs上传文件原理"><a href="#17、hdfs上传文件原理" class="headerlink" title="17、hdfs上传文件原理"></a>17、hdfs上传文件原理</h4><p>1、请求上传数据<br>2、创建客户端<br>3、建立RPC通信<br>4、NameNode对象<br>代理对象NameNodeProxies<br>5、请求创建文件元信息<br>6、创建文件元信息<br>7、缓存文件元信息(1000M)<br>8、返回元信息<br>9、根据元信息创建输出流<br>10、上传第一个数据块<br>11、数据块自动复制<br>12、循环上传</p>
 
             </div>
             <hr/>
@@ -1051,17 +909,7 @@ public class hdfsDownload {
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、HDFS下载文件原理
-1、请求
-2、创建client
-DFS –&gt;DFSClient
-3、建立RPC通信
-4、得到代理对象proxy，通过代理对象请求得到文件元信息
-5、查找元信息
-6、返回元信息
-7、创建输入流
-8、下载数据块
-
+                            1、HDFS下载文件原理1、请求2、创建clientDFS –&gt;DFSClient3、建立RPC通信4、得到代理对象proxy，通过代理对象请求得到文件元信息5、查找元信息6、返回元信息7、创建输入流8、下载数据块FSDataInpu
                         
                     </div>
                     <div class="publish-info">
@@ -1114,14 +962,7 @@ DFS –&gt;DFSClient
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、什么是大数据？
-2002 大数据提出 美国引入。—麦肯锡报告
-维克托·迈尔-舍恩伯格—大数据之父
-4V特征：
-即
-Volume（数据量大）：PB级
-Variety（数据多样性）：文本、图像、视频、音频等
-Velocity（输入和处理速度
+                            1、什么是大数据？2002 大数据提出 美国引入。—麦肯锡报告维克托·迈尔-舍恩伯格—大数据之父4V特征：即Volume（数据量大）：PB级Variety（数据多样性）：文本、图像、视频、音频等Velocity（输入和处理速度快）：流式数据
                         
                     </div>
                     <div class="publish-info">
@@ -1331,7 +1172,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

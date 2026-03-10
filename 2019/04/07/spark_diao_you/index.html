@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -407,53 +407,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>Spark 调优</strong></p>
-<p>问题：只要会用就可以，为什么还要精通内核源码与调优？<br>
-Spark 性能优化概览：<br>
-Spark的计算本质是，分布式计算<br>
-所以，Spark程序的性能可能因为集群中的任何因素出现瓶颈：CPU、网络带宽、或者内存</p>
-<p>CPU、网络带宽，是运维来维护的<br>
-聚焦点：内存</p>
-<p>如果内存能够容纳下所有的数据，那就不需要调优了<br>
-如果内存比较紧张，不足以放下所有数据（10亿量级—500G）,需要对内存的使用进行性能优化<br>
-比如：使用某些方法减少内存的消耗</p>
-<p>Spark性能优化，主要针对在内存的使用调优</p>
-<p>Spark性能优化的技术：<br>
-1、使用高性能序列化类库<br>
-2、优化数据结构<br>
-3、对于多次使用的RDD进行持久化、checkpoint<br>
-4、持久化级别：MEMORY_ONLY  —&gt;  MEMORY_ONLY_SER 序列化<br>
-5、Java虚拟机垃圾回收调优<br>
-6、Shuffle调优，1.x版本中，90%的性能问题，都是由于Shuffle导致的。</p>
-<p>其他性能优化：<br>
-1、提高并行度<br>
-2、广播共享数据<br>
-等等。。。</p>
-<h3 id="一、诊断Spark内存使用">一、诊断Spark内存使用</h3>
-<p>首先要看到内存使用情况，才能进行针对性的优化</p>
-<h4 id="1、内存花费">1、内存花费</h4>
-<p>（1）每个Java对象，都有一个对象头，占用16字节，包含一些对象的元信息，比如指向他的类的指针<br>
-如果对象本身很小，比如int，但是他的对象头比对象自己还大</p>
-<p>（2）Java的String对象，会比他内存的原始数据，多出40个字节<br>
-String内部使用的char数组来保存内部的字符串序列，并且还要保存诸如输出长度之类的信息<br>
-char使用的是UTF-16编码，每个字符会占2个字节。比如，包含10个字符的String，2*10+40=60字节</p>
-<p>（3）Java中的集合类型，比如HashMap和LinkedList，内部使用链表数据结构<br>
-链表中的每个数据，使用Entry对象包装<br>
-Entry对象，不光有对象头，还有指向下一个Entry的指针，占用8字节</p>
+                <p><strong>Spark 调优</strong>	</p>
+<p>问题：只要会用就可以，为什么还要精通内核源码与调优？<br>Spark 性能优化概览：<br>Spark的计算本质是，分布式计算<br>所以，Spark程序的性能可能因为集群中的任何因素出现瓶颈：CPU、网络带宽、或者内存</p>
+<p>CPU、网络带宽，是运维来维护的<br>聚焦点：内存</p>
+<p>如果内存能够容纳下所有的数据，那就不需要调优了<br>如果内存比较紧张，不足以放下所有数据（10亿量级—500G）,需要对内存的使用进行性能优化<br>比如：使用某些方法减少内存的消耗<br>	<br>Spark性能优化，主要针对在内存的使用调优</p>
+<p>Spark性能优化的技术：<br>1、使用高性能序列化类库<br>2、优化数据结构<br>3、对于多次使用的RDD进行持久化、checkpoint<br>4、持久化级别：MEMORY_ONLY  —&gt;  MEMORY_ONLY_SER 序列化<br>5、Java虚拟机垃圾回收调优<br>6、Shuffle调优，1.x版本中，90%的性能问题，都是由于Shuffle导致的。</p>
+<p>其他性能优化：<br>1、提高并行度<br>2、广播共享数据<br>等等。。。</p>
+<h3 id="一、诊断Spark内存使用"><a href="#一、诊断Spark内存使用" class="headerlink" title="一、诊断Spark内存使用"></a>一、诊断Spark内存使用</h3><p>首先要看到内存使用情况，才能进行针对性的优化</p>
+<h4 id="1、内存花费"><a href="#1、内存花费" class="headerlink" title="1、内存花费"></a>1、内存花费</h4><p>（1）每个Java对象，都有一个对象头，占用16字节，包含一些对象的元信息，比如指向他的类的指针<br>如果对象本身很小，比如int，但是他的对象头比对象自己还大</p>
+<p>（2）Java的String对象，会比他内存的原始数据，多出40个字节<br>String内部使用的char数组来保存内部的字符串序列，并且还要保存诸如输出长度之类的信息<br>char使用的是UTF-16编码，每个字符会占2个字节。比如，包含10个字符的String，2*10+40=60字节</p>
+<p>（3）Java中的集合类型，比如HashMap和LinkedList，内部使用链表数据结构<br>链表中的每个数据，使用Entry对象包装<br>Entry对象，不光有对象头，还有指向下一个Entry的指针，占用8字节</p>
 <p>（4）元素类型为原始数据类型（int），内部通常会使用原始数据类型的包装类型（Integer）来存储元素</p>
-<h4 id="2、如何判断Spark程序消耗内存情况？">2、如何判断Spark程序消耗内存情况？</h4>
-<p>预估<br>
-（1）设置RDD的并行度<br>
-两种方法创建RDD，parallelize()  textFile() 在这两个方法中，传入第二个参数，设置RDD的partition数量<br>
-在SparkConfig中设置一个参数：<br>
-spark.default.parallelism<br>
-可以统一设置这个application中所有RDD的partition数量</p>
+<h4 id="2、如何判断Spark程序消耗内存情况？"><a href="#2、如何判断Spark程序消耗内存情况？" class="headerlink" title="2、如何判断Spark程序消耗内存情况？"></a>2、如何判断Spark程序消耗内存情况？</h4><p>预估<br>（1）设置RDD的并行度<br>两种方法创建RDD，parallelize()  textFile() 在这两个方法中，传入第二个参数，设置RDD的partition数量<br>在SparkConfig中设置一个参数：<br>spark.default.parallelism<br>可以统一设置这个application中所有RDD的partition数量</p>
 <p>（2）将RDD缓存 cache()</p>
-<p>（3）观察日志：<br>
-driver的日志<br>
-/root/hd/spark-2.1.0-bin-hadoop2.7/work</p>
-<p>Master和Worker的日志<br>
-/root/hd/spark-2.1.0-bin-hadoop2.7/logs</p>
+<p>（3）观察日志：<br>driver的日志<br>/root/hd/spark-2.1.0-bin-hadoop2.7/work</p>
+<p>Master和Worker的日志<br>/root/hd/spark-2.1.0-bin-hadoop2.7/logs</p>
 <pre><code class="highlight plaintext">scala&gt; val rdd1 = sc.textFile("/root/hd/tmp_files/test_Cache.txt")
 rdd1: org.apache.spark.rdd.RDD[String] = /root/hd/tmp_files/test_Cache.txt MapPartitionsRDD[1] at textFile at &lt;console&gt;:24
 
@@ -465,133 +433,69 @@ res2: Long = 921911
 
 scala&gt; rdd1.count
 res3: Long = 921911</code></pre>
-<p>/root/hd/spark-2.1.0-bin-hadoop2.7/work<br>
-19/04/17 17:02:10 INFO MemoryStore: Block rdd_1_1 stored as values in memory (estimated size 22.9 MB, free 343.1 MB)<br>
-19/04/17 17:02:10 INFO MemoryStore: Block rdd_1_0 stored as values in memory (estimated size 22.9 MB, free 320.2 MB)</p>
-<p>（4）将这个内存信息相加，就是RDD内存占用量<br>
-22.9MB+22.9MB=45.8MB</p>
-<h3 id="二、使用高性能序列化类库">二、使用高性能序列化类库</h3>
-<h4 id="1、数据序列化概述">1、数据序列化概述</h4>
-<p>数据序列化，就是将对象或者数据结构，转换成特定的格式，使其可在网络中传输，或存储在内存或文件中<br>
-反序列化，是相反的操作，将对象从序列化数据中还原出来<br>
-序列化后的数据格式，可以是二进制，xml，Json等任何格式<br>
-对象、数据序列化的重点在于数据的交换与传输</p>
-<p>在任何分布式系统中，序列化都是扮演着一个重要的角色<br>
-如果使用的序列化技术，操作很慢，或者序列化后的数据量还是很大，会让分布式系统应用程序性能下降很多<br>
-所以，Spark性能优化的第一步，就是进行序列化的性能优化</p>
+
+<p>/root/hd/spark-2.1.0-bin-hadoop2.7/work<br>19/04/17 17:02:10 INFO MemoryStore: Block rdd_1_1 stored as values in memory (estimated size 22.9 MB, free 343.1 MB)<br>19/04/17 17:02:10 INFO MemoryStore: Block rdd_1_0 stored as values in memory (estimated size 22.9 MB, free 320.2 MB)</p>
+<p>（4）将这个内存信息相加，就是RDD内存占用量<br>22.9MB+22.9MB=45.8MB</p>
+<h3 id="二、使用高性能序列化类库"><a href="#二、使用高性能序列化类库" class="headerlink" title="二、使用高性能序列化类库"></a>二、使用高性能序列化类库</h3><h4 id="1、数据序列化概述"><a href="#1、数据序列化概述" class="headerlink" title="1、数据序列化概述"></a>1、数据序列化概述</h4><p>数据序列化，就是将对象或者数据结构，转换成特定的格式，使其可在网络中传输，或存储在内存或文件中<br>反序列化，是相反的操作，将对象从序列化数据中还原出来<br>序列化后的数据格式，可以是二进制，xml，Json等任何格式<br>对象、数据序列化的重点在于数据的交换与传输</p>
+<p>在任何分布式系统中，序列化都是扮演着一个重要的角色<br>如果使用的序列化技术，操作很慢，或者序列化后的数据量还是很大，会让分布式系统应用程序性能下降很多<br>所以，Spark性能优化的第一步，就是进行序列化的性能优化</p>
 <p>Spark自身默认会在一些地方对数据进行序列化，比如Shuffle。另外，我们使用了外部数据（自定义类型），也要让其课序列化</p>
-<p>Spark本身对序列化的便捷性和性能进行了取舍<br>
-默认情况下：Spark倾向于序列化的便捷性，使用了Java自身提供的序列化机制，很方便使用</p>
+<p>Spark本身对序列化的便捷性和性能进行了取舍<br>默认情况下：Spark倾向于序列化的便捷性，使用了Java自身提供的序列化机制，很方便使用</p>
 <p>但是，Java序列化机制性能不高，序列化速度慢，序列化后数据较大，比较占用内存空间</p>
-<h4 id="2、Kryo">2、Kryo</h4>
-<p>Spark支持使用Kryo类库来进行序列化<br>
-速度快，占用空间更小，比Java序列化数据占用空间小10倍</p>
-<h4 id="3、如何使用kryo序列化机制">3、如何使用kryo序列化机制</h4>
-<p>（1）设置Spark Conf<br>
-bin/spark-submit will also read configuration options from</p>
-<p><strong>conf/spark-defaults.conf</strong>,<br>
-in which each line consists of a key and a value separated by whitespace. For example:</p>
-<p>spark.master            spark://5.6.7.8:7077<br>
-spark.executor.memory   4g<br>
-spark.eventLog.enabled  true<br>
-spark.serializer        org.apache.spark.serializer.KryoSerializer</p>
-<p>（2）使用kryo是，要求需要序列化的类，要提前注册，以获得高性能<br>
-conf.registerKryoClasses(Array(classOf[Count],…))<br>
-conf.registerKryoClasses(Array(classOf[类], classOf[类], …))</p>
-<h4 id="4、kryo类库的优化">4、kryo类库的优化</h4>
-<p>（1）优化缓存大小<br>
-如果注册的自定义类型，本身特别大（100个字段），会导致要序列化的对象太大<br>
-此时需要对kyro本身进行优化。因为kryo内部的缓存，可能不能存放这么大的class对象<br>
-spark.kryoserializer.buffer.max  设置这个参数，将其调大</p>
-<p>（2）预先注册自定义类型<br>
-虽然不注册自定义类型，kryo也可以正常工作，但会保存一份他的全限定类名，耗费内存<br>
-推荐预先注册要序列化的自定义类型</p>
-<h3 id="三、优化数据结构">三、优化数据结构</h3>
-<h4 id="1、概述">1、概述</h4>
-<p>要减少内存的消耗，除了使用高效的序列化类库外，还要优化数据结构<br>
-避免Java语法特性中所导致的额外内存开销</p>
-<p>核心：优化算子函数内部使用到的局部数据或算子函数外部的数据<br>
-目的：减少对内存的消耗和占用</p>
-<h4 id="2、如何做">2、如何做</h4>
-<p>（1）优先使用数组以及字符串，而不是集合类。即：优先使用Array，而不是ArrayList、LinkedList、HashMap<br>
-使用int[] 会比List<code>&lt;Integer&gt;</code> 节省内存</p>
-<p>（2）将对象转换成字符串<br>
-企业中，将HashMap、List这种数据，统一用String拼接成特殊格式的字符串</p>
+<h4 id="2、Kryo"><a href="#2、Kryo" class="headerlink" title="2、Kryo"></a>2、Kryo</h4><p>Spark支持使用Kryo类库来进行序列化<br>速度快，占用空间更小，比Java序列化数据占用空间小10倍</p>
+<h4 id="3、如何使用kryo序列化机制"><a href="#3、如何使用kryo序列化机制" class="headerlink" title="3、如何使用kryo序列化机制"></a>3、如何使用kryo序列化机制</h4><p>（1）设置Spark Conf<br>bin/spark-submit will also read configuration options from </p>
+<p><strong>conf/spark-defaults.conf</strong>,<br>in which each line consists of a key and a value separated by whitespace. For example:</p>
+<p>spark.master            spark://5.6.7.8:7077<br>spark.executor.memory   4g<br>spark.eventLog.enabled  true<br>spark.serializer        org.apache.spark.serializer.KryoSerializer</p>
+<p>（2）使用kryo是，要求需要序列化的类，要提前注册，以获得高性能<br>conf.registerKryoClasses(Array(classOf[Count],……))<br>conf.registerKryoClasses(Array(classOf[类], classOf[类], ……))</p>
+<h4 id="4、kryo类库的优化"><a href="#4、kryo类库的优化" class="headerlink" title="4、kryo类库的优化"></a>4、kryo类库的优化</h4><p>（1）优化缓存大小<br>如果注册的自定义类型，本身特别大（100个字段），会导致要序列化的对象太大<br>此时需要对kyro本身进行优化。因为kryo内部的缓存，可能不能存放这么大的class对象<br>spark.kryoserializer.buffer.max  设置这个参数，将其调大</p>
+<p>（2）预先注册自定义类型<br>虽然不注册自定义类型，kryo也可以正常工作，但会保存一份他的全限定类名，耗费内存<br>推荐预先注册要序列化的自定义类型</p>
+<h3 id="三、优化数据结构"><a href="#三、优化数据结构" class="headerlink" title="三、优化数据结构"></a>三、优化数据结构</h3><h4 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h4><p>要减少内存的消耗，除了使用高效的序列化类库外，还要优化数据结构<br>避免Java语法特性中所导致的额外内存开销</p>
+<p>核心：优化算子函数内部使用到的局部数据或算子函数外部的数据<br>目的：减少对内存的消耗和占用</p>
+<h4 id="2、如何做"><a href="#2、如何做" class="headerlink" title="2、如何做"></a>2、如何做</h4><p>（1）优先使用数组以及字符串，而不是集合类。即：优先使用Array，而不是ArrayList、LinkedList、HashMap<br>使用int[] 会比List<code>&lt;Integer&gt;</code> 节省内存</p>
+<p>（2）将对象转换成字符串<br>企业中，将HashMap、List这种数据，统一用String拼接成特殊格式的字符串</p>
 <p>Map&lt;Integer,Person&gt; persons = new HashMap&lt;Integer,Person&gt;()</p>
-<p>可以优化为：<br>
-“id:name,address”<br>
-String persons = “1:Andy,Beijing|2:Tom,Tianjin…”</p>
-<p>（3）避免使用多层嵌套对象结构<br>
-举例：<br>
-下面的例子不好，因为Teacher类的内部又嵌套了大量的小的Student对象<br>
-public class Teacher{ private …; privage List<code>&lt;Student&gt;</code> students = new ArrayList()}</p>
-<p>解决：转换成字符串进行处理<br>
-{“teacherId”: 1, “students”:[{“stuId”:1…},{}]}</p>
-<p>（4）对于能够避免的场景，尽量使用int代替String<br>
-虽然String比List效率高，但int类型占用更少内存</p>
+<p>可以优化为：<br>“id:name,address”<br>String persons = “1:Andy,Beijing|2:Tom,Tianjin….”</p>
+<p>（3）避免使用多层嵌套对象结构<br>举例：<br>下面的例子不好，因为Teacher类的内部又嵌套了大量的小的Student对象<br>public class Teacher{ private …..; privage List<code>&lt;Student&gt;</code> students = new ArrayList()}</p>
+<p>解决：转换成字符串进行处理<br>{“teacherId”: 1, “students”:[{“stuId”:1…..},{}]}</p>
+<p>（4）对于能够避免的场景，尽量使用int代替String<br>虽然String比List效率高，但int类型占用更少内存</p>
 <p>比如：数据库主键，id，推荐使用自增的id，而不是uuid</p>
-<h3 id="四、rdd-cache-checkpoint">四、rdd.cache checkpoint</h3>
-<h3 id="五、持久化级别">五、持久化级别</h3>
-<p>MEMORY_ONLY  —&gt;  MEMORY_ONLY_SER 序列化</p>
-<h3 id="六、Java虚拟机的调优">六、Java虚拟机的调优</h3>
-<h4 id="1、概述-2">1、概述</h4>
-<p>如果在持久化RDD的时候，持久化了大量的数据，那么Java虚拟机的垃圾回收就可能成为一个瓶颈</p>
+<h3 id="四、rdd-cache-checkpoint"><a href="#四、rdd-cache-checkpoint" class="headerlink" title="四、rdd.cache checkpoint"></a>四、rdd.cache checkpoint</h3><h3 id="五、持久化级别"><a href="#五、持久化级别" class="headerlink" title="五、持久化级别"></a>五、持久化级别</h3><p>MEMORY_ONLY  —&gt;  MEMORY_ONLY_SER 序列化</p>
+<h3 id="六、Java虚拟机的调优"><a href="#六、Java虚拟机的调优" class="headerlink" title="六、Java虚拟机的调优"></a>六、Java虚拟机的调优</h3><h4 id="1、概述-1"><a href="#1、概述-1" class="headerlink" title="1、概述"></a>1、概述</h4><p>如果在持久化RDD的时候，持久化了大量的数据，那么Java虚拟机的垃圾回收就可能成为一个瓶颈</p>
 <p>Java虚拟机会定期进行垃圾回收，此时会追踪所有Java对象，并且在垃圾回收时，找到那些已经不再使用的对象</p>
 <p>清理旧对象，给新对象腾出空间</p>
 <p>垃圾回收的性能开销，是与内存中的对象数量成正比</p>
 <p>在做Java虚拟机调优之前，必须先做好上面的调优工作，这样才有意义</p>
 <p>必须注意顺序（先进行完上面的调优，再进行JVM调优）</p>
-<h4 id="2、Spark-GC原理">2、Spark GC原理</h4>
-<p><strong>垃圾回收期GC</strong></p>
+<h4 id="2、Spark-GC原理"><a href="#2、Spark-GC原理" class="headerlink" title="2、Spark GC原理"></a>2、Spark GC原理</h4><p><strong>垃圾回收期GC</strong></p>
 <p>垃圾回收器，寻找那些对象已经不再使用，将其清除出去</p>
 <p>GC对性能的影响在于，如果内存中数据量较大，会很频繁地造成内存空间不够，导致GC频繁发生，而GC本身是有性能消耗的，如果频繁发生，对性能影响严重</p>
 <p>此外，如果数据量过大，每次要回收的数据量也很大，导致GC慢</p>
 <p>另外GC发生的时候，GC是一个线程，我们Task运行时线程叫做工作线程。GC运行时会让工作线程停下来，让GC单独运行，影响Spark应用程序的运行速度，降低了性能</p>
 <p><strong>核心：不让GC频繁发生</strong></p>
 <p><img src="/medias/sparkGC%E5%8E%9F%E7%90%86.PNG" alt="sparkGC原理"></p>
-<h4 id="3、监测垃圾回收">3、监测垃圾回收</h4>
-<p>我们可以进行监测，比如多久进行一次垃圾回收以及耗费的时间等等。</p>
-<p>spark-submit脚本中，添加一个配置<br>
-–conf “spark.executor.extraJavaOptions=-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimesStamps”</p>
-<p>注意：这个是输出到worker日志中，而不是driver日志<br>
-/root/hd/spark-2.1.0-bin-hadoop2.7/logs  worker日志<br>
-/root/hd/spark-2.1.0-bin-hadoop2.7/work  driver日志</p>
-<h4 id="4、优化Executor内存比例">4、优化Executor内存比例</h4>
-<p>目的：减少GC次数</p>
+<h4 id="3、监测垃圾回收"><a href="#3、监测垃圾回收" class="headerlink" title="3、监测垃圾回收"></a>3、监测垃圾回收</h4><p>我们可以进行监测，比如多久进行一次垃圾回收以及耗费的时间等等。</p>
+<p>spark-submit脚本中，添加一个配置<br>–conf “spark.executor.extraJavaOptions=-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimesStamps”</p>
+<p>注意：这个是输出到worker日志中，而不是driver日志<br>/root/hd/spark-2.1.0-bin-hadoop2.7/logs  worker日志<br>/root/hd/spark-2.1.0-bin-hadoop2.7/work  driver日志</p>
+<h4 id="4、优化Executor内存比例"><a href="#4、优化Executor内存比例" class="headerlink" title="4、优化Executor内存比例"></a>4、优化Executor内存比例</h4><p>目的：减少GC次数</p>
 <p>对于GC调优来说，最重要的就是调节，RDD的缓存占用的内存空间与算子执行时创建对象所占用的内存空间的比例</p>
-<p>Executor:Task=3:2  （Executor 占60%给RDD缓存，Task占40%）<br>
-对于默认情况，Spark使用每个Executor 60% 的内存空间来缓存RDD，在task运行期间所创建的对象，只有40%内存空间来存放</p>
-<p>在默认情况下，很可能发生的事情，分配给Task的内存不够，<br>
-导致新创建对象时，很快占满内存，GC启动，找到不再使用的对象，清楚内存</p>
+<p>Executor:Task=3:2  （Executor 占60%给RDD缓存，Task占40%）<br>对于默认情况，Spark使用每个Executor 60% 的内存空间来缓存RDD，在task运行期间所创建的对象，只有40%内存空间来存放</p>
+<p>在默认情况下，很可能发生的事情，分配给Task的内存不够，<br>导致新创建对象时，很快占满内存，GC启动，找到不再使用的对象，清楚内存</p>
 <p>所以，如果Task分配内存过小，可能会导致GC频繁发生，工作线程停止</p>
 <p>可以通过调节比例，将RDD缓存空间占比调节到40%，降低Task GC频率</p>
-<p>需要配合其他优化：<br>
-kryo优化<br>
-持久化级别优化<br>
-数据结构优化</p>
+<p>需要配合其他优化：<br>kryo优化<br>持久化级别优化<br>数据结构优化</p>
 <p>使用：conf.set(“spark.storage.memoryFraction”,0.5)</p>
 <p><img src="/medias/spark%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D.PNG" alt="spark内存分配."></p>
-<h4 id="5、Java-GC-调优-（-）">5、Java GC 调优 （-）</h4>
-<p>让GC更快的处理完</p>
-<h3 id="七、shuffle原理">七、shuffle原理</h3>
-<h4 id="1、优化前">1、优化前</h4>
-<p>假设一个节点上，有4个shufflemaptask，有两个CPU core</p>
+<h4 id="5、Java-GC-调优-（-）"><a href="#5、Java-GC-调优-（-）" class="headerlink" title="5、Java GC 调优 （-）"></a>5、Java GC 调优 （-）</h4><p>让GC更快的处理完</p>
+<h3 id="七、shuffle原理"><a href="#七、shuffle原理" class="headerlink" title="七、shuffle原理"></a>七、shuffle原理</h3><h4 id="1、优化前"><a href="#1、优化前" class="headerlink" title="1、优化前"></a>1、优化前</h4><p>假设一个节点上，有4个shufflemaptask，有两个CPU core</p>
 <p>每个MapTask会为每个ReduceTask创建一份bucket缓存，以及对应的ShuffleBlockFile磁盘文件</p>
 <p>问题：假设有100个MapTask，100个ReduceTask，会产生100*100即10000个文件，磁盘io过多，影响性能</p>
 <p>假设另外一个节点上，运行了4个ReduceTask</p>
 <p>每个ReduceTask拉取过来的数据，其实会组成内部的RDD，叫ShuffledRDD，优先放入内存，如果不够，写入磁盘</p>
-<p>每个ReduceTask针对数据进行聚合，最后生成MapPartitionsRDD，执行reduceByKey操作希望的到那个RDD<br>
-<img src="/medias/shuffle%E4%BC%98%E5%8C%96%E5%89%8D.PNG" alt="Shuffle优化前"></p>
-<h4 id="2、优化后">2、优化后</h4>
-<p>在Spark新版本中，引入了consolidation的机制，提出了ShuffleGroup概念</p>
+<p>每个ReduceTask针对数据进行聚合，最后生成MapPartitionsRDD，执行reduceByKey操作希望的到那个RDD<br><img src="/medias/shuffle%E4%BC%98%E5%8C%96%E5%89%8D.PNG" alt="Shuffle优化前"></p>
+<h4 id="2、优化后"><a href="#2、优化后" class="headerlink" title="2、优化后"></a>2、优化后</h4><p>在Spark新版本中，引入了consolidation的机制，提出了ShuffleGroup概念</p>
 <p>一个ShuffleMapTask执行完后，写入本地文件不会变，但是，下一个ShuffleSMapTask运行的时候，可以直接将数据写入之前的本地文件</p>
 <p>相当于，多个ShuffleMapTask的输出进行了合并，大大减少文件数量</p>
-<p>1和2可以乘坐一组ShuffleGroup，每个文件中，都存储了多个ShuffleMapTask的数量，每个ShuffleMapTask的数据叫做segment，通过外部索引，来标记每个ShuffleMapTask的数据以及偏移量，对不同的ShuffleMapTask的数据进行区分<br>
-<img src="/medias/shuffle%E4%BC%98%E5%8C%96%E5%90%8E.PNG" alt="shuffle优化后"></p>
-<h3 id="八、其他调优">八、其他调优</h3>
-<h4 id="1、提高并行度">1、提高并行度</h4>
-<h4 id="2、广播共享数据">2、广播共享数据</h4>
-
+<p>1和2可以乘坐一组ShuffleGroup，每个文件中，都存储了多个ShuffleMapTask的数量，每个ShuffleMapTask的数据叫做segment，通过外部索引，来标记每个ShuffleMapTask的数据以及偏移量，对不同的ShuffleMapTask的数据进行区分<br><img src="/medias/shuffle%E4%BC%98%E5%8C%96%E5%90%8E.PNG" alt="shuffle优化后"></p>
+<h3 id="八、其他调优"><a href="#八、其他调优" class="headerlink" title="八、其他调优"></a>八、其他调优</h3><h4 id="1、提高并行度"><a href="#1、提高并行度" class="headerlink" title="1、提高并行度"></a>1、提高并行度</h4><h4 id="2、广播共享数据"><a href="#2、广播共享数据" class="headerlink" title="2、广播共享数据"></a>2、广播共享数据</h4>
             </div>
             <hr/>
 
@@ -844,8 +748,7 @@ kryo优化<br>
                             Spark MLlib
 MLlib 是 Spark 可以扩展的机器学习库
 MLlib is Apache Spark’s scalable machine learning library.
-一、MLlib概述
-MLlib 是 Spark 
+一、MLlib概述MLlib 是 Spark 可
                         
                     </div>
                     <div class="publish-info">
@@ -898,12 +801,9 @@ MLlib 是 Spark
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spark Streaming
-流式计算框架，类似于Storm
-常用的实时计算引擎（流式计算）
-1、Apache Storm：真正的流式计算
-2、Spark Streaming ：严格上来说，不是真正的流式计算（实时计算）
-把连续的流式数据
+                            Spark Streaming流式计算框架，类似于Storm
+常用的实时计算引擎（流式计算）1、Apache Storm：真正的流式计算
+2、Spark Streaming ：严格上来说，不是真正的流式计算（实时计算）把连续的流式数据，当成
                         
                     </div>
                     <div class="publish-info">
@@ -1117,7 +1017,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

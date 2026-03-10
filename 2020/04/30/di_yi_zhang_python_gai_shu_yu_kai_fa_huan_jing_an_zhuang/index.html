@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -403,19 +403,13 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="第一章-Python-概述与开发环境安装">第一章 Python 概述与开发环境安装</h2>
-<h3 id="1、Python-开发环境安装">1、Python 开发环境安装</h3>
-<h3 id="2、Anaconda-安装">2、Anaconda 安装</h3>
-<p>选择 just me<br>
-不用勾选添加本地环境变量</p>
+                <h2 id="第一章-Python-概述与开发环境安装"><a href="#第一章-Python-概述与开发环境安装" class="headerlink" title="第一章 Python 概述与开发环境安装"></a>第一章 Python 概述与开发环境安装</h2><h3 id="1、Python-开发环境安装"><a href="#1、Python-开发环境安装" class="headerlink" title="1、Python 开发环境安装"></a>1、Python 开发环境安装</h3><h3 id="2、Anaconda-安装"><a href="#2、Anaconda-安装" class="headerlink" title="2、Anaconda 安装"></a>2、Anaconda 安装</h3><p>选择 just me<br>不用勾选添加本地环境变量</p>
 <ol>
-<li>查看 Anaconda 环境是否安装成功（查看 Anaconda 版本号）：conda --version</li>
-<li>查看目前安装了哪些环境变量：conda info --envs</li>
+<li>查看 Anaconda 环境是否安装成功（查看 Anaconda 版本号）：conda –version</li>
+<li>查看目前安装了哪些环境变量：conda info –envs</li>
 <li>查看 Anaconda 当前版本以及安装了哪些包：conda list</li>
 </ol>
-<h3 id="3、Spyder">3、Spyder</h3>
-<h4 id="3-1-读取文件里面的行数">3.1 读取文件里面的行数</h4>
-<pre><code class="highlight plaintext">import sys 
+<h3 id="3、Spyder"><a href="#3、Spyder" class="headerlink" title="3、Spyder"></a>3、Spyder</h3><h4 id="3-1-读取文件里面的行数"><a href="#3-1-读取文件里面的行数" class="headerlink" title="3.1 读取文件里面的行数"></a>3.1 读取文件里面的行数</h4><pre><code class="highlight plaintext">import sys 
 import os.path
 
 # 文件目录
@@ -432,13 +426,8 @@ print(content)
 print(dir)
 # 打印文件里面内容的行数
 print(len(content))</code></pre>
-<p><strong>结果：</strong><br>
-&lt;class ‘list’&gt;<br>
-[‘12\n’, ‘6\n’, ‘2\n’, ‘35\n’, ‘11\n’, ‘22\n’, ‘23\n’, ‘11\n’, ‘254\n’, ‘12’]<br>
-F:\Anaconda<br>
-10</p>
-<h3 id="4、Jupyter-Notebook">4、Jupyter Notebook</h3>
-<p>默认地址：<a target="_blank" rel="noopener" href="http://localhost:8888">http://localhost:8888</a></p>
+<p><strong>结果：</strong><br>&lt;class ‘list’&gt;<br>[‘12\n’, ‘6\n’, ‘2\n’, ‘35\n’, ‘11\n’, ‘22\n’, ‘23\n’, ‘11\n’, ‘254\n’, ‘12’]<br>F:\Anaconda<br>10</p>
+<h3 id="4、Jupyter-Notebook"><a href="#4、Jupyter-Notebook" class="headerlink" title="4、Jupyter Notebook"></a>4、Jupyter Notebook</h3><p>默认地址：<a target="_blank" rel="noopener" href="http://localhost:8888/">http://localhost:8888</a></p>
 <pre><code class="highlight plaintext"># 使用递归
 def fib(n):
     if n==1 or n==2:
@@ -450,43 +439,31 @@ def fib(n):
 # 输出第10个斐波那契数列
 print(fib(10))
 print(fib(0))</code></pre>
-<p><strong>结果：</strong><br>
-55<br>
-0</p>
-<h3 id="5、Python-环境管理">5、Python 环境管理</h3>
-<h4 id="5-1-打开管理终端">5.1 打开管理终端</h4>
-<p>Windows用户打开“Anaconda Prompt”</p>
-<p>macOS和Linux用户打开"Terminal"（终端）</p>
-<h4 id="5-2-创建新环境">5.2 创建新环境</h4>
-<pre><code class="highlight plaintext">conda create --name &lt;env_name&gt; &lt;package_name&gt;</code></pre>
+<p><strong>结果：</strong><br>55<br>0</p>
+<h3 id="5、Python-环境管理"><a href="#5、Python-环境管理" class="headerlink" title="5、Python 环境管理"></a>5、Python 环境管理</h3><h4 id="5-1-打开管理终端"><a href="#5-1-打开管理终端" class="headerlink" title="5.1 打开管理终端"></a>5.1 打开管理终端</h4><p>Windows用户打开“Anaconda Prompt”</p>
+<p>macOS和Linux用户打开”Terminal”（终端）</p>
+<h4 id="5-2-创建新环境"><a href="#5-2-创建新环境" class="headerlink" title="5.2 创建新环境"></a>5.2 创建新环境</h4><pre><code class="highlight plaintext">conda create --name &lt;env_name&gt; &lt;package_name&gt;</code></pre>
 <p><strong>注：</strong></p>
 <ol>
-<li><code>env_name</code>–创建的环境名，建议英文命名，且不加空格，名称两边不加尖括号"&lt;&gt;"</li>
-<li><code>package_name</code>–安装环境中的包名，名称两边不加尖括号"&lt;&gt;"</li>
+<li><code>env_name</code>–创建的环境名，建议英文命名，且不加空格，名称两边不加尖括号”&lt;&gt;”</li>
+<li><code>package_name</code>–安装环境中的包名，名称两边不加尖括号”&lt;&gt;”</li>
 <li>如果要安装指定的版本号， 则只需要在包名后面以=和版本号的形式执行。如：<code>conda create name python2  python=2.7</code>，即创建一个名为“python2”的环境，环境中安装版本为2.7的 python。</li>
 <li>如果要在新创建的环境中创建多个包，则直接在<code>&lt;package_names&gt;</code>后以空格隔开，添加多个即可。如：<code>conda create -n python3 python=3.7 numpy pandas</code>，即创建一个名为“python”的环境，环境中安装版本为 3.7 的 python，同时也安装了<code>numpy</code>和<code>pandas</code>。</li>
 <li>默认情况下，新创建的环境会被保存在<code>/User/&lt;username&gt;/anaconda3/env</code>目录下，其中<code>&lt;user_name&gt;</code>为系统当前用户的用户名。</li>
 </ol>
-<h4 id="5-3-激活-退出环境">5.3 激活/退出环境</h4>
-<p>激活：<code>conda activate python3</code></p>
+<h4 id="5-3-激活-退出环境"><a href="#5-3-激活-退出环境" class="headerlink" title="5.3 激活/退出环境"></a>5.3 激活/退出环境</h4><p>激活：<code>conda activate python3</code></p>
 <p>退出：<code>conda deactivate</code></p>
-<h4 id="5-4-删除环境">5.4 删除环境</h4>
-<p><code>conda  remove --name python3 --all</code></p>
-<h3 id="6、Python-扩展库安装">6、Python 扩展库安装</h3>
-<h4 id="6-1-添加清华大学的-Anaconda-镜像">6.1 添加清华大学的 Anaconda 镜像</h4>
-<pre><code class="highlight plaintext">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+<h4 id="5-4-删除环境"><a href="#5-4-删除环境" class="headerlink" title="5.4 删除环境"></a>5.4 删除环境</h4><p> <code>conda  remove --name python3 --all</code></p>
+<h3 id="6、Python-扩展库安装"><a href="#6、Python-扩展库安装" class="headerlink" title="6、Python 扩展库安装"></a>6、Python 扩展库安装</h3><h4 id="6-1-添加清华大学的-Anaconda-镜像"><a href="#6-1-添加清华大学的-Anaconda-镜像" class="headerlink" title="6.1 添加清华大学的 Anaconda 镜像"></a>6.1 添加清华大学的 Anaconda 镜像</h4><pre><code class="highlight plaintext">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 
 # 设置搜索时显示通道地址
 conda config --set show_channel_urls yes</code></pre>
 <p><code>conda install numpy</code> 测试</p>
-<p><strong>查询可供安装的扩展库版本</strong><br>
-<code>conda search --full-name pandas</code></p>
-<p><strong>获取当前环境中已安装的扩展库信息</strong><br>
-<code>conda list</code></p>
-<h4 id="6-2-在指定环境中安装包">6.2 在指定环境中安装包</h4>
-<pre><code class="highlight plaintext">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+<p><strong>查询可供安装的扩展库版本</strong><br><code>conda search --full-name pandas</code></p>
+<p><strong>获取当前环境中已安装的扩展库信息</strong><br><code>conda list</code></p>
+<h4 id="6-2-在指定环境中安装包"><a href="#6-2-在指定环境中安装包" class="headerlink" title="6.2 在指定环境中安装包"></a>6.2 在指定环境中安装包</h4><pre><code class="highlight plaintext">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 
@@ -495,14 +472,12 @@ conda config --set show_channel_urls yes
 conda activate python3
 
 conda install numpy</code></pre>
-<h4 id="6-3-在当前环境中卸载包">6.3 在当前环境中卸载包</h4>
-<p><code>conda remove &lt;package_name&gt;</code></p>
-<h4 id="6-4-在指定环境中卸载包">6.4 在指定环境中卸载包</h4>
-<p><code>conda remove --name &lt;env_name&gt; &lt;package_name&gt;</code></p>
-<h3 id="7、-Python-扩展库导入">7、 Python 扩展库导入</h3>
-<p><strong>建议先导入标准库再导入扩展库对象，只导入确实需要使用的标准库和扩展库对象，提高加载速度，减少打包体积</strong></p>
-<h4 id="7-1-import-模块名-as-别名">7.1 import 模块名[as 别名]</h4>
-<p><strong>使用时需要在对象之前加上模块名作为前缀，即“模块名.对象名”</strong></p>
+
+
+<h4 id="6-3-在当前环境中卸载包"><a href="#6-3-在当前环境中卸载包" class="headerlink" title="6.3 在当前环境中卸载包"></a>6.3 在当前环境中卸载包</h4><p><code>conda remove &lt;package_name&gt;</code></p>
+<h4 id="6-4-在指定环境中卸载包"><a href="#6-4-在指定环境中卸载包" class="headerlink" title="6.4 在指定环境中卸载包"></a>6.4 在指定环境中卸载包</h4><p><code>conda remove --name &lt;env_name&gt; &lt;package_name&gt;</code></p>
+<h3 id="7、-Python-扩展库导入"><a href="#7、-Python-扩展库导入" class="headerlink" title="7、 Python 扩展库导入"></a>7、 Python 扩展库导入</h3><p><strong>建议先导入标准库再导入扩展库对象，只导入确实需要使用的标准库和扩展库对象，提高加载速度，减少打包体积</strong></p>
+<h4 id="7-1-import-模块名-as-别名"><a href="#7-1-import-模块名-as-别名" class="headerlink" title="7.1 import 模块名[as 别名]"></a>7.1 import 模块名[as 别名]</h4><p><strong>使用时需要在对象之前加上模块名作为前缀，即“模块名.对象名”</strong></p>
 <pre><code class="highlight plaintext">import math 
 import random
 import posixpath as path
@@ -512,13 +487,8 @@ print(math.cos(math.pi/4))			# 计算余弦值
 print(random.choices('abcd', k=8))	# 从字符串'abcd'随机选择8个字符
 									# 允许重复
 print(path.isfile(r'C:Windows\notepad.exe'))	#测试指定路径是否为文件</code></pre>
-<p><strong>结果：</strong><br>
-4.0<br>
-0.7071067811865476<br>
-[‘b’, ‘b’, ‘d’, ‘b’, ‘a’, ‘d’, ‘a’, ‘c’]<br>
-False</p>
-<h4 id="7-2-from-模块名-import-对象名-as-别名">7.2 from  模块名  import  对象名 [as 别名]</h4>
-<p>不需要模块名作为前缀，导入方式可以减少查询次数，提高访问速度</p>
+<p><strong>结果：</strong><br>4.0<br>0.7071067811865476<br>[‘b’, ‘b’, ‘d’, ‘b’, ‘a’, ‘d’, ‘a’, ‘c’]<br>False</p>
+<h4 id="7-2-from-模块名-import-对象名-as-别名"><a href="#7-2-from-模块名-import-对象名-as-别名" class="headerlink" title="7.2 from  模块名  import  对象名 [as 别名]"></a>7.2 from  模块名  import  对象名 [as 别名]</h4><p>不需要模块名作为前缀，导入方式可以减少查询次数，提高访问速度</p>
 <pre><code class="highlight plaintext">from math import pi as PI
 from os.path import getsize
 from random import choice
@@ -527,12 +497,8 @@ r = 3
 print(round(PI*r*r, 2)) 					# 计算半径为3的圆面积
 print(getsize(r'C:Windows\notepad.exe'))	# 计算文件大小，单位为字节
 print(choice('Python'))						# 从字符串中随机选择一个字符</code></pre>
-<p><strong>结果：</strong><br>
-28.27<br>
-254464<br>
-o</p>
-<h4 id="7-3-from-模块名-import">7.3 from  模块名  import  *</h4>
-<p><strong>不推荐使用</strong></p>
+<p><strong>结果：</strong><br>28.27<br>254464<br>o</p>
+<h4 id="7-3-from-模块名-import"><a href="#7-3-from-模块名-import" class="headerlink" title="7.3 from  模块名  import  *"></a>7.3 from  模块名  import  *</h4><p><strong>不推荐使用</strong></p>
 <pre><code class="highlight plaintext">from itertools import *
 
 characters = '1234'
@@ -541,35 +507,21 @@ for item in combinations(characters, 3):	# 从4个字符中任选3个组合
 print('\n'+'='*20)                          # 行号后输出20个等于号
 for item in permutations(characters, 3):	# 从4个字符中任选3个的排列
 	print(item, end=' ')</code></pre>
-<h3 id="8、Python-常用标准库">8、Python 常用标准库</h3>
-<h4 id="8-1-字符串">8.1 字符串</h4>
-<p><code>re</code>：正则表达式。用来判断是否是你指定的特定字符串。<br>
-<code>StringIO</code>：提供以文件形式来读写字符串。<br>
-<code>struct</code>：以二进制字节序列来解释字符串。可以通过格式化参数，指定类型、长度、字节序（大小端）、内存对齐等。</p>
+
+<h3 id="8、Python-常用标准库"><a href="#8、Python-常用标准库" class="headerlink" title="8、Python 常用标准库"></a>8、Python 常用标准库</h3><h4 id="8-1-字符串"><a href="#8-1-字符串" class="headerlink" title="8.1 字符串"></a>8.1 字符串</h4><p><code>re</code>：正则表达式。用来判断是否是你指定的特定字符串。<br><code>StringIO</code>：提供以文件形式来读写字符串。<br><code>struct</code>：以二进制字节序列来解释字符串。可以通过格式化参数，指定类型、长度、字节序（大小端）、内存对齐等。</p>
 <pre><code class="highlight plaintext">import re 
 print(re.findall(r'f[a-z]*',  'which foot or hand fell fastest'))</code></pre>
-<p><strong>结果：</strong><br>
-[‘foot’, ‘fell’, ‘fastest’]</p>
+<p><strong>结果：</strong><br>[‘foot’, ‘fell’, ‘fastest’]</p>
 <p>如果只需要简单的功能，应该首先考虑字符串，因为简单，易于阅读和调试，如：</p>
 <pre><code class="highlight plaintext">print('tea for too'.replace(''too,''two'))</code></pre>
-<p>结果：<br>
-‘tea for two’</p>
-<h4 id="8-2-数据类型">8.2  数据类型</h4>
-<p><code>datetime</code>：提供操作日期和时间的类。<br>
-<code>collections</code>：高性能容器数据类型。实现了Python的通用内置容器、字典、列表、集合，和元组专门的数据类型。<br>
-<code>pprint</code>：提供“整洁打印”功能，具有打印任意Python数据结构的能力。</p>
-<h4 id="8-3-数学运算">8.3 数学运算</h4>
-<p><code>random</code>：各种分布的伪随机数的生成器。<br>
-<code>math</code>：数学函数。提供了由C标准的数学函数访问。该库函数不适用于复数。<br>
-<code>cmath</code>：为复数提供的数学函数。<br>
-<code>operator</code>： 重载运算符。</p>
+<p>结果：<br>‘tea for two’</p>
+<h4 id="8-2-数据类型"><a href="#8-2-数据类型" class="headerlink" title="8.2  数据类型"></a>8.2  数据类型</h4><p><code>datetime</code>：提供操作日期和时间的类。<br><code>collections</code>：高性能容器数据类型。实现了Python的通用内置容器、字典、列表、集合，和元组专门的数据类型。<br><code>pprint</code>：提供“整洁打印”功能，具有打印任意Python数据结构的能力。</p>
+<h4 id="8-3-数学运算"><a href="#8-3-数学运算" class="headerlink" title="8.3 数学运算"></a>8.3 数学运算</h4><p><code>random</code>：各种分布的伪随机数的生成器。<br><code>math</code>：数学函数。提供了由C标准的数学函数访问。该库函数不适用于复数。<br><code>cmath</code>：为复数提供的数学函数。<br><code>operator</code>： 重载运算符。</p>
 <p><strong>math 模块为浮点运算提供了对底层C函数库的访问</strong></p>
 <pre><code class="highlight plaintext">import math 
 print(math.cos(math.pi/4))
 print(math.log(1024, 2))</code></pre>
-<p><strong>结果：</strong><br>
-0.7071067811865476<br>
-10.0</p>
+<p><strong>结果：</strong><br>0.7071067811865476<br>10.0</p>
 <p><strong>random 提供了生成随机数的工具</strong></p>
 <pre><code class="highlight plaintext">import random
 fruits = random.choice(['apple', 'pear', 'banana'])
@@ -580,29 +532,16 @@ print(fruits)
 print(x)
 print(y)
 print(z)</code></pre>
-<p><strong>结果：</strong><br>
-apple<br>
-[64, 97, 91, 21, 40, 55, 63, 79, 77, 1]<br>
-0.8885638928051524<br>
-0</p>
-<h4 id="8-4-文件和目录">8.4 文件和目录</h4>
-<p><code>os.path</code>：常用路径名操作。<br>
-<code>filecmp</code>：文件和目录的比较。<br>
-<code>shutil</code>：高级的文件操作：支持文件复制和删除。</p>
-<h4 id="8-5-操作系统">8.5 操作系统</h4>
-<p><code>time</code>：时间获取和转换，各种与时间相关的函数。<br>
-<code>argparse</code>：命令行选项、参数和子命令的解析器。<br>
-<code>io</code>：提供接口处理的IO流。<br>
-<code>logging</code>： Python的日志工具，提供日志记录的API。<br>
-<code>logging.config</code>：Python日志配置，用于配置日志模块的API。<br>
-<code>os</code>：提供丰富的与MAC，NT，Posix等操作系统进行交互的能力。<br>
-<code>sys</code>：提供访问和维护python解释器的能力。这包括了提示信息，版本，整数的最大值，可用模块，路径钩子，标准错误，标准输入输出的定位和解释器调用的命令参数。</p>
+<p><strong>结果：</strong><br>apple<br>[64, 97, 91, 21, 40, 55, 63, 79, 77, 1]<br>0.8885638928051524<br>0</p>
+<h4 id="8-4-文件和目录"><a href="#8-4-文件和目录" class="headerlink" title="8.4 文件和目录"></a>8.4 文件和目录</h4><p><code>os.path</code>：常用路径名操作。<br><code>filecmp</code>：文件和目录的比较。<br><code>shutil</code>：高级的文件操作：支持文件复制和删除。</p>
+<h4 id="8-5-操作系统"><a href="#8-5-操作系统" class="headerlink" title="8.5 操作系统"></a>8.5 操作系统</h4><p><code>time</code>：时间获取和转换，各种与时间相关的函数。<br><code>argparse</code>：命令行选项、参数和子命令的解析器。<br><code>io</code>：提供接口处理的IO流。<br><code>logging</code>： Python的日志工具，提供日志记录的API。<br><code>logging.config</code>：Python日志配置，用于配置日志模块的API。<br><code>os</code>：提供丰富的与MAC，NT，Posix等操作系统进行交互的能力。<br><code>sys</code>：提供访问和维护python解释器的能力。这包括了提示信息，版本，整数的最大值，可用模块，路径钩子，标准错误，标准输入输出的定位和解释器调用的命令参数。</p>
 <p><strong>os 模块提供了不少与操作系统相关联的函数</strong></p>
 <pre><code class="highlight plaintext">import os 
 print(os.getcwd())			# 返回当前的工作目录
 os.chdir(r'C:Users\winner\Python3Learn\Lesson1Code') # 修改当前的工作目录
 os.system('mkdir today') 	# 执行系统命令 mkdir
 print(os.getcwd())			# 返回当前的工作目录</code></pre>
+
 <p>建议使用 <code>import os</code> 风格而非<code>from os import *</code>，这样可以保证随操作系统不同而有所变化的 os.open() 不会覆盖内置函数 open()。</p>
 <p>在使用 os 这样的大型模块时，内置的 dir() 和 help() 函数非常有用。</p>
 
@@ -851,11 +790,9 @@ print(os.getcwd())			# 返回当前的工作目录</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第二章 Python 基础语法
-1、Python 常用数据类型
-
+                            第二章 Python 基础语法1、Python 常用数据类型
 在 Python 中变量不直接存储值，而是存储值的内存地址或者引用。
-在 Python 中，不需要事先声明变量名及其类型，使用赋值语句可以直接创建任意类型的变量，变量的类型取
+在 Python 中，不需要事先声明变量名及其类型，使用赋值语句可以直接创建任意类型的变量，变量的类型取决于
                         
                     </div>
                     <div class="publish-info">
@@ -904,12 +841,7 @@ print(os.getcwd())			# 返回当前的工作目录</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            网站在哀悼节日时使整个页面灰色的代码
-html {
--webkit-filter: grayscale(100%);
--moz-filter: grayscale(100%);
--ms-filter: grayscale(100%);
--o
+                            网站在哀悼节日时使整个页面灰色的代码html {    -webkit-filter: grayscale(100%);    -moz-filter: grayscale(100%);    -ms-filter: grayscale(1
                         
                     </div>
                     <div class="publish-info">
@@ -1119,7 +1051,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

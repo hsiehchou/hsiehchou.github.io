@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -403,40 +403,13 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、Java-API概述">1、Java API概述</h4>
-<p>Java写好的包 类 方法的使用—API<br>
-Application Programing Interface：应用程序编程接口。Java提供的一些预定义的函数目的：基于API实现程序的快速编写。只需了解实现的作用，无需关注源代码</p>
-<p>针对一个API首先看 概述了解 类的作用，然后看 构造函数了解如何创建类之后看方法，了解如何调用<br>
-Java lang–核心包 提供对Java编程语言设计至关重要的类，可以直接使用，不用import</p>
-<h4 id="2、数值运算-Math类">2、数值运算 Math类</h4>
-<p>Math类为Java提供的支持数值运算的类<br>
-Math类包含执行基本数字运算的方法，如基本指数，对数，平方根和三角函数</p>
-<p>public final class Math—-完美类<br>
-（1）Math类提供的基本方法：<br>
-static double abs(double a) 返回值为 double绝对值<br>
-static double acos(double a) 返回值的反余弦值; 返回的角度在0.0到pi的范围内<br>
-static double atan(double a)<br>
-向上取整：<br>
-static double ceil(double a) 返回大于或等于参数的最小（最接近负无穷大） double值，等于一个数学整数<br>
-向下取整：<br>
-static double floor(double a) 返回小于或等于参数的最大（最接近正无穷大） double值，等于一个数学整数<br>
-四舍五入：<br>
-static long round(double a) 返回参数中最接近的 long ，其中 long四舍五入为</p>
-<p>static double log(double a) 返回的自然对数（以 e为底） double值<br>
-static double log10(double a) 返回一个 double的基数10对数值<br>
-static int max(int a, int b) 返回两个 int值中的较大值<br>
-static double random() 返回值为 double值为正号，大于等于 0.0 ，小于 1.0<br>
-public static double sqrt(double a)</p>
-<h4 id="3、字符串运算-String类">3、字符串运算 String类</h4>
-<p>特殊的引用数据类型<br>
-public final class String—完美类<br>
-String a;<br>
-int a;</p>
-<p>类名 对象名=new 类名();<br>
-String str = “abc”;<br>
-相当于：<br>
-char data[] = {‘a’, ‘b’, ‘c’};<br>
-String str = new String(data);—-不常见</p>
+                <h4 id="1、Java-API概述"><a href="#1、Java-API概述" class="headerlink" title="1、Java API概述"></a>1、Java API概述</h4><p>Java写好的包 类 方法的使用—API<br>Application Programing Interface：应用程序编程接口。Java提供的一些预定义的函数目的：基于API实现程序的快速编写。只需了解实现的作用，无需关注源代码</p>
+<p>针对一个API首先看 概述了解 类的作用，然后看 构造函数了解如何创建类之后看方法，了解如何调用<br>Java lang–核心包 提供对Java编程语言设计至关重要的类，可以直接使用，不用import</p>
+<h4 id="2、数值运算-Math类"><a href="#2、数值运算-Math类" class="headerlink" title="2、数值运算 Math类"></a>2、数值运算 Math类</h4><p>Math类为Java提供的支持数值运算的类<br>Math类包含执行基本数字运算的方法，如基本指数，对数，平方根和三角函数</p>
+<p>public final class Math—-完美类<br>（1）Math类提供的基本方法：<br>static double abs(double a) 返回值为 double绝对值<br>static double acos(double a) 返回值的反余弦值; 返回的角度在0.0到pi的范围内<br>static double atan(double a)<br>向上取整：<br>static double ceil(double a) 返回大于或等于参数的最小（最接近负无穷大） double值，等于一个数学整数<br>向下取整：<br>static double floor(double a) 返回小于或等于参数的最大（最接近正无穷大） double值，等于一个数学整数<br>四舍五入：<br>static long round(double a) 返回参数中最接近的 long ，其中 long四舍五入为</p>
+<p>static double log(double a) 返回的自然对数（以 e为底） double值<br>static double log10(double a) 返回一个 double的基数10对数值<br>static int max(int a, int b) 返回两个 int值中的较大值<br>static double random() 返回值为 double值为正号，大于等于 0.0 ，小于 1.0<br>public static double sqrt(double a)</p>
+<h4 id="3、字符串运算-String类"><a href="#3、字符串运算-String类" class="headerlink" title="3、字符串运算 String类"></a>3、字符串运算 String类</h4><p>特殊的引用数据类型<br>public final class String—完美类<br>String a;<br>int a;</p>
+<p>类名 对象名=new 类名();<br>String str = “abc”;<br>相当于：<br>char data[] = {‘a’, ‘b’, ‘c’};<br>String str = new String(data);—-不常见</p>
 <p>char charAt(int index) 返回 char指定索引处的值</p>
 <p>boolean contains(CharSequence s) 当且仅当此字符串包含指定的char值序列时才返回true</p>
 <p>boolean equals(Object anObject) 将此字符串与指定对象进行比较</p>
@@ -449,226 +422,111 @@ String str = new String(data);—-不常见</p>
 <p>String toLowerCase() 将所有在此字符 String使用默认语言环境的规则，以小写</p>
 <p>String toUpperCase() 将所有在此字符 String使用默认语言环境的规则大写</p>
 <p>String trim() 返回一个字符串，其值为此字符串，并删除任何前导和尾随空格</p>
-<p>/类型转换 将基本数据类型转换为 字符串/<br>
-static String valueOf(boolean b)<br>
-返回 boolean参数的字符串 boolean形式</p>
-<p>static String valueOf(char c)<br>
-返回 char参数的字符串 char形式</p>
-<p>static String valueOf(char[] data)<br>
-返回 char数组参数的字符串 char形式</p>
-<p>static String valueOf(char[] data, int offset, int count)<br>
-返回 char数组参数的特定子阵列的字符串 char形式</p>
-<p>static String valueOf(double d)<br>
-返回 double参数的字符串 double形式</p>
-<p>static String valueOf(float f)<br>
-返回 float参数的字符串 float形式</p>
-<p>static String valueOf(int i)<br>
-返回 int参数的字符串 int形式</p>
-<p>static String valueOf(long l)<br>
-返回 long参数的字符串 long形式</p>
-<p>static String valueOf(Object obj)<br>
-返回 Object参数的字符串 Object形式</p>
+<p>/类型转换 将基本数据类型转换为 字符串/<br>static String valueOf(boolean b)<br>返回 boolean参数的字符串 boolean形式</p>
+<p>static String valueOf(char c)<br>返回 char参数的字符串 char形式</p>
+<p>static String valueOf(char[] data)<br>返回 char数组参数的字符串 char形式</p>
+<p>static String valueOf(char[] data, int offset, int count)<br>返回 char数组参数的特定子阵列的字符串 char形式</p>
+<p>static String valueOf(double d)<br>返回 double参数的字符串 double形式</p>
+<p>static String valueOf(float f)<br>返回 float参数的字符串 float形式</p>
+<p>static String valueOf(int i)<br>返回 int参数的字符串 int形式</p>
+<p>static String valueOf(long l)<br>返回 long参数的字符串 long形式</p>
+<p>static String valueOf(Object obj)<br>返回 Object参数的字符串 Object形式</p>
 <p>String == 与equals的区别</p>
-<p>如果声明String 是通过 String str=”” ，可以用 ==和equals<br>
-声明String 通过 new String(“”),不可以用 ==（调用 Object的equals方法） 只能用 equals</p>
-<h4 id="4、字符串运算-大写字母-小写字母-数字出现的次数">4、字符串运算-大写字母 小写字母 数字出现的次数</h4>
-<p>getCount(string s) AscII码对比 length 遍历</p>
-<h4 id="5、字符串运算-查找父字符串中某一个子字符串出现的次数">5、字符串运算-查找父字符串中某一个子字符串出现的次数</h4>
-<p>indexof 循环遍历子字符串出现的字数 就需要 截取 substring 把已找到的部分截取遍历后面的<br>
-边界条件</p>
-<h4 id="6、字符串运算-split方法">6、字符串运算-split方法</h4>
-<p>public String[] split(String regex)<br>
-该方法的工作原理是通过使用给定表达式和限制参数为零调用双参数split方法<br>
-因此，尾随的空字符串不会包含在结果数组中<br>
-例如：String s=“1#2#3#4#5#”<br>
-String[] res=s.split(“#”);<br>
-res=[“1”,”2”,”3”,”4”,”5”]</p>
+<p>如果声明String 是通过 String str=”” ，可以用 ==和equals<br>声明String 通过 new String(“”),不可以用 ==（调用 Object的equals方法） 只能用 equals</p>
+<h4 id="4、字符串运算-大写字母-小写字母-数字出现的次数"><a href="#4、字符串运算-大写字母-小写字母-数字出现的次数" class="headerlink" title="4、字符串运算-大写字母 小写字母 数字出现的次数"></a>4、字符串运算-大写字母 小写字母 数字出现的次数</h4><p>getCount(string s) AscII码对比 length 遍历</p>
+<h4 id="5、字符串运算-查找父字符串中某一个子字符串出现的次数"><a href="#5、字符串运算-查找父字符串中某一个子字符串出现的次数" class="headerlink" title="5、字符串运算-查找父字符串中某一个子字符串出现的次数"></a>5、字符串运算-查找父字符串中某一个子字符串出现的次数</h4><p>indexof 循环遍历子字符串出现的字数 就需要 截取 substring 把已找到的部分截取遍历后面的<br>边界条件</p>
+<h4 id="6、字符串运算-split方法"><a href="#6、字符串运算-split方法" class="headerlink" title="6、字符串运算-split方法"></a>6、字符串运算-split方法</h4><p>public String[] split(String regex)<br>该方法的工作原理是通过使用给定表达式和限制参数为零调用双参数split方法<br>因此，尾随的空字符串不会包含在结果数组中<br>例如：String s=“1#2#3#4#5#”<br>String[] res=s.split(“#”);<br>res=[“1”,”2”,”3”,”4”,”5”]</p>
 <p>返回的子串的次数 应该是 数组的长度-1</p>
 <p>前后台交互或者进行数据接口会用到</p>
-<h4 id="7、字符串运算-规则匹配">7、字符串运算-规则匹配</h4>
-<p>正则表达式 身份证号 电话号码 邮箱 QQ号等等<br>
-字符类：</p>
+<h4 id="7、字符串运算-规则匹配"><a href="#7、字符串运算-规则匹配" class="headerlink" title="7、字符串运算-规则匹配"></a>7、字符串运算-规则匹配</h4><p>正则表达式 身份证号 电话号码 邮箱 QQ号等等<br>字符类：</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">表示</th>
-<th style="text-align:center">规则解释</th>
+<th align="center">表示</th>
+<th align="center">规则解释</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">[abc]</td>
-<td style="text-align:center">a或b或c 都可以</td>
+<tbody><tr>
+<td align="center">[abc]</td>
+<td align="center">a或b或c 都可以</td>
 </tr>
 <tr>
-<td style="text-align:center">[a-zA-Z]</td>
-<td style="text-align:center">a-z或者A到Z 两头的字母包含在内，所有字母都可以</td>
+<td align="center">[a-zA-Z]</td>
+<td align="center">a-z或者A到Z 两头的字母包含在内，所有字母都可以</td>
 </tr>
 <tr>
-<td style="text-align:center">[0-9]</td>
-<td style="text-align:center">0-9的数字都可以</td>
+<td align="center">[0-9]</td>
+<td align="center">0-9的数字都可以</td>
 </tr>
 <tr>
-<td style="text-align:center">\d</td>
-<td style="text-align:center">0-9的数字都可以</td>
+<td align="center">\d</td>
+<td align="center">0-9的数字都可以</td>
 </tr>
 <tr>
-<td style="text-align:center">\D</td>
-<td style="text-align:center">[^0-9] 不是数字</td>
+<td align="center">\D</td>
+<td align="center">[^0-9] 不是数字</td>
 </tr>
 <tr>
-<td style="text-align:center">\w</td>
-<td style="text-align:center">表示字母数字 下划线在内的任何字符 [a-zA-Z0-9_]</td>
+<td align="center">\w</td>
+<td align="center">表示字母数字 下划线在内的任何字符 [a-zA-Z0-9_]</td>
 </tr>
 <tr>
-<td style="text-align:center">X?</td>
-<td style="text-align:center">X出现一次或一次也没有</td>
+<td align="center">X?</td>
+<td align="center">X出现一次或一次也没有</td>
 </tr>
 <tr>
-<td style="text-align:center">X*</td>
-<td style="text-align:center">X零次或多次</td>
+<td align="center">X*</td>
+<td align="center">X零次或多次</td>
 </tr>
 <tr>
-<td style="text-align:center">X+</td>
-<td style="text-align:center">X至少出现一次</td>
+<td align="center">X+</td>
+<td align="center">X至少出现一次</td>
 </tr>
 <tr>
-<td style="text-align:center">X{n}</td>
-<td style="text-align:center">恰好只有n次</td>
+<td align="center">X{n}</td>
+<td align="center">恰好只有n次</td>
 </tr>
 <tr>
-<td style="text-align:center">X{n,m}</td>
-<td style="text-align:center">n=</td>
+<td align="center">X{n,m}</td>
+<td align="center">n=</td>
 </tr>
-</tbody>
-</table>
-<p>规则表达式：<br>
-^: 表示正则表达式的开头<br>
-$ : 表示正则表达式的结尾</p>
-<p>例如：验证一个QQ号码<br>
-要求：<br>
-（1）QQ号码 5-15位<br>
-（2）0不能开头<br>
-规则表达式(字符串)：<br>
-regex=”[1-9]\d{4,14}”</p>
-<p>public boolean matches(String regex)<br>
-告诉这个字符串是否匹配给定的regular expression<br>
-这种形式为str .matches( regex )方法的)产生与表达式完全相同的结果</p>
-<p>Pattern. matches(regex, str)<br>
-参数<br>
-regex - 要匹配此字符串的正则表达式<br>
-结果<br>
-true如果，并且只有这个字符串与给定的正则表达式匹配<br>
-异常<br>
-PatternSyntaxException - 如果正则表达式的语法无效<br>
-//两个反斜杠 是转义的意思 (.\w{2,3})+ 表示 点出现一次或多次<br>
-// +号所跟的内容 如果在括号里面 表示 \w{2,3} 可以出现 多次</p>
-<h4 id="8、Date">8、Date</h4>
-<p>（1）概述<br>
-包含集合框架，旧集合类，事件模型，日期和时间设施<br>
-国际化和其他实用程序类（字符串tokenizer，随机数生成器和位数组）<br>
-Java.util.* 工具包<br>
-在JDK 1.1之前， Date有两个附加功能，它允许将日期解释为年，月，日，小时，分钟和第二个值。 它还允许格式化和解析日期字符串。 不幸的是，这些功能的API不适合国际化。 从JDK 1.1开始， Calendar类应该用于在日期和时间字段之间进行转换，<br>
-并且DateFormat类应用于格式化和解析日期字符串。 在相应的方法Date被弃用<br>
-允许JDBC将其标识为 SQlDate值<br>
-格林尼治标准时间（GMT）定义的，相当于世界时间（UT）<br>
-（2）构造方法<br>
-Date()<br>
-分配一个 Date对象，并初始化它，以便它代表它被分配的时间，测量到最近的毫秒</p>
-<p>Date(long date)<br>
-分配一个 Date对象，并将其初始化为表示自称为“时代”的标准基准时间以后的指定毫秒数，即1970年1月1日00:00:00 GMT</p>
-<p>（3）常用方法<br>
-boolean after(Date when)<br>
-测试此日期是否在指定日期之后</p>
-<p>boolean before(Date when)<br>
-测试此日期是否在指定日期之前</p>
-<p>Object clone()<br>
-返回此对象的副本</p>
-<p>int compareTo(Date anotherDate)<br>
-比较两个日期进行订购</p>
-<p>boolean equals(Object obj)<br>
-比较两个日期来平等</p>
-<p>static Date from(Instant instant)<br>
-从 Instant对象获取一个 Date的实例</p>
-<p>getTime()<br>
-返回自1970年1月1日以来，由此 Date对象表示的00:00:00 GMT的毫秒数</p>
-<h4 id="9、Calendar">9、Calendar</h4>
-<p>（1）简介<br>
-相对比较新的日期类，抽象类</p>
-<p>public abstract class Calendar extends Object<br>
-implements Serializable, Cloneable, Comparable<calendar><br>
-所述Calendar类是一个抽象类<br>
-可以为在某一特定时刻和一组之间的转换的方法calendar fields如<br>
-YEAR ， MONTH ， DAY_OF_MONTH ， HOUR 等等，以及用于操纵该日历字段</calendar></p>
-<p>（2）初始化<br>
-Calendar提供了一种类方法getInstance 用于获取此类型的一般有用的对象<br>
-Calendar的getInstance方法返回一个Calendar对象，其日历字段已使用当前日期和时间进行初始化<br>
-Date date=new Date(); —- 对象的初始化<br>
-Calendar rightNow = Calendar.getInstance(); —抽象类自带方法 获得对象</p>
-<p>（3）常用的方法<br>
-boolean after(Object when)<br>
-返回 Calendar是否 Calendar指定时间之后的时间 Object</p>
-<p>boolean before(Object when)<br>
-返回此 Calendar是否 Calendar指定的时间之前指定的时间 Object</p>
-<p>int getWeekYear()<br>
-返回这个 Calendar</p>
-<p>set(int year, int month, int date)<br>
-—Date的时候 需要计算一下 距离 1970 ms数</p>
-<p>public abstract void add(int field,int amount)<br>
-根据日历的规则，将指定的时间量添加或减去给定的日历字段</p>
-<p>例如，要从当前日历的时间减去5天，可以通过调用以下方法来实现<br>
-add(Calendar.DAY_OF_MONTH, -5)<br>
-public abstract void roll(int field,boolean up)<br>
-在给定时间字段上添加或减少单个时间单位，而不改变较大的字段</p>
+</tbody></table>
+<p>规则表达式：<br>^: 表示正则表达式的开头<br>$ : 表示正则表达式的结尾</p>
+<p>例如：验证一个QQ号码<br>要求：<br>（1）QQ号码 5-15位<br>（2）0不能开头<br>规则表达式(字符串)：<br>regex=”[1-9]\d{4,14}”</p>
+<p>public boolean matches(String regex)<br>告诉这个字符串是否匹配给定的regular expression<br>这种形式为str .matches( regex )方法的)产生与表达式完全相同的结果</p>
+<p>Pattern. matches(regex, str)<br>参数<br>regex - 要匹配此字符串的正则表达式<br>结果<br>true如果，并且只有这个字符串与给定的正则表达式匹配<br>异常<br>PatternSyntaxException - 如果正则表达式的语法无效<br>//两个反斜杠 是转义的意思 (.\w{2,3})+ 表示 点出现一次或多次<br>// +号所跟的内容 如果在括号里面 表示 \w{2,3} 可以出现 多次</p>
+<h4 id="8、Date"><a href="#8、Date" class="headerlink" title="8、Date"></a>8、Date</h4><p>（1）概述<br>包含集合框架，旧集合类，事件模型，日期和时间设施<br>国际化和其他实用程序类（字符串tokenizer，随机数生成器和位数组）<br>Java.util.* 工具包<br>在JDK 1.1之前， Date有两个附加功能，它允许将日期解释为年，月，日，小时，分钟和第二个值。 它还允许格式化和解析日期字符串。 不幸的是，这些功能的API不适合国际化。 从JDK 1.1开始， Calendar类应该用于在日期和时间字段之间进行转换，<br>并且DateFormat类应用于格式化和解析日期字符串。 在相应的方法Date被弃用<br>允许JDBC将其标识为 SQlDate值<br>格林尼治标准时间（GMT）定义的，相当于世界时间（UT）<br>（2）构造方法<br>Date()<br>分配一个 Date对象，并初始化它，以便它代表它被分配的时间，测量到最近的毫秒</p>
+<p>Date(long date)<br>分配一个 Date对象，并将其初始化为表示自称为“时代”的标准基准时间以后的指定毫秒数，即1970年1月1日00:00:00 GMT</p>
+<p>（3）常用方法<br>boolean after(Date when)<br>测试此日期是否在指定日期之后</p>
+<p>boolean before(Date when)<br>测试此日期是否在指定日期之前</p>
+<p>Object clone()<br>返回此对象的副本</p>
+<p>int compareTo(Date anotherDate)<br>比较两个日期进行订购</p>
+<p>boolean equals(Object obj)<br>比较两个日期来平等</p>
+<p>static Date from(Instant instant)<br>从 Instant对象获取一个 Date的实例</p>
+<p>getTime()<br>返回自1970年1月1日以来，由此 Date对象表示的00:00:00 GMT的毫秒数</p>
+<h4 id="9、Calendar"><a href="#9、Calendar" class="headerlink" title="9、Calendar"></a>9、Calendar</h4><p>（1）简介<br>相对比较新的日期类，抽象类</p>
+<p>  public abstract class Calendar extends Object<br>    implements Serializable, Cloneable, Comparable<calendar><br>所述Calendar类是一个抽象类<br>可以为在某一特定时刻和一组之间的转换的方法calendar fields如<br>YEAR ， MONTH ， DAY_OF_MONTH ， HOUR 等等，以及用于操纵该日历字段</calendar></p>
+<p>（2）初始化<br>Calendar提供了一种类方法getInstance 用于获取此类型的一般有用的对象<br>Calendar的getInstance方法返回一个Calendar对象，其日历字段已使用当前日期和时间进行初始化<br>Date date=new Date(); —- 对象的初始化<br>Calendar rightNow = Calendar.getInstance(); —抽象类自带方法 获得对象</p>
+<p>（3）常用的方法<br>boolean after(Object when)<br>返回 Calendar是否 Calendar指定时间之后的时间 Object</p>
+<p>boolean before(Object when)<br>返回此 Calendar是否 Calendar指定的时间之前指定的时间 Object</p>
+<p>int getWeekYear()<br>返回这个 Calendar</p>
+<p>set(int year, int month, int date)<br>—Date的时候 需要计算一下 距离 1970 ms数</p>
+<p>public abstract void add(int field,int amount)<br>根据日历的规则，将指定的时间量添加或减去给定的日历字段</p>
+<p>例如，要从当前日历的时间减去5天，可以通过调用以下方法来实现<br>add(Calendar.DAY_OF_MONTH, -5)<br>public abstract void roll(int field,boolean up)<br>在给定时间字段上添加或减少单个时间单位，而不改变较大的字段</p>
 <p>字段可以直接访问 static final ，使用 get set 方法 获得或设置字段值</p>
-<p>public static final int YEAR—直接通过类名可以访问到年<br>
-public static final int MONTH<br>
-public static final int WEEK_OF_YEAR<br>
-public static final int WEEK_OF_MONTH<br>
-public static final int DAY_OF_YEAR</p>
-<h4 id="10、DateFormat–xxxx年xx月xx日">10、DateFormat–xxxx年xx月xx日</h4>
-<p>格式化日期<br>
-（1）简介<br>
-public abstract class DateFormat extends Format<br>
-DateFormat可帮助格式化和解析任何区域设置的日期</p>
-<p>（2）初始化<br>
-public static final DateFormat getDateInstance()<br>
-// 抽象类<br>
-DateFormat df=DateFormat.getDateInstance;</p>
-<p>（3）主要方法<br>
-String format(Date date) 将日期格式化成日期/时间字符串<br>
-Date parse(String source) 从给定字符串的开始解析文本以生成日期</p>
-<h4 id="11、simpleDateFormat–DateFormat子类">11、simpleDateFormat–DateFormat子类</h4>
-<p>（1）实现了 DateFormat 不是抽象类–优秀的实现类<br>
-public class SimpleDateFormat extends DateFormat</p>
-<p>例如：转换成 2018/12/5 2018年12月5日<br>
-SimpleDateFormat允许从选择日期时间格式化的任何用户定义的模式开始。<br>
-yyyy年MM月dd日</p>
-<p>（2）构造方法<br>
-SimpleDateFormat() 构造一个 SimpleDateFormat使用默认模式和日期格式符号为默认的 FORMAT区域设置<br>
-SimpleDateFormat(String pattern) 使用给定模式 SimpleDateFormat并使用默认的 FORMAT语言环境的默认日期格式符号<br>
-（不需要再使用后面的 applyPattern方法 可以直接赋值）</p>
-<p>（3）主要方法<br>
-applyPattern(String pattern) 给定的模式字符串应用于此日期格式<br>
-String format(Date date) 将日期格式化成日期/时间字符串。—进行了重写<br>
-Date parse(String source) 从给定字符串的开始解析文本以生成日期。–进行了重写</p>
+<p>public static final int YEAR—直接通过类名可以访问到年<br>public static final int MONTH<br>public static final int WEEK_OF_YEAR<br>public static final int WEEK_OF_MONTH<br>public static final int DAY_OF_YEAR</p>
+<h4 id="10、DateFormat–xxxx年xx月xx日"><a href="#10、DateFormat–xxxx年xx月xx日" class="headerlink" title="10、DateFormat–xxxx年xx月xx日"></a>10、DateFormat–xxxx年xx月xx日</h4><p>格式化日期<br>（1）简介<br>public abstract class DateFormat extends Format<br>DateFormat可帮助格式化和解析任何区域设置的日期</p>
+<p>（2）初始化<br>public static final DateFormat getDateInstance()<br>// 抽象类<br>DateFormat df=DateFormat.getDateInstance;</p>
+<p>（3）主要方法<br>String format(Date date) 将日期格式化成日期/时间字符串<br>Date parse(String source) 从给定字符串的开始解析文本以生成日期</p>
+<h4 id="11、simpleDateFormat–DateFormat子类"><a href="#11、simpleDateFormat–DateFormat子类" class="headerlink" title="11、simpleDateFormat–DateFormat子类"></a>11、simpleDateFormat–DateFormat子类</h4><p>（1）实现了 DateFormat 不是抽象类–优秀的实现类<br>public class SimpleDateFormat extends DateFormat</p>
+<p>例如：转换成 2018/12/5 2018年12月5日<br>SimpleDateFormat允许从选择日期时间格式化的任何用户定义的模式开始。<br>yyyy年MM月dd日</p>
+<p>（2）构造方法<br>SimpleDateFormat() 构造一个 SimpleDateFormat使用默认模式和日期格式符号为默认的 FORMAT区域设置<br>SimpleDateFormat(String pattern) 使用给定模式 SimpleDateFormat并使用默认的 FORMAT语言环境的默认日期格式符号<br>（不需要再使用后面的 applyPattern方法 可以直接赋值）</p>
+<p>（3）主要方法<br>applyPattern(String pattern) 给定的模式字符串应用于此日期格式<br>String format(Date date) 将日期格式化成日期/时间字符串。—进行了重写<br>Date parse(String source) 从给定字符串的开始解析文本以生成日期。–进行了重写</p>
 <p>小案例：我活了多久</p>
-<h4 id="12、StringBuffer">12、StringBuffer</h4>
-<p>（1）简介<br>
-和String一样 final –完美类 可以任意调节数据字符串的长度和内容<br>
-public final class StringBuffer<br>
-extends Object<br>
-implements Serializable, CharSequence</p>
-<p>字符串缓冲区就像一个String ，但可以修改。 在任何时间点，它包含一些特定的字符序列。但可以通过某些方法调用来更改序列的长度和内容。 —-可以变化<br>
-例如： string s =”abc“;<br>
-s+=”1”;–abc1<br>
-Stringbuffer sbuffer =new StringBuffer();</p>
-<p>（2）构造函数<br>
-StringBuffer() 构造一个没有字符的字符串缓冲区，初始容量为16个字符</p>
-<p>（3）主要方法<br>
-append(String str) 将指定的字符串附加到此字符序列<br>
-—相当于 String+insert(int offset, String str) 将字符串插入到此字符序列中<br>
-toString() 将字符串转为string型</p>
+<h4 id="12、StringBuffer"><a href="#12、StringBuffer" class="headerlink" title="12、StringBuffer"></a>12、StringBuffer</h4><p>（1）简介<br>和String一样 final –完美类 可以任意调节数据字符串的长度和内容<br>public final class StringBuffer<br>extends Object<br>implements Serializable, CharSequence</p>
+<p>字符串缓冲区就像一个String ，但可以修改。 在任何时间点，它包含一些特定的字符序列。但可以通过某些方法调用来更改序列的长度和内容。 —-可以变化<br>例如： string s =”abc“;<br>s+=”1”;–abc1<br>Stringbuffer sbuffer =new StringBuffer();</p>
+<p>（2）构造函数<br>StringBuffer() 构造一个没有字符的字符串缓冲区，初始容量为16个字符</p>
+<p>（3）主要方法<br>append(String str) 将指定的字符串附加到此字符序列<br>—相当于 String+insert(int offset, String str) 将字符串插入到此字符序列中<br>toString() 将字符串转为string型</p>
 
             </div>
             <hr/>
@@ -915,14 +773,9 @@ toString() 将字符串转为string型</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、集合概念
-回忆数组–数组有固定的长度
-int[] arry=new int[10];
-针对数据长度可变的情况—》集合
-Java集合 应对动态增长数据（在编译的时候无法知道具体的数据量）
-集合类–&gt;可变容器类
-2、集合和数组的区别
-
+                            1、集合概念回忆数组–数组有固定的长度int[] arry=new int[10];
+针对数据长度可变的情况—》集合Java集合 应对动态增长数据（在编译的时候无法知道具体的数据量）集合类–&gt;可变容器类
+2、集合和数组的区别都是容器（
                         
                     </div>
                     <div class="publish-info">
@@ -971,10 +824,7 @@ Java集合 应对动态增长数据（在编译的时候无法知道具体的数
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、访问控制权限（public，private，protected，default）
-public&gt;protected&gt;default&gt;private
-Java中用来控制类及类的方法和变量访问权限
-（1）public ：公
+                            1、访问控制权限（public，private，protected，default）public&gt;protected&gt;default&gt;privateJava中用来控制类及类的方法和变量访问权限（1）public ：公共的 
                         
                     </div>
                     <div class="publish-info">
@@ -1184,7 +1034,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

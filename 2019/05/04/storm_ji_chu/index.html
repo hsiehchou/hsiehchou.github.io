@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -407,35 +407,23 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>流式计算专题</strong><br>
-批量计算、实时计算、离线计算、流式计算</p>
-<p>共同点：<br>
-数据源  --&gt;   采集数据   --&gt;   task worker --&gt;   task worker  --&gt;  sink 输出</p>
-<p><strong>批量计算和流式计算</strong><br>
-区别：<br>
-处理数据粒度不一样</p>
-<p>批量计算每次处理一定大小的数据块。流式计算，每次处理一条记录</p>
+                <p><strong>流式计算专题</strong><br>批量计算、实时计算、离线计算、流式计算</p>
+<p>共同点：<br>数据源  –&gt;   采集数据   –&gt;   task worker –&gt;   task worker  –&gt;  sink 输出</p>
+<p><strong>批量计算和流式计算</strong><br>区别：<br>处理数据粒度不一样<br>	<br>批量计算每次处理一定大小的数据块。流式计算，每次处理一条记录</p>
 <p>流式计算可以提供类似批量计算的功能，为什么我们还要批量计算系统？</p>
 <p>1、流式系统的吞吐量不如批量系统</p>
 <p>2、流式系统无法提供精准的计算</p>
 <ol>
 <li>任务类型不一样</li>
 <li>流式计算会一直运行</li>
-<li>数据源的区别<br>
-对于批量计算而言，数据是有限数据<br>
-而对于流式计算，是无限数据</li>
+<li>数据源的区别<br>对于批量计算而言，数据是有限数据<br>而对于流式计算，是无限数据</li>
 </ol>
-<h3 id="一、Storm-是最早流式计算框架">一、Storm----是最早流式计算框架</h3>
-<h4 id="1、Storm概述">1、Storm概述</h4>
-<p><strong>1）什么是Storm</strong><br>
-网址：<a target="_blank" rel="noopener" href="http://storm.apache.org/">http://storm.apache.org/</a><br>
-Apache Storm是一个<strong>免费的开源分布式实时计算系统</strong>。Storm可以<strong>轻松可靠地处理无限数据流</strong>，<strong>实现Hadoop对批处理所做的实时处理</strong>。Storm非常<strong>简单</strong>，可以<strong>与任何编程语言一起使用</strong>，并且使用起来很有趣！</p>
+<h3 id="一、Storm—-是最早流式计算框架"><a href="#一、Storm—-是最早流式计算框架" class="headerlink" title="一、Storm—-是最早流式计算框架"></a>一、Storm—-是最早流式计算框架</h3><h4 id="1、Storm概述"><a href="#1、Storm概述" class="headerlink" title="1、Storm概述"></a>1、Storm概述</h4><p><strong>1）什么是Storm</strong><br>网址：<a target="_blank" rel="noopener" href="http://storm.apache.org/">http://storm.apache.org/</a><br>Apache Storm是一个<strong>免费的开源分布式实时计算系统</strong>。Storm可以<strong>轻松可靠地处理无限数据流</strong>，<strong>实现Hadoop对批处理所做的实时处理</strong>。Storm非常<strong>简单</strong>，可以<strong>与任何编程语言一起使用</strong>，并且使用起来很有趣！</p>
 <p>Storm为<strong>分布式实时计算</strong>提供了一组通用原语，可被用于“<strong>流处理</strong>”之中，<strong>实时处理消息并更新数据库</strong>。这是管理队列及工作者集群的另一种方式。 Storm也可被用于“<strong>连续计算</strong>”（continuous computation），对数据流做连续查询，在计算时就将结果以流的形式输出给用户。它还可被用于“<strong>分布式RPC</strong>”，以并行的方式运行昂贵的运算</p>
 <p>Storm可以<strong>方便地在</strong>一个计算机<strong>集群中编写与扩展复杂</strong>的<strong>实时计算</strong>，Storm用于<strong>实时处理</strong>，就好比 Hadoop 用于批处理。Storm<strong>保证每个消息都会得到处理</strong>，而且它<strong>很快</strong>——<strong>在一个小集群中</strong>，<strong>每秒</strong>可以<strong>处理数以百万计的消息</strong>。更棒的是你<strong>可以使用任意编程语言来</strong>做<strong>开发</strong></p>
 <p>Storm有许多用例：<strong>实时分析</strong>，<strong>在线机器学习</strong>，<strong>连续计算</strong>，<strong>分布式RPC</strong>，<strong>ETL</strong>等。风暴很快：一个基准测试表示每个节点<strong>每秒处理超过一百万个元组。<strong>它具有</strong>可扩展性</strong>，<strong>容错性</strong>，可<strong>确保</strong>您的<strong>数据得到处理</strong>，并且<strong>易于设置和操作</strong></p>
 <p>Storm<strong>集成</strong>了您<strong>已经使用的排队和数据库技术</strong>。<strong>Storm拓扑消耗数据流</strong>并<strong>以任意复杂的方式处理这些流</strong>，然后<strong>在计算的每个阶段之间重新划分流</strong></p>
-<h4 id="2、离线计算和流式计算">2、离线计算和流式计算</h4>
-<p>①　<strong>离线计算</strong></p>
+<h4 id="2、离线计算和流式计算"><a href="#2、离线计算和流式计算" class="headerlink" title="2、离线计算和流式计算"></a>2、离线计算和流式计算</h4><p>①　<strong>离线计算</strong></p>
 <ul>
 <li>离线计算：批量获取数据、批量传输数据、周期性批量计算数据、数据展示</li>
 <li>代表技术：Sqoop批量导入数据、HDFS批量存储数据、MapReduce批量计算、Hive、Flume批量获取数据、Sqoop批量传输、HDFS/Hive/HBase批量存储、MR/Hive计算数据、BI</li>
@@ -450,155 +438,127 @@ Apache Storm是一个<strong>免费的开源分布式实时计算系统</strong>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">Storm用于实时计算</th>
-<th style="text-align:center">Hadoop用于离线计算</th>
+<th align="center">Storm用于实时计算</th>
+<th align="center">Hadoop用于离线计算</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">Storm处理的数据保存在内存中，源源不断中，一批一批</td>
-<td style="text-align:center">Hadoop处理的数据保存在文件系统</td>
+<tbody><tr>
+<td align="center">Storm处理的数据保存在内存中，源源不断中，一批一批</td>
+<td align="center">Hadoop处理的数据保存在文件系统</td>
 </tr>
 <tr>
-<td style="text-align:center">Storm的数据通过网络传输进来</td>
-<td style="text-align:center">Hadoop的数据保存在磁盘中</td>
+<td align="center">Storm的数据通过网络传输进来</td>
+<td align="center">Hadoop的数据保存在磁盘中</td>
 </tr>
 <tr>
-<td style="text-align:center">Storm与Hadoop的编程模型相似</td>
-<td style="text-align:center"></td>
+<td align="center">Storm与Hadoop的编程模型相似</td>
+<td align="center"></td>
 </tr>
-</tbody>
-</table>
-<p><strong>Storm与Hadoop</strong><br>
-<strong>角色</strong></p>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>Storm与Hadoop</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>角色</strong></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">hadoop</th>
-<th style="text-align:center">storm</th>
+<th align="center">hadoop</th>
+<th align="center">storm</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">JobTracker</td>
-<td style="text-align:center">Nimbus</td>
+<tbody><tr>
+<td align="center">JobTracker</td>
+<td align="center">Nimbus</td>
 </tr>
 <tr>
-<td style="text-align:center">TaskTracker</td>
-<td style="text-align:center">Supervisor</td>
+<td align="center">TaskTracker</td>
+<td align="center">Supervisor</td>
 </tr>
 <tr>
-<td style="text-align:center">Child</td>
-<td style="text-align:center">Worker</td>
+<td align="center">Child</td>
+<td align="center">Worker</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>应用名称</strong></p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">hadoop</th>
-<th style="text-align:center">storm</th>
+<th align="center">hadoop</th>
+<th align="center">storm</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">Job</td>
-<td style="text-align:center">Topology</td>
+<tbody><tr>
+<td align="center">Job</td>
+<td align="center">Topology</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>编程接口</strong></p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">hadoop</th>
-<th style="text-align:center">storm</th>
+<th align="center">hadoop</th>
+<th align="center">storm</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">Mapper/Reducer</td>
-<td style="text-align:center">Spout/Bolt</td>
+<tbody><tr>
+<td align="center">Mapper/Reducer</td>
+<td align="center">Spout/Bolt</td>
 </tr>
-</tbody>
-</table>
-<h4 id="3、Storm的体系结构">3、Storm的体系结构</h4>
-<p><img src="/medias/nimbus.PNG" alt="nimbus"></p>
+</tbody></table>
+<h4 id="3、Storm的体系结构"><a href="#3、Storm的体系结构" class="headerlink" title="3、Storm的体系结构"></a>3、Storm的体系结构</h4><p><img src="/medias/nimbus.PNG" alt="nimbus"></p>
 <p><img src="/medias/topology.PNG" alt="topology"></p>
 <ul>
-<li>
-<p><strong>Nimbus</strong>：负责资源分配和任务调度</p>
+<li><p><strong>Nimbus</strong>：负责资源分配和任务调度</p>
 </li>
-<li>
-<p><strong>Supervisor</strong>：负责接受Nimbus分配的任务，启动和停止属于自己管理的worker进程。通过配置文件设置当前Supervisor上启动多少个Worker</p>
+<li><p><strong>Supervisor</strong>：负责接受Nimbus分配的任务，启动和停止属于自己管理的worker进程。通过配置文件设置当前Supervisor上启动多少个Worker</p>
 </li>
-<li>
-<p><strong>Worker</strong>：运行具体处理组件逻辑的进程。Worker运行的任务类型只有两种，一种是Spout任务，一种是Bolt任务</p>
+<li><p><strong>Worker</strong>：运行具体处理组件逻辑的进程。Worker运行的任务类型只有两种，一种是Spout任务，一种是Bolt任务</p>
 </li>
-<li>
-<p><strong>Executor</strong>：Storm 0.8之后，Executor为Worker进程中的具体的物理线程，同一个Spout/Bolt的Task可能会共享一个物理线程，一个Executor中只能运行隶属于同一个Spout/Bolt的Task</p>
+<li><p><strong>Executor</strong>：Storm 0.8之后，Executor为Worker进程中的具体的物理线程，同一个Spout/Bolt的Task可能会共享一个物理线程，一个Executor中只能运行隶属于同一个Spout/Bolt的Task</p>
 </li>
-<li>
-<p><strong>Task</strong>：Worker中每一个Spout/Bolt的线程称为一个Task. 在Storm0.8之后，Task不再与物理线程对应，不同Spout/Bolt的Task可能会共享一个物理线程，该线程称为Executor</p>
+<li><p><strong>Task</strong>：Worker中每一个Spout/Bolt的线程称为一个Task. 在Storm0.8之后，Task不再与物理线程对应，不同Spout/Bolt的Task可能会共享一个物理线程，该线程称为Executor</p>
 </li>
 </ul>
 <p><img src="/medias/Worker%E8%BF%9B%E7%A8%8B.PNG" alt="Worker进程"></p>
-<h4 id="4、Storm编程模型">4、Storm编程模型</h4>
-<p><img src="/medias/Storm%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B.PNG" alt="Storm编程模型"></p>
-<p><strong>tuple</strong>：元组<br>
-是消息传输的基本单元</p>
-<p><strong>Spout</strong>：水龙头<br>
-Storm的核心抽象。拓扑的流的来源。Spout通常从外部数据源读取数据。转换为t敺内部的源数据。<br>
-主要方法：<br>
-nextTuple() -》 发出一个新的元组到拓扑<br>
-ack()<br>
-fail()</p>
-<p><strong>Bolt</strong>：转接头<br>
-Bolt是对流的处理节点。Bolt作用：过滤、业务、连接运算</p>
-<p><strong>Topology</strong>：拓扑<br>
-是一个实时的应用程序<br>
-永远运行除非被杀死<br>
-Spout到Bolt是一个连接流</p>
-<h4 id="5、Storm的运行机制">5、Storm的运行机制</h4>
-<p><img src="/medias/Nimbus-Supervisor.PNG" alt="Nimbus-Supervisor"></p>
+<h4 id="4、Storm编程模型"><a href="#4、Storm编程模型" class="headerlink" title="4、Storm编程模型"></a>4、Storm编程模型</h4><p><img src="/medias/Storm%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B.PNG" alt="Storm编程模型"></p>
+<p><strong>tuple</strong>：元组<br>是消息传输的基本单元</p>
+<p><strong>Spout</strong>：水龙头<br>Storm的核心抽象。拓扑的流的来源。Spout通常从外部数据源读取数据。转换为t敺内部的源数据。<br>主要方法：<br>nextTuple() -》 发出一个新的元组到拓扑<br>ack()<br>fail()</p>
+<p><strong>Bolt</strong>：转接头<br>Bolt是对流的处理节点。Bolt作用：过滤、业务、连接运算</p>
+<p><strong>Topology</strong>：拓扑<br>是一个实时的应用程序<br>永远运行除非被杀死<br>Spout到Bolt是一个连接流</p>
+<h4 id="5、Storm的运行机制"><a href="#5、Storm的运行机制" class="headerlink" title="5、Storm的运行机制"></a>5、Storm的运行机制</h4><p><img src="/medias/Nimbus-Supervisor.PNG" alt="Nimbus-Supervisor"></p>
 <ul>
-<li>整个处理流程的组织协调不用用户去关心，用户只需要去定义每一个步骤中的具体业务处理逻辑</li>
+<li>   整个处理流程的组织协调不用用户去关心，用户只需要去定义每一个步骤中的具体业务处理逻辑</li>
 <li>具体执行任务的角色是Worker，Worker执行任务时具体的行为则有我们定义的业务逻辑决定</li>
 </ul>
 <p><img src="/medias/Storm%E7%89%A9%E7%90%86%E9%9B%86%E7%BE%A4%E7%BB%93%E6%9E%84.PNG" alt="Storm物理集群结构"></p>
-<h4 id="6、Storm的集群安装配置">6、Storm的集群安装配置</h4>
-<p><strong>（1）Storm集群安装部署</strong><br>
-1）准备工作</p>
+<h4 id="6、Storm的集群安装配置"><a href="#6、Storm的集群安装配置" class="headerlink" title="6、Storm的集群安装配置"></a>6、Storm的集群安装配置</h4><p><strong>（1）Storm集群安装部署</strong><br>1）准备工作</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">hsiehchou121</th>
-<th style="text-align:center">hsiehchou122</th>
-<th style="text-align:center">hsiehchou123</th>
+<th align="center">hsiehchou121</th>
+<th align="center">hsiehchou122</th>
+<th align="center">hsiehchou123</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">storm01</td>
-<td style="text-align:center">storm02</td>
-<td style="text-align:center">storm03</td>
+<tbody><tr>
+<td align="center">storm01</td>
+<td align="center">storm02</td>
+<td align="center">storm03</td>
 </tr>
-</tbody>
-</table>
-<p>2）下载安装包<br>
-<a target="_blank" rel="noopener" href="http://storm.apache.org/downloads.html">http://storm.apache.org/downloads.html</a></p>
+</tbody></table>
+<p>2）下载安装包<br><a target="_blank" rel="noopener" href="http://storm.apache.org/downloads.html">http://storm.apache.org/downloads.html</a></p>
 <p>3）上传</p>
-<p>4）解压<br>
-tar -zxvf apache-storm-1.1.0.tar.gz<br>
-mv apache-storm-1.1.0 storm</p>
-<p>5）<strong>设置环境变量</strong><br>
-<strong>#STORM_HOME</strong><br>
-export STORM_HOME=/root/hd/storm<br>
-export PATH=<code>$STORM_HOME/bin:$PATH</code><br>
-source /etc/profile</p>
-<p>6）<strong>修改配置文件</strong><br>
-$ <strong>vi storm.yaml</strong></p>
+<p>4）解压<br>tar -zxvf apache-storm-1.1.0.tar.gz<br>mv apache-storm-1.1.0 storm</p>
+<p>5）<strong>设置环境变量</strong><br><strong>#STORM_HOME</strong><br>export STORM_HOME=/root/hd/storm<br>export PATH=<code>$STORM_HOME/bin:$PATH</code><br>source /etc/profile</p>
+<p>6）<strong>修改配置文件</strong><br>$ <strong>vi storm.yaml</strong></p>
 <pre><code class="highlight plaintext">#设置Zookeeper的主机名称
 storm.zookeeper.servers:
 - "hsiehchou121"
@@ -617,89 +577,40 @@ supervisor.slots.ports:
 - 6701
 - 6702
 - 6703</code></pre>
-<p>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br>
-<strong>注意</strong>：如果要搭建<strong>Storm的HA</strong>，只需要在<strong>nimbus.seeds</strong>中<strong>设置多个nimbus</strong>即可<br>
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br>
-mkdir data</p>
-<p>7）<strong>分发到其他机器</strong><br>
-[root@hsiehchou121 hd]# scp -r storm/ hsiehchou122:<code>$PWD</code><br>
-[root@hsiehchou121 hd]# scp -r storm/ hsiehchou123:<code>$PWD</code></p>
-<h4 id="7、启动和查看Storm">7、启动和查看Storm</h4>
-<p>0）<strong>启动ZooKeeper</strong><br>
-<a target="_blank" rel="noopener" href="http://zkServer.sh">zkServer.sh</a> start</p>
+
+<p>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br><strong>注意</strong>：如果要搭建<strong>Storm的HA</strong>，只需要在<strong>nimbus.seeds</strong>中<strong>设置多个nimbus</strong>即可<br>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br>mkdir data</p>
+<p>7）<strong>分发到其他机器</strong><br>[root@hsiehchou121 hd]# scp -r storm/ hsiehchou122:<code>$PWD</code><br>[root@hsiehchou121 hd]# scp -r storm/ hsiehchou123:<code>$PWD</code></p>
+<h4 id="7、启动和查看Storm"><a href="#7、启动和查看Storm" class="headerlink" title="7、启动和查看Storm"></a>7、启动和查看Storm</h4><p>0）<strong>启动ZooKeeper</strong><br>zkServer.sh start</p>
 <p>1）在nimbus.host所属的机器上启动 nimbus服务和logviewer服务</p>
-<p><strong>启动nimbus</strong></p>
-<ul>
-<li>storm nimbus &amp;</li>
-</ul>
-<p>**启动logviewer **</p>
-<ul>
-<li>storm logviewer &amp;</li>
-</ul>
-<p>2）在nimbus.host所属的机器上启动ui服务<br>
-<strong>启动ui界面</strong></p>
-<ul>
-<li>storm ui &amp;</li>
-</ul>
-<p>3）在其它个节点上启动supervisor服务和logviewer服务<br>
-<strong>启动supervisor</strong></p>
-<ul>
-<li>storm supervisor &amp;</li>
-</ul>
-<p><strong>启动logviewer</strong></p>
-<ul>
-<li>storm logviewer &amp;</li>
-</ul>
-<p>4）查看Storm集群：访问nimbus.host:/8080，即可看到storm的ui界面<br>
-<a target="_blank" rel="noopener" href="http://hsiehchou121:8080/index.html">http://hsiehchou121:8080/index.html</a></p>
-<h4 id="8、Storm的常用命令">8、Storm的常用命令</h4>
-<p>有许多简单且有用的命令可以用来管理拓扑，它们可以提交、杀死、禁用、再平衡拓扑</p>
-<p><strong>1）查看命令帮助</strong><br>
-storm help</p>
-<p><strong>2）查看版本</strong><br>
-storm version</p>
-<p><strong>3）查看当前正在运行拓扑及其状态</strong><br>
-storm list</p>
-<p><strong>4）提交任务命令格式</strong><br>
-storm jar 【jar路径】 【拓扑包名.拓扑类名】 【拓扑名称】<br>
-storm jar <code>[/路径/.jar][全类名]</code>[拓扑名称]</p>
-<p><strong>5）杀死任务命令格式</strong><br>
-storm kill 【拓扑名称】 -w 10<br>
-（执行kill命令时可以通过-w [等待秒数]指定拓扑停用以后的等待时间）<br>
-storm kill topology-name -w 10</p>
-<p><strong>6）停用任务命令格式</strong><br>
-storm deactivte  【拓扑名称】<br>
-storm deactivate topology-name</p>
-<p><strong>7）启用任务命令格式</strong><br>
-storm activate【拓扑名称】<br>
-storm activate topology-name</p>
-<p><strong>8）重新部署任务命令格式</strong><br>
-storm rebalance  【拓扑名称】<br>
-storm rebalance topology-name<br>
-再平衡使你重分配集群任务。这是个很强大的命令。比如，你向一个运行中的集群增加了节点。再平衡命令将会停用拓扑，然后在相应超时时间之后重分配工人，并重启拓扑</p>
-<h3 id="二、Storm编程案例">二、Storm编程案例</h3>
-<h4 id="1、WordCount及流程分析">1、WordCount及流程分析</h4>
-<p>通过查看Storm UI上每个组件的events链接，可以查看Storm的每个组件（spout、blot）发送的消息。但Storm的event logger的功能默认是禁用的，需要在配置文件中设置：topology.eventlogger.executors: 1，具体说明如下：</p>
-<ul>
-<li>“topology.eventlogger.executors”: 0 	默认，禁用</li>
-<li>“topology.eventlogger.executors”: 1 	一个topology分配一个Event Logger</li>
-<li>“topology.eventlogger.executors”: nil 	每个worker.分配一个Event Logger</li>
-</ul>
+<p><strong>启动nimbus</strong><br>-	storm nimbus &amp;</p>
+<p>**启动logviewer **<br>-	storm logviewer &amp;</p>
+<p>2）在nimbus.host所属的机器上启动ui服务<br><strong>启动ui界面</strong><br>-	storm ui &amp;</p>
+<p>3）在其它个节点上启动supervisor服务和logviewer服务<br><strong>启动supervisor</strong><br>-	storm supervisor &amp;</p>
+<p><strong>启动logviewer</strong><br>-	storm logviewer &amp;</p>
+<p>4）查看Storm集群：访问nimbus.host:/8080，即可看到storm的ui界面<br><a target="_blank" rel="noopener" href="http://hsiehchou121:8080/index.html">http://hsiehchou121:8080/index.html</a></p>
+<h4 id="8、Storm的常用命令"><a href="#8、Storm的常用命令" class="headerlink" title="8、Storm的常用命令"></a>8、Storm的常用命令</h4><p>有许多简单且有用的命令可以用来管理拓扑，它们可以提交、杀死、禁用、再平衡拓扑</p>
+<p><strong>1）查看命令帮助</strong><br>storm help</p>
+<p><strong>2）查看版本</strong><br>storm version</p>
+<p><strong>3）查看当前正在运行拓扑及其状态</strong><br>storm list</p>
+<p><strong>4）提交任务命令格式</strong><br>storm jar 【jar路径】 【拓扑包名.拓扑类名】 【拓扑名称】<br>storm jar <code>[/路径/.jar][全类名]</code>[拓扑名称]</p>
+<p><strong>5）杀死任务命令格式</strong><br>storm kill 【拓扑名称】 -w 10<br>（执行kill命令时可以通过-w [等待秒数]指定拓扑停用以后的等待时间）<br>storm kill topology-name -w 10</p>
+<p><strong>6）停用任务命令格式</strong><br>storm deactivte  【拓扑名称】<br>storm deactivate topology-name</p>
+<p><strong>7）启用任务命令格式</strong><br>storm activate【拓扑名称】<br>storm activate topology-name</p>
+<p><strong>8）重新部署任务命令格式</strong><br>storm rebalance  【拓扑名称】<br>storm rebalance topology-name<br>再平衡使你重分配集群任务。这是个很强大的命令。比如，你向一个运行中的集群增加了节点。再平衡命令将会停用拓扑，然后在相应超时时间之后重分配工人，并重启拓扑</p>
+<h3 id="二、Storm编程案例"><a href="#二、Storm编程案例" class="headerlink" title="二、Storm编程案例"></a>二、Storm编程案例</h3><h4 id="1、WordCount及流程分析"><a href="#1、WordCount及流程分析" class="headerlink" title="1、WordCount及流程分析"></a>1、WordCount及流程分析</h4><p>通过查看Storm UI上每个组件的events链接，可以查看Storm的每个组件（spout、blot）发送的消息。但Storm的event logger的功能默认是禁用的，需要在配置文件中设置：topology.eventlogger.executors: 1，具体说明如下：<br>-	“topology.eventlogger.executors”: 0 	默认，禁用<br>-	“topology.eventlogger.executors”: 1 	一个topology分配一个Event Logger<br>-	“topology.eventlogger.executors”: nil 	每个worker.分配一个Event Logger</p>
 <p><strong>WordCount的数据流程分析</strong></p>
 <p><img src="/medias/WordCount%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90.PNG" alt="WordCount的数据流程分析"></p>
-<h4 id="2、Storm编程案例：WordCount">2、Storm编程案例：WordCount</h4>
-<p>流式计算一般架构图：</p>
+<h4 id="2、Storm编程案例：WordCount"><a href="#2、Storm编程案例：WordCount" class="headerlink" title="2、Storm编程案例：WordCount"></a>2、Storm编程案例：WordCount</h4><p>流式计算一般架构图：</p>
 <p><img src="/medias/%E6%B5%81%E5%BC%8F%E8%AE%A1%E7%AE%97%E4%B8%80%E8%88%AC%E6%9E%B6%E6%9E%84%E5%9B%BE.PNG" alt="流式计算一般架构图"></p>
 <ul>
-<li>Flume用来获取数据</li>
-<li>Kafka用来临时保存数据</li>
-<li>Strom用来计算数据</li>
-<li>Redis是个内存数据库，用来保存数据</li>
+<li>   Flume用来获取数据</li>
+<li>   Kafka用来临时保存数据</li>
+<li>   Strom用来计算数据</li>
+<li>   Redis是个内存数据库，用来保存数据</li>
 </ul>
 <p>代码编写：</p>
 <ol>
-<li>创建Spout（WordCountSpout）组件采集数据，作为整个Topology的数据源<br>
-<strong>WordCountSpout类</strong></li>
+<li>创建Spout（WordCountSpout）组件采集数据，作为整个Topology的数据源<br><strong>WordCountSpout类</strong></li>
 </ol>
 <pre><code class="highlight plaintext">package com.hsiehchou.wc;
 
@@ -751,8 +662,7 @@ public class WordCountSpout extends BaseRichSpout {
 	}
 }</code></pre>
 <ol start="2">
-<li>创建Bolt（WordCountSplitBolt）组件进行分词操作<br>
-<strong>WordCountSplitBolt类</strong></li>
+<li>创建Bolt（WordCountSplitBolt）组件进行分词操作<br><strong>WordCountSplitBolt类</strong></li>
 </ol>
 <pre><code class="highlight plaintext">package com.hsiehchou.wc;
 
@@ -798,6 +708,7 @@ public class WordCountSplitBolt extends BaseRichBolt {
 		declare.declare(new Fields("word","sum"));
 	}
 }</code></pre>
+
 <ol start="3">
 <li>创建Bolt（WordCountBoltCount）组件进行单词计数作</li>
 </ol>
@@ -848,6 +759,7 @@ public class WordCountBoltCount extends BaseRichBolt {
 		
 	}
 }</code></pre>
+
 <ol start="4">
 <li>也可以将主程序Topology（WordCountTopology）提交到Storm集群运行</li>
 </ol>
@@ -878,8 +790,8 @@ public class WordCountTopology {
 		localCluster.submitTopology("wordcounttopology", conf, builder.createTopology());
 	}
 }</code></pre>
-<h4 id="3、集群部署">3、集群部署</h4>
-<p><strong>对WordCountDriver类进行修改，把本地模式修改为集群模式</strong></p>
+
+<h4 id="3、集群部署"><a href="#3、集群部署" class="headerlink" title="3、集群部署"></a>3、集群部署</h4><p><strong>对WordCountDriver类进行修改，把本地模式修改为集群模式</strong></p>
 <pre><code class="highlight plaintext">public class WordCountDriver {
 		//集群模式运行
 		try {
@@ -892,39 +804,25 @@ public class WordCountTopology {
 		//LocalCluster localCluster = new LocalCluster();
 		//localCluster.submitTopology("wordcounttopology", conf, builder.createTopology());
 }</code></pre>
+
 <p><strong>提交到集群</strong></p>
 <p>storm jar StormWordCount.jar com.hsiehchou.wc.WordCountDriver wordcount01</p>
-<h3 id="三、分组策略">三、分组策略</h3>
-<p>1）fields Grouping</p>
-<p><strong>按照字段分组</strong><br>
-相同字段发送到一个task中<br>
-fieldsGrouping<br>
-builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).fieldsGrouping(“WordCountSpout”, new Fields(“hsiehchou”));</p>
+<h3 id="三、分组策略"><a href="#三、分组策略" class="headerlink" title="三、分组策略"></a>三、分组策略</h3><p>1）fields Grouping</p>
+<p><strong>按照字段分组</strong><br>相同字段发送到一个task中<br>fieldsGrouping<br>builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).fieldsGrouping(“WordCountSpout”, new Fields(“hsiehchou”));</p>
 <p>builder.setBolt(“WordCountBolt”, new WordCountBolt(), 2).fieldsGrouping(“WordCountSplitBolt”, new Fields(“word”));</p>
 <p>2）shuffle Grouping</p>
-<p><strong>随机分组</strong><br>
-轮询。平均分配。随机分发tuple，保证每个bolt中的tuple数量相同<br>
-shuffleGrouping<br>
-builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).shuffleGrouping(“WordCountSpout”);</p>
+<p><strong>随机分组</strong><br>轮询。平均分配。随机分发tuple，保证每个bolt中的tuple数量相同<br>shuffleGrouping<br>builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).shuffleGrouping(“WordCountSpout”);</p>
 <p>builder.setBolt(“WordCountBolt”, new WordCountBolt(), 2).shuffleGrouping(“WordCountSplitBolt”);</p>
 <p>3）None Grouping</p>
-<p><strong>不分组</strong><br>
-采用这种策略每个bolt中接收的单词不同<br>
-noneGrouping<br>
-builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).noneGrouping(“WordCountSpout”);</p>
+<p><strong>不分组</strong><br>采用这种策略每个bolt中接收的单词不同<br>noneGrouping<br>builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).noneGrouping(“WordCountSpout”);</p>
 <p>builder.setBolt(“WordCountBolt”, new WordCountBolt(), 2).noneGrouping(“WordCountSplitBolt”);</p>
 <p>4）All Grouping</p>
-<p><strong>广播发送</strong><br>
-tuple分发给每一个bolt<br>
-allGrouping<br>
-builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).allGrouping(“WordCountSpout”);</p>
+<p><strong>广播发送</strong><br>tuple分发给每一个bolt<br>allGrouping<br>builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).allGrouping(“WordCountSpout”);</p>
 <p>builder.setBolt(“WordCountBolt”, new WordCountBolt(), 2).allGrouping(“WordCountSplitBolt”);</p>
 <p>5）Global Grouping</p>
-<p><strong>全局分组</strong><br>
-分配给task id值最小的<br>
-根据线程id判断，只分配给线程id最小的<br>
-builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).globalGrouping(“WordCountSpout”);</p>
-<p>builder.setBolt(“WordCountBolt”, new WordCountBolt(), 2).globalGrouping(“WordCountSplitBolt”);</p>
+<p><strong>全局分组</strong><br>分配给task id值最小的<br>根据线程id判断，只分配给线程id最小的<br>builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).globalGrouping(“WordCountSpout”);</p>
+<p>builder.setBolt(“WordCountBolt”, new WordCountBolt(), 2).globalGrouping(“WordCountSplitBolt”);
+		</p>
 
             </div>
             <hr/>
@@ -1175,22 +1073,14 @@ builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).globalGro
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、大数据课程概述与大数据背景知识
-（1）数据仓库与大数据
-
+                            1、大数据课程概述与大数据背景知识（1）数据仓库与大数据
 （2）PageRank
-
 （3）MR基本原理
-
 （4）HDFS原理
-
 （5）bigtable与Habase
-
-2、搭建Hadoop的环境
-（1）1.PNG
-
+2、搭建Hadoop的环境（1）1.PNG
 （2）2.PNG
-
+（3）3.PNG
 
                         
                     </div>
@@ -1245,8 +1135,7 @@ builder.setBolt(“WordCountSplitBolt”, new WordCountSplitBolt(), 4).globalGro
                     <div class="summary block-with-text">
                         
                             Hadoop的HA高可用（可行）
-一、集群的规划
-ZooKeeper集群
+一、集群的规划ZooKeeper集群
 
 
 
@@ -1256,10 +1145,9 @@ ZooKeeper集群
 
 
 
-
 hsiehchou121
 hsiehchou122
-hs
+hsie
                         
                     </div>
                     <div class="publish-info">
@@ -1473,7 +1361,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

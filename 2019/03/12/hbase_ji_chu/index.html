@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,14 +384,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
 
@@ -407,46 +407,17 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、hbase">1、hbase</h4>
-<p>google:<br>
-gfs –&gt; hdfs<br>
-mapreduce –&gt; mapreduce<br>
-bigtable –&gt; hbase</p>
+                <h4 id="1、hbase"><a href="#1、hbase" class="headerlink" title="1、hbase"></a>1、hbase</h4><p>google:<br>gfs –&gt; hdfs<br>mapreduce –&gt; mapreduce<br>bigtable –&gt; hbase</p>
 <p>Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据存储</p>
 <p>当您需要对大数据进行随机，实时读/写访问时，请使用Apache HBase™。该项目的目标是托管非常大的表 - 数十亿行X百万列 - 在商品硬件集群上。Apache HBase是一个开源的，分布式的，版本化的非关系数据库nosql，模仿Google的Bigtable： Chang等人的结构化数据分布式存储系统。正如Bigtable利用Google文件系统提供的分布式数据存储一样，Apache HBase在Hadoop和HDFS之上提供类似Bigtable的功能</p>
-<h4 id="2、hbase集群角色">2、hbase集群角色</h4>
-<p>hdfs: NameNode DataNode<br>
-yarn: ResourceManager NodeManager<br>
-zookeeper: QuorumPeerMain<br>
-hbase: HMaster RegionServer</p>
-<p><strong>主从结构</strong><br>
-<strong>HMaster</strong><br>
-1）对RegionServer监控<br>
-2）处理一些元数据的变更<br>
-3）对RegionServer进行故障转移<br>
-4）空闲时对数据进行负载均衡<br>
-5）对region进行管理<br>
-6）发布位置到客户端借助于zookeeper</p>
-<p><strong>RegionServer</strong><br>
-1）存储hbase实际的数据<br>
-2）刷新缓存数据到hdfs<br>
-3）处理Region<br>
-4）可以进行压缩<br>
-5）对Hlog进行维护<br>
-6）对region分片</p>
-<h4 id="3、hbase集群安装部署">3、hbase集群安装部署</h4>
-<p>1）需要安装好zookeeper集群</p>
-<p>2）需要安装好hadoop集群<br>
-hdfs<br>
-yarn</p>
-<p>3）解压hbase压缩包<br>
-tar -zxvf hbase-1.3.0-bin.tar.gz</p>
-<p>4）<a target="_blank" rel="noopener" href="http://xn--hbase-env-z89nz78pizxdjt5b.sh">修改配置hbase-env.sh</a><br>
-export JAVA_HOME=/root/hd/jdk1.8.0_192<br>
-export HBASE_MANAGES_ZK=false</p>
-<p>5）配置hbase-site.xml<br>
-cd /root/hd/hbase-1.3.0<br>
-vi hbase-site.xml</p>
+<h4 id="2、hbase集群角色"><a href="#2、hbase集群角色" class="headerlink" title="2、hbase集群角色"></a>2、hbase集群角色</h4><p>hdfs: NameNode DataNode<br>yarn: ResourceManager NodeManager<br>zookeeper: QuorumPeerMain<br>hbase: HMaster RegionServer</p>
+<p><strong>主从结构</strong><br><strong>HMaster</strong><br>1）对RegionServer监控<br>2）处理一些元数据的变更<br>3）对RegionServer进行故障转移<br>4）空闲时对数据进行负载均衡<br>5）对region进行管理<br>6）发布位置到客户端借助于zookeeper</p>
+<p><strong>RegionServer</strong><br>1）存储hbase实际的数据<br>2）刷新缓存数据到hdfs<br>3）处理Region<br>4）可以进行压缩<br>5）对Hlog进行维护<br>6）对region分片</p>
+<h4 id="3、hbase集群安装部署"><a href="#3、hbase集群安装部署" class="headerlink" title="3、hbase集群安装部署"></a>3、hbase集群安装部署</h4><p>1）需要安装好zookeeper集群</p>
+<p>2）需要安装好hadoop集群<br>hdfs<br>yarn</p>
+<p>3）解压hbase压缩包<br>tar -zxvf hbase-1.3.0-bin.tar.gz</p>
+<p>4）修改配置hbase-env.sh<br>export JAVA_HOME=/root/hd/jdk1.8.0_192<br>export HBASE_MANAGES_ZK=false</p>
+<p>5）配置hbase-site.xml<br>cd /root/hd/hbase-1.3.0<br>vi hbase-site.xml</p>
 <pre><code class="highlight plaintext">&lt;configuration&gt;
     &lt;!-- 设置namenode所在位置 通过rootdir设置 也就是设置hdfs中存放的路径 --&gt;
     &lt;property&gt;
@@ -478,115 +449,37 @@ vi hbase-site.xml</p>
         &lt;value&gt;/root/hd/zookeeper-3.4.10/zkData&lt;/value&gt;
     &lt;/property&gt;
 &lt;/configuration&gt;</code></pre>
+
 <p>指定从节点regionservers</p>
 <p>vi regionservers</p>
-<p>hsiehchou122<br>
-hsiehchou123<br>
-hsiehchou124</p>
-<p>6）解决依赖问题<br>
-HBase依赖于Hadoop，换成2.8.4的hadoop依赖包<br>
-hadoop-annotations-2.8.4.jar<br>
-hadoop-auth-2.8.4.jar<br>
-hadoop-common-2.8.4.jar<br>
-hadoop-hdfs-2.8.4.jar<br>
-hadoop-hdfs-client-2.8.4.jar<br>
-hadoop-mapreduce-client-app-2.8.4.jar<br>
-hadoop-mapreduce-client-common-2.8.4.jar<br>
-hadoop-mapreduce-client-core-2.8.4.jar<br>
-hadoop-mapreduce-client-hs-2.8.4.jar<br>
-hadoop-mapreduce-client-hs-plugins-2.8.4.jar<br>
-hadoop-mapreduce-client-jobclient-2.8.4.jar<br>
-hadoop-mapreduce-client-jobclient-2.8.4-tests.jar<br>
-hadoop-mapreduce-client-shuffle-2.8.4.jar<br>
-hadoop-yarn-api-2.8.4.jar<br>
-hadoop-yarn-applications-distributedshell-2.8.4.jar<br>
-hadoop-yarn-applications-unmanaged-am-launcher-2.8.4.jar<br>
-hadoop-yarn-client-2.8.4.jar<br>
-hadoop-yarn-common-2.8.4.jar<br>
-hadoop-yarn-server-applicationhistoryservice-2.8.4.jar<br>
-hadoop-yarn-server-common-2.8.4.jar<br>
-hadoop-yarn-server-nodemanager-2.8.4.jar<br>
-hadoop-yarn-server-resourcemanager-2.8.4.jar<br>
-hadoop-yarn-server-web-proxy-2.8.4.jar</p>
+<p>hsiehchou122<br>hsiehchou123<br>hsiehchou124</p>
+<p>6）解决依赖问题<br>HBase依赖于Hadoop，换成2.8.4的hadoop依赖包<br>hadoop-annotations-2.8.4.jar<br>hadoop-auth-2.8.4.jar<br>hadoop-common-2.8.4.jar<br>hadoop-hdfs-2.8.4.jar<br>hadoop-hdfs-client-2.8.4.jar<br>hadoop-mapreduce-client-app-2.8.4.jar<br>hadoop-mapreduce-client-common-2.8.4.jar<br>hadoop-mapreduce-client-core-2.8.4.jar<br>hadoop-mapreduce-client-hs-2.8.4.jar<br>hadoop-mapreduce-client-hs-plugins-2.8.4.jar<br>hadoop-mapreduce-client-jobclient-2.8.4.jar<br>hadoop-mapreduce-client-jobclient-2.8.4-tests.jar<br>hadoop-mapreduce-client-shuffle-2.8.4.jar<br>hadoop-yarn-api-2.8.4.jar<br>hadoop-yarn-applications-distributedshell-2.8.4.jar<br>hadoop-yarn-applications-unmanaged-am-launcher-2.8.4.jar<br>hadoop-yarn-client-2.8.4.jar<br>hadoop-yarn-common-2.8.4.jar<br>hadoop-yarn-server-applicationhistoryservice-2.8.4.jar<br>hadoop-yarn-server-common-2.8.4.jar<br>hadoop-yarn-server-nodemanager-2.8.4.jar<br>hadoop-yarn-server-resourcemanager-2.8.4.jar<br>hadoop-yarn-server-web-proxy-2.8.4.jar</p>
 <p>zookeeper-3.4.10.jar</p>
-<p>7）软连接core-site.xml hdfs-site.xml<br>
-ln -s /root/hd/hadoop-2.8.4/etc/hadoop/hdfs-site.xml<br>
-ln -s /root/hd/hadoop-2.8.4/etc/hadoop/core-site.xml</p>
-<p>8）发送到其他机器<br>
-scp -r hbase-1.3.0 hsiehchou122:/root/hd<br>
-scp -r hbase-1.3.0 hsiehchou123:/root/hd<br>
-scp -r hbase-1.3.0 hsiehchou124:/root/hd</p>
+<p>7）软连接core-site.xml hdfs-site.xml<br>ln -s /root/hd/hadoop-2.8.4/etc/hadoop/hdfs-site.xml<br>ln -s /root/hd/hadoop-2.8.4/etc/hadoop/core-site.xml</p>
+<p>8）发送到其他机器<br>scp -r hbase-1.3.0 hsiehchou122:/root/hd<br>scp -r hbase-1.3.0 hsiehchou123:/root/hd<br>scp -r hbase-1.3.0 hsiehchou124:/root/hd</p>
 <p>find /root/hd/hadoop-2.8.4/ -name hadoop-a*</p>
-<p>9）访问ui界面<br>
-<a target="_blank" rel="noopener" href="http://192.168.116.121:16010/master-status">http://192.168.116.121:16010/master-status</a></p>
-<p>启动hbase<br>
-bin/hbase-daemon.sh start master<br>
-bin/hbase-daemon.sh start regionserver</p>
-<p>关闭hbase<br>
-bin/hbase-daemon.sh stop master<br>
-bin/hbase-daemon.sh stop regionserver</p>
-<h4 id="4、hbase设计架构">4、hbase设计架构</h4>
-<p>Rowkey行键 类似 id<br>
-列式存储<br>
-hbase操作<br>
-0）启动终端<br>
-bin/hbase shell</p>
-<p>1）查看表操作<br>
-list</p>
-<p>2）显示当前服务器状态<br>
-status ‘hsiehchou121’<br>
-1 active master, 0 backup masters, 3 servers, 0 dead, 0.5000 ave<br>
-rage load<br>
-1 active master: 1个存活的master<br>
-0 backup masters: 0个备份master<br>
-3 servers: 3个regionserver<br>
-0 dead: 没有挂掉的<br>
-0.5000 average load：平均加载</p>
-<p>3）显示当前用户<br>
-whoami</p>
-<p>4）创建表<br>
-create ‘表名’,’列族’<br>
-create ‘user’,’info1’</p>
-<p>5）添加数据<br>
-put ‘表名’,’rowkey’,’列族:列’,’值’<br>
-put ‘user’,’1001’,’info1:name’,’xie’<br>
-put ‘user’,’1001’,’info1:age’,’19’</p>
+<p>9）访问ui界面<br><a target="_blank" rel="noopener" href="http://192.168.116.121:16010/master-status">http://192.168.116.121:16010/master-status</a></p>
+<p>启动hbase<br>bin/hbase-daemon.sh start master<br>bin/hbase-daemon.sh start regionserver</p>
+<p>关闭hbase<br>bin/hbase-daemon.sh stop master<br>bin/hbase-daemon.sh stop regionserver</p>
+<h4 id="4、hbase设计架构"><a href="#4、hbase设计架构" class="headerlink" title="4、hbase设计架构"></a>4、hbase设计架构</h4><p>Rowkey行键 类似 id<br>列式存储<br>hbase操作<br>0）启动终端<br>bin/hbase shell</p>
+<p>1）查看表操作<br>list</p>
+<p>2）显示当前服务器状态<br>status ‘hsiehchou121’<br>1 active master, 0 backup masters, 3 servers, 0 dead, 0.5000 ave<br>rage load<br>1 active master: 1个存活的master<br>0 backup masters: 0个备份master<br>3 servers: 3个regionserver<br>0 dead: 没有挂掉的<br>0.5000 average load：平均加载</p>
+<p>3）显示当前用户<br>whoami</p>
+<p>4）创建表<br>create ‘表名’,’列族’<br>create ‘user’,’info1’</p>
+<p>5）添加数据<br>put ‘表名’,’rowkey’,’列族:列’,’值’<br>put ‘user’,’1001’,’info1:name’,’xie’<br>put ‘user’,’1001’,’info1:age’,’19’</p>
 <p><strong>删除需要ctrl+&lt;-</strong></p>
-<p>6）全表扫描<br>
-scan ‘表名’<br>
-scan ‘user’</p>
-<p>ROW COLUMN+CELL<br>
-1001 column=info1:age, timestamp=1552579563486, value=19<br>
-1001 column=info1:name, timestamp=1552579531260, value=xie</p>
-<p>7）hbase没有修改，只有覆盖<br>
-put ‘user’,’1001’,’info1:name’,’mi’<br>
-只要对应上表名、rowkey、列族、列即可</p>
-<p>8）查看表结构<br>
-describe ‘user’</p>
-<p>9）变更表结构信息<br>
-alter ‘user’,{NAME =&gt; ‘info1’,VERSIONS=&gt;’8’}</p>
-<p>10）查看指定的数据信息<br>
-指定具体的rowkey<br>
-get ‘user’,’1001’<br>
-指定具体的列<br>
-get ‘user’,’1001’,’info1:name’</p>
-<p>11）清空表<br>
-truncate ‘user1’</p>
-<p>12）删除表<br>
-需要先指定不可用<br>
-disable ‘表名’<br>
-drop ‘表名’<br>
-disable ‘user1’<br>
-drop ‘user1’</p>
-<p>13）扫描指定范围<br>
-指定从某一rowkey扫描<br>
-scan ‘user’,{STARTROW =&gt; ‘1002’}</p>
-<p>包含头不包含尾（1001保留，1002不扫描）<br>
-scan ‘user’,{STARTROW =&gt; ‘1001’, STOPROW =&gt; ‘1002’}</p>
-<p>14）统计rowkey的个数<br>
-count ‘user’</p>
-<p>15）退出hbase shell<br>
-quit</p>
+<p>6）全表扫描<br>scan ‘表名’<br>scan ‘user’</p>
+<p>ROW COLUMN+CELL<br>1001 column=info1:age, timestamp=1552579563486, value=19<br>1001 column=info1:name, timestamp=1552579531260, value=xie</p>
+<p>7）hbase没有修改，只有覆盖<br>put ‘user’,’1001’,’info1:name’,’mi’<br>只要对应上表名、rowkey、列族、列即可</p>
+<p>8）查看表结构<br>describe ‘user’</p>
+<p>9）变更表结构信息<br>alter ‘user’,{NAME =&gt; ‘info1’,VERSIONS=&gt;’8’}</p>
+<p>10）查看指定的数据信息<br>指定具体的rowkey<br>get ‘user’,’1001’<br>指定具体的列<br>get ‘user’,’1001’,’info1:name’</p>
+<p>11）清空表<br>truncate ‘user1’</p>
+<p>12）删除表<br>需要先指定不可用<br>disable ‘表名’<br>drop ‘表名’<br>disable ‘user1’<br>drop ‘user1’</p>
+<p>13）扫描指定范围<br>指定从某一rowkey扫描<br>scan ‘user’,{STARTROW =&gt; ‘1002’}</p>
+<p>包含头不包含尾（1001保留，1002不扫描）<br>scan ‘user’,{STARTROW =&gt; ‘1001’, STOPROW =&gt; ‘1002’}</p>
+<p>14）统计rowkey的个数<br>count ‘user’</p>
+<p>15）退出hbase shell<br>quit</p>
 
             </div>
             <hr/>
@@ -837,11 +730,9 @@ quit</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、HBase API操作
-1）首先将core-site.xml、hbase-site.xml、hdfs-site.xml引入maven工程的resources下面
-2）配置pom.xml文件
-增加hbase依赖
-&lt;dependenc
+                            1、HBase API操作1）首先将core-site.xml、hbase-site.xml、hdfs-site.xml引入maven工程的resources下面
+2）配置pom.xml文件增加hbase依赖
+&lt;dependencie
                         
                     </div>
                     <div class="publish-info">
@@ -894,11 +785,9 @@ quit</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、Azkaban
-官网：https://azkaban.github.io/
-Azkaban是一款开源工作流管理器
+                            1、Azkaban官网：https://azkaban.github.io/Azkaban是一款开源工作流管理器
 Azkaban是在LinkedIn上创建的批处理工作流作业调度程序，用于运行Hadoop作业
-Azkaban通过作业依赖性
+Azkaban通过作业依赖性解决
                         
                     </div>
                     <div class="publish-info">
@@ -1112,7 +1001,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

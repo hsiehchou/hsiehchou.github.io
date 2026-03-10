@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -391,7 +391,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    9 分
                 </div>
                 
 
@@ -408,84 +408,79 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Hadoop的HA高可用（可行）</strong></p>
-<h3 id="一、集群的规划">一、集群的规划</h3>
-<p><strong>ZooKeeper集群</strong></p>
+<h3 id="一、集群的规划"><a href="#一、集群的规划" class="headerlink" title="一、集群的规划"></a>一、集群的规划</h3><p><strong>ZooKeeper集群</strong></p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">192.168.116.121</th>
-<th style="text-align:center">192.168.116.122</th>
-<th style="text-align:center">192.168.116.123</th>
+<th align="center">192.168.116.121</th>
+<th align="center">192.168.116.122</th>
+<th align="center">192.168.116.123</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">hsiehchou121</td>
-<td style="text-align:center">hsiehchou122</td>
-<td style="text-align:center">hsiehchou123</td>
+<tbody><tr>
+<td align="center">hsiehchou121</td>
+<td align="center">hsiehchou122</td>
+<td align="center">hsiehchou123</td>
 </tr>
-</tbody>
-</table>
-<p><strong>Hadoop集群</strong></p>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>Hadoop集群</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">192.168.116.121</th>
-<th style="text-align:center">192.168.116.122</th>
-<th style="text-align:center">192.168.116.123</th>
-<th style="text-align:center">192.168.116.124</th>
+<th align="center">192.168.116.121</th>
+<th align="center">192.168.116.122</th>
+<th align="center">192.168.116.123</th>
+<th align="center">192.168.116.124</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">hsiehchou121</td>
-<td style="text-align:center">hsiehchou122</td>
-<td style="text-align:center">hsiehchou123</td>
-<td style="text-align:center">hsiehchou124</td>
+<tbody><tr>
+<td align="center">hsiehchou121</td>
+<td align="center">hsiehchou122</td>
+<td align="center">hsiehchou123</td>
+<td align="center">hsiehchou124</td>
 </tr>
 <tr>
-<td style="text-align:center">NameNode1</td>
-<td style="text-align:center">NameNode2</td>
-<td style="text-align:center">DataNode1</td>
-<td style="text-align:center">DataNode2</td>
+<td align="center">NameNode1</td>
+<td align="center">NameNode2</td>
+<td align="center">DataNode1</td>
+<td align="center">DataNode2</td>
 </tr>
 <tr>
-<td style="text-align:center">ResourceManager1</td>
-<td style="text-align:center">ResourceManager2</td>
-<td style="text-align:center">NodeManager1</td>
-<td style="text-align:center">NodeManager2</td>
+<td align="center">ResourceManager1</td>
+<td align="center">ResourceManager2</td>
+<td align="center">NodeManager1</td>
+<td align="center">NodeManager2</td>
 </tr>
 <tr>
-<td style="text-align:center">Journalnode</td>
-<td style="text-align:center">Journalnode</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center">Journalnode</td>
+<td align="center">Journalnode</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-</tbody>
-</table>
-<h3 id="二、准备工作">二、准备工作</h3>
-<p>1、安装JDK<br>
-2、配置环境变量<br>
-3、配置免密码登录<br>
-4、配置主机名</p>
-<h3 id="三、配置Zookeeper（在192-168-116-121安装）">三、配置Zookeeper（在192.168.116.121安装）</h3>
-<p>在主节点（hsiehchou121）上配置ZooKeeper</p>
-<h4 id="1、配置-root-hd-zookeeper-3-4-10-conf-zoo-cfg文件">1、配置/root/hd/zookeeper-3.4.10/conf/zoo.cfg文件</h4>
-<pre><code class="highlight plaintext">dataDir=/root/hd/zookeeper-3.4.10/zkData
+</tbody></table>
+<h3 id="二、准备工作"><a href="#二、准备工作" class="headerlink" title="二、准备工作"></a>二、准备工作</h3><p>1、安装JDK<br>2、配置环境变量<br>3、配置免密码登录<br>4、配置主机名</p>
+<h3 id="三、配置Zookeeper（在192-168-116-121安装）"><a href="#三、配置Zookeeper（在192-168-116-121安装）" class="headerlink" title="三、配置Zookeeper（在192.168.116.121安装）"></a>三、配置Zookeeper（在192.168.116.121安装）</h3><p>在主节点（hsiehchou121）上配置ZooKeeper</p>
+<h4 id="1、配置-root-hd-zookeeper-3-4-10-conf-zoo-cfg文件"><a href="#1、配置-root-hd-zookeeper-3-4-10-conf-zoo-cfg文件" class="headerlink" title="1、配置/root/hd/zookeeper-3.4.10/conf/zoo.cfg文件"></a>1、配置/root/hd/zookeeper-3.4.10/conf/zoo.cfg文件</h4><pre><code class="highlight plaintext">dataDir=/root/hd/zookeeper-3.4.10/zkData
 +++++++++++++++zkconfig+++++++++++++++++
 server.1=hsiehchou121:2888:3888
 server.2=hsiehchou122:2888:3888
 server.3=hsiehchou123:2888:3888</code></pre>
-<h4 id="2、在-root-training-zookeeper-3-4-6-tmp目录下创建一个myid的空文件">2、在/root/training/zookeeper-3.4.6/tmp目录下创建一个myid的空文件</h4>
-<p>echo 1 &gt; /root/hd/zookeeper-3.4.10/tmp/myid</p>
-<h4 id="3、将配置好的ZooKeeper拷贝到其他节点，同时修改各自的myid文件">3、将配置好的ZooKeeper拷贝到其他节点，同时修改各自的myid文件</h4>
-<p>scp -r /root/hd/zookeeper-3.4.10/ hsiehchou122:/root/hd<br>
-scp -r /root/hd/zookeeper-3.4.10/ hsiehchou123:/root/hd</p>
-<h3 id="四、安装Hadoop集群（在hsiehchou121上安装）">四、安装Hadoop集群（在hsiehchou121上安装）</h3>
-<h4 id="1、修改hadoop-env-sh">1、<a target="_blank" rel="noopener" href="http://xn--hadoop-env-yu6pe85r.sh">修改hadoop-env.sh</a></h4>
-<pre><code class="highlight plaintext">export JAVA_HOME=/root/hd/jdk1.8.0_192</code></pre>
-<h4 id="2、修改core-site-xml">2、修改core-site.xml</h4>
-<pre><code class="highlight plaintext">&lt;configuration&gt;
+
+<h4 id="2、在-root-training-zookeeper-3-4-6-tmp目录下创建一个myid的空文件"><a href="#2、在-root-training-zookeeper-3-4-6-tmp目录下创建一个myid的空文件" class="headerlink" title="2、在/root/training/zookeeper-3.4.6/tmp目录下创建一个myid的空文件"></a>2、在/root/training/zookeeper-3.4.6/tmp目录下创建一个myid的空文件</h4><p>echo 1 &gt; /root/hd/zookeeper-3.4.10/tmp/myid</p>
+<h4 id="3、将配置好的ZooKeeper拷贝到其他节点，同时修改各自的myid文件"><a href="#3、将配置好的ZooKeeper拷贝到其他节点，同时修改各自的myid文件" class="headerlink" title="3、将配置好的ZooKeeper拷贝到其他节点，同时修改各自的myid文件"></a>3、将配置好的ZooKeeper拷贝到其他节点，同时修改各自的myid文件</h4><p>scp -r /root/hd/zookeeper-3.4.10/ hsiehchou122:/root/hd<br>scp -r /root/hd/zookeeper-3.4.10/ hsiehchou123:/root/hd
+	</p>
+<h3 id="四、安装Hadoop集群（在hsiehchou121上安装）"><a href="#四、安装Hadoop集群（在hsiehchou121上安装）" class="headerlink" title="四、安装Hadoop集群（在hsiehchou121上安装）"></a>四、安装Hadoop集群（在hsiehchou121上安装）</h3><h4 id="1、修改hadoop-env-sh"><a href="#1、修改hadoop-env-sh" class="headerlink" title="1、修改hadoop-env.sh"></a>1、修改hadoop-env.sh</h4><pre><code class="highlight plaintext">export JAVA_HOME=/root/hd/jdk1.8.0_192</code></pre>
+
+<h4 id="2、修改core-site-xml"><a href="#2、修改core-site-xml" class="headerlink" title="2、修改core-site.xml"></a>2、修改core-site.xml</h4><pre><code class="highlight plaintext">&lt;configuration&gt;
 	&lt;!-- 指定hdfs的nameservice为mycluster --&gt;
 	&lt;property&gt;
 		&lt;name&gt;fs.defaultFS&lt;/name&gt;
@@ -504,8 +499,8 @@ scp -r /root/hd/zookeeper-3.4.10/ hsiehchou123:/root/hd</p>
 		&lt;value&gt;hsiehchou121:2181,hsiehchou122:2181,hsiehchou123:2181&lt;/value&gt;
 	&lt;/property&gt;
 &lt;/configuration&gt;</code></pre>
-<h4 id="3、修改hdfs-site-xml（配置这个nameservice中有几个NameNode）">3、修改hdfs-site.xml（配置这个nameservice中有几个NameNode）</h4>
-<pre><code class="highlight plaintext">&lt;configuration&gt; 
+
+<h4 id="3、修改hdfs-site-xml（配置这个nameservice中有几个NameNode）"><a href="#3、修改hdfs-site-xml（配置这个nameservice中有几个NameNode）" class="headerlink" title="3、修改hdfs-site.xml（配置这个nameservice中有几个NameNode）"></a>3、修改hdfs-site.xml（配置这个nameservice中有几个NameNode）</h4><pre><code class="highlight plaintext">&lt;configuration&gt; 
 	&lt;!--指定hdfs的nameservice为mycluster，需要和core-site.xml中的保持一致 --&gt;
 	&lt;property&gt;
 		&lt;name&gt;dfs.nameservices&lt;/name&gt;
@@ -587,15 +582,15 @@ scp -r /root/hd/zookeeper-3.4.10/ hsiehchou123:/root/hd</p>
 		&lt;value&gt;30000&lt;/value&gt;
 	&lt;/property&gt;
 &lt;/configuration&gt;</code></pre>
-<h4 id="4、修改mapred-site-xml">4、修改mapred-site.xml</h4>
-<pre><code class="highlight plaintext">&lt;configuration&gt;
+
+<h4 id="4、修改mapred-site-xml"><a href="#4、修改mapred-site-xml" class="headerlink" title="4、修改mapred-site.xml"></a>4、修改mapred-site.xml</h4><pre><code class="highlight plaintext">&lt;configuration&gt;
 	&lt;property&gt;
 		&lt;name&gt;mapreduce.framework.name&lt;/name&gt;
 		&lt;value&gt;yarn&lt;/value&gt;
 	&lt;/property&gt;
 &lt;/configuration&gt;</code></pre>
-<h4 id="5、修改yarn-site-xml">5、修改yarn-site.xml</h4>
-<pre><code class="highlight plaintext">&lt;configuration&gt;
+
+<h4 id="5、修改yarn-site-xml"><a href="#5、修改yarn-site-xml" class="headerlink" title="5、修改yarn-site.xml"></a>5、修改yarn-site.xml</h4><pre><code class="highlight plaintext">&lt;configuration&gt;
 	&lt;!-- 开启RM高可靠 --&gt;
 	&lt;property&gt;
 	   &lt;name&gt;yarn.resourcemanager.ha.enabled&lt;/name&gt;
@@ -668,53 +663,19 @@ scp -r /root/hd/zookeeper-3.4.10/ hsiehchou123:/root/hd</p>
 		&lt;value&gt;/tmp/yarn-logs&lt;/value&gt;
 	&lt;/property&gt;
 &lt;/configuration&gt;</code></pre>
-<h4 id="6、修改slaves">6、修改slaves</h4>
-<p>hsiehchou123<br>
-hsiehchou124</p>
-<h4 id="7、将配置好的hadoop拷贝到其他节点">7、将配置好的hadoop拷贝到其他节点</h4>
-<p>scp -r /root/hd/hadoop-2.8.4/ root@hsiehchou122:/root/hd/<br>
-scp -r /root/hd/hadoop-2.8.4/ root@hsiehchou123:/root/hd/<br>
-scp -r /root/hd/hadoop-2.8.4/ root@hsiehchou124:/root/hd/</p>
-<h3 id="五、启动Zookeeper集群">五、启动Zookeeper集群</h3>
-<h4 id="1、启动Zookeeper集群">1、启动Zookeeper集群</h4>
-<p>[root@hsiehchou121 hadoop-2.8.4]# <strong><a target="_blank" rel="noopener" href="http://zkServer.sh">zkServer.sh</a> start</strong><br>
-[root@hsiehchou122 hadoop-2.8.4]# <strong><a target="_blank" rel="noopener" href="http://zkServer.sh">zkServer.sh</a> start</strong><br>
-[root@hsiehchou123 hadoop-2.8.4]# <strong><a target="_blank" rel="noopener" href="http://zkServer.sh">zkServer.sh</a> start</strong></p>
-<h3 id="六、在hsiehchou121和hsiehchou122上启动journalnode">六、在hsiehchou121和hsiehchou122上启动journalnode</h3>
-<p><strong><a target="_blank" rel="noopener" href="http://hadoop-daemon.sh">hadoop-daemon.sh</a> start journalnode</strong></p>
-<h3 id="七、格式化HDFS（在hsiehchou121上执行）">七、格式化HDFS（在hsiehchou121上执行）</h3>
-<h4 id="1-格式化ZooKeeper">1. 格式化ZooKeeper</h4>
-<p>[root@hsiehchou121 hadoop-2.8.4]# <strong>bin/hdfs zkfc -formatZK</strong></p>
-<h4 id="2、启动HDFS">2、启动HDFS</h4>
-<p>1）在各个JournalNode节点上，输入以下命令启动journalnode服务<br>
-[root@hsiehchou121 hadoop-2.8.4]# <strong>sbin/hadoop-daemon.sh start journalnode</strong></p>
-<p>2）在[nn1]上，对其进行格式化，并启动<br>
-[root@hsiehchou121 hadoop-2.8.4]# <strong>bin/hdfs namenode -format</strong><br>
-[root@hsiehchou121 hadoop-2.8.4]# <strong>sbin/hadoop-daemon.sh start namenode</strong></p>
-<p>3）在[nn2]上，同步nn1的元数据信息<br>
-[root@hsiehchou122 hadoop-2.8.4]# <strong>bin/hdfs namenode -bootstrapStandby</strong></p>
-<h3 id="八、在hsiehchou121上启动Hadoop集群">八、在hsiehchou121上启动Hadoop集群</h3>
-<p>[root@hsiehchou121 hadoop-2.8.4]#  <strong><a target="_blank" rel="noopener" href="http://start-all.sh">start-all.sh</a></strong></p>
-<p><strong>日志</strong><br>
-This script is Deprecated. Instead use <a target="_blank" rel="noopener" href="http://start-dfs.sh">start-dfs.sh</a> and start-yar<br>
-Starting namenodes on [hsiehchou121 hsiehchou122]<br>
-hsiehchou121: starting namenode, logging to /root/hd/hadoop-2.8.4-hsiehchou121.out<br>
-hsiehchou122: starting namenode, logging to /root/hd/hadoop-2.8.4-hsiehchou122.out<br>
-hsiehchou124: starting datanode, logging to /root/hd/hadoop-2.8.4-hsiehchou124.out<br>
-hsiehchou123: starting datanode, logging to /root/hd/hadoop-2.8.4-hsiehchou123.out<br>
-Starting journal nodes [hsiehchou121 hsiehchou122 ]<br>
-hsiehchou121: starting journalnode, logging to /root/hd/hadoop-2.alnode-hsiehchou121.out<br>
-hsiehchou122: starting journalnode, logging to /root/hd/hadoop-2.alnode-hsiehchou122.out<br>
-Starting ZK Failover Controllers on NN hosts [hsiehchou121 hsiehc<br>
-hsiehchou121: starting zkfc, logging to /root/hd/hadoop-2.8.4/logou121.out<br>
-hsiehchou122: starting zkfc, logging to /root/hd/hadoop-2.8.4/logou122.out<br>
-starting yarn daemons<br>
-starting resourcemanager, logging to /root/hd/hadoop-2.8.4/logs/ysiehchou121.out<br>
-hsiehchou123: starting nodemanager, logging to /root/hd/hadoop-2.ager-hsiehchou123.out<br>
-hsiehchou124: starting nodemanager, logging to /root/hd/hadoop-2.ager-hsiehchou124.out</p>
-<p>hsiehchou122上的ResourceManager需要单独启动<br>
-<strong>命令</strong><br>
-[root@hsiehchou121 hadoop-2.8.4]# <strong>./sbin/yarn-daemon.sh start resourcemanager</strong></p>
+
+<h4 id="6、修改slaves"><a href="#6、修改slaves" class="headerlink" title="6、修改slaves"></a>6、修改slaves</h4><p>hsiehchou123<br>hsiehchou124</p>
+<h4 id="7、将配置好的hadoop拷贝到其他节点"><a href="#7、将配置好的hadoop拷贝到其他节点" class="headerlink" title="7、将配置好的hadoop拷贝到其他节点"></a>7、将配置好的hadoop拷贝到其他节点</h4><p>scp -r /root/hd/hadoop-2.8.4/ root@hsiehchou122:/root/hd/<br>scp -r /root/hd/hadoop-2.8.4/ root@hsiehchou123:/root/hd/<br>scp -r /root/hd/hadoop-2.8.4/ root@hsiehchou124:/root/hd/
+	</p>
+<h3 id="五、启动Zookeeper集群"><a href="#五、启动Zookeeper集群" class="headerlink" title="五、启动Zookeeper集群"></a>五、启动Zookeeper集群</h3><h4 id="1、启动Zookeeper集群"><a href="#1、启动Zookeeper集群" class="headerlink" title="1、启动Zookeeper集群"></a>1、启动Zookeeper集群</h4><p>[root@hsiehchou121 hadoop-2.8.4]# <strong>zkServer.sh start</strong><br>[root@hsiehchou122 hadoop-2.8.4]# <strong>zkServer.sh start</strong><br>[root@hsiehchou123 hadoop-2.8.4]# <strong>zkServer.sh start</strong></p>
+<h3 id="六、在hsiehchou121和hsiehchou122上启动journalnode"><a href="#六、在hsiehchou121和hsiehchou122上启动journalnode" class="headerlink" title="六、在hsiehchou121和hsiehchou122上启动journalnode"></a>六、在hsiehchou121和hsiehchou122上启动journalnode</h3><p><strong>hadoop-daemon.sh start journalnode</strong></p>
+<h3 id="七、格式化HDFS（在hsiehchou121上执行）"><a href="#七、格式化HDFS（在hsiehchou121上执行）" class="headerlink" title="七、格式化HDFS（在hsiehchou121上执行）"></a>七、格式化HDFS（在hsiehchou121上执行）</h3><h4 id="1-格式化ZooKeeper"><a href="#1-格式化ZooKeeper" class="headerlink" title="1. 格式化ZooKeeper"></a>1. 格式化ZooKeeper</h4><p>[root@hsiehchou121 hadoop-2.8.4]# <strong>bin/hdfs zkfc -formatZK</strong></p>
+<h4 id="2、启动HDFS"><a href="#2、启动HDFS" class="headerlink" title="2、启动HDFS"></a>2、启动HDFS</h4><p>1）在各个JournalNode节点上，输入以下命令启动journalnode服务<br>[root@hsiehchou121 hadoop-2.8.4]# <strong>sbin/hadoop-daemon.sh start journalnode</strong></p>
+<p>2）在[nn1]上，对其进行格式化，并启动<br>[root@hsiehchou121 hadoop-2.8.4]# <strong>bin/hdfs namenode -format</strong><br>[root@hsiehchou121 hadoop-2.8.4]# <strong>sbin/hadoop-daemon.sh start namenode</strong></p>
+<p>3）在[nn2]上，同步nn1的元数据信息<br>[root@hsiehchou122 hadoop-2.8.4]# <strong>bin/hdfs namenode -bootstrapStandby</strong></p>
+<h3 id="八、在hsiehchou121上启动Hadoop集群"><a href="#八、在hsiehchou121上启动Hadoop集群" class="headerlink" title="八、在hsiehchou121上启动Hadoop集群"></a>八、在hsiehchou121上启动Hadoop集群</h3><p>[root@hsiehchou121 hadoop-2.8.4]#  <strong>start-all.sh</strong></p>
+<p><strong>日志</strong><br>This script is Deprecated. Instead use start-dfs.sh and start-yar<br>Starting namenodes on [hsiehchou121 hsiehchou122]<br>hsiehchou121: starting namenode, logging to /root/hd/hadoop-2.8.4-hsiehchou121.out<br>hsiehchou122: starting namenode, logging to /root/hd/hadoop-2.8.4-hsiehchou122.out<br>hsiehchou124: starting datanode, logging to /root/hd/hadoop-2.8.4-hsiehchou124.out<br>hsiehchou123: starting datanode, logging to /root/hd/hadoop-2.8.4-hsiehchou123.out<br>Starting journal nodes [hsiehchou121 hsiehchou122 ]<br>hsiehchou121: starting journalnode, logging to /root/hd/hadoop-2.alnode-hsiehchou121.out<br>hsiehchou122: starting journalnode, logging to /root/hd/hadoop-2.alnode-hsiehchou122.out<br>Starting ZK Failover Controllers on NN hosts [hsiehchou121 hsiehc<br>hsiehchou121: starting zkfc, logging to /root/hd/hadoop-2.8.4/logou121.out<br>hsiehchou122: starting zkfc, logging to /root/hd/hadoop-2.8.4/logou122.out<br>starting yarn daemons<br>starting resourcemanager, logging to /root/hd/hadoop-2.8.4/logs/ysiehchou121.out<br>hsiehchou123: starting nodemanager, logging to /root/hd/hadoop-2.ager-hsiehchou123.out<br>hsiehchou124: starting nodemanager, logging to /root/hd/hadoop-2.ager-hsiehchou124.out</p>
+<p>hsiehchou122上的ResourceManager需要单独启动<br><strong>命令</strong><br>[root@hsiehchou121 hadoop-2.8.4]# <strong>./sbin/yarn-daemon.sh start resourcemanager</strong></p>
 
             </div>
             <hr/>
@@ -965,11 +926,9 @@ hsiehchou124: starting nodemanager, logging to /root/hd/hadoop-2.ager-hsiehchou1
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            流式计算专题
-批量计算、实时计算、离线计算、流式计算
-共同点：
-数据源  --&gt;   采集数据   --&gt;   task worker --&gt;   task worker  --&gt;  sink 输出
-批量计算和流式计
+                            流式计算专题批量计算、实时计算、离线计算、流式计算
+共同点：数据源  –&gt;   采集数据   –&gt;   task worker –&gt;   task worker  –&gt;  sink 输出
+批量计算和流式计算区别：处理
                         
                     </div>
                     <div class="publish-info">
@@ -1022,11 +981,7 @@ hsiehchou124: starting nodemanager, logging to /root/hd/hadoop-2.ager-hsiehchou1
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            离线部分
-Hadoop-&gt;离线计算(hdfs / mapreduce) yarn
-zookeeper-&gt;分布式协调（动物管理员）
-hive-&gt;数据仓库（离线计算 / sql）easy coding
-flume-&gt;数据
+                            离线部分Hadoop-&gt;离线计算(hdfs / mapreduce) yarnzookeeper-&gt;分布式协调（动物管理员）hive-&gt;数据仓库（离线计算 / sql）easy codingflume-&gt;数据采集sq
                         
                     </div>
                     <div class="publish-info">
@@ -1240,7 +1195,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

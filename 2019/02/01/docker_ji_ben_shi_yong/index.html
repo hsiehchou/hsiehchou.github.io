@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,14 +380,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    6 分
                 </div>
                 
 
@@ -403,237 +403,181 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Docker在Linux中的安装">Docker在Linux中的安装</h2>
-<h3 id="一、rpm离线安装docker17-12">一、rpm离线安装docker17.12</h3>
-<h4 id="1-下载docker安装包">1.下载docker安装包</h4>
-<p>在<a target="_blank" rel="noopener" href="https://download.docker.com/linux/centos/7/x86_64/stable/Packages/%E4%B8%8B%E8%BD%BDdocker-ce-17.12.0.ce-1.el7.centos.x86_64.rpm">https://download.docker.com/linux/centos/7/x86_64/stable/Packages/下载docker-ce-17.12.0.ce-1.el7.centos.x86_64.rpm</a></p>
-<h4 id="2-下载9个依赖">2.下载9个依赖</h4>
-<p>在<a target="_blank" rel="noopener" href="http://mirrors.163.com/centos/7/os/x86_64/Packages/%E4%B8%8B%E8%BD%BD8%E4%B8%AA%E4%BE%9D%E8%B5%96">http://mirrors.163.com/centos/7/os/x86_64/Packages/下载8个依赖</a><br>
-audit-libs-python-2.7.6-3.el7.x86_64.rpm<br>
-checkpolicy-2.5-4.el7.x86_64.rpm<br>
-libcgroup-0.41-13.el7.x86_64.rpm<br>
-libseccomp-2.3.1-3.el7.x86_64.rpm<br>
-libsemanage-python-2.5-8.el7.x86_64.rpm<br>
-policycoreutils-python-2.5-17.1.el7.x86_64.rpm<br>
-python-IPy-0.75-6.el7.noarch.rpm<br>
-setools-libs-3.3.8-1.1.el7.x86_64.rpm</p>
+                <h2 id="Docker在Linux中的安装"><a href="#Docker在Linux中的安装" class="headerlink" title="Docker在Linux中的安装"></a>Docker在Linux中的安装</h2><h3 id="一、rpm离线安装docker17-12"><a href="#一、rpm离线安装docker17-12" class="headerlink" title="一、rpm离线安装docker17.12"></a>一、rpm离线安装docker17.12</h3><h4 id="1-下载docker安装包"><a href="#1-下载docker安装包" class="headerlink" title="1.下载docker安装包"></a>1.下载docker安装包</h4><p>在<a target="_blank" rel="noopener" href="https://download.docker.com/linux/centos/7/x86_64/stable/Packages/%E4%B8%8B%E8%BD%BDdocker-ce-17.12.0.ce-1.el7.centos.x86_64.rpm">https://download.docker.com/linux/centos/7/x86_64/stable/Packages/下载docker-ce-17.12.0.ce-1.el7.centos.x86_64.rpm</a></p>
+<h4 id="2-下载9个依赖"><a href="#2-下载9个依赖" class="headerlink" title="2.下载9个依赖"></a>2.下载9个依赖</h4><p>在<a target="_blank" rel="noopener" href="http://mirrors.163.com/centos/7/os/x86_64/Packages/%E4%B8%8B%E8%BD%BD8%E4%B8%AA%E4%BE%9D%E8%B5%96">http://mirrors.163.com/centos/7/os/x86_64/Packages/下载8个依赖</a><br>audit-libs-python-2.7.6-3.el7.x86_64.rpm<br>checkpolicy-2.5-4.el7.x86_64.rpm<br>libcgroup-0.41-13.el7.x86_64.rpm<br>libseccomp-2.3.1-3.el7.x86_64.rpm<br>libsemanage-python-2.5-8.el7.x86_64.rpm<br>policycoreutils-python-2.5-17.1.el7.x86_64.rpm<br>python-IPy-0.75-6.el7.noarch.rpm<br>setools-libs-3.3.8-1.1.el7.x86_64.rpm</p>
 <p>在<a target="_blank" rel="noopener" href="http://rpm.pbone.net/index.php3?stat=3&amp;limit=1&amp;srodzaj=1&amp;dl=40&amp;search=container-selinux&amp;field%5B%5D=1&amp;field%5B%5D=2%E4%B8%8B%E8%BD%BDcontainer-selinux-2.9-4.el7.noarch.rpm">http://rpm.pbone.net/index.php3?stat=3&amp;limit=1&amp;srodzaj=1&amp;dl=40&amp;search=container-selinux&amp;field[]=1&amp;field[]=2下载container-selinux-2.9-4.el7.noarch.rpm</a></p>
 <p>rpm -ivh /root/docker/*.rpm –nodeps –force</p>
 <p>curl -sSL <a target="_blank" rel="noopener" href="http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet">http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet</a> | sh -</p>
-<p>###二、 启动Docker引擎<br>
-sudo systemctl enable docker<br>
-sudo systemctl start docker</p>
-<h3 id="三、建立docker用户组">三、建立docker用户组</h3>
-<p>sudo groupadd docker</p>
-<h3 id="四、将用户加入docker组">四、将用户加入docker组</h3>
-<p>sudo usermod -aG docker $USER</p>
-<p>这里使用阿里云的容器镜像服务，目前公测，免费的。</p>
+<p>###二、 启动Docker引擎<br>sudo systemctl enable docker<br>sudo systemctl start docker</p>
+<h3 id="三、建立docker用户组"><a href="#三、建立docker用户组" class="headerlink" title="三、建立docker用户组"></a>三、建立docker用户组</h3><p>sudo groupadd docker</p>
+<h3 id="四、将用户加入docker组"><a href="#四、将用户加入docker组" class="headerlink" title="四、将用户加入docker组"></a>四、将用户加入docker组</h3><p>sudo usermod -aG docker $USER</p>
+<p>这里使用阿里云的容器镜像服务，目前公测，免费的。 </p>
 <ol>
-<li>去阿里云官网，登录控制台，在产品与服务里面找到容器镜像服务<br>
-2）点击开通</li>
+<li>去阿里云官网，登录控制台，在产品与服务里面找到容器镜像服务<br>2）点击开通 </li>
 <li>点击镜像加速器，变有了加速地址（不用镜像加速器的话，镜像都是国外的，因为墙，所有下载是龟速）</li>
 </ol>
-<h3 id="五、镜像加速器">五、镜像加速器</h3>
-<p>vi /etc/systemd/system/multi-user.target.wants/docker.service<br>
-ExecStart=/usr/bin/dockerd –registry-mirror=https://….mi<br>
-<a target="_blank" rel="noopener" href="http://rror.aliyuncs.com">rror.aliyuncs.com</a></p>
-<p>sudo systemctl daemon-reload<br>
-sudo systemctl restart docker</p>
-<h3 id="六、检查加速器是否生效">六、检查加速器是否生效</h3>
-<p>sudo ps -ef | grep dockerd<br>
-root 5346 1 0 19:03 ? 00:00:00 /usr/bin/dockerd<br>
-–registry-mirror=https://*****.mirror.aliyuncs.com</p>
+<h3 id="五、镜像加速器"><a href="#五、镜像加速器" class="headerlink" title="五、镜像加速器"></a>五、镜像加速器</h3><p>vi /etc/systemd/system/multi-user.target.wants/docker.service<br>ExecStart=/usr/bin/dockerd –registry-mirror=https://….mi<br>rror.aliyuncs.com</p>
+<p>sudo systemctl daemon-reload<br>sudo systemctl restart docker</p>
+<h3 id="六、检查加速器是否生效"><a href="#六、检查加速器是否生效" class="headerlink" title="六、检查加速器是否生效"></a>六、检查加速器是否生效</h3><p>sudo ps -ef | grep dockerd<br>root 5346 1 0 19:03 ? 00:00:00 /usr/bin/dockerd<br>–registry-mirror=https://*****.mirror.aliyuncs.com</p>
 <p>docker -v</p>
 <p>systemctl start docker</p>
-<p>验证 docker 是否安装成功并在容器中执行一个测试的镜像<br>
-docker run ubuntu echo hello docker</p>
+<p>验证 docker 是否安装成功并在容器中执行一个测试的镜像<br>docker run ubuntu echo hello docker</p>
 <p>docker run nginx</p>
-<p>docker run -p 8080:80 -d nginx<br>
-<a target="_blank" rel="noopener" href="http://192.168.116.104:8080/">http://192.168.116.104:8080/</a></p>
-<p>[root@test3 share]# docker cp index.html<br>
-[root@test3 share]# docker commit -m ‘fun’ d0e976512485 nginx-fun</p>
-<h3 id="七、删除镜像">七、删除镜像</h3>
-<p>docker rmi IMAGE ID</p>
-<h3 id="八、查看镜像">八、查看镜像</h3>
-<p>docker images<br>
-docker ps -a</p>
-<h3 id="九、小结">九、小结</h3>
-<table>
+<p>docker run -p 8080:80 -d nginx<br><a target="_blank" rel="noopener" href="http://192.168.116.104:8080/">http://192.168.116.104:8080/</a></p>
+<p>[root@test3 share]# docker cp index.html<br>[root@test3 share]# docker commit -m ‘fun’ d0e976512485 nginx-fun</p>
+<h3 id="七、删除镜像"><a href="#七、删除镜像" class="headerlink" title="七、删除镜像"></a>七、删除镜像</h3><p>docker rmi IMAGE ID</p>
+<h3 id="八、查看镜像"><a href="#八、查看镜像" class="headerlink" title="八、查看镜像"></a>八、查看镜像</h3><p>docker images<br>docker ps -a</p>
+<h3 id="九、小结"><a href="#九、小结" class="headerlink" title="九、小结"></a>九、小结</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">用途</th>
+<th align="center">命令</th>
+<th align="center">用途</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">docker pull</td>
-<td style="text-align:center">获取image</td>
+<tbody><tr>
+<td align="center">docker pull</td>
+<td align="center">获取image</td>
 </tr>
 <tr>
-<td style="text-align:center">docker build</td>
-<td style="text-align:center">创建image</td>
+<td align="center">docker build</td>
+<td align="center">创建image</td>
 </tr>
 <tr>
-<td style="text-align:center">docker images</td>
-<td style="text-align:center">列出image</td>
+<td align="center">docker images</td>
+<td align="center">列出image</td>
 </tr>
 <tr>
-<td style="text-align:center">docker run</td>
-<td style="text-align:center">运行container</td>
+<td align="center">docker run</td>
+<td align="center">运行container</td>
 </tr>
 <tr>
-<td style="text-align:center">docker ps</td>
-<td style="text-align:center">列出container</td>
+<td align="center">docker ps</td>
+<td align="center">列出container</td>
 </tr>
 <tr>
-<td style="text-align:center">docker rm</td>
-<td style="text-align:center">删除container</td>
+<td align="center">docker rm</td>
+<td align="center">删除container</td>
 </tr>
 <tr>
-<td style="text-align:center">docker rmi</td>
-<td style="text-align:center">删除image</td>
+<td align="center">docker rmi</td>
+<td align="center">删除image</td>
 </tr>
 <tr>
-<td style="text-align:center">docker cp</td>
-<td style="text-align:center">在host 和container之间拷贝文件</td>
+<td align="center">docker cp</td>
+<td align="center">在host 和container之间拷贝文件</td>
 </tr>
 <tr>
-<td style="text-align:center">docker commit</td>
-<td style="text-align:center">保存改动为新的image</td>
+<td align="center">docker commit</td>
+<td align="center">保存改动为新的image</td>
 </tr>
-</tbody>
-</table>
-<h3 id="十、Dockerfile语法">十、Dockerfile语法</h3>
-<p>FROM alpine:latest<br>
-MAINTAINER hsiehchou<br>
-CMD echo ‘hello docker’</p>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="十、Dockerfile语法"><a href="#十、Dockerfile语法" class="headerlink" title="十、Dockerfile语法"></a>十、Dockerfile语法</h3><p>FROM alpine:latest<br>MAINTAINER hsiehchou<br>CMD echo ‘hello docker’</p>
 <p>touch Dockerfile</p>
-<p>++++++++++++++++++++++++++++++++++++++++<br>
-FROM ubuntu<br>
-MAINTAINER hsiehchou<br>
-RUN sed -i ‘s/archive.ubuntu.com/mirros.ustc.edu.cn/g’ /etc/apt/sources.list<br>
-RUN apt-get update<br>
-RUN apt-get install -y nginx<br>
-COPY index.html /var/www/html<br>
-ENTRYPOINT [“/usr/sbin/nginx”, “-g”, “daemon off;”]前台运行<br>
-EXPOSE 80</p>
+<p>++++++++++++++++++++++++++++++++++++++++<br>FROM ubuntu<br>MAINTAINER hsiehchou<br>RUN sed -i ‘s/archive.ubuntu.com/mirros.ustc.edu.cn/g’ /etc/apt/sources.list<br>RUN apt-get update<br>RUN apt-get install -y nginx<br>COPY index.html /var/www/html<br>ENTRYPOINT [“/usr/sbin/nginx”, “-g”, “daemon off;”]前台运行<br>EXPOSE 80</p>
 <p>docker build -t hsiehchou/hello-nginx .</p>
 <p>docker run -d -p 80:80 hsiehchou/hello-nginx</p>
-<h3 id="十一、小结">十一、小结</h3>
-<table>
+<h3 id="十一、小结"><a href="#十一、小结" class="headerlink" title="十一、小结"></a>十一、小结</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">用途</th>
+<th align="center">命令</th>
+<th align="center">用途</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">FROM</td>
-<td style="text-align:center">base image</td>
+<tbody><tr>
+<td align="center">FROM</td>
+<td align="center">base image</td>
 </tr>
 <tr>
-<td style="text-align:center">RUN</td>
-<td style="text-align:center">执行命令</td>
+<td align="center">RUN</td>
+<td align="center">执行命令</td>
 </tr>
 <tr>
-<td style="text-align:center">ADD</td>
-<td style="text-align:center">添加文件</td>
+<td align="center">ADD</td>
+<td align="center">添加文件</td>
 </tr>
 <tr>
-<td style="text-align:center">COPY</td>
-<td style="text-align:center">拷贝文件</td>
+<td align="center">COPY</td>
+<td align="center">拷贝文件</td>
 </tr>
 <tr>
-<td style="text-align:center">CMD</td>
-<td style="text-align:center">执行命令</td>
+<td align="center">CMD</td>
+<td align="center">执行命令</td>
 </tr>
 <tr>
-<td style="text-align:center">EXPOSE</td>
-<td style="text-align:center">暴露端口</td>
+<td align="center">EXPOSE</td>
+<td align="center">暴露端口</td>
 </tr>
 <tr>
-<td style="text-align:center">WORKDIR</td>
-<td style="text-align:center">指定路径</td>
+<td align="center">WORKDIR</td>
+<td align="center">指定路径</td>
 </tr>
 <tr>
-<td style="text-align:center">MIANTAINER</td>
-<td style="text-align:center">维护者</td>
+<td align="center">MIANTAINER</td>
+<td align="center">维护者</td>
 </tr>
 <tr>
-<td style="text-align:center">ENV</td>
-<td style="text-align:center">设定环境变量</td>
+<td align="center">ENV</td>
+<td align="center">设定环境变量</td>
 </tr>
 <tr>
-<td style="text-align:center">ENVRYPOINT</td>
-<td style="text-align:center">容器入口</td>
+<td align="center">ENVRYPOINT</td>
+<td align="center">容器入口</td>
 </tr>
 <tr>
-<td style="text-align:center">USER</td>
-<td style="text-align:center">指定用户</td>
+<td align="center">USER</td>
+<td align="center">指定用户</td>
 </tr>
 <tr>
-<td style="text-align:center">VOLUME</td>
-<td style="text-align:center">mount point</td>
+<td align="center">VOLUME</td>
+<td align="center">mount point</td>
 </tr>
-</tbody>
-</table>
-<h3 id="十二、镜像分层">十二、镜像分层</h3>
-<p>Dockerfile中的每一行都产生一个新层</p>
-<h3 id="十三、Volume">十三、Volume</h3>
-<p>提供独立于容器之外的持久化存储</p>
+</tbody></table>
+<h3 id="十二、镜像分层"><a href="#十二、镜像分层" class="headerlink" title="十二、镜像分层"></a>十二、镜像分层</h3><p>Dockerfile中的每一行都产生一个新层</p>
+<h3 id="十三、Volume"><a href="#十三、Volume" class="headerlink" title="十三、Volume"></a>十三、Volume</h3><p>提供独立于容器之外的持久化存储</p>
 <p>docker run -d –name nginx -v /usr/share/nginx/html nginx</p>
 <p>docker exec -it nginx /bin/bash</p>
 <p>docker run -v $PWD/html:/usr/share/nginx/html nginx</p>
-<p>++++++++++++++++++++++++++++<br>
-docker create -v $PWD/data:/var /mydata –name data_container ubuntu</p>
-<p>docker run -it –volumes-from data_container ubuntu /bin/bash<br>
-mount</p>
-<h3 id="十四、Registry">十四、Registry</h3>
-<p>镜像仓库</p>
-<h3 id="十五、术语">十五、术语</h3>
-<table>
+<p>++++++++++++++++++++++++++++<br>docker create -v $PWD/data:/var /mydata –name data_container ubuntu</p>
+<p>docker run -it –volumes-from data_container ubuntu /bin/bash<br>mount</p>
+<h3 id="十四、Registry"><a href="#十四、Registry" class="headerlink" title="十四、Registry"></a>十四、Registry</h3><p>镜像仓库</p>
+<h3 id="十五、术语"><a href="#十五、术语" class="headerlink" title="十五、术语"></a>十五、术语</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">English</th>
-<th style="text-align:center">中文</th>
+<th align="center">English</th>
+<th align="center">中文</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">host</td>
-<td style="text-align:center">宿主机</td>
+<tbody><tr>
+<td align="center">host</td>
+<td align="center">宿主机</td>
 </tr>
 <tr>
-<td style="text-align:center">image</td>
-<td style="text-align:center">镜像</td>
+<td align="center">image</td>
+<td align="center">镜像</td>
 </tr>
 <tr>
-<td style="text-align:center">container</td>
-<td style="text-align:center">容器</td>
+<td align="center">container</td>
+<td align="center">容器</td>
 </tr>
 <tr>
-<td style="text-align:center">registry</td>
-<td style="text-align:center">仓库</td>
+<td align="center">registry</td>
+<td align="center">仓库</td>
 </tr>
 <tr>
-<td style="text-align:center">daemon</td>
-<td style="text-align:center">守护程序</td>
+<td align="center">daemon</td>
+<td align="center">守护程序</td>
 </tr>
 <tr>
-<td style="text-align:center">client</td>
-<td style="text-align:center">客户端</td>
+<td align="center">client</td>
+<td align="center">客户端</td>
 </tr>
-</tbody>
-</table>
-<p>docker search whalesay<br>
-docker pull docker/whalesay<br>
-docker push myname/whalesay</p>
-<p>国内的一些仓库<br>
-daocloud<br>
-时速云<br>
-aliyun</p>
+</tbody></table>
+<p>docker search whalesay<br>docker pull docker/whalesay<br>docker push myname/whalesay</p>
+<p>国内的一些仓库<br>daocloud<br>时速云<br>aliyun</p>
 <p>[root@test3 dockerfiler2]# docker run docker/whalesay cowsay Docker你好！</p>
 <p>docker tag docker/whalesay hch/whalesay</p>
 <p>curl -L <a target="_blank" rel="noopener" href="https://github.com/docker/compose/releases/download/1.9.0/docker-compose-">https://github.com/docker/compose/releases/download/1.9.0/docker-compose-</a>(uname -m) &gt; /usr/local/bin/docker-compose</p>
@@ -641,81 +585,66 @@ aliyun</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">用途</th>
+<th align="center">命令</th>
+<th align="center">用途</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">build</td>
-<td style="text-align:center">本地创建镜像</td>
+<tbody><tr>
+<td align="center">build</td>
+<td align="center">本地创建镜像</td>
 </tr>
 <tr>
-<td style="text-align:center">command</td>
-<td style="text-align:center">覆盖缺省命令</td>
+<td align="center">command</td>
+<td align="center">覆盖缺省命令</td>
 </tr>
 <tr>
-<td style="text-align:center">depends_on</td>
-<td style="text-align:center">连接容器</td>
+<td align="center">depends_on</td>
+<td align="center">连接容器</td>
 </tr>
 <tr>
-<td style="text-align:center">ports</td>
-<td style="text-align:center">暴露端口</td>
+<td align="center">ports</td>
+<td align="center">暴露端口</td>
 </tr>
 <tr>
-<td style="text-align:center">volumes</td>
-<td style="text-align:center">卷</td>
+<td align="center">volumes</td>
+<td align="center">卷</td>
 </tr>
 <tr>
-<td style="text-align:center">image</td>
-<td style="text-align:center">pull镜像</td>
+<td align="center">image</td>
+<td align="center">pull镜像</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>docker-compose命令</strong></p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">用途</th>
+<th align="center">命令</th>
+<th align="center">用途</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">up</td>
-<td style="text-align:center">启动服务</td>
+<tbody><tr>
+<td align="center">up</td>
+<td align="center">启动服务</td>
 </tr>
 <tr>
-<td style="text-align:center">stop</td>
-<td style="text-align:center">停止服务</td>
+<td align="center">stop</td>
+<td align="center">停止服务</td>
 </tr>
 <tr>
-<td style="text-align:center">rm</td>
-<td style="text-align:center">删除服务中的各个容器</td>
+<td align="center">rm</td>
+<td align="center">删除服务中的各个容器</td>
 </tr>
 <tr>
-<td style="text-align:center">logs</td>
-<td style="text-align:center">观察各个容器的日志</td>
+<td align="center">logs</td>
+<td align="center">观察各个容器的日志</td>
 </tr>
 <tr>
-<td style="text-align:center">ps</td>
-<td style="text-align:center">列出服务相关的容器</td>
+<td align="center">ps</td>
+<td align="center">列出服务相关的容器</td>
 </tr>
-</tbody>
-</table>
-<h3 id="十六、docker基本命令">十六、docker基本命令</h3>
-<p><strong>docker ps</strong>：查看正在运行的容器<br>
-<strong>docker images</strong>：查看现有的镜像<br>
-<strong>docker logs</strong>： 查看某个容器的日志<br>
-<strong>docker run</strong>： 运行某个容器<br>
-<strong>docker inspect</strong>：查看某个容器<br>
-<strong>docker exec</strong>：进入某个容器<br>
-<strong>docker start/stop</strong>：启动或者停止某个容器</p>
-<p>[root@test3 hadoop-docker]# touch Dockerfile<br>
-[root@test3 hadoop-docker]# ll<br>
-total 0<br>
--rw-r–r– 1 root root 0 Feb 27 19:18 Dockerfile<br>
-[root@test3 hadoop-docker]# vim Dockerfile</p>
+</tbody></table>
+<h3 id="十六、docker基本命令"><a href="#十六、docker基本命令" class="headerlink" title="十六、docker基本命令"></a>十六、docker基本命令</h3><p><strong>docker ps</strong>：查看正在运行的容器<br><strong>docker images</strong>：查看现有的镜像<br><strong>docker logs</strong>： 查看某个容器的日志<br><strong>docker run</strong>： 运行某个容器<br><strong>docker inspect</strong>：查看某个容器<br><strong>docker exec</strong>：进入某个容器<br><strong>docker start/stop</strong>：启动或者停止某个容器</p>
+<p>[root@test3 hadoop-docker]# touch Dockerfile<br>[root@test3 hadoop-docker]# ll<br>total 0<br>-rw-r–r– 1 root root 0 Feb 27 19:18 Dockerfile<br>[root@test3 hadoop-docker]# vim Dockerfile</p>
 <pre><code class="highlight plaintext">FROM  ubuntu:14.04
 MAINTAINER hsiehchou
 
@@ -1009,11 +938,9 @@ CMD ["sh", "-c", "service ssh start: bash"]</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、Linux下命令行中的复制和粘贴
-安装gpm：yum install -y gpm*
+                            1、Linux下命令行中的复制和粘贴安装gpm：yum install -y gpm*
 开启gpm服务：systemctl start gpm
-2、打开网卡
-vi /etc/sysconfig/network-scripts/ifcfg-
+2、打开网卡vi /etc/sysconfig/network-scripts/ifcfg-en
                         
                     </div>
                     <div class="publish-info">
@@ -1062,13 +989,7 @@ vi /etc/sysconfig/network-scripts/ifcfg-
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、MySQL概要
-关系型数据库。—Access数据库 oracle数据库、Postgresql-
-非关系型数据库。—-Hbase等
-库：—package
-表：–class
-字段：–属性
-Oracle旗下产品—-分两种 （GPL协议的 社区
+                            1、MySQL概要关系型数据库。—Access数据库 oracle数据库、Postgresql-非关系型数据库。—-Hbase等库：—package表：–class字段：–属性Oracle旗下产品—-分两种 （GPL协议的 社区版和企业版）
                         
                     </div>
                     <div class="publish-info">
@@ -1278,7 +1199,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

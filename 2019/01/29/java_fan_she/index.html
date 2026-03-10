@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    871
+                    865
                 </div>
                 
 
@@ -403,18 +403,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、反射获取Class对象的三种方式">1、反射获取Class对象的三种方式</h4>
-<p>反编译<br>
-不是自己写的类，也不知道类里面有哪些方法 变量，让你能够使用程序上线了，修改程序但不终止程序的运行—-反射<br>
-（1）Object类 getClass 方法<br>
-getClass 返回此Object的运行时类<br>
-getName() 返回由 类对象表示的实体（类，接口，数组类，原始类型或空白）的名称，作为 String</p>
-<p>（2）通过Class属性获得<br>
-都有一个静态的class属性</p>
-<p>（3）通过 forName<br>
-static 类&lt;?&gt; forName(String className) 返回与给定字符串名称的类或接口相关联的 类对象</p>
-<h4 id="2、反射获得构造方法">2、反射获得构造方法</h4>
-<p>（1）获得构造方法</p>
+                <h4 id="1、反射获取Class对象的三种方式"><a href="#1、反射获取Class对象的三种方式" class="headerlink" title="1、反射获取Class对象的三种方式"></a>1、反射获取Class对象的三种方式</h4><p>反编译<br>不是自己写的类，也不知道类里面有哪些方法 变量，让你能够使用程序上线了，修改程序但不终止程序的运行—-反射<br>（1）Object类 getClass 方法<br>getClass 返回此Object的运行时类<br>getName() 返回由 类对象表示的实体（类，接口，数组类，原始类型或空白）的名称，作为 String</p>
+<p>（2）通过Class属性获得<br>都有一个静态的class属性</p>
+<p>（3）通过 forName<br>static 类&lt;?&gt; forName(String className) 返回与给定字符串名称的类或接口相关联的 类对象</p>
+<h4 id="2、反射获得构造方法"><a href="#2、反射获得构造方法" class="headerlink" title="2、反射获得构造方法"></a>2、反射获得构造方法</h4><p>（1）获得构造方法</p>
 <pre><code class="highlight plaintext">Constructor&lt;T&gt; getDeclaredConstructor(类&lt;?&gt;... parameterTypes) 
 返回一个 Constructor对象，该对象反映 Constructor对象表示的类或接口的指定 类函数
 
@@ -426,42 +418,24 @@ Constructor&lt;T&gt; getConstructor(类&lt;?&gt;... parameterTypes)
 
 Constructor&lt;?&gt;[] getConstructors() 
 返回包含一个数组 Constructor对象反射由此表示的类的所有公共构造 类对象</code></pre>
-<p>（2）使用构造方法<br>
-public T newInstance() throws InstantiationException, IllegalAccessException<br>
-访问私有的构造方法。必须通过Accessible设置为true。强行访问</p>
+
+<p>（2）使用构造方法<br>public T newInstance() throws InstantiationException, IllegalAccessException<br>访问私有的构造方法。必须通过Accessible设置为true。强行访问</p>
 <p>public void setAccessible(boolean flag) throws SecurityException将此对象的accessible标志设置为指示的布尔值</p>
 <p>true的值表示反射对象应该在使用时抑制Java语言访问检查。 false的值表示反映的对象应该强制执行Java语言访问检查</p>
-<h4 id="3、反射获得成员变量">3、反射获得成员变量</h4>
-<p>（1）获得字段<br>
-Field[] getDeclaredFields()<br>
-返回的数组 Field对象反映此表示的类或接口声明的所有字段 类对象</p>
-<p>getField(String name)<br>
-返回一个 Field对象，它反映此表示的类或接口的指定公共成员字段 类对象</p>
-<p>Field[] getFields()<br>
-返回包含一个数组 Field对象反射由此表示的类或接口的所有可访问的公共字段 类对象</p>
-<h4 id="4、反射获得成员方法">4、反射获得成员方法</h4>
-<p>Declared–所有的<br>
-Methods–公共的<br>
-使用成员方法<br>
-Object invoke(Object obj, Object… args)<br>
-在具有指定参数的 方法对象上调用此 方法对象表示的底层方法</p>
-<h4 id="5、泛型">5、泛型</h4>
-<p>安全检测机制<br>
-例如：</p>
+<h4 id="3、反射获得成员变量"><a href="#3、反射获得成员变量" class="headerlink" title="3、反射获得成员变量"></a>3、反射获得成员变量</h4><p>（1）获得字段<br>Field[] getDeclaredFields()<br>返回的数组 Field对象反映此表示的类或接口声明的所有字段 类对象</p>
+<p>getField(String name)<br>返回一个 Field对象，它反映此表示的类或接口的指定公共成员字段 类对象</p>
+<p>Field[] getFields()<br>返回包含一个数组 Field对象反射由此表示的类或接口的所有可访问的公共字段 类对象</p>
+<h4 id="4、反射获得成员方法"><a href="#4、反射获得成员方法" class="headerlink" title="4、反射获得成员方法"></a>4、反射获得成员方法</h4><p>Declared–所有的<br>Methods–公共的<br>使用成员方法<br>Object invoke(Object obj, Object… args)<br>在具有指定参数的 方法对象上调用此 方法对象表示的底层方法</p>
+<h4 id="5、泛型"><a href="#5、泛型" class="headerlink" title="5、泛型"></a>5、泛型</h4><p>安全检测机制<br>例如：</p>
 <pre><code class="highlight plaintext">ArrayList&lt;T&gt; arrylist=new ArrayList&lt;T&gt;();</code></pre>
 <p>存在类型错误 类型无法转换成功</p>
-<h4 id="6、泛型方法">6、泛型方法</h4>
-<p>如何写一个方法 实现对 整数 浮点数 字符的输出。–泛型<br>
-基本原则：</p>
-<p>a、所有泛型方法的声明都有一个类型参数声明的部分（<code>&lt;T&gt;</code>）–表示所有的类型参数<br>
-b、泛型方法只能是引用数据类型，（int double）<br>
-例如：</p>
+<h4 id="6、泛型方法"><a href="#6、泛型方法" class="headerlink" title="6、泛型方法"></a>6、泛型方法</h4><p>如何写一个方法 实现对 整数 浮点数 字符的输出。–泛型<br>基本原则：</p>
+<p>   a、所有泛型方法的声明都有一个类型参数声明的部分（<code>&lt;T&gt;</code>）–表示所有的类型参数<br>   b、泛型方法只能是引用数据类型，（int double）<br>例如：</p>
 <pre><code class="highlight plaintext">public static&lt;T&gt; void show(){
 
 }</code></pre>
-<h4 id="7、泛型类">7、泛型类</h4>
-<p>泛型类 增加了类型参数声明部分<br>
-例如：</p>
+
+<h4 id="7、泛型类"><a href="#7、泛型类" class="headerlink" title="7、泛型类"></a>7、泛型类</h4><p>泛型类 增加了类型参数声明部分<br>例如：</p>
 <pre><code class="highlight plaintext">class Test&lt;T&gt;
 {
     private T t;
@@ -469,19 +443,18 @@ b、泛型方法只能是引用数据类型，（int double）<br>
         this.t=t;
     }
 }</code></pre>
-<h4 id="8、泛型擦除">8、泛型擦除</h4>
-<p>java本身不存在泛型。增加了泛型机制。—java虚拟机中都是确定的类型 泛型擦除</p>
-<h4 id="9、类型通配符">9、类型通配符</h4>
-<!--?-->–代替具体的类型参数 
-<p>例如：</p>
+
+<h4 id="8、泛型擦除"><a href="#8、泛型擦除" class="headerlink" title="8、泛型擦除"></a>8、泛型擦除</h4><p>java本身不存在泛型。增加了泛型机制。—java虚拟机中都是确定的类型 泛型擦除</p>
+<h4 id="9、类型通配符"><a href="#9、类型通配符" class="headerlink" title="9、类型通配符"></a>9、类型通配符</h4><!--?-->–代替具体的类型参数 
+例如：
 <pre><code class="highlight plaintext">public void print(List&lt;?&gt; data){
    data.get(0);     
 }</code></pre>
-<p><code>&lt;T&gt;</code>–指所有的数据类型</p>
-<h4 id="10、反射与泛型">10、反射与泛型</h4>
-<p>泛型：允许程序员在编译时检测到非法的数据类型，运行期间Object，泛型擦除<br>
-通过反射可以添加不同的数据类型</p>
-
+  `<t>`--指所有的数据类型
+  
+#### 10、反射与泛型
+泛型：允许程序员在编译时检测到非法的数据类型，运行期间Object，泛型擦除 
+通过反射可以添加不同的数据类型</t>
             </div>
             <hr/>
 
@@ -727,13 +700,7 @@ b、泛型方法只能是引用数据类型，（int double）<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、MySQL概要
-关系型数据库。—Access数据库 oracle数据库、Postgresql-
-非关系型数据库。—-Hbase等
-库：—package
-表：–class
-字段：–属性
-Oracle旗下产品—-分两种 （GPL协议的 社区
+                            1、MySQL概要关系型数据库。—Access数据库 oracle数据库、Postgresql-非关系型数据库。—-Hbase等库：—package表：–class字段：–属性Oracle旗下产品—-分两种 （GPL协议的 社区版和企业版）
                         
                     </div>
                     <div class="publish-info">
@@ -782,12 +749,8 @@ Oracle旗下产品—-分两种 （GPL协议的 社区
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、ObjectInputStream
-反序列化
-（1）构造函数
-ObjectInputStream(InputStream in) 创建从指定的InputStream读取的ObjectInputStream
-（2）主要方法
-Object 
+                            1、ObjectInputStream反序列化（1）构造函数ObjectInputStream(InputStream in) 创建从指定的InputStream读取的ObjectInputStream
+（2）主要方法Object read
                         
                     </div>
                     <div class="publish-info">
@@ -997,7 +960,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

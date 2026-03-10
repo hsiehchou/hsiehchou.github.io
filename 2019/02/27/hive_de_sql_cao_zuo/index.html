@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -407,13 +407,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1、分区表">1、分区表</h3>
-<h4 id="1）创建分区表">1）创建分区表</h4>
-<pre><code class="highlight plaintext">hive&gt; create table dept_partitions()
+                <h3 id="1、分区表"><a href="#1、分区表" class="headerlink" title="1、分区表"></a>1、分区表</h3><h4 id="1）创建分区表"><a href="#1）创建分区表" class="headerlink" title="1）创建分区表"></a>1）创建分区表</h4><pre><code class="highlight plaintext">hive&gt; create table dept_partitions()
       &gt; partition by()
       &gt; row format
       &gt; delimited fields
       &gt; terminated by '';</code></pre>
+
 <p>例：</p>
 <pre><code class="highlight plaintext">hive&gt; create table dept_partitions(deptno int, dept string, loc string)
     &gt; partitioned by(day string)
@@ -422,172 +421,88 @@
     &gt; terminated by '\t';
 hive&gt; load data local inpath '/root/dept.txt' into table dept_partitions
     &gt; partition(day='0228');</code></pre>
-<h4 id="2）查询">2）查询</h4>
-<p><strong>全查询</strong><br>
-hive&gt; select * from dept_partitions;<br>
-注意：此时查看的是整个分区表中的数据</p>
-<p><strong>单分区查询</strong><br>
-hive&gt; select * from dept_partitions where day = ‘0228’;<br>
-注意：此时查看的是指定分区中的数据</p>
-<p><strong>联合查询</strong><br>
-hive&gt; select * from dept_partitions where day = ‘0228’ union select * from dept_partitions where day = ‘0302’;</p>
-<p><strong>添加单个分区</strong><br>
-hive&gt; alter table dept_partitions add partition(day = ‘0303’);</p>
-<p><strong>注意</strong>：如果想一次添加多个的话 空格分割即可<br>
-hive&gt; alter table dept_partitions add partition(day = ‘0304’) partition(day = ‘0305’);</p>
-<p><strong>查看分区</strong><br>
-hive&gt; show partitions dept_partitions;</p>
-<p><strong>删除分区</strong><br>
-hive&gt; alter table dept_partitions drop partition(day=’0305’);<br>
-分区表在hdfs中分目录文件夹</p>
+<h4 id="2）查询"><a href="#2）查询" class="headerlink" title="2）查询"></a>2）查询</h4><p><strong>全查询</strong><br>hive&gt; select * from dept_partitions;<br>注意：此时查看的是整个分区表中的数据</p>
+<p><strong>单分区查询</strong><br>hive&gt; select * from dept_partitions where day = ‘0228’;<br>注意：此时查看的是指定分区中的数据</p>
+<p><strong>联合查询</strong><br>hive&gt; select * from dept_partitions where day = ‘0228’ union select * from dept_partitions where day = ‘0302’;</p>
+<p><strong>添加单个分区</strong><br>hive&gt; alter table dept_partitions add partition(day = ‘0303’); </p>
+<p><strong>注意</strong>：如果想一次添加多个的话 空格分割即可<br>hive&gt; alter table dept_partitions add partition(day = ‘0304’) partition(day = ‘0305’);</p>
+<p><strong>查看分区</strong><br>hive&gt; show partitions dept_partitions;</p>
+<p><strong>删除分区</strong><br>hive&gt; alter table dept_partitions drop partition(day=’0305’);<br>分区表在hdfs中分目录文件夹</p>
 <p>hive&gt; dfs -mkdir -p /user/hive/warehouse/dept_partitions/day=0305;</p>
 <p>hive&gt; dfs -put /root/dept.txt /user/hive/warehouse/dept_partitions/day=0305;</p>
-<p>hive&gt; show partitions dept_partitions;<br>
-此时并没有day=0305，需要进行下面操作</p>
-<p><strong>导入数据</strong><br>
-相当于修复数据：msck repair table dept_partitions;</p>
-<h3 id="2、DML数据操作">2、DML数据操作</h3>
-<h4 id="1）数据的导入">1）数据的导入</h4>
-<p>hive&gt; load data [local] inpath ” into table ;</p>
-<h4 id="2）向表中插入数据">2）向表中插入数据</h4>
-<p>hive&gt; insert into table student_partitions partition(age = 20)  values(1,’re’);<br>
-向表中插入sql查询结果数据<br>
-hive&gt; insert overwrite table student_partitions partition(age = 20) select * from hsiehchou where id&lt;3;</p>
-<p>create方式：<br>
-hive&gt; create table if not exists student_partitions1 as select * from student_partitions where id = 2;</p>
-<h4 id="3）创建表直接加载数据">3）创建表直接加载数据</h4>
-<pre><code class="highlight plaintext">hive&gt; create table student_partitions3(id int,name string)
+<p>hive&gt; show partitions dept_partitions;<br>此时并没有day=0305，需要进行下面操作</p>
+<p><strong>导入数据</strong><br>相当于修复数据：msck repair table dept_partitions;</p>
+<h3 id="2、DML数据操作"><a href="#2、DML数据操作" class="headerlink" title="2、DML数据操作"></a>2、DML数据操作</h3><h4 id="1）数据的导入"><a href="#1）数据的导入" class="headerlink" title="1）数据的导入"></a>1）数据的导入</h4><p>hive&gt; load data [local] inpath ” into table ;</p>
+<h4 id="2）向表中插入数据"><a href="#2）向表中插入数据" class="headerlink" title="2）向表中插入数据"></a>2）向表中插入数据</h4><p>hive&gt; insert into table student_partitions partition(age = 20)  values(1,’re’);<br>向表中插入sql查询结果数据<br>hive&gt; insert overwrite table student_partitions partition(age = 20) select * from hsiehchou where id&lt;3;</p>
+<p>create方式：<br>hive&gt; create table if not exists student_partitions1 as select * from student_partitions where id = 2;</p>
+<h4 id="3）创建表直接加载数据"><a href="#3）创建表直接加载数据" class="headerlink" title="3）创建表直接加载数据"></a>3）创建表直接加载数据</h4><pre><code class="highlight plaintext">hive&gt; create table student_partitions3(id int,name string)
       &gt; row format
       &gt; delimited fields
       &gt; terminated by '\t'
       &gt; location '';</code></pre>
-<p><strong>注意</strong>：locatition路径是hdfs路径<br>
-关联文件时不能有多级目录！！！<br>
-例：</p>
+<p><strong>注意</strong>：locatition路径是hdfs路径<br>关联文件时不能有多级目录！！！<br>例：</p>
 <pre><code class="highlight plaintext">hive&gt; create table student_partitions4(id int,name string)
     &gt; row format
     &gt; delimited fields
     &gt; terminated by '\t'
     &gt; location '/wc';</code></pre>
-<h4 id="4）把操作结果导出到本地linux">4）把操作结果导出到本地linux</h4>
-<p>hive&gt; insert overwrite local directory ‘/root/data’ select * from hsiehchou;</p>
-<h4 id="5）把hive中表数据导出到hdfs中">5）把hive中表数据导出到hdfs中</h4>
-<p>hive&gt; export table hsiehchou to ‘/hsiehchou’;</p>
-<p>把hdfs数据导入到hive中<br>
-hive&gt; import table hsiehchou3 from ‘/hsiehchou/’;</p>
-<h4 id="6）清空表数据">6）清空表数据</h4>
-<p>hive&gt; truncate table hsiehchou3;</p>
-<h3 id="3、查询操作">3、查询操作</h3>
-<p>基础查询<br>
-select * from table;全表查询<br>
-hive&gt; select <a target="_blank" rel="noopener" href="http://hsiehchou.id">hsiehchou.id</a>,<a target="_blank" rel="noopener" href="http://hsiehchou.name">hsiehchou.name</a> from table …;指定列</p>
-<h4 id="1）指定列查询">1）指定列查询</h4>
-<p>hive&gt; select <a target="_blank" rel="noopener" href="http://hsiehchou.name">hsiehchou.name</a> from hsiehchou;</p>
-<h4 id="2）指定列查询设置别名">2）指定列查询设置别名</h4>
-<p>hive&gt; select <a target="_blank" rel="noopener" href="http://hsiehchou.name">hsiehchou.name</a> as myname from hsiehchou;</p>
-<h4 id="3）创建员工表">3）创建员工表</h4>
-<pre><code class="highlight plaintext">hive&gt; create table hive_db.emptable(empno int, ename string , job string,mgr int, birthday string, sal double, comm double, deptno int)
+
+<h4 id="4）把操作结果导出到本地linux"><a href="#4）把操作结果导出到本地linux" class="headerlink" title="4）把操作结果导出到本地linux"></a>4）把操作结果导出到本地linux</h4><p>hive&gt; insert overwrite local directory ‘/root/data’ select * from hsiehchou;</p>
+<h4 id="5）把hive中表数据导出到hdfs中"><a href="#5）把hive中表数据导出到hdfs中" class="headerlink" title="5）把hive中表数据导出到hdfs中"></a>5）把hive中表数据导出到hdfs中</h4><p>hive&gt; export table hsiehchou to ‘/hsiehchou’;</p>
+<p>把hdfs数据导入到hive中<br>hive&gt; import table hsiehchou3 from ‘/hsiehchou/’;</p>
+<h4 id="6）清空表数据"><a href="#6）清空表数据" class="headerlink" title="6）清空表数据"></a>6）清空表数据</h4><p>hive&gt; truncate table hsiehchou3;</p>
+<h3 id="3、查询操作"><a href="#3、查询操作" class="headerlink" title="3、查询操作"></a>3、查询操作</h3><p>基础查询<br>select * from table;全表查询<br>hive&gt; select hsiehchou.id,hsiehchou.name from table …;指定列</p>
+<h4 id="1）指定列查询"><a href="#1）指定列查询" class="headerlink" title="1）指定列查询"></a>1）指定列查询</h4><p>hive&gt; select hsiehchou.name from hsiehchou;</p>
+<h4 id="2）指定列查询设置别名"><a href="#2）指定列查询设置别名" class="headerlink" title="2）指定列查询设置别名"></a>2）指定列查询设置别名</h4><p>hive&gt; select hsiehchou.name as myname from hsiehchou;</p>
+<h4 id="3）创建员工表"><a href="#3）创建员工表" class="headerlink" title="3）创建员工表"></a>3）创建员工表</h4><pre><code class="highlight plaintext">hive&gt; create table hive_db.emptable(empno int, ename string , job string,mgr int, birthday string, sal double, comm double, deptno int)
     &gt; row format
     &gt; delimited fields
     &gt; terminated by '\t';
 hive&gt; load data local ‘/root/emp.txt’ into table hive_db.emptable;</code></pre>
-<h4 id="4）查询员工姓名和工资-每个员工加薪1000块">4）查询员工姓名和工资(每个员工加薪1000块)</h4>
-<p>hive&gt; select emptable.ename,emptable.sal+1000 salmoney from emptable;</p>
-<h4 id="5）查看公司有多少员工">5）查看公司有多少员工</h4>
-<p>hive&gt; select count(1) empnumber from emptable;</p>
-<h4 id="6）查询工资最高的工资">6）查询工资最高的工资</h4>
-<p>hive&gt; select max(sal) numberone from emptable;</p>
-<h4 id="7）查询工资最小的工资">7）查询工资最小的工资</h4>
-<p>hive&gt; select min(sal) from emptable;</p>
-<h4 id="8）求工资的总和">8）求工资的总和</h4>
-<p>hive&gt; select sum(sal) sal_sum from emptable;</p>
-<h4 id="9）求该公司员工工资的平均值">9）求该公司员工工资的平均值</h4>
-<p>hive&gt; select avg(sal) sal_avg from emptable;</p>
-<h4 id="10）查询结果只显示前多少条">10）查询结果只显示前多少条</h4>
-<p>hive&gt; select * from emptable limit 4;</p>
-<h4 id="11）where语句">11）where语句</h4>
-<p>作用：过滤<br>
-使用：where子句紧接着from</p>
-<p>求出工资大于2600的员工<br>
-hive&gt; select * from emptable where sal&gt;2600;</p>
-<p>求出工资在1000~2500范围的员工<br>
-hive&gt; select * from emptable where sal&gt;1000 and sal&lt;2500;</p>
-<p>或者<br>
-hive&gt; select * from emptable where sal between 1000 and 2500;</p>
-<p><strong>查询工资在2000和3000这两个数的员工信息</strong><br>
-hive&gt; select ename from emptable where sal in(2000,3000);</p>
-<h4 id="12）is-null与is-not-null">12）is null与is not null</h4>
-<p><strong>空与非空的过滤</strong><br>
-空<br>
-hive&gt; select * from emptable where comm is null;</p>
-<p>非空<br>
-hive&gt; select * from emptable where comm is not null;</p>
-<h4 id="13）like">13）like</h4>
-<p><strong>模糊查询</strong><br>
-使用：<br>
-通配符% 后面零个或者多个字符<br>
-_代表一个字符</p>
-<p>查询工资以1开头的员工信息<br>
-hive&gt; select * from emptable where sal like ‘1%’;</p>
-<p>查询工资地第二位是1的员工信息<br>
-hive&gt; select * from emptable where sal like ‘_1%’;</p>
-<p>_代表一个字符<br>
-查询工资中有5的员工信息<br>
-hive&gt; select * from emptable where sal like ‘%5%’;</p>
-<h4 id="14）And-Not-Or">14）And/Not/Or</h4>
-<p>查询部门号30并且工资大于1000的员工信息<br>
-hive&gt; select * from emptable where sal&gt;1000 and deptno=30;</p>
-<p>查询部门号30或者工资大于1000的员工信息<br>
-hive&gt; select * from emptable where sal&gt;1000 or deptno=30;</p>
-<p>查询工资在2000和3000这两个数的员工信息<br>
-hive&gt; select * from emptable where sal in(2000,3000);</p>
-<p>查询工资不在2000和3000这两个数的员工信息<br>
-hive&gt; select * from emptable where sal not in(2000,3000);</p>
-<h4 id="15）分组操作">15）分组操作</h4>
-<p>Group By语句<br>
-通常和一些聚合函数一起使用</p>
-<p>求每个部门的平均工资<br>
-hive&gt; select avg(sal) avg_sal,deptno from emptable group by deptno;<br>
-having<br>
-where：后不可以与分组函数，而having可以</p>
-<p>求每个部门的平均工资大于2000的部门<br>
-hive&gt; select deptno,avg(sal) avg_sal from emptable group by deptno hav<br>
-ing avg_sal&gt;2000;</p>
-<h3 id="4、Join操作">4、Join操作</h3>
-<pre><code class="highlight plaintext">hive&gt; create table dept(deptno int, dname string, loc int)
+
+<h4 id="4）查询员工姓名和工资-每个员工加薪1000块"><a href="#4）查询员工姓名和工资-每个员工加薪1000块" class="headerlink" title="4）查询员工姓名和工资(每个员工加薪1000块)"></a>4）查询员工姓名和工资(每个员工加薪1000块)</h4><p>hive&gt; select emptable.ename,emptable.sal+1000 salmoney from emptable;</p>
+<h4 id="5）查看公司有多少员工"><a href="#5）查看公司有多少员工" class="headerlink" title="5）查看公司有多少员工"></a>5）查看公司有多少员工</h4><p>hive&gt; select count(1) empnumber from emptable;</p>
+<h4 id="6）查询工资最高的工资"><a href="#6）查询工资最高的工资" class="headerlink" title="6）查询工资最高的工资"></a>6）查询工资最高的工资</h4><p>hive&gt; select max(sal) numberone from emptable;</p>
+<h4 id="7）查询工资最小的工资"><a href="#7）查询工资最小的工资" class="headerlink" title="7）查询工资最小的工资"></a>7）查询工资最小的工资</h4><p>hive&gt; select min(sal) from emptable;</p>
+<h4 id="8）求工资的总和"><a href="#8）求工资的总和" class="headerlink" title="8）求工资的总和"></a>8）求工资的总和</h4><p>hive&gt; select sum(sal) sal_sum from emptable;</p>
+<h4 id="9）求该公司员工工资的平均值"><a href="#9）求该公司员工工资的平均值" class="headerlink" title="9）求该公司员工工资的平均值"></a>9）求该公司员工工资的平均值</h4><p>hive&gt; select avg(sal) sal_avg from emptable;</p>
+<h4 id="10）查询结果只显示前多少条"><a href="#10）查询结果只显示前多少条" class="headerlink" title="10）查询结果只显示前多少条"></a>10）查询结果只显示前多少条</h4><p>hive&gt; select * from emptable limit 4;</p>
+<h4 id="11）where语句"><a href="#11）where语句" class="headerlink" title="11）where语句"></a>11）where语句</h4><p>作用：过滤<br>使用：where子句紧接着from</p>
+<p>求出工资大于2600的员工<br>hive&gt; select * from emptable where sal&gt;2600;</p>
+<p>求出工资在1000~2500范围的员工<br>hive&gt; select * from emptable where sal&gt;1000 and sal&lt;2500;</p>
+<p>或者<br>hive&gt; select * from emptable where sal between 1000 and 2500;</p>
+<p><strong>查询工资在2000和3000这两个数的员工信息</strong><br>hive&gt; select ename from emptable where sal in(2000,3000);</p>
+<h4 id="12）is-null与is-not-null"><a href="#12）is-null与is-not-null" class="headerlink" title="12）is null与is not null"></a>12）is null与is not null</h4><p><strong>空与非空的过滤</strong><br>空<br>hive&gt; select * from emptable where comm is null;</p>
+<p>非空<br>hive&gt; select * from emptable where comm is not null;</p>
+<h4 id="13）like"><a href="#13）like" class="headerlink" title="13）like"></a>13）like</h4><p><strong>模糊查询</strong><br>使用：<br>通配符% 后面零个或者多个字符<br>_代表一个字符</p>
+<p>查询工资以1开头的员工信息<br>hive&gt; select * from emptable where sal like ‘1%’;</p>
+<p>查询工资地第二位是1的员工信息<br>hive&gt; select * from emptable where sal like ‘_1%’;</p>
+<p>_代表一个字符<br>查询工资中有5的员工信息<br>hive&gt; select * from emptable where sal like ‘%5%’;</p>
+<h4 id="14）And-Not-Or"><a href="#14）And-Not-Or" class="headerlink" title="14）And/Not/Or"></a>14）And/Not/Or</h4><p>查询部门号30并且工资大于1000的员工信息<br>hive&gt; select * from emptable where sal&gt;1000 and deptno=30;</p>
+<p>查询部门号30或者工资大于1000的员工信息<br>hive&gt; select * from emptable where sal&gt;1000 or deptno=30;</p>
+<p>查询工资在2000和3000这两个数的员工信息<br>hive&gt; select * from emptable where sal in(2000,3000);</p>
+<p>查询工资不在2000和3000这两个数的员工信息<br>hive&gt; select * from emptable where sal not in(2000,3000);</p>
+<h4 id="15）分组操作"><a href="#15）分组操作" class="headerlink" title="15）分组操作"></a>15）分组操作</h4><p>Group By语句<br>通常和一些聚合函数一起使用 </p>
+<p>求每个部门的平均工资<br>hive&gt; select avg(sal) avg_sal,deptno from emptable group by deptno;<br>having<br>where：后不可以与分组函数，而having可以</p>
+<p>求每个部门的平均工资大于2000的部门<br>hive&gt; select deptno,avg(sal) avg_sal from emptable group by deptno hav<br>ing avg_sal&gt;2000;</p>
+<h3 id="4、Join操作"><a href="#4、Join操作" class="headerlink" title="4、Join操作"></a>4、Join操作</h3><pre><code class="highlight plaintext">hive&gt; create table dept(deptno int, dname string, loc int)
       &gt; row format
       &gt; delimited fields
       &gt; terminated by '\t';</code></pre>
-<p>员工表中只有部门编号，并没有部门名称<br>
-部门表中有部门标号和部门名称</p>
-<p><strong>等值join</strong></p>
-<h4 id="1）查询员工编号、员工姓名、员工所在的部门名称">1）查询员工编号、员工姓名、员工所在的部门名称</h4>
-<p>hive&gt; select emptable.empno,emptable.ename,dept.dname from emptable join dept on emptable.deptno=dept.deptno;</p>
-<h4 id="2）查询员工编号、员工姓名、员工所在部门名称、部门所在地">2）查询员工编号、员工姓名、员工所在部门名称、部门所在地</h4>
-<p>内连接：只有连接的两张表中都存在与条件向匹配的数据才会被保留下来<br>
-hive&gt; select e.empno,e.ename,d.dname,d.loc from emptable e join dept d on e.deptno=d.deptno;</p>
-<h4 id="3）左外连接-left-join">3）左外连接(left join)</h4>
-<p>查询员工编号，员工姓名，部门名称<br>
-hive&gt; select e.empno,e.ename,d.deptname from emptable e left join dept d on e.deptno=d.deptno;<br>
-特点：默认用的Left join 可以省略left<br>
-保留左表数据，右表没有join上 显示为null</p>
-<h4 id="4）右外连接-right-join">4）右外连接(right join)</h4>
-<p>hive&gt; select e.empno,e.ename,d.dname from emptable e right join dept d on e.deptno=d.deptno;<br>
-特点：<br>
-保留右表数据，左表没有join上 显示为null</p>
-<h4 id="5）满外连接-full-join">5）满外连接(full join)</h4>
-<p>hive&gt; select e.empno,e.ename,d.dname from emptable e full join dept d on e.deptno=d.deptno;<br>
-特点：结果会返回所有表中符合条件的所有记录，如果有字段没有符合条件用null值代替</p>
-<h4 id="6）多表连接">6）多表连接</h4>
-<pre><code class="highlight plaintext">hive&gt; create table location(loc int, loc_name string)
+<p>员工表中只有部门编号，并没有部门名称<br>部门表中有部门标号和部门名称</p>
+<p><strong>等值join</strong> </p>
+<h4 id="1）查询员工编号、员工姓名、员工所在的部门名称"><a href="#1）查询员工编号、员工姓名、员工所在的部门名称" class="headerlink" title="1）查询员工编号、员工姓名、员工所在的部门名称"></a>1）查询员工编号、员工姓名、员工所在的部门名称</h4><p>hive&gt; select emptable.empno,emptable.ename,dept.dname from emptable join dept on emptable.deptno=dept.deptno;</p>
+<h4 id="2）查询员工编号、员工姓名、员工所在部门名称、部门所在地"><a href="#2）查询员工编号、员工姓名、员工所在部门名称、部门所在地" class="headerlink" title="2）查询员工编号、员工姓名、员工所在部门名称、部门所在地"></a>2）查询员工编号、员工姓名、员工所在部门名称、部门所在地</h4><p>内连接：只有连接的两张表中都存在与条件向匹配的数据才会被保留下来<br>hive&gt; select e.empno,e.ename,d.dname,d.loc from emptable e join dept d on e.deptno=d.deptno;</p>
+<h4 id="3）左外连接-left-join"><a href="#3）左外连接-left-join" class="headerlink" title="3）左外连接(left join)"></a>3）左外连接(left join)</h4><p>查询员工编号，员工姓名，部门名称<br>hive&gt; select e.empno,e.ename,d.deptname from emptable e left join dept d on e.deptno=d.deptno;<br>特点：默认用的Left join 可以省略left<br>保留左表数据，右表没有join上 显示为null</p>
+<h4 id="4）右外连接-right-join"><a href="#4）右外连接-right-join" class="headerlink" title="4）右外连接(right join)"></a>4）右外连接(right join)</h4><p>hive&gt; select e.empno,e.ename,d.dname from emptable e right join dept d on e.deptno=d.deptno;<br>特点：<br>保留右表数据，左表没有join上 显示为null</p>
+<h4 id="5）满外连接-full-join"><a href="#5）满外连接-full-join" class="headerlink" title="5）满外连接(full join)"></a>5）满外连接(full join)</h4><p>hive&gt; select e.empno,e.ename,d.dname from emptable e full join dept d on e.deptno=d.deptno;<br>特点：结果会返回所有表中符合条件的所有记录，如果有字段没有符合条件用null值代替</p>
+<h4 id="6）多表连接"><a href="#6）多表连接" class="headerlink" title="6）多表连接"></a>6）多表连接</h4><pre><code class="highlight plaintext">hive&gt; create table location(loc int, loc_name string)
       &gt; row format
       &gt; delimited fields
       &gt; terminated by '\t';</code></pre>
-<p><strong>加载数据</strong><br>
-hive&gt; load data local inpath ‘/root/location.txt’ into table location;</p>
-<p><strong>查询员工名、部门名称、地域名称</strong><br>
-hive&gt; select e.ename,d.dname,l.loc_name from emptable e join dept d on<br>
-e.deptno=d.deptno join location l on d.loc=l.loc;</p>
+
+<p><strong>加载数据</strong><br>hive&gt; load data local inpath ‘/root/location.txt’ into table location;</p>
+<p><strong>查询员工名、部门名称、地域名称</strong><br>hive&gt; select e.ename,d.dname,l.loc_name from emptable e join dept d on<br>e.deptno=d.deptno join location l on d.loc=l.loc;</p>
 
             </div>
             <hr/>
@@ -838,13 +753,8 @@ e.deptno=d.deptno join location l on d.loc=l.loc;</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、排序
-Order By:全局排序
-1）按照员工表的奖金金额进行正序排序
-select * from emptable order by emptable.comm asc;
-可以省略asc
-2）按照员工表的奖金金额进行倒序排序
-sele
+                            1、排序Order By:全局排序1）按照员工表的奖金金额进行正序排序select * from emptable order by emptable.comm asc;可以省略asc
+2）按照员工表的奖金金额进行倒序排序select * 
                         
                     </div>
                     <div class="publish-info">
@@ -897,9 +807,7 @@ sele
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hive
-官网：http://hive.apache.org/
-Apache Hive?数据仓库软件有助于使用SQL读取，编写和管理驻留在分布式存储中的大型数据集。可以将结构投影到已存储的数据中。提供了命令行工具和JDBC驱动程序以将用户连
+                            Hive官网：http://hive.apache.org/Apache Hive?数据仓库软件有助于使用SQL读取，编写和管理驻留在分布式存储中的大型数据集。可以将结构投影到已存储的数据中。提供了命令行工具和JDBC驱动程序以将用户连接到
                         
                     </div>
                     <div class="publish-info">
@@ -1113,7 +1021,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

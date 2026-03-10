@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -403,145 +403,43 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、IO概述">1、IO概述</h4>
-<p>Input ：将磁盘或硬盘、键盘等数据读入到内存的<br>
-Output：从内存输出到 磁盘、硬盘等<br>
-主要是以内存为基准</p>
-<h4 id="2、输入输出流分类">2、输入输出流分类</h4>
-<p>（1）字节流<br>
-1Byte =8 bit<br>
-1KB=1024B<br>
-1MB=1024KB<br>
-1GB=1024MB<br>
-1TB=1024GB<br>
-1PB=1024TB——-商业的存储空间 都是以 1000为单位<br>
-字节流可以处理所有数据类型的数据，在Java中 以 Stream结尾的</p>
-<p>（2）字符流<br>
-一个字符=2Byte<br>
-字符流对于处理文本数据有优势，在Java中 以 Reader 和 Writer结尾</p>
-<p>（3）IO包<br>
-<a target="_blank" rel="noopener" href="http://Java.IO">Java.IO</a>—HDFS 离线计算</p>
-<h4 id="3、File-类">3、File 类</h4>
-<p>文件和目录的抽象表示<br>
-（1）构造方法<br>
-File(String pathname)<br>
-pathname:<br>
-绝对路径：D:\TZ\Java黄埔9期\jdk+api+1.8_google<br>
-相对路径：day23 课程笔记.txt 相对我们的当前路径来说<br>
-./test/a.txt<br>
-File file=new File(pathname);<br>
-可以写文件目录 也可以写 具体文件</p>
-<p>（2）常用方法<br>
-boolean exists() 测试此抽象路径名表示的文件或目录是否存在<br>
-String getAbsolutePath() 返回此抽象路径名的绝对路径名字符串<br>
-boolean isDirectory() 测试此抽象路径名表示的文件是否为目录<br>
-boolean isFile() 测试此抽象路径名表示的文件是否为普通文件<br>
-File[] listFiles() 返回一个抽象路径名数组，表示由该抽象路径名表示的目录中的文件</p>
-<h4 id="4、FileInputStream–输入字节流">4、FileInputStream–输入字节流</h4>
-<p>FileInputStream用于读取诸如图像数据的原始字节流<br>
-public class FileInputStreamextends InputStream<br>
-（1）构造函数<br>
-FileInputStream(File file) 通过打开与实际文件的连接创建一个 FileInputStream ，<br>
-该文件由文件系统中的 File对象 file命名<br>
-File file=new File(“”);<br>
-FileInputStream fis=new FileInputStream(file);</p>
-<p>（2）主要方法<br>
-int read() 从该输入流读取一个字节的数据，，如果达到文件的末尾， -1<br>
-int read(byte[] b) 从该输入流读取最多 b.length个字节的数据为字节数组。 -1</p>
-<h4 id="5、FileOutputStream–输出字节流">5、FileOutputStream–输出字节流</h4>
-<p>把内存中的内容 输出到文件中去<br>
-文件输出流是用于将数据写入到输出流File<br>
-public class FileOutputStream extends OutputStream</p>
-<p>（1）构造函数<br>
-FileOutputStream(File file)<br>
-创建文件输出流以写入由指定的 File对象表示的文件。–默认 append 为 false 覆盖更新文件内容<br>
-FileOutputStream(File file, boolean append)<br>
-创建文件输出流以写入由指定的 File对象表示的文件。追加模式可以设置为true</p>
-<p>（2）主要函数<br>
-void write(int b)<br>
-将指定的字节写入此文件输出流</p>
-<p>void write(byte[] b)<br>
-将 b.length个字节从指定的字节数组写入此文件输出流</p>
-<p>void write(byte[] b, int off, int len)<br>
-将 len字节从位于偏移量 off的指定字节数组写入此文件输出流</p>
+                <h4 id="1、IO概述"><a href="#1、IO概述" class="headerlink" title="1、IO概述"></a>1、IO概述</h4><p>Input ：将磁盘或硬盘、键盘等数据读入到内存的<br>Output：从内存输出到 磁盘、硬盘等<br>主要是以内存为基准</p>
+<h4 id="2、输入输出流分类"><a href="#2、输入输出流分类" class="headerlink" title="2、输入输出流分类"></a>2、输入输出流分类</h4><p>（1）字节流<br>1Byte =8 bit<br>1KB=1024B<br>1MB=1024KB<br>1GB=1024MB<br>1TB=1024GB<br>1PB=1024TB——-商业的存储空间 都是以 1000为单位<br>字节流可以处理所有数据类型的数据，在Java中 以 Stream结尾的</p>
+<p>（2）字符流<br>一个字符=2Byte<br>字符流对于处理文本数据有优势，在Java中 以 Reader 和 Writer结尾</p>
+<p>（3）IO包<br>Java.IO—HDFS 离线计算</p>
+<h4 id="3、File-类"><a href="#3、File-类" class="headerlink" title="3、File 类"></a>3、File 类</h4><p>文件和目录的抽象表示<br>（1）构造方法<br>File(String pathname)<br>pathname:<br>绝对路径：D:\TZ\Java黄埔9期\jdk+api+1.8_google<br>相对路径：day23 课程笔记.txt 相对我们的当前路径来说<br>./test/a.txt<br>File file=new File(pathname);<br>可以写文件目录 也可以写 具体文件</p>
+<p>（2）常用方法<br>boolean exists() 测试此抽象路径名表示的文件或目录是否存在<br>String getAbsolutePath() 返回此抽象路径名的绝对路径名字符串<br>boolean isDirectory() 测试此抽象路径名表示的文件是否为目录<br>boolean isFile() 测试此抽象路径名表示的文件是否为普通文件<br>File[] listFiles() 返回一个抽象路径名数组，表示由该抽象路径名表示的目录中的文件</p>
+<h4 id="4、FileInputStream–输入字节流"><a href="#4、FileInputStream–输入字节流" class="headerlink" title="4、FileInputStream–输入字节流"></a>4、FileInputStream–输入字节流</h4><p>FileInputStream用于读取诸如图像数据的原始字节流<br>public class FileInputStreamextends InputStream<br>（1）构造函数<br>FileInputStream(File file) 通过打开与实际文件的连接创建一个 FileInputStream ，<br>该文件由文件系统中的 File对象 file命名<br>File file=new File(“”);<br>FileInputStream fis=new FileInputStream(file);</p>
+<p>（2）主要方法<br>int read() 从该输入流读取一个字节的数据，，如果达到文件的末尾， -1<br>int read(byte[] b) 从该输入流读取最多 b.length个字节的数据为字节数组。 -1</p>
+<h4 id="5、FileOutputStream–输出字节流"><a href="#5、FileOutputStream–输出字节流" class="headerlink" title="5、FileOutputStream–输出字节流"></a>5、FileOutputStream–输出字节流</h4><p>把内存中的内容 输出到文件中去<br>文件输出流是用于将数据写入到输出流File<br>public class FileOutputStream extends OutputStream</p>
+<p>（1）构造函数<br>FileOutputStream(File file)<br>创建文件输出流以写入由指定的 File对象表示的文件。–默认 append 为 false 覆盖更新文件内容<br>FileOutputStream(File file, boolean append)<br>创建文件输出流以写入由指定的 File对象表示的文件。追加模式可以设置为true</p>
+<p>（2）主要函数<br>void write(int b)<br>将指定的字节写入此文件输出流</p>
+<p>void write(byte[] b)<br>将 b.length个字节从指定的字节数组写入此文件输出流</p>
+<p>void write(byte[] b, int off, int len)<br>将 len字节从位于偏移量 off的指定字节数组写入此文件输出流</p>
 <p>void flush() 刷新此输出流并强制任何缓冲的输出字节被写出</p>
-<h4 id="6、FileReader–输入字符流">6、FileReader–输入字符流</h4>
-<p>（1）构造函数<br>
-FileReader(File file) 创建一个新的 FileReader ，给出 File读取</p>
-<p>（2）主要函数<br>
-public int read() 每次读取一个字符 -1表示到文件结尾；<br>
-public int read(char[] cbuf, int offset, int length)</p>
-<h4 id="7、FileWriter-输出字符流">7、FileWriter-输出字符流</h4>
-<p>（1）构造函数<br>
-FileWriter(File file) 给一个File对象构造一个FileWriter对象<br>
-FileWriter(File file, boolean append) 给一个File对象构造一个FileWriter对象</p>
-<p>（2）主要函数<br>
-public void write(char)<br>
-public void write(char[] cbuf,int off,int len)–写入字符数组<br>
-public void write(String str,int off,int len)–写入字符串</p>
-<h4 id="8、BufferdReader">8、BufferdReader</h4>
-<p>(1) InputStreamReader–字符输入流<br>
-字节流 转为字符流的桥梁<br>
-编码问题，可以指定编码。–utf-8 GBK<br>
-InputStreamReader(InputStream in)<br>
-创建一个使用默认字符集的InputStreamReader</p>
-<p>InputStreamReader(InputStream in, String charsetName)<br>
-创建一个使用命名字符集的InputStreamReader。</p>
-<p>int read() 读一个字符<br>
-int read(char[] cbuf, int offset, int length) 将字符读入数组的一部分</p>
-<p>（2）可以把字符流的效率提高，提供缓冲<br>
-可以使用 FIleReader、InputStreamReader等作为参数<br>
-实现字节流到字符流的缓冲<br>
-a、构造函数<br>
-BufferedReader(Reader in) 创建使用默认大小的输入缓冲区的缓冲字符输入流<br>
-BufferedReader(Reader in, int sz) 创建使用指定大小的输入缓冲区的缓冲字符输入流</p>
-<p>b、主要函数<br>
-int read() 读一个字符<br>
-int read(char[] cbuf, int off, int len) 将字符读入数组的一部分。<br>
-String readLine() 读一行文字 —特色</p>
-<h4 id="9、BufferedWriter">9、BufferedWriter</h4>
-<p>（1）OutputStreamWriter–指定字符集<br>
-将字节流转换为字符流的桥梁<br>
-OutputStreamWriter(OutputStream out, String charsetName)<br>
-创建一个使用命名字符集的OutputStreamWriter</p>
-<p>主要方法：<br>
-void write(char[] cbuf, int off, int len)<br>
-写入字符数组的一部分</p>
-<p>void write(int c)<br>
-写一个字符</p>
-<p>void write(String str, int off, int len)<br>
-写一个字符串的一部分</p>
-<p>（2）BufferedWriter<br>
-a、构造函数<br>
-BufferedWriter(Writer out)<br>
-创建使用默认大小的输出缓冲区的缓冲字符输出流</p>
-<p>BufferedWriter(Writer out, int sz)<br>
-创建一个新的缓冲字符输出流，使用给定大小的输出缓冲区</p>
-<p>b、主要方法<br>
-newLine()<br>
-写一行行分隔符</p>
-<p>void write(char[] cbuf, int off, int len)<br>
-写入字符数组的一部分</p>
-<p>void write(int c)<br>
-写一个字符</p>
-<p>void write(String s, int off, int len)<br>
-写一个字符串的一部分</p>
-<h4 id="10、序列化与反序列化">10、序列化与反序列化</h4>
-<p>序列化 就是把对象转换为字节序列的过程<br>
-反序列化 就是把字节恢复为对象的过程</p>
-<h4 id="11、ObjectOutputStream–序列化">11、ObjectOutputStream–序列化</h4>
-<p>（1）构造函数<br>
-ObjectOutputStream() 为完全重新实现ObjectOutputStream的子类提供一种方法，不必分配刚刚被ObjectOutputStream实现使用的私有数据</p>
-<p>ObjectOutputStream(OutputStream out)<br>
-创建一个写入指定的OutputStream的ObjectOutputStream</p>
-<p>（2）主要方法<br>
-void write(byte[] buf) 写入一个字节数组<br>
-void write(byte[] buf, int off, int len) 写入一个子字节数组<br>
-void write(int val) 写一个字节<br>
-void writeObject(Object obj)<br>
-将指定的对象写入ObjectOutputStream<br>
-把类进行序列化 需要首先实现 Serializable接口<br>
-加密传输数据的一种方式</p>
+<h4 id="6、FileReader–输入字符流"><a href="#6、FileReader–输入字符流" class="headerlink" title="6、FileReader–输入字符流"></a>6、FileReader–输入字符流</h4><p>（1）构造函数<br>FileReader(File file) 创建一个新的 FileReader ，给出 File读取</p>
+<p>（2）主要函数<br>public int read() 每次读取一个字符 -1表示到文件结尾；<br>public int read(char[] cbuf, int offset, int length)</p>
+<h4 id="7、FileWriter-输出字符流"><a href="#7、FileWriter-输出字符流" class="headerlink" title="7、FileWriter-输出字符流"></a>7、FileWriter-输出字符流</h4><p>（1）构造函数<br>FileWriter(File file) 给一个File对象构造一个FileWriter对象<br>FileWriter(File file, boolean append) 给一个File对象构造一个FileWriter对象</p>
+<p>（2）主要函数<br>public void write(char)<br>public void write(char[] cbuf,int off,int len)–写入字符数组<br>public void write(String str,int off,int len)–写入字符串</p>
+<h4 id="8、BufferdReader"><a href="#8、BufferdReader" class="headerlink" title="8、BufferdReader"></a>8、BufferdReader</h4><p>(1) InputStreamReader–字符输入流<br>字节流 转为字符流的桥梁<br>编码问题，可以指定编码。–utf-8 GBK<br>InputStreamReader(InputStream in)<br>创建一个使用默认字符集的InputStreamReader</p>
+<p>InputStreamReader(InputStream in, String charsetName)<br>创建一个使用命名字符集的InputStreamReader。</p>
+<p>int read() 读一个字符<br>int read(char[] cbuf, int offset, int length) 将字符读入数组的一部分</p>
+<p>（2）可以把字符流的效率提高，提供缓冲<br>可以使用 FIleReader、InputStreamReader等作为参数<br>实现字节流到字符流的缓冲<br>a、构造函数<br>BufferedReader(Reader in) 创建使用默认大小的输入缓冲区的缓冲字符输入流<br>BufferedReader(Reader in, int sz) 创建使用指定大小的输入缓冲区的缓冲字符输入流</p>
+<p>b、主要函数<br>int read() 读一个字符<br>int read(char[] cbuf, int off, int len) 将字符读入数组的一部分。<br>String readLine() 读一行文字 —特色</p>
+<h4 id="9、BufferedWriter"><a href="#9、BufferedWriter" class="headerlink" title="9、BufferedWriter"></a>9、BufferedWriter</h4><p>（1）OutputStreamWriter–指定字符集<br>将字节流转换为字符流的桥梁<br>OutputStreamWriter(OutputStream out, String charsetName)<br>创建一个使用命名字符集的OutputStreamWriter</p>
+<p>主要方法：<br>void write(char[] cbuf, int off, int len)<br>写入字符数组的一部分</p>
+<p>void write(int c)<br>写一个字符</p>
+<p>void write(String str, int off, int len)<br>写一个字符串的一部分</p>
+<p>（2）BufferedWriter<br>a、构造函数<br>BufferedWriter(Writer out)<br>创建使用默认大小的输出缓冲区的缓冲字符输出流</p>
+<p>BufferedWriter(Writer out, int sz)<br>创建一个新的缓冲字符输出流，使用给定大小的输出缓冲区</p>
+<p>b、主要方法<br>newLine()<br>写一行行分隔符</p>
+<p>void write(char[] cbuf, int off, int len)<br>写入字符数组的一部分</p>
+<p>void write(int c)<br>写一个字符</p>
+<p>void write(String s, int off, int len)<br>写一个字符串的一部分</p>
+<h4 id="10、序列化与反序列化"><a href="#10、序列化与反序列化" class="headerlink" title="10、序列化与反序列化"></a>10、序列化与反序列化</h4><p>序列化 就是把对象转换为字节序列的过程<br>反序列化 就是把字节恢复为对象的过程</p>
+<h4 id="11、ObjectOutputStream–序列化"><a href="#11、ObjectOutputStream–序列化" class="headerlink" title="11、ObjectOutputStream–序列化"></a>11、ObjectOutputStream–序列化</h4><p>（1）构造函数<br>ObjectOutputStream() 为完全重新实现ObjectOutputStream的子类提供一种方法，不必分配刚刚被ObjectOutputStream实现使用的私有数据</p>
+<p>ObjectOutputStream(OutputStream out)<br>创建一个写入指定的OutputStream的ObjectOutputStream</p>
+<p>（2）主要方法<br>void write(byte[] buf) 写入一个字节数组<br>void write(byte[] buf, int off, int len) 写入一个子字节数组<br>void write(int val) 写一个字节<br>void writeObject(Object obj)<br>将指定的对象写入ObjectOutputStream<br>把类进行序列化 需要首先实现 Serializable接口<br>加密传输数据的一种方式</p>
 
             </div>
             <hr/>
@@ -788,12 +686,8 @@ void writeObject(Object obj)<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、ObjectInputStream
-反序列化
-（1）构造函数
-ObjectInputStream(InputStream in) 创建从指定的InputStream读取的ObjectInputStream
-（2）主要方法
-Object 
+                            1、ObjectInputStream反序列化（1）构造函数ObjectInputStream(InputStream in) 创建从指定的InputStream读取的ObjectInputStream
+（2）主要方法Object read
                         
                     </div>
                     <div class="publish-info">
@@ -843,13 +737,7 @@ Object
                     <div class="summary block-with-text">
                         
                             Java异常
-1、异常概述
-（1）异常分为：编译时异常 运行时异常
-（2）编译时异常：Javac IDE（，‘’），一般是指的 语法错误，比较容易修正
-（3）运行时的异常：运行错误和逻辑错误
-1/0;
-（4）不正常的事件
-异常的类，创建对象
+1、异常概述（1）异常分为：编译时异常 运行时异常（2）编译时异常：Javac IDE（，‘’），一般是指的 语法错误，比较容易修正（3）运行时的异常：运行错误和逻辑错误1/0;（4）不正常的事件异常的类，创建对象NullPo
                         
                     </div>
                     <div class="publish-info">
@@ -1059,7 +947,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

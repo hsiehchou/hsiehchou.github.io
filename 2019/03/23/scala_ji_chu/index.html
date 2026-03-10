@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,14 +384,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.6k
+                    6.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    32 分
+                    31 分
                 </div>
                 
 
@@ -407,73 +407,39 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>1、Scala编程语言<br>
-2、Spark Core ： Spark内核 ，最重要的一个部分<br>
-3、Spark SQL : 类似于 Hive 和Pig。数据分析引擎。sql语句提交到Spark集群中运行<br>
-4、Spark Streaming ：类似于 Storm，用于流式计算、实时计算。本质：一个离线计算</p>
-<h3 id="一、Scala基础">一、Scala基础</h3>
-<h4 id="1、Scala简介">1、Scala简介</h4>
-<p>1）Scala是一个多范式的编程语言（支持多种方式的编程）<br>
-（1）使用面向对象编程：封装、继承、多态<br>
-（2）使用函数式编程：最大的特定<br>
-优点：代码非常简洁<br>
-缺点：可读性太差，尤其是隐式类、隐式函数、隐式参数</p>
-<p>2）安装和配置Scala<br>
-（1）基于JDK，先安装JDK<br>
-（2）Scala：2.11.8（Spark 2.1.0）<br>
-（3）配置环境变量：SCALA_HOME<br>
-（4）%SCALA_HOME%\bin 配置到path中<br>
-下载地址：<a target="_blank" rel="noopener" href="https://www.scala-lang.org">https://www.scala-lang.org</a><br>
-文档地址：<a target="_blank" rel="noopener" href="https://www.scala-lang.org/api/2.11.8/#scala.math.package">https://www.scala-lang.org/api/2.11.8/#scala.math.package</a></p>
-<p>3）开发环境<br>
-REPL命令行<br>
-IDEA ： 需要安装Scala插件</p>
-<h4 id="2、Scala中的数据类型和变量常量">2、Scala中的数据类型和变量常量</h4>
-<p>1）注意一点：Scala中所有的数据，都是对象<br>
-举例：1 Java int 。在Scala中，1 就是一个对象</p>
-<p>2）基本数据类型<br>
-Byte ：8位有符号数字<br>
-Short ：16位有符号数字<br>
-Int ：32位有符号数字<br>
-Long ： 64位有符号数字<br>
-Float ：32位有符号数字<br>
-Double ：64位有符号数字<br>
-Char ：8位有符号数字<br>
-Boolean ： 1位有符号数字</p>
-<p>字符串类型<br>
-String</p>
-<p>字符<br>
-Char ：8位有符号数字</p>
+                <p>1、Scala编程语言<br>2、Spark Core ： Spark内核 ，最重要的一个部分<br>3、Spark SQL : 类似于 Hive 和Pig。数据分析引擎。sql语句提交到Spark集群中运行<br>4、Spark Streaming ：类似于 Storm，用于流式计算、实时计算。本质：一个离线计算</p>
+<h3 id="一、Scala基础"><a href="#一、Scala基础" class="headerlink" title="一、Scala基础"></a>一、Scala基础</h3><h4 id="1、Scala简介"><a href="#1、Scala简介" class="headerlink" title="1、Scala简介"></a>1、Scala简介</h4><p>1）Scala是一个多范式的编程语言（支持多种方式的编程）<br>（1）使用面向对象编程：封装、继承、多态<br>（2）使用函数式编程：最大的特定<br>优点：代码非常简洁<br>缺点：可读性太差，尤其是隐式类、隐式函数、隐式参数</p>
+<p>2）安装和配置Scala<br>（1）基于JDK，先安装JDK<br>（2）Scala：2.11.8（Spark 2.1.0）<br>（3）配置环境变量：SCALA_HOME<br>（4）%SCALA_HOME%\bin 配置到path中<br>下载地址：<a target="_blank" rel="noopener" href="https://www.scala-lang.org/">https://www.scala-lang.org</a><br>文档地址：<a target="_blank" rel="noopener" href="https://www.scala-lang.org/api/2.11.8/#scala.math.package">https://www.scala-lang.org/api/2.11.8/#scala.math.package</a></p>
+<p>3）开发环境<br>REPL命令行<br>IDEA ： 需要安装Scala插件</p>
+<h4 id="2、Scala中的数据类型和变量常量"><a href="#2、Scala中的数据类型和变量常量" class="headerlink" title="2、Scala中的数据类型和变量常量"></a>2、Scala中的数据类型和变量常量</h4><p>1）注意一点：Scala中所有的数据，都是对象<br>举例：1 Java int 。在Scala中，1 就是一个对象</p>
+<p>2）基本数据类型<br>Byte ：8位有符号数字<br>Short ：16位有符号数字<br>Int ：32位有符号数字<br>Long ： 64位有符号数字<br>Float ：32位有符号数字<br>Double ：64位有符号数字<br>Char ：8位有符号数字<br>Boolean ： 1位有符号数字</p>
+<p>字符串类型<br>String </p>
+<p>字符<br>Char ：8位有符号数字</p>
 <p>Scala中字符串的插值操作：就是相当于字符串的拼接</p>
 <pre><code class="highlight plaintext">scala&gt; var s1 : String = "Hello "
 s1: String = "Hello "
 
 scala&gt; "My name is Tom and ${s1}"
 res1: String = My name is Tom and ${s1}</code></pre>
+
 <p>插值操作时，需要加入 s</p>
 <pre><code class="highlight plaintext">scala&gt; s"My name is Tom and ${s1}"
 res2: String = "My name is Tom and Hello "</code></pre>
+
 <p>3）变量var和常量val</p>
-<p>scala&gt; val s2 :String = “Hello all”<br>
-s2: String = Hello all</p>
-<p>scala&gt; s2 = “Hello everyone”<br>
-<console>:12: error: reassignment to val<br>
-s2 = “Hello everyone”</console></p>
-<p>4）Unit类型和Nothing类型<br>
-（1）Unit类型，就是java中的void，没有返回值</p>
+<p>scala&gt; val s2 :String = “Hello all”<br>s2: String = Hello all</p>
+<p>scala&gt; s2 = “Hello everyone”<br><console>:12: error: reassignment to val<br>   s2 = “Hello everyone”</console></p>
+<p>4）Unit类型和Nothing类型<br>（1）Unit类型，就是java中的void，没有返回值</p>
 <pre><code class="highlight plaintext">scala&gt; val f = ()
 f: Unit = ()</code></pre>
-<p>返回值 Unit类型<br>
-( ) 代表了一个函数，这个函数没有返回值</p>
-<p>（2）Nothing类型，在执行过程中，产生了异常Exception<br>
-举例：<br>
-scala函数：scala中函数非常重要，是scala的头等公民<br>
-用法很多：函数式编程、高阶函数</p>
+
+<p>返回值 Unit类型<br>( ) 代表了一个函数，这个函数没有返回值</p>
+<p>（2）Nothing类型，在执行过程中，产生了异常Exception<br>举例：<br>scala函数：scala中函数非常重要，是scala的头等公民<br>用法很多：函数式编程、高阶函数</p>
 <p>def myFunction = 函数的实现</p>
 <pre><code class="highlight plaintext">scala&gt; def myFun = throw new Exception("Some Error")
 myFun: Nothing</code></pre>
-<h4 id="3、函数（头等公民）">3、函数（头等公民）</h4>
-<p>（1）scala内置函数，可以直接使用的函数</p>
+
+<h4 id="3、函数（头等公民）"><a href="#3、函数（头等公民）" class="headerlink" title="3、函数（头等公民）"></a>3、函数（头等公民）</h4><p>（1）scala内置函数，可以直接使用的函数</p>
 <pre><code class="highlight plaintext">scala&gt; max(1,2)
 &lt;console&gt;:12: error: not found: value max
        max(1,2)
@@ -484,25 +450,21 @@ scala&gt; import scala.math
 
 scala&gt; import scala.math._
 import scala.math._</code></pre>
+
 <p>_ 就相当于Java中的 * 代表包内所有东西</p>
 <pre><code class="highlight plaintext">scala&gt; max(1,2)
 res4: Int = 2</code></pre>
-<p>res4: Int = 2<br>
-定义了一个变量 res4 ，接收了 max 函数的返回值。Scala中支持类型的推导。<br>
-res4 = “”</p>
-<p>（2） 自定义函数<br>
-语法：<br>
-def 函数名称（[参数名称：参数类型]*） : 返回值类型 = {<br>
-函数的实现<br>
-}</p>
-<p>举例：<br>
-1）求和</p>
+
+<p>res4: Int = 2<br>定义了一个变量 res4 ，接收了 max 函数的返回值。Scala中支持类型的推导。<br>res4 = “”</p>
+<p>（2） 自定义函数<br>语法：<br>def 函数名称（[参数名称：参数类型]*） : 返回值类型 = {<br>函数的实现<br>}</p>
+<p>举例：<br>1）求和</p>
 <pre><code class="highlight plaintext">scala&gt; def sum(x:Int,y:Int):Int = x + y
 sum: (x: Int, y: Int)Int
 
 scala&gt; sum(1,2)
 res5: Int = 3</code></pre>
-<p>2）求阶乘，5！= 5 * 4* 3 2 1</p>
+
+<p>2）求阶乘，5！= 5 * 4* 3 2 1 </p>
 <p><strong>递归</strong></p>
 <pre><code class="highlight plaintext">scala&gt; def myFactor(x:Int):Int = {
      | if(x&lt;=1)
@@ -514,12 +476,9 @@ myFactor: (x: Int)Int
 
 scala&gt; myFactor(5)
 res6: Int = 120</code></pre>
-<p>注意：没有return语句<br>
-函数的最后一句话，就是函数的返回值</p>
-<p>3）求输入的年份是否是闰年<br>
-闰年：<br>
-普通闰年：可以被4整除但是不能被100整除的年份<br>
-世纪闰年：可以被400整除的年份</p>
+
+<p>注意：没有return语句<br>函数的最后一句话，就是函数的返回值</p>
+<p>3）求输入的年份是否是闰年<br>闰年：<br>普通闰年：可以被4整除但是不能被100整除的年份<br>世纪闰年：可以被400整除的年份</p>
 <pre><code class="highlight plaintext">scala&gt; def isLeapYear(x:Int) = {
      | if(( x%4 == 0 &amp;&amp; x%100 != 0) || (x%400==0)) true
      | else false
@@ -531,11 +490,10 @@ res7: Boolean = false
 
 scala&gt; isLeapYear(2008)
 res8: Boolean = true</code></pre>
+
 <p><strong>注意</strong></p>
-<p>1、( x%4 == 0 &amp;&amp; x%100 != 0) || (x%400==0)<br>
-2、函数定义的时候，可以不写返回值，因为scala支持类型推导</p>
-<h4 id="4、循环语句">4、循环语句</h4>
-<p>1）类似于Java的用法 while dowhile for</p>
+<p>1、( x%4 == 0 &amp;&amp; x%100 != 0) || (x%400==0)<br>2、函数定义的时候，可以不写返回值，因为scala支持类型推导</p>
+<h4 id="4、循环语句"><a href="#4、循环语句" class="headerlink" title="4、循环语句"></a>4、循环语句</h4><p>1）类似于Java的用法 while dowhile for</p>
 <pre><code class="highlight plaintext">/**
       * for循环
       *
@@ -596,6 +554,7 @@ res8: Boolean = true</code></pre>
       println(list(j))
       j += 1
     }while( j &lt; list.length)</code></pre>
+
 <p>2）foreach循环（Spark算子）</p>
 <pre><code class="highlight plaintext">println("------------foreach循环-------------")
   /**
@@ -687,12 +646,8 @@ res8: Boolean = true</code></pre>
   }
   println("---------排序后---------------")
   a.foreach(println)</code></pre>
-<h4 id="5、Scala的函数参数">5、Scala的函数参数</h4>
-<p>1）函数参数的求值策略<br>
-（1）call by value :<br>
-对函数的实参求值，并且只求一次</p>
-<p>（2）call by name : =&gt;<br>
-函数实参在函数体内部用到的时候，才会被求值</p>
+<h4 id="5、Scala的函数参数"><a href="#5、Scala的函数参数" class="headerlink" title="5、Scala的函数参数"></a>5、Scala的函数参数</h4><p>1）函数参数的求值策略<br>（1）call by value :<br>对函数的实参求值，并且只求一次</p>
+<p>（2）call by name : =&gt;<br>函数实参在函数体内部用到的时候，才会被求值</p>
 <p>举例：</p>
 <pre><code class="highlight plaintext">scala&gt; def test1(x:Int,y:Int) = x + x
 test1: (x: Int, y: Int)Int
@@ -705,17 +660,11 @@ test2: (x: =&gt; Int, y: =&gt; Int)Int
 
 scala&gt; test2(3+4,8)
 res10: Int = 14</code></pre>
-<p>执行过程对比：<br>
-test1 —&gt; test1(3+4,8) —&gt; test1(7,8) —&gt; 7+7 —&gt; 14<br>
-test2 —&gt; test2(3+4,8) —&gt; (3+4) + (3+4) —&gt; 14</p>
-<p>（3）复杂的例子<br>
-def bar(x:Int,y : =&gt; Int) : Int = 1<br>
-x 是 value y 是 name</p>
-<p>定义一个死循环：<br>
-def loop() : Int = loop</p>
-<p>调用bar函数的时候：<br>
-1、bar(1,loop)<br>
-2、bar(loop,1)–&gt;产生死循环</p>
+
+<p>执行过程对比：<br>test1 —&gt; test1(3+4,8) —&gt; test1(7,8) —&gt; 7+7 —&gt; 14<br>test2 —&gt; test2(3+4,8) —&gt; (3+4) + (3+4) —&gt; 14</p>
+<p>（3）复杂的例子<br>def bar(x:Int,y : =&gt; Int) : Int = 1<br>x 是 value y 是 name</p>
+<p>定义一个死循环：<br>def loop() : Int = loop</p>
+<p>调用bar函数的时候：<br>1、bar(1,loop)<br>2、bar(loop,1)–&gt;产生死循环</p>
 <p>哪个方式会产生死循环？</p>
 <pre><code class="highlight plaintext">scala&gt; def bar(x:Int,y : =&gt; Int) : Int = 1
 bar: (x: Int, y: =&gt; Int)Int
@@ -727,12 +676,10 @@ scala&gt; bar(1,loop)
 res11: Int = 1
 
 scala&gt; bar(loop,1)</code></pre>
+
 <p><strong>解析</strong></p>
-<p>1、虽然 y 是 name, 每次调用的时候会被求值。但是，函数体内，没有调用到y.<br>
-2、x 是 value，对函数参数求值，并且只求一次。虽然后面没有用到x，但求值时产生了死循环</p>
-<p>2、Scala中函数参数的类型<br>
-（1）默认参数<br>
-当你没有给参数值赋值的时候，就会使用默认值</p>
+<p>1、虽然 y 是 name, 每次调用的时候会被求值。但是，函数体内，没有调用到y.<br>2、x 是 value，对函数参数求值，并且只求一次。虽然后面没有用到x，但求值时产生了死循环</p>
+<p>2、Scala中函数参数的类型<br>（1）默认参数<br>当你没有给参数值赋值的时候，就会使用默认值</p>
 <pre><code class="highlight plaintext">def fun1(name:String="Ti") :String = "Hello " + name
 
 scala&gt; def fun1(name:String="Ti") :String = "Hello " + name
@@ -743,8 +690,8 @@ res0: String = Hello An
 
 scala&gt; fun1()
 res1: String = Hello Ti</code></pre>
-<p>（2）代名参数<br>
-当有多个默认参数的时候，通过代名参数可以确定给哪个函数参数赋值。</p>
+
+<p>（2）代名参数<br>当有多个默认参数的时候，通过代名参数可以确定给哪个函数参数赋值。</p>
 <pre><code class="highlight plaintext">def fun2(str:String = "Hello " , name:String = " Ti " ,age:Int = 20) = str + name + " age is " +age
 
 scala&gt; def fun2(str:String = "Hello " , name:String = " Ti " ,age:Int = 20) = str + name + " age is " +age
@@ -758,8 +705,8 @@ res3: String = An Ti  age is 20
 
 scala&gt; fun2(name="An")
 res4: String = Hello An age is 20</code></pre>
-<p>（3）可变参数<br>
-类似于Java中的可变参数，即 参数数量不固定</p>
+
+<p>（3）可变参数<br>类似于Java中的可变参数，即 参数数量不固定</p>
 <pre><code class="highlight plaintext">scala&gt; def sum(args:Int*)= {
  | var result = 0
  | for(s&lt;-args) result +=s
@@ -772,51 +719,22 @@ res5: Int = 10
 
 scala&gt; sum(1,2,3,4,3,4)
 res6: Int = 17</code></pre>
-<h4 id="6、懒值（lazy）">6、懒值（lazy）</h4>
-<p>铺垫：Spark的核心是 RDD（数据集合），操作数据集合的数据，使用算子来操作RDD（函数、方法）</p>
-<p>算子：<br>
-Transformation ： 延时加载，不会触发计算<br>
-Action ： 会立刻触发计算</p>
-<p>定义：常量如果是lazy的，他的初始化会被延迟，推迟到第一次使用该常量的时候<br>
-举例：<br>
-scala&gt; var x : Int = 10<br>
-x: Int = 10</p>
-<p>scala&gt; val y : Int = x+1<br>
-y: Int = 11</p>
+
+<h4 id="6、懒值（lazy）"><a href="#6、懒值（lazy）" class="headerlink" title="6、懒值（lazy）"></a>6、懒值（lazy）</h4><p>铺垫：Spark的核心是 RDD（数据集合），操作数据集合的数据，使用算子来操作RDD（函数、方法）</p>
+<p>算子：<br>Transformation ： 延时加载，不会触发计算<br>Action ： 会立刻触发计算</p>
+<p>定义：常量如果是lazy的，他的初始化会被延迟，推迟到第一次使用该常量的时候<br>举例：<br>scala&gt; var x : Int = 10<br>x: Int = 10</p>
+<p>scala&gt; val y : Int = x+1<br>y: Int = 11</p>
 <p>y 的值是x+1 定义后会立即进行计算</p>
 <pre><code class="highlight plaintext">scala&gt; lazy val z : Int = x+1
 z: Int = &lt;lazy&gt;</code></pre>
-<p>z的初始化会被延迟<br>
-scala&gt; z<br>
-res0: Int = 11</p>
+
+<p>z的初始化会被延迟<br>scala&gt; z<br>res0: Int = 11</p>
 <p>当我们第一次使用z的时候，才会触发计算</p>
-<p>读文件：<br>
-scala&gt; val words = scala.io.Source.fromFile(“E:\student.txt”).mkString<br>
-words: String =<br>
-1 Tom 12<br>
-2 Mary 13<br>
-3 Lily 15</p>
-<p>scala&gt; lazy val words = scala.io.Source.fromFile(“E:\student.txt”).mkString<br>
-words: String = <code>&lt;lazy&gt;</code><br>
-scala&gt; words<br>
-res1: String =<br>
-1 Tom 12<br>
-2 Mary 13<br>
-3 Lily 15</p>
-<p>scala&gt; lazy val words = scala.io.Source.fromFile(“E:\student121.txt”).mkString<br>
-words: String = <code>&lt;lazy&gt;</code></p>
-<p>定义成lazy后，初始化被延迟，所以不会抛异常<br>
-scala&gt; val words = scala.io.Source.fromFile(“E:\student121.txt”).mkString<br>
-java.io.FileNotFoundException: E:\student121.txt (系统找不到指定的文件。)<br>
-at java.io.FileInputStream.open0(Native Method)<br>
-at java.io.FileInputStream.open(FileInputStream.java:195)<br>
-at java.io.FileInputStream.(FileInputStream.java:138)<br>
-at scala.io.Source.fromFile(Source.scala:76)<br>
-at scala.io.Source$.fromFile(Source.scala:54)<br>
-… 32 elided</p>
-<h4 id="7、例外：Exception">7、例外：Exception</h4>
-<p>类似于Java，还是有一些变化<br>
-文件操作</p>
+<p>读文件：<br>scala&gt; val words = scala.io.Source.fromFile(“E:\student.txt”).mkString<br>words: String =<br>1 Tom 12<br>2 Mary 13<br>3 Lily 15</p>
+<p>scala&gt; lazy val words = scala.io.Source.fromFile(“E:\student.txt”).mkString<br>words: String = <code>&lt;lazy&gt;</code><br>scala&gt; words<br>res1: String =<br>1 Tom 12<br>2 Mary 13<br>3 Lily 15</p>
+<p>scala&gt; lazy val words = scala.io.Source.fromFile(“E:\student121.txt”).mkString<br>words: String = <code>&lt;lazy&gt;</code></p>
+<p>定义成lazy后，初始化被延迟，所以不会抛异常<br>scala&gt; val words = scala.io.Source.fromFile(“E:\student121.txt”).mkString<br>java.io.FileNotFoundException: E:\student121.txt (系统找不到指定的文件。)<br>at java.io.FileInputStream.open0(Native Method)<br>at java.io.FileInputStream.open(FileInputStream.java:195)<br>at java.io.FileInputStream.(FileInputStream.java:138)<br>at scala.io.Source.fromFile(Source.scala:76)<br>at scala.io.Source$.fromFile(Source.scala:54)<br>… 32 elided</p>
+<h4 id="7、例外：Exception"><a href="#7、例外：Exception" class="headerlink" title="7、例外：Exception"></a>7、例外：Exception</h4><p>类似于Java，还是有一些变化<br>文件操作</p>
 <pre><code class="highlight plaintext">scala&gt; var words = scala.io.Source.fromFile("E:\\server.xml").mkString
 words: String =
 "&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -876,13 +794,12 @@ java.io.FileNotFoundException: E:\\212.txt(系统找不到指定的文件。)
   * scala&gt; def fun1() = throw new Exception("Exception")
   *  fun1: ()Nothing
   */</code></pre>
-<h4 id="8、数组">8、数组</h4>
-<p>1）数组的类型<br>
-（1）定长数组：Array</p>
+<h4 id="8、数组"><a href="#8、数组" class="headerlink" title="8、数组"></a>8、数组</h4><p>1）数组的类型<br>（1）定长数组：Array</p>
 <pre><code class="highlight plaintext">scala&gt; val a = new Array[Int](10)   -----&gt;  (10) 就是数组的长度
 a: Array[Int] = Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 scala&gt; val a = new Array[String](10)
 a: Array[String] = Array(null, null, null, null, null, null, null, null, null, null)</code></pre>
+
 <p><strong>初始化赋给默认值</strong></p>
 <pre><code class="highlight plaintext">scala&gt; val c : Array[String] = Array("Tom","Lily")
 c: Array[String] = Array(Tom, Lily)
@@ -898,47 +815,15 @@ scala&gt; val c : Array[String] = Array("Tom","Lily",1)
 &lt;console&gt;:11: error: not found: value ArrayBuffer
        val d = ArrayBuffer[Int]()
        ^</code></pre>
-<p>scala&gt; import scala.collection.mutable._<br>
-import scala.collection.mutable._</p>
+<p>scala&gt; import scala.collection.mutable._<br>import scala.collection.mutable._</p>
 <p><strong>mutable（可变的）</strong></p>
-<p>scala&gt; val d = ArrayBufferInt<br>
-d: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer()</p>
-<p>scala&gt; d += 1<br>
-res2: d.type = ArrayBuffer(1)</p>
-<p>scala&gt; d += 2<br>
-res3: d.type = ArrayBuffer(1, 2)</p>
-<p>scala&gt; d += (1,2,3,4)<br>
-res4: d.type = ArrayBuffer(1, 2, 1, 2, 3, 4)</p>
-<p>scala&gt; d.<br>
-++ combinations groupBy mapResult reverse to<br>
-++: companion grouped max reverseIterator toArray<br>
-++= compose hasDefiniteSize maxBy reverseMap toBuffer<br>
-++=: contains hashCode min runWith toIndexedSeq<br>
-+: containsSlice head minBy sameElements toIterable<br>
-+= copyToArray headOption mkString scan toIterator<br>
-+=: copyToBuffer indexOf nonEmpty scanLeft toList</p>
+<p>scala&gt; val d = ArrayBufferInt<br>d: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer()</p>
+<p>scala&gt; d += 1<br>res2: d.type = ArrayBuffer(1)</p>
+<p>scala&gt; d += 2<br>res3: d.type = ArrayBuffer(1, 2)</p>
+<p>scala&gt; d += (1,2,3,4)<br>res4: d.type = ArrayBuffer(1, 2, 1, 2, 3, 4)</p>
+<p>scala&gt; d.<br>++ combinations groupBy mapResult reverse to<br>++: companion grouped max reverseIterator toArray<br>++= compose hasDefiniteSize maxBy reverseMap toBuffer<br>++=: contains hashCode min runWith toIndexedSeq<br>+: containsSlice head minBy sameElements toIterable<br>+= copyToArray headOption mkString scan toIterator<br>+=: copyToBuffer indexOf nonEmpty scanLeft toList </p>
 <ul>
-<li>corresponds indexOfSlice orElse scanRight toMap<br>
-– count indexWhere padTo segmentLength toSeq<br>
-–= diff indices par seq toSet<br>
--= distinct init partition size toStream<br>
-/: drop inits patch sizeHint toString<br>
-:+ dropRight insert permutations sizeHintBounded toTraversable<br>
-:\ dropWhile insertAll prefixLength slice toVector<br>
-&lt;&lt; endsWith intersect prepend sliding transform<br>
-WithFilter equals isDefinedAt prependAll sortBy transpose<br>
-addString exists isEmpty product sortWith trimEnd<br>
-aggregate filter isTraversableAgain readOnly sorted trimStart<br>
-andThen filterNot iterator reduce span union<br>
-append find last reduceLeft splitAt unzip<br>
-appendAll flatMap lastIndexOf reduceLeftOption startsWith unzip3<br>
-apply flatten lastIndexOfSlice reduceOption stringPrefix update<br>
-applyOrElse fold lastIndexWhere reduceRight sum updated<br>
-canEqual foldLeft lastOption reduceRightOption tail view<br>
-clear foldRight length reduceToSize tails withFilter<br>
-clone forall lengthCompare remove take zip<br>
-collect foreach lift repr takeRight zipAll<br>
-collectFirst genericBuilder map result takeWhile zipWithIndex</li>
+<li>corresponds indexOfSlice orElse scanRight toMap<br>– count indexWhere padTo segmentLength toSeq<br>–= diff indices par seq toSet<br>-= distinct init partition size toStream<br>/: drop inits patch sizeHint toString<br>:+ dropRight insert permutations sizeHintBounded toTraversable<br>:\ dropWhile insertAll prefixLength slice toVector<br>&lt;&lt; endsWith intersect prepend sliding transform<br>WithFilter equals isDefinedAt prependAll sortBy transpose<br>addString exists isEmpty product sortWith trimEnd<br>aggregate filter isTraversableAgain readOnly sorted trimStart<br>andThen filterNot iterator reduce span union<br>append find last reduceLeft splitAt unzip<br>appendAll flatMap lastIndexOf reduceLeftOption startsWith unzip3<br>apply flatten lastIndexOfSlice reduceOption stringPrefix update<br>applyOrElse fold lastIndexWhere reduceRight sum updated<br>canEqual foldLeft lastOption reduceRightOption tail view<br>clear foldRight length reduceToSize tails withFilter<br>clone forall lengthCompare remove take zip<br>collect foreach lift repr takeRight zipAll<br>collectFirst genericBuilder map result takeWhile zipWithIndex</li>
 </ul>
 <p>举例：去掉数组中，最后两个元素</p>
 <pre><code class="highlight plaintext">scala&gt; d
@@ -948,8 +833,8 @@ scala&gt; d.trimEnd(2)
 
 scala&gt; d
 res7: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, 1, 2)</code></pre>
-<p><strong>遍历数组</strong><br>
-for循环、foreach：</p>
+
+<p><strong>遍历数组</strong><br>for循环、foreach：</p>
 <pre><code class="highlight plaintext">scala&gt; var a = Array("Tom","Lily","Andy")
 a: Array[String] = Array(Tom, Lily, Andy)
 
@@ -962,6 +847,7 @@ scala&gt; a.foreach(println)
 Tom
 Lily
 Andy</code></pre>
+
 <p>数组的常见操作举例：</p>
 <pre><code class="highlight plaintext">scala&gt; val myarray = Array(1,2,7,8,10,3,6)
 myarray: Array[Int] = Array(1, 2, 7, 8, 10, 3, 6)
@@ -977,8 +863,8 @@ res12: Array[Int] = Array(10, 8, 7, 6, 3, 2, 1)
 
 scala&gt; myarray.sortWith(_&lt;_)
 res13: Array[Int] = Array(1, 2, 3, 6, 7, 8, 10)</code></pre>
-<p>解释：(<em>&gt;</em>)<br>
-完整 ： sortWith函数里面，参数也是一个函数  --&gt; 高阶函数</p>
+
+<p>解释：(<em>&gt;</em>)<br>完整 ： sortWith函数里面，参数也是一个函数  –&gt; 高阶函数</p>
 <pre><code class="highlight plaintext">_&gt;_   函数
 
 def comp(a:Int,b:Int) = {if(a&gt;b) true else false}
@@ -986,24 +872,24 @@ def comp(a:Int,b:Int) = {if(a&gt;b) true else false}
 (a,b) =&gt; {if(a&gt;b) true else false}
 
 (a,b) =&gt; {if(a&gt;b) true else false}   ----&gt;  _&gt;_</code></pre>
+
 <p><em>&gt;</em> 是一个函数，传入两个参数，返回值是Bool （布尔型）</p>
-<p>2）多维数组<br>
-和Java类似，通过数组的数组来实现</p>
+<p>2）多维数组<br>和Java类似，通过数组的数组来实现</p>
 <pre><code class="highlight plaintext">scala&gt; var matrix = Array.ofDim[Int](3,4)
 matrix: Array[Array[Int]] = Array(Array(0, 0, 0, 0), Array(0, 0, 0, 0), Array(0, 0, 0, 0))
 
     Array(0, 0, 0, 0) 
     Array(0, 0, 0, 0)
     Array(0, 0, 0, 0)</code></pre>
+
 <p>三行四列的数组</p>
 <p>scala&gt; matrix(1)(2)=10</p>
-<p>scala&gt; matrix<br>
-res15: Array[Array[Int]] = Array(Array(0, 0, 0, 0), Array(0, 0, 10, 0), Array(0, 0, 0, 0))</p>
+<p>scala&gt; matrix<br>res15: Array[Array[Int]] = Array(Array(0, 0, 0, 0), Array(0, 0, 10, 0), Array(0, 0, 0, 0))</p>
 <p>数组下标是从0开始的</p>
-<p>例子：<br>
-定义一个二维数组，其中每个元素是一个一维数组，并且长度不固定</p>
+<p>例子：<br>定义一个二维数组，其中每个元素是一个一维数组，并且长度不固定</p>
 <pre><code class="highlight plaintext">scala&gt; var triangle = new Array[Array[Int]](10)
 triangle: Array[Array[Int]] = Array(null, null, null, null, null, null, null, null, null, null)</code></pre>
+
 <p>初始化：</p>
 <pre><code class="highlight plaintext">scala&gt; for(i &lt;- 0 until triangle.length){
      | triangle(i) = new Array[Int](i+1)
@@ -1013,21 +899,15 @@ res17: Array[Array[Int]] = Array(Array(0), Array(0, 0), Array(0, 0, 0),
 Array(0, 0, 0, 0), Array(0, 0, 0, 0, 0), Array(0, 0, 0, 0, 0, 0), 
 Array(0, 0, 0, 0, 0, 0, 0), Array(0, 0, 0, 0, 0, 0, 0, 0), 
 Array(0, 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0))</code></pre>
-<p>二维数组，如果使用 ArrayArray[Int] 声明时：<br>
-1、首先指定的是外层数据的长度<br>
-2、初始化内层数组的时候，再指定内层数组的长度</p>
-<h4 id="9、映射-key-value-Map">9、映射 &lt;key,value&gt; Map</h4>
-<p>举例：<br>
-创建一个map，来保存学生的成绩</p>
-<p>scala&gt; val scores = Map(“Tom” -&gt; 80,”Andy”-&gt;70,”Mike”-&gt;90)<br>
-scores: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 90, Tom -&gt; 80, Andy -&gt; 70)</p>
-<p>1）Map[String,Int] key String value Int<br>
-2）scala.collection.mutable</p>
-<p>scala中，映射是有两种，一种是可变map，一种是不可变map<br>
-scala.collection.mutable —&gt; 可变<br>
-scala.collection.immutable —&gt; 不可变</p>
+
+<p>二维数组，如果使用 ArrayArray[Int] 声明时：<br>1、首先指定的是外层数据的长度<br>2、初始化内层数组的时候，再指定内层数组的长度</p>
+<h4 id="9、映射-Map"><a href="#9、映射-Map" class="headerlink" title="9、映射 <key,value> Map"></a>9、映射 &lt;key,value&gt; Map</h4><p>举例：<br>创建一个map，来保存学生的成绩</p>
+<p>scala&gt; val scores = Map(“Tom” -&gt; 80,”Andy”-&gt;70,”Mike”-&gt;90)<br>scores: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 90, Tom -&gt; 80, Andy -&gt; 70)</p>
+<p>1）Map[String,Int] key String value Int<br>2）scala.collection.mutable</p>
+<p>scala中，映射是有两种，一种是可变map，一种是不可变map<br>scala.collection.mutable —&gt; 可变<br>scala.collection.immutable —&gt; 不可变</p>
 <pre><code class="highlight plaintext">scala&gt; val scores2 = scala.collection.immutable.Map(“Tom” -&gt; 80,”Andy”-&gt;70,”Mike”-&gt;90) 
 scores2: scala.collection.immutable.Map[String,Int] = Map(Tom -&gt; 80, Andy -&gt; 70, Mike -&gt; 90)</code></pre>
+
 <p><strong>映射的初始化</strong></p>
 <pre><code class="highlight plaintext">scala&gt; val scores2 = scala.collection.mutable.Map((“Tom”,80),(“Andy”,70)) 
 scores2: scala.collection.mutable.Map[String,Int] = Map(Tom -&gt; 80, Andy -&gt; 70)
@@ -1035,8 +915,8 @@ scores2: scala.collection.mutable.Map[String,Int] = Map(Tom -&gt; 80, Andy -&gt;
 scala&gt; scores2=1
 &lt;console&gt;:15: error: reassignment to val
        scores2=1</code></pre>
-<p><strong>映射的操作</strong><br>
-1）获取映射中的值</p>
+
+<p><strong>映射的操作</strong><br>1）获取映射中的值</p>
 <pre><code class="highlight plaintext">scala&gt; val chinese = scala.collection.mutable.Map(("Tom",80),("Andy",70))
 chinese: scala.collection.mutable.Map[String,Int] = Map(Tom -&gt; 80, Andy -&gt; 70)
 
@@ -1070,8 +950,8 @@ res22: Int = -1
 
 scala&gt; chinese.getOrElse("aaaa",-1)
 res23: Int = -1</code></pre>
-<p>2）更新映射中的值<br>
-注意：必须是可变映射</p>
+
+<p>2）更新映射中的值<br>注意：必须是可变映射</p>
 <pre><code class="highlight plaintext">scala&gt; chinese
 res24: scala.collection.mutable.Map[String,Int] = Map(Tom -&gt; 80, Andy -&gt; 70)
 
@@ -1079,8 +959,8 @@ scala&gt; chinese("Andy")=20
 
 scala&gt; chinese
 res26: scala.collection.mutable.Map[String,Int] = Map(Tom -&gt; 80, Andy -&gt; 20)</code></pre>
-<p>3）映射的迭代<br>
-for foreach</p>
+
+<p>3）映射的迭代<br>for foreach</p>
 <pre><code class="highlight plaintext">scala&gt; chinese
 res27: scala.collection.mutable.Map[String,Int] = Map(Tom -&gt; 80, Andy -&gt; 20)
 
@@ -1091,22 +971,25 @@ scala&gt; for(s&lt;-chinese) println(s)
 scala&gt; chinese.foreach(println)
 (Tom,80)
 (Andy,20)</code></pre>
+
 <p>foreach  高阶函数</p>
-<h4 id="10、元组-Tuple">10、元组 : Tuple</h4>
-<p>scala 中的tuple ： 是不同类型值的集合</p>
+<h4 id="10、元组-Tuple"><a href="#10、元组-Tuple" class="headerlink" title="10、元组 : Tuple"></a>10、元组 : Tuple</h4><p>scala 中的tuple ： 是不同类型值的集合</p>
 <pre><code class="highlight plaintext">scala&gt; val t1 = Tuple("Tom","Lily",1)
 &lt;console&gt;:14: error: not found: value Tuple
        val t1 = Tuple("Tom","Lily",1)
                 ^</code></pre>
-<p>-----Tuple需要指明不同类型值的个数</p>
+
+<p>—–Tuple需要指明不同类型值的个数</p>
 <pre><code class="highlight plaintext">scala&gt; val t1 = Tuple3("Tom","Lily",1)
 t1: (String, String, Int) = (Tom,Lily,1)</code></pre>
+
 <p>Tuple3 代表 Tuple中有三个元素</p>
 <pre><code class="highlight plaintext">scala&gt; val t1 = Tuple2("Lily",1)
 t1: (String, Int) = (Lily,1)
 
 scala&gt; val t2 = (1,2,4,"Hello")
 t2: (Int, Int, Int, String) = (1,2,4,Hello)</code></pre>
+
 <p><strong>tuple操作</strong></p>
 <p>访问tuple中的元素</p>
 <pre><code class="highlight plaintext">scala&gt; val t1 = Tuple3("Tom","Lily",1)
@@ -1121,11 +1004,9 @@ res30: String = Tom
 
 scala&gt; t1._3
 res31: Int = 1</code></pre>
-<p>如何遍历Tuple中的元素<br>
-注意：Tuple并没有提供一个foreach函数，我们使用productIterator</p>
-<p>遍历分为两步：<br>
-1、使用 productIterator 生成一个迭代器<br>
-2、遍历</p>
+
+<p>如何遍历Tuple中的元素<br>    注意：Tuple并没有提供一个foreach函数，我们使用productIterator</p>
+<p>遍历分为两步：<br>1、使用 productIterator 生成一个迭代器<br>2、遍历</p>
 <pre><code class="highlight plaintext">scala&gt; t1.productIterator.
 !=                copyToBuffer   forall               min                reduceRightOption   toIterable
 ##                corresponds    foreach              minBy              sameElements        toIterator
@@ -1149,14 +1030,8 @@ scala&gt; t1.productIterator.foreach(println)
 Tom
 Lily
 1</code></pre>
-<h4 id="11、scala中的文件操作">11、scala中的文件操作</h4>
-<p>类似于java的IO<br>
-举例：<br>
-1、读取文件<br>
-2、读取二进制文件<br>
-3、从url中获取信息<br>
-4、写入文件<br>
-5、Scala中调用Java的类库</p>
+
+<h4 id="11、scala中的文件操作"><a href="#11、scala中的文件操作" class="headerlink" title="11、scala中的文件操作"></a>11、scala中的文件操作</h4><p>类似于java的IO<br>举例：<br>1、读取文件<br>2、读取二进制文件<br>3、从url中获取信息<br>4、写入文件<br>5、Scala中调用Java的类库</p>
 <p><strong>代码练习</strong></p>
 <pre><code class="highlight plaintext">//读取文件中的行
 var source = fromFile("E:\\server.xml")
@@ -1206,16 +1081,11 @@ var out = new PrintWriter("E:\\insert.txt")
 for(i &lt;- 0 until 10)  out.println(i)
 
 out.close()</code></pre>
-<h3 id="二、Scala面向对象">二、Scala面向对象</h3>
-<p>Scala是一个多范式的编程语言（支持多种方式的编程）<br>
-类似于Java 有区别</p>
-<h4 id="1、面向对象的概念">1、面向对象的概念</h4>
-<p>1、封装 ： 把属性和操作属性的方法，写在了一起。class<br>
-2、继承<br>
-3、多态</p>
+
+<h3 id="二、Scala面向对象"><a href="#二、Scala面向对象" class="headerlink" title="二、Scala面向对象"></a>二、Scala面向对象</h3><p>Scala是一个多范式的编程语言（支持多种方式的编程）<br>类似于Java 有区别</p>
+<h4 id="1、面向对象的概念"><a href="#1、面向对象的概念" class="headerlink" title="1、面向对象的概念"></a>1、面向对象的概念</h4><p>1、封装 ： 把属性和操作属性的方法，写在了一起。class<br>2、继承<br>3、多态</p>
 <p>Java中面向对象的概念，也是用与Scala</p>
-<h4 id="2、定义类：class">2、定义类：class</h4>
-<p>举例：创建一个学生类</p>
+<h4 id="2、定义类：class"><a href="#2、定义类：class" class="headerlink" title="2、定义类：class"></a>2、定义类：class</h4><p>举例：创建一个学生类</p>
 <pre><code class="highlight plaintext">package day3
 
 /**
@@ -1275,8 +1145,8 @@ object Student1{
       */
   }
 }</code></pre>
-<h4 id="3、内部类（嵌套类）">3、内部类（嵌套类）</h4>
-<p>在一个类的内部，定义了另外一个类</p>
+
+<h4 id="3、内部类（嵌套类）"><a href="#3、内部类（嵌套类）" class="headerlink" title="3、内部类（嵌套类）"></a>3、内部类（嵌套类）</h4><p>在一个类的内部，定义了另外一个类</p>
 <pre><code class="highlight plaintext">package day3
 
 import scala.collection.mutable.ArrayBuffer
@@ -1323,19 +1193,11 @@ object Student2{
     for(c&lt;-s.courseList) println(c.courseName+"\t"+c.grade)
   }
 }</code></pre>
-<h4 id="4、类的构造器：两种">4、类的构造器：两种</h4>
-<p>1）主构造器 ： 和类的声明在一起，并且一个类只能有一个主构造器<br>
-class Course(var courseName:String,var grade : Int)</p>
+
+<h4 id="4、类的构造器：两种"><a href="#4、类的构造器：两种" class="headerlink" title="4、类的构造器：两种"></a>4、类的构造器：两种</h4><p>1）主构造器 ： 和类的声明在一起，并且一个类只能有一个主构造器<br>class Course(var courseName:String,var grade : Int)</p>
 <p>2）辅助构造器 ： 一个类可以有多个辅助构造器，通过this来实现</p>
-<h4 id="5、Object对象">5、Object对象</h4>
-<p>相当于Java中的static<br>
-1）Object 对象中的内容都是静态的<br>
-2）如果和类名相同，则成为伴生对象<br>
-3）Scala中没有static关键字<br>
-4）举例<br>
-（1）使用Object来实现单例模式：一个类里面只有一个对象<br>
-在Java中，把类的构造器定义成private的，并且提供一个getInstance,返回对象</p>
-<p>在Scala中，使用Object实现</p>
+<h4 id="5、Object对象"><a href="#5、Object对象" class="headerlink" title="5、Object对象"></a>5、Object对象</h4><p>相当于Java中的static<br>1）Object 对象中的内容都是静态的<br>2）如果和类名相同，则成为伴生对象<br>3）Scala中没有static关键字<br>4）举例<br>（1）使用Object来实现单例模式：一个类里面只有一个对象<br>在Java中，把类的构造器定义成private的，并且提供一个getInstance,返回对象</p>
+<p>在Scala中，使用Object实现 </p>
 <p><strong>例子</strong></p>
 <pre><code class="highlight plaintext">package day3
 
@@ -1360,8 +1222,8 @@ object CreditCard {
     println(CreditCard.generateNum)
   }
 }</code></pre>
-<p>（2）使用App对象：应用程序对象<br>
-好处：可以省略main方法</p>
+
+<p>（2）使用App对象：应用程序对象<br>好处：可以省略main方法 </p>
 <p><strong>例子</strong></p>
 <pre><code class="highlight plaintext">package day3
 
@@ -1378,9 +1240,8 @@ object HelloWorld extends App{
     println("没有参数")
   }
 }</code></pre>
-<h4 id="6、apply方法">6、apply方法</h4>
-<p>val t1 = Tuple3(“Tom”,”Lily”,1)<br>
-没有new关键字，但是也创建出来对象，用了apply方法</p>
+
+<h4 id="6、apply方法"><a href="#6、apply方法" class="headerlink" title="6、apply方法"></a>6、apply方法</h4><p>val t1 = Tuple3(“Tom”,”Lily”,1)<br>没有new关键字，但是也创建出来对象，用了apply方法</p>
 <pre><code class="highlight plaintext">package day3
 
 class Student4(var stuName:String)
@@ -1405,10 +1266,9 @@ object Student4 {
     println(s2.stuName)
   }
 }</code></pre>
+
 <p>注意：apply方法必须写在伴生对象中</p>
-<h4 id="7、继承">7、继承</h4>
-<p>1）extends 和java一样<br>
-object HelloWorld extends App</p>
+<h4 id="7、继承"><a href="#7、继承" class="headerlink" title="7、继承"></a>7、继承</h4><p>1）extends 和java一样<br>object HelloWorld extends App</p>
 <pre><code class="highlight plaintext">package day3
 
 /**
@@ -1448,6 +1308,7 @@ object Demo1 extends App {
   }
   println(p3.sayHello())
 }</code></pre>
+
 <p>2）抽象类</p>
 <pre><code class="highlight plaintext">package day3
 
@@ -1481,6 +1342,7 @@ object Demo2{
     println(v2.checkType())
   }
 }</code></pre>
+
 <p>3）抽象字段</p>
 <pre><code class="highlight plaintext">package day3
 
@@ -1509,10 +1371,8 @@ class Employee3(val id:Int,val name:String) extends Person1{
 
 object Demo3 {
 }</code></pre>
-<h4 id="8、特质（trait）">8、特质（trait）</h4>
-<p>抽象类，支持多重继承<br>
-本质：scala 的一个抽象类<br>
-trait</p>
+
+<h4 id="8、特质（trait）"><a href="#8、特质（trait）" class="headerlink" title="8、特质（trait）"></a>8、特质（trait）</h4><p>抽象类，支持多重继承<br>本质：scala 的一个抽象类<br>trait</p>
 <pre><code class="highlight plaintext">package day4
 
 /**
@@ -1553,20 +1413,20 @@ object Demo1 {
     println(s1.getActionName())
   }
 }</code></pre>
-<p>关键字：extends Human with Action<br>
-`</p>
-<h4 id="9、包和包对象">9、包和包对象</h4>
-<p>package<br>
-package object</p>
+
+<p>关键字：extends Human with Action<br>`</p>
+<h4 id="9、包和包对象"><a href="#9、包和包对象" class="headerlink" title="9、包和包对象"></a>9、包和包对象</h4><p>package<br>package object</p>
 <p><strong>Scala中包的定义和使用</strong></p>
-<p><strong>包的定义</strong></p>
+<p><strong>包的定义</strong> </p>
 <p>1）首先是Scala中的包可以像Java一样使用，例如：</p>
 <pre><code class="highlight plaintext">package com.my.io
 class XXX</code></pre>
+
 <p>2）可以像C#的namespace一样使用package语句，例如：</p>
 <pre><code class="highlight plaintext">package com.my.io{
     class XXX
 }</code></pre>
+
 <p>3）package也是可以嵌套的，例如：</p>
 <pre><code class="highlight plaintext">package com.my.io{
     class XXX
@@ -1574,18 +1434,15 @@ class XXX</code></pre>
         class T
     }
 }</code></pre>
-<p><strong>包的引入</strong><br>
-Scala中依然使用import作为引用包的关键字，例如<br>
-import <a target="_blank" rel="noopener" href="http://com.my.io.XXX">com.my.io.XXX</a> //可以不写XXX的全路径<br>
-import <a target="_blank" rel="noopener" href="http://com.my.io">com.my.io</a>._ //引用import com.my.io下的所有类型<br>
-import <a target="_blank" rel="noopener" href="http://com.my.io.XXX">com.my.io.XXX</a>._ //引用import com.my.io.XXX的所有成员</p>
+
+<p><strong>包的引入</strong><br>Scala中依然使用import作为引用包的关键字，例如<br>import com.my.io.XXX //可以不写XXX的全路径<br>import com.my.io._ //引用import com.my.io下的所有类型<br>import com.my.io.XXX._ //引用import com.my.io.XXX的所有成员</p>
 <p>而且<strong>Scala中的import可以写在任意地方</strong></p>
 <pre><code class="highlight plaintext">def method(fruit:Fruit){
     import fruit._
     println(name)
 }</code></pre>
-<p><strong>包对象</strong><br>
-包可以包含类、对象和特质，但不能包含函数或者变量的定义。很不幸，这是Java虚拟机的局限</p>
+
+<p><strong>包对象</strong><br>包可以包含类、对象和特质，但不能包含函数或者变量的定义。很不幸，这是Java虚拟机的局限</p>
 <p>把工具函数或者常量添加到包而不是某个Utils对象，这是更加合理的做法。Scala中，包对象的出现正是为了解决这个局限</p>
 <p>Scala中的包对象：常量，变量，方法，类，对象，trait（特质）</p>
 <pre><code class="highlight plaintext">package class4
@@ -1630,6 +1487,7 @@ class Demo3{
         var a = new MyTestClass
     }   
 }</code></pre>
+
 
             </div>
             <hr/>
@@ -1880,12 +1738,10 @@ class Demo3{
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、Scala函数式编程
-多范式：面向对象，函数式编程（程序实现起来简单）
-举例：WordCount
-sc 是 SparkContext , 非常重要
+                            一、Scala函数式编程多范式：面向对象，函数式编程（程序实现起来简单）
+举例：WordCountsc 是 SparkContext , 非常重要
 一行：
-var result = sc.textFile("hdfs://xxxx/xx
+var result = sc.textFile("hdfs://xxxx/xxx/
                         
                     </div>
                     <div class="publish-info">
@@ -1938,9 +1794,8 @@ var result = sc.textFile("hdfs://xxxx/xx
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、Java API操作
-Elasticsearch的Java客户端非常强大；它可以建立一个嵌入式实例并在必要时运行管理任务
-运行一个Java应用程序和Elasticsearch时，有两种操作模式可供使用。该应用程序可在Elasticsea
+                            一、Java API操作Elasticsearch的Java客户端非常强大；它可以建立一个嵌入式实例并在必要时运行管理任务
+运行一个Java应用程序和Elasticsearch时，有两种操作模式可供使用。该应用程序可在Elasticsear
                         
                     </div>
                     <div class="publish-info">
@@ -2154,7 +2009,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -387,7 +387,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
 
@@ -403,124 +403,70 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>docker</strong><br>
-2013年发布</p>
-<h3 id="一、环境配置难题">一、环境配置难题</h3>
-<p>开发环境运行没有问题，生产不能用，因为生产缺乏某些组件</p>
+                <p><strong>docker</strong><br>2013年发布</p>
+<h3 id="一、环境配置难题"><a href="#一、环境配置难题" class="headerlink" title="一、环境配置难题"></a>一、环境配置难题</h3><p>开发环境运行没有问题，生产不能用，因为生产缺乏某些组件</p>
 <p>换一台机器，需要重新配置一遍</p>
 <p>能不能从根本上解决问题：安装的时候，把原始环境，一模一样地安装一遍</p>
-<h3 id="二、虚拟机">二、虚拟机</h3>
-<p>带环境安装的一种解决方案</p>
-<p>缺点：<br>
-占用资源多：虚拟机本身需要消耗资源，程序1MB，环境几百MB</p>
+<h3 id="二、虚拟机"><a href="#二、虚拟机" class="headerlink" title="二、虚拟机"></a>二、虚拟机</h3><p>带环境安装的一种解决方案</p>
+<p>缺点：<br>占用资源多：虚拟机本身需要消耗资源，程序1MB，环境几百MB</p>
 <p>冗余步骤多：虚拟机是完整的操作系统，一些系统级别的操作步骤，无法跳过，比如用户登录</p>
 <p>启动慢：启动操作系统要多久，启动虚拟机就要多久</p>
-<h3 id="三、Linux容器">三、Linux容器</h3>
-<p>针对虚拟机的缺点，Linux发展出另外的一种虚拟化技术：Linux容器</p>
+<h3 id="三、Linux容器"><a href="#三、Linux容器" class="headerlink" title="三、Linux容器"></a>三、Linux容器</h3><p>针对虚拟机的缺点，Linux发展出另外的一种虚拟化技术：Linux容器</p>
 <p>Linux容器不是模拟完整的操作系统，而是对进程进行隔离，即在正常进程的外面，套一个保护层，对于容器里面的进程来说，它接触到的资源都是虚拟的，实现与底层系统的隔离</p>
-<p>优点：<br>
-启动快：容器里面的应用，直接就是底层系统中的一个进程，启动容器相当于启动本机的进程。而不是启动操作系统</p>
+<p>优点：<br>启动快：容器里面的应用，直接就是底层系统中的一个进程，启动容器相当于启动本机的进程。而不是启动操作系统</p>
 <p>占用资源少：容器只占用需要的资源，不占用没有用到的资源</p>
 <p>体积小：只包含用到的组件，而虚拟机包含了整个操作系统。所以容器文件比虚拟机文件小的多</p>
-<h3 id="四、Docker是什么">四、Docker是什么</h3>
-<p>Docker属于Linux容器的一种封装，提供了简单易用的容器使用接口</p>
+<h3 id="四、Docker是什么"><a href="#四、Docker是什么" class="headerlink" title="四、Docker是什么"></a>四、Docker是什么</h3><p>Docker属于Linux容器的一种封装，提供了简单易用的容器使用接口</p>
 <p>Docker将应用程序与该程序的依赖，打包到一个文件里面，运行这个文件，就会产生一个虚拟容器</p>
 <p>程序在虚拟容器中运行，就好像运行在真正的物理机上一样</p>
 <p>Docker提供版本管理、复制、分享、修改等功能，就像管理普通代码一样管理Docker容器</p>
-<h3 id="五、Docker的用途">五、Docker的用途</h3>
-<p>Docker的主要用途，目前有三大类</p>
-<h4 id="1、提供一次性的环境">1、提供一次性的环境</h4>
-<p>本地测试他人的软件程序</p>
-<h4 id="2、提供弹性的云服务">2、提供弹性的云服务</h4>
-<p>Docker容器可以随开随关，很适合动态的扩容和缩容</p>
-<h4 id="3、组建微服务架构">3、组建微服务架构</h4>
-<p>通过多个容器，一台机器可以跑多个服务，在本机就可以模拟出微服务架构</p>
-<h3 id="六、Docker安装">六、Docker安装</h3>
-<h4 id="1、Linux安装">1、Linux安装</h4>
-<p>Docker要求CentOS内核版本高于3.10<br>
-uname -r 查看内核版本</p>
-<p>安装必要的系统工具：<br>
-yum install -y yum-utils device-mapper-persistent-data lvm2</p>
-<p>添加软件源信息：<br>
-yum-config-manager --add-repo <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a></p>
-<p>更新 yum 缓存：<br>
-yum makecache fast</p>
-<p>安装 Docker-ce：<br>
-yum -y install docker-ce</p>
-<p>启动 Docker 后台服务<br>
-systemctl start docker</p>
-<p>测试运行 hello-world<br>
-docker run hello-world</p>
+<h3 id="五、Docker的用途"><a href="#五、Docker的用途" class="headerlink" title="五、Docker的用途"></a>五、Docker的用途</h3><p>Docker的主要用途，目前有三大类</p>
+<h4 id="1、提供一次性的环境"><a href="#1、提供一次性的环境" class="headerlink" title="1、提供一次性的环境"></a>1、提供一次性的环境</h4><p>本地测试他人的软件程序</p>
+<h4 id="2、提供弹性的云服务"><a href="#2、提供弹性的云服务" class="headerlink" title="2、提供弹性的云服务"></a>2、提供弹性的云服务</h4><p>Docker容器可以随开随关，很适合动态的扩容和缩容</p>
+<h4 id="3、组建微服务架构"><a href="#3、组建微服务架构" class="headerlink" title="3、组建微服务架构"></a>3、组建微服务架构</h4><p>通过多个容器，一台机器可以跑多个服务，在本机就可以模拟出微服务架构</p>
+<h3 id="六、Docker安装"><a href="#六、Docker安装" class="headerlink" title="六、Docker安装"></a>六、Docker安装</h3><h4 id="1、Linux安装"><a href="#1、Linux安装" class="headerlink" title="1、Linux安装"></a>1、Linux安装</h4><p>Docker要求CentOS内核版本高于3.10<br>uname -r 查看内核版本</p>
+<p>安装必要的系统工具：<br>yum install -y yum-utils device-mapper-persistent-data lvm2</p>
+<p>添加软件源信息：<br>yum-config-manager –add-repo <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a></p>
+<p>更新 yum 缓存：<br>yum makecache fast</p>
+<p>安装 Docker-ce：<br>yum -y install docker-ce</p>
+<p>启动 Docker 后台服务<br>systemctl start docker</p>
+<p>测试运行 hello-world<br>docker run hello-world</p>
 <p>看到hello from docker证明安装成功</p>
-<h4 id="2、windows安装">2、windows安装</h4>
-<p>win10专业版，直接安装 docker for windows 即可</p>
+<h4 id="2、windows安装"><a href="#2、windows安装" class="headerlink" title="2、windows安装"></a>2、windows安装</h4><p>win10专业版，直接安装 docker for windows 即可</p>
 <p>win10普通版、win7 win8 ,需要安装 docker tool box</p>
-<p>toolbox 配置：<br>
-右键  Docker Quickstart Terminal<br>
-“C:\Program Files\Git\bin\bash.exe” <code>--login</code> -i “C:\Program Files\Docker Toolbox\start.sh”<br>
-把这个位置配成你本机的git位置						修改后面这个脚本</p>
-<p>DOCKER_MACHINE=“D:\Docker Toolbox\docker-machine.exe”</p>
-<p>STEP=“Looking for vboxmanage.exe”<br>
-VBOXMANAGE=“C:\Program Files\Oracle\VirtualBox\VBoxManage.exe”</p>
+<p>toolbox 配置：<br>右键  Docker Quickstart Terminal<br>“C:\Program Files\Git\bin\bash.exe” <code>--login</code> -i “C:\Program Files\Docker Toolbox\start.sh”<br>把这个位置配成你本机的git位置						修改后面这个脚本</p>
+<p>DOCKER_MACHINE=”D:\Docker Toolbox\docker-machine.exe”</p>
+<p>STEP=”Looking for vboxmanage.exe”<br>VBOXMANAGE=”C:\Program Files\Oracle\VirtualBox\VBoxManage.exe”</p>
 <pre><code class="highlight plaintext">#if [ ! -z "$VBOX_MSI_INSTALL_PATH" ]; then
 #VBOXMANAGE="${VBOX_MSI_INSTALL_PATH}VBoxManage.exe"
 #else
 #VBOXMANAGE="${VBOX_INSTALL_PATH}VBoxManage.exe"
 #fi</code></pre>
-<h3 id="七、image文件">七、image文件</h3>
-<p>Docker把应用程序及其依赖，打包在image文件里面，只有通过image文件，才能生成docker容器</p>
+<h3 id="七、image文件"><a href="#七、image文件" class="headerlink" title="七、image文件"></a>七、image文件</h3><p>Docker把应用程序及其依赖，打包在image文件里面，只有通过image文件，才能生成docker容器</p>
 <p>Docker可以根据image文件生成容器实例</p>
 <p>image文件可以继承。在实际开发中，一个image文件往往通过继承另一个image文件，加上一些个性化的设置而生成</p>
-<p>启动容器<br>
-docker run hello-world</p>
-<p>列出所有image文件<br>
-docker image ls</p>
-<p>删除image文件<br>
-docker image rm image文件名</p>
-<p>使用docker-machine stop default停掉Docker的虚拟机<br>
-使用docker-machine start default开启Docker的虚拟机</p>
-<h3 id="八、配置阿里云docker镜像加速器">八、配置阿里云docker镜像加速器</h3>
-<ol>
-<li>
-<p>注册阿里云，获得专属加速器地址</p>
+<p>启动容器<br>docker run hello-world</p>
+<p>列出所有image文件<br>docker image ls</p>
+<p>删除image文件<br>docker image rm image文件名</p>
+<p>使用docker-machine stop default停掉Docker的虚拟机<br>使用docker-machine start default开启Docker的虚拟机</p>
+<h3 id="八、配置阿里云docker镜像加速器"><a href="#八、配置阿里云docker镜像加速器" class="headerlink" title="八、配置阿里云docker镜像加速器"></a>八、配置阿里云docker镜像加速器</h3><ol>
+<li><p>注册阿里云，获得专属加速器地址</p>
 </li>
-<li>
-<p>hsiehchou@DESKTOP-KJDN870 MINGW64 /d/Docker Toolbox<br>
-$ docker-machine ssh default<br>
-docker@default:~$ sudo sed -i “s|EXTRA_ARGS=‘|EXTRA_ARGS=’–regis<br>
-try-mirror=<a target="_blank" rel="noopener" href="https://%60">https://`</a>********`.mirror.aliyuncs.com |g” /var/lib/boot<br>
-2docker/profile<br>
-docker@default:~$ exit</p>
+<li><p>hsiehchou@DESKTOP-KJDN870 MINGW64 /d/Docker Toolbox<br>$ docker-machine ssh default<br>docker@default:<del>$ sudo sed -i “s|EXTRA_ARGS=’|EXTRA_ARGS=’–regis<br>try-mirror=https://<code>********</code>.mirror.aliyuncs.com |g” /var/lib/boot<br>2docker/profile<br>docker@default:</del>$ exit</p>
 </li>
-<li>
-<p>hsiehchou@DESKTOP-KJDN870 MINGW64 /d/Docker Toolbox<br>
-$ docker-machine restart default</p>
+<li><p>hsiehchou@DESKTOP-KJDN870 MINGW64 /d/Docker Toolbox<br>$ docker-machine restart default</p>
 </li>
 </ol>
-<h3 id="九、安装redis">九、安装redis</h3>
-<h4 id="1、搜索镜像">1、搜索镜像</h4>
-<p>docker search redis</p>
-<h4 id="2、拉取镜像">2、拉取镜像</h4>
-<p>docker pull redis</p>
-<h4 id="3、启动redis">3、启动redis</h4>
-<p>docker run <code>--name</code> myredis -p 6379:6379 -d redis redis-server</p>
+<h3 id="九、安装redis"><a href="#九、安装redis" class="headerlink" title="九、安装redis"></a>九、安装redis</h3><h4 id="1、搜索镜像"><a href="#1、搜索镜像" class="headerlink" title="1、搜索镜像"></a>1、搜索镜像</h4><p>docker search redis</p>
+<h4 id="2、拉取镜像"><a href="#2、拉取镜像" class="headerlink" title="2、拉取镜像"></a>2、拉取镜像</h4><p>docker pull redis</p>
+<h4 id="3、启动redis"><a href="#3、启动redis" class="headerlink" title="3、启动redis"></a>3、启动redis</h4><p>docker run <code>--name</code> myredis -p 6379:6379 -d redis redis-server</p>
 <p>-d表示后台运行</p>
 <p>-p表示端口号，左边的6379表示win10系统端口考，右边表示容器中redis端口号</p>
 <p><code>--name</code>表示运行redis镜像的实例名称</p>
-<h4 id="4、进入Image的小环境">4、进入Image的小环境</h4>
-<p>docker exec -it  <code>COXTAINER ID</code> bash<br>
-redis-cli</p>
-<p>hsiehchou@DESKTOP-KJDN870 MINGW64 /d/Docker Toolbox<br>
-$ docker run <code>--name</code> myredis12 -p 6379:6379 -d redis redis-server<br>
-9e37ae7338d05b83f666a95fe3677aa85b1481c8fa519a79e9008a5a5e9e909d</p>
-<p>hsiehchou@DESKTOP-KJDN870 MINGW64 /d/Docker Toolbox<br>
-$ docker ps<br>
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES<br>
-9e37ae7338d0        redis               “docker-entrypoint.s”   5 seconds ago       Up 6 seconds        0.0.0.0:6379-&gt;6379/tcp   myredis12</p>
-<p>hsiehchou@DESKTOP-KJDN870 MINGW64 /d/Docker Toolbox<br>
-$ docker exec -it 9e37ae7338d0 bash<br>
-root@9e37ae7338d0:/data# redis-cli<br>
-127.0.0.1:6379&gt;</p>
+<h4 id="4、进入Image的小环境"><a href="#4、进入Image的小环境" class="headerlink" title="4、进入Image的小环境"></a>4、进入Image的小环境</h4><p>docker exec -it  <code>COXTAINER ID</code> bash<br>redis-cli</p>
+<p>hsiehchou@DESKTOP-KJDN870 MINGW64 /d/Docker Toolbox<br>$ docker run <code>--name</code> myredis12 -p 6379:6379 -d redis redis-server<br>9e37ae7338d05b83f666a95fe3677aa85b1481c8fa519a79e9008a5a5e9e909d</p>
+<p>hsiehchou@DESKTOP-KJDN870 MINGW64 /d/Docker Toolbox<br>$ docker ps<br>CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES<br>9e37ae7338d0        redis               “docker-entrypoint.s”   5 seconds ago       Up 6 seconds        0.0.0.0:6379-&gt;6379/tcp   myredis12</p>
+<p>hsiehchou@DESKTOP-KJDN870 MINGW64 /d/Docker Toolbox<br>$ docker exec -it 9e37ae7338d0 bash<br>root@9e37ae7338d0:/data# redis-cli<br>127.0.0.1:6379&gt;</p>
 
             </div>
             <hr/>
@@ -767,11 +713,7 @@ root@9e37ae7338d0:/data# redis-cli<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            离线部分
-Hadoop-&gt;离线计算(hdfs / mapreduce) yarn
-zookeeper-&gt;分布式协调（动物管理员）
-hive-&gt;数据仓库（离线计算 / sql）easy coding
-flume-&gt;数据
+                            离线部分Hadoop-&gt;离线计算(hdfs / mapreduce) yarnzookeeper-&gt;分布式协调（动物管理员）hive-&gt;数据仓库（离线计算 / sql）easy codingflume-&gt;数据采集sq
                         
                     </div>
                     <div class="publish-info">
@@ -824,14 +766,9 @@ flume-&gt;数据
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            git 版本控制系统
-git是一个版本控制系统
-一、什么是版本控制系统
-1、概念
-版本控制是一种 记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统
-（）记录文件的所有历史变化
-（）随时可恢复到任何一个历史状态
-（）多人协作开发
+                            git 版本控制系统git是一个版本控制系统
+一、什么是版本控制系统1、概念版本控制是一种 记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统
+（）记录文件的所有历史变化（）随时可恢复到任何一个历史状态（）多人协作开发或修改（）
                         
                     </div>
                     <div class="publish-info">
@@ -1041,7 +978,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

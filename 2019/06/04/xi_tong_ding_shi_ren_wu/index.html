@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,7 +384,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    507
+                    504
                 </div>
                 
 
@@ -407,121 +407,103 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="crond系统定时任务">crond系统定时任务</h3>
-<h4 id="1、crond服务管理">1、crond服务管理</h4>
-<p>service crond restart 			（重新启动服务）</p>
-<h4 id="2、crontab定时任务设置">2、crontab定时任务设置</h4>
-<p><strong>1）基本语法</strong><br>
-crontab [选项]<br>
-选项：<br>
--e：  编辑crontab定时任务<br>
--l：  查询crontab任务<br>
--r：  删除当前用户所有的crontab任务</p>
-<p><strong>2）参数说明</strong><br>
-crontab -e<br>
-（1）进入crontab编辑界面。会打开vim编辑你的工作<br>
-<code>* * * * *</code> 执行的任务</p>
+                <h3 id="crond系统定时任务"><a href="#crond系统定时任务" class="headerlink" title="crond系统定时任务"></a>crond系统定时任务</h3><h4 id="1、crond服务管理"><a href="#1、crond服务管理" class="headerlink" title="1、crond服务管理"></a>1、crond服务管理</h4><p>service crond restart 			（重新启动服务）</p>
+<h4 id="2、crontab定时任务设置"><a href="#2、crontab定时任务设置" class="headerlink" title="2、crontab定时任务设置"></a>2、crontab定时任务设置</h4><p><strong>1）基本语法</strong><br>crontab [选项]<br>选项：<br>  -e：  编辑crontab定时任务<br>  -l：  查询crontab任务<br>  -r：  删除当前用户所有的crontab任务</p>
+<p><strong>2）参数说明</strong><br>crontab -e<br>（1）进入crontab编辑界面。会打开vim编辑你的工作<br><code>* * * * *</code> 执行的任务</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">项目</th>
-<th style="text-align:center">含义</th>
-<th style="text-align:center">范围</th>
+<th align="center">项目</th>
+<th align="center">含义</th>
+<th align="center">范围</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">第一个“*”</td>
-<td style="text-align:center">一小时当中的第几分钟（分）</td>
-<td style="text-align:center">0-59</td>
+<tbody><tr>
+<td align="center">第一个“*”</td>
+<td align="center">一小时当中的第几分钟（分）</td>
+<td align="center">0-59</td>
 </tr>
 <tr>
-<td style="text-align:center">第二个“*”</td>
-<td style="text-align:center">一天当中的第几小时（时）</td>
-<td style="text-align:center">0-23</td>
+<td align="center">第二个“*”</td>
+<td align="center">一天当中的第几小时（时）</td>
+<td align="center">0-23</td>
 </tr>
 <tr>
-<td style="text-align:center">第三个“*”</td>
-<td style="text-align:center">一个月当中的第几天（天）</td>
-<td style="text-align:center">1-31</td>
+<td align="center">第三个“*”</td>
+<td align="center">一个月当中的第几天（天）</td>
+<td align="center">1-31</td>
 </tr>
 <tr>
-<td style="text-align:center">第四个“*”</td>
-<td style="text-align:center">一年当中的第几月（月）</td>
-<td style="text-align:center">1-12</td>
+<td align="center">第四个“*”</td>
+<td align="center">一年当中的第几月（月）</td>
+<td align="center">1-12</td>
 </tr>
 <tr>
-<td style="text-align:center">第五个“*”</td>
-<td style="text-align:center">一周当中的星期几（周）</td>
-<td style="text-align:center">0-7（0和7都代表星期日）</td>
+<td align="center">第五个“*”</td>
+<td align="center">一周当中的星期几（周）</td>
+<td align="center">0-7（0和7都代表星期日）</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>（2）特殊符号</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">特殊符号</th>
-<th style="text-align:center">含义</th>
+<th align="center">特殊符号</th>
+<th align="center">含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>*</code></td>
-<td style="text-align:center">代表任何时间。比如第一个“*”就代表一小时中每分钟都执行一次的意思</td>
+<tbody><tr>
+<td align="center"><code>*</code></td>
+<td align="center">代表任何时间。比如第一个“*”就代表一小时中每分钟都执行一次的意思</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>，</code></td>
-<td style="text-align:center">代表不连续的时间。比如“0 8,12,16 * * * 命令”，就代表在每天的8点0分，12点0分，16点0分都执行一次命令</td>
+<td align="center"><code>，</code></td>
+<td align="center">代表不连续的时间。比如“0 8,12,16 * * * 命令”，就代表在每天的8点0分，12点0分，16点0分都执行一次命令</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>-</code></td>
-<td style="text-align:center">代表连续的时间范围。比如“0 5  *  *  1-6命令”，代表在周一到周六的凌晨5点0分执行命令</td>
+<td align="center"><code>-</code></td>
+<td align="center">代表连续的时间范围。比如“0 5  *  *  1-6命令”，代表在周一到周六的凌晨5点0分执行命令</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>*/n</code></td>
-<td style="text-align:center">代表每隔多久执行一次。比如“*/10  *  *  *  *  命令”，代表每隔10分钟就执行一遍命令</td>
+<td align="center"><code>*/n</code></td>
+<td align="center">代表每隔多久执行一次。比如“*/10  *  *  *  *  命令”，代表每隔10分钟就执行一遍命令</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>（3）特定时间执行命令</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">时间</th>
-<th style="text-align:center">含义</th>
+<th align="center">时间</th>
+<th align="center">含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">45 22 * * *  命令</td>
-<td style="text-align:center">在22点45分执行命令</td>
+<tbody><tr>
+<td align="center">45 22 * * *  命令</td>
+<td align="center">在22点45分执行命令</td>
 </tr>
 <tr>
-<td style="text-align:center">0  17 * * 1  命令</td>
-<td style="text-align:center">每周1 的17点0分执行命令</td>
+<td align="center">0  17 * * 1  命令</td>
+<td align="center">每周1 的17点0分执行命令</td>
 </tr>
 <tr>
-<td style="text-align:center">0 5 1,15 * * 命令</td>
-<td style="text-align:center">每月1号和15号的凌晨5点0分执行命令</td>
+<td align="center">0 5 1,15 * * 命令</td>
+<td align="center">每月1号和15号的凌晨5点0分执行命令</td>
 </tr>
 <tr>
-<td style="text-align:center">40 4 * * 1-5 命令</td>
-<td style="text-align:center">每周一到周五的凌晨4点40分执行命令</td>
+<td align="center">40 4 * * 1-5 命令</td>
+<td align="center">每周一到周五的凌晨4点40分执行命令</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>*/10</code> 4 * * * 命令</td>
-<td style="text-align:center">每天的凌晨4点，每隔10分钟执行一次命令</td>
+<td align="center"><code>*/10</code> 4 * * * 命令</td>
+<td align="center">每天的凌晨4点，每隔10分钟执行一次命令</td>
 </tr>
 <tr>
-<td style="text-align:center">0 0 1,15 * 1 命令</td>
-<td style="text-align:center">每月1号和15号，每周1的0点0分都会执行命令</td>
+<td align="center">0 0 1,15 * 1 命令</td>
+<td align="center">每月1号和15号，每周1的0点0分都会执行命令</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>**注意: **星期几和几号最好不要同时出现，因为他们定义的都是天，非常容易让管理员混乱</p>
-<p><strong>3）案例</strong><br>
-<code>*/5</code> * * * * /bin/echo ”11” &gt;&gt; /tmp/test</p>
+<p><strong>3）案例</strong><br><code>*/5</code> * * * * /bin/echo ”11” &gt;&gt; /tmp/test</p>
 
             </div>
             <hr/>
@@ -773,8 +755,7 @@ crontab -e<br>
                     <div class="summary block-with-text">
                         
                             一万小时天才理论（阅读笔记）
-前言
-上大一时，我就听人讲过一个人只要在一个领域专攻1万小时，那么这个人便会成为这个领域的专家，把时间分配到每天3小时，需要10年，每天8小时（当然这很不现实，不可能工作的所有时间都花在学习上，还有周末休息啥的
+前言上大一时，我就听人讲过一个人只要在一个领域专攻1万小时，那么这个人便会成为这个领域的专家，把时间分配到每天3小时，需要10年，每天8小时（当然这很不现实，不可能工作的所有时间都花在学习上，还有周末休息啥的）
                         
                     </div>
                     <div class="publish-info">
@@ -827,8 +808,7 @@ crontab -e<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、项目背景
-通信运营商每时每刻会产生大量的通信数据，例如通话记录，短信记录，彩信记录，第三方服务资费等等繁多信息。数据量如此巨大，除了要满足用户的实时查询和展示之外，还需要定时定期的对已有数据进行离线的分析处理。例如，当日话单，月度话单，
+                            一、项目背景通信运营商每时每刻会产生大量的通信数据，例如通话记录，短信记录，彩信记录，第三方服务资费等等繁多信息。数据量如此巨大，除了要满足用户的实时查询和展示之外，还需要定时定期的对已有数据进行离线的分析处理。例如，当日话单，月度话单，季
                         
                     </div>
                     <div class="publish-info">
@@ -1042,7 +1022,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

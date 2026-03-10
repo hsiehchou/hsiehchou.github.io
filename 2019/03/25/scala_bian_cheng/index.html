@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,14 +384,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.2k
+                    5.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    26 分
+                    25 分
                 </div>
                 
 
@@ -407,17 +407,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、Scala函数式编程">一、Scala函数式编程</h3>
-<p>多范式：面向对象，函数式编程（程序实现起来简单）</p>
-<p>举例：WordCount<br>
-sc 是 SparkContext , 非常重要</p>
+                <h3 id="一、Scala函数式编程"><a href="#一、Scala函数式编程" class="headerlink" title="一、Scala函数式编程"></a>一、Scala函数式编程</h3><p>多范式：面向对象，函数式编程（程序实现起来简单）</p>
+<p>举例：WordCount<br>sc 是 SparkContext , 非常重要</p>
 <p>一行：</p>
 <pre><code class="highlight plaintext">var result = sc.textFile("hdfs://xxxx/xxx/data.txt")
 .flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).collect</code></pre>
-<h4 id="1、复习函数">1、复习函数</h4>
-<p>关键字 def</p>
-<h4 id="2、匿名函数">2、匿名函数</h4>
-<p>没有名字的函数</p>
+
+<h4 id="1、复习函数"><a href="#1、复习函数" class="headerlink" title="1、复习函数"></a>1、复习函数</h4><p>关键字 def</p>
+<h4 id="2、匿名函数"><a href="#2、匿名函数" class="headerlink" title="2、匿名函数"></a>2、匿名函数</h4><p>没有名字的函数 </p>
 <p><strong>举例</strong></p>
 <pre><code class="highlight plaintext">scala&gt; var myarray = Array(1,2,3)
 myarray: Array[Int] = Array(1, 2, 3)
@@ -427,6 +424,7 @@ fun1: (x: Int)Int
 
 scala&gt; (x:Int) =&gt; x*3
 res0: Int =&gt; Int = &lt;function1&gt;</code></pre>
+
 <p>问题：怎么去调用？高阶函数</p>
 <pre><code class="highlight plaintext">scala&gt; fun1(3)
 res1: Int = 9
@@ -439,13 +437,13 @@ scala&gt; myarray.foreach(println)
 //调用匿名函数
 scala&gt; myarray.map((x:Int) =&gt; x*3)
 res3: Array[Int] = Array(3, 6, 9)</code></pre>
+
 <p><code>(_,1)  (_+_)</code> 都是匿名函数</p>
-<h4 id="3、高阶函数（带有函数参数的函数）">3、高阶函数（带有函数参数的函数）</h4>
-<p>把一个函数作为另外一个函数的参数值</p>
-<p>定义一个高阶函数：<br>
-对10做某种运算</p>
+<h4 id="3、高阶函数（带有函数参数的函数）"><a href="#3、高阶函数（带有函数参数的函数）" class="headerlink" title="3、高阶函数（带有函数参数的函数）"></a>3、高阶函数（带有函数参数的函数）</h4><p>把一个函数作为另外一个函数的参数值</p>
+<p>定义一个高阶函数：<br>对10做某种运算</p>
 <pre><code class="highlight plaintext">scala&gt; def someAction(f:(Double)=&gt;(Double)) = f(10)
 someAction: (f: Double =&gt; Double)Double</code></pre>
+
 <p><strong>解释</strong></p>
 <p>(Double)=&gt;(Double) 代表了f 的类型：入参是double，返回值也是double的函数</p>
 <pre><code class="highlight plaintext">import scala.math._
@@ -468,69 +466,30 @@ required: Double =&gt; Double
 def someAction(f:(Double)=&gt;(Double)) = f(10)
 
 someAction(sqrt) = sqrt(10)</code></pre>
-<h4 id="4、高阶函数的实例">4、高阶函数的实例</h4>
-<p>scala中提供了常用的高阶函数</p>
+
+<h4 id="4、高阶函数的实例"><a href="#4、高阶函数的实例" class="headerlink" title="4、高阶函数的实例"></a>4、高阶函数的实例</h4><p>scala中提供了常用的高阶函数</p>
 <p>（1）map : 相当于一个循环，对某个集合中的每个元素都进行操作（接收一个函数），返回一个新的集合</p>
-<p>scala&gt; var numbers = List(1,2,3,4,5,6,7,8,9,10)<br>
-numbers: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</p>
-<p>scala&gt; numbers.map((i:Int)=&gt;i*2)<br>
-res2: List[Int] = List(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)</p>
-<p>scala&gt; numers.map(_*2)<br>
-res3: List[Int] = List(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)</p>
-<p>说明：<br>
-(i:Int)=&gt;i*2 与 _*2 等价的</p>
-<p>(i:Int,j:Int)=&gt;i+j   <code>_+_</code><br>
-scala&gt; numbers<br>
-res4: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)<br>
-不改变numbers本身的值</p>
-<p>（2）foreach：相当于一个循环，对某个集合中的每个元素都进行操作（接收一个函数），不返回结果<br>
-scala&gt; numbers.foreach(println)<br>
-1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>
-7<br>
-8<br>
-9<br>
-10</p>
-<p>numbers.foreach(_*2)<br>
-没有返回值</p>
-<p>（3） filter ：过滤，选择满足的数据<br>
-举例：查询能被2整除的数字</p>
-<p>scala&gt; numbers.filter((i:Int)=&gt;i%2==0)<br>
-res5: List[Int] = List(2, 4, 6, 8, 10)</p>
+<p>scala&gt; var numbers = List(1,2,3,4,5,6,7,8,9,10)<br>numbers: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</p>
+<p>scala&gt; numbers.map((i:Int)=&gt;i*2)<br>res2: List[Int] = List(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)</p>
+<p>scala&gt; numers.map(_*2)<br>res3: List[Int] = List(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)</p>
+<p>说明：<br>(i:Int)=&gt;i*2 与 _*2 等价的</p>
+<p>(i:Int,j:Int)=&gt;i+j   <code>_+_</code><br>scala&gt; numbers<br>res4: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)<br>不改变numbers本身的值</p>
+<p>（2）foreach：相当于一个循环，对某个集合中的每个元素都进行操作（接收一个函数），不返回结果<br>scala&gt; numbers.foreach(println)<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</p>
+<p>numbers.foreach(_*2)<br>没有返回值</p>
+<p>（3） filter ：过滤，选择满足的数据<br>举例：查询能被2整除的数字</p>
+<p>scala&gt; numbers.filter((i:Int)=&gt;i%2==0)<br>res5: List[Int] = List(2, 4, 6, 8, 10)</p>
 <p>filter函数，参数要求：要求一个返回 bool 值的函数，筛选出所有为true的数据</p>
-<p>（4）zip操作：合并两个集合<br>
-scala&gt; List(1,2,3).zip(List(4,5,6))<br>
-res6: List[(Int, Int)] = List((1,4), (2,5), (3,6))</p>
-<p>//少的话匹配不上就不合并<br>
-scala&gt; List(1,2,3).zip(List(4,5))<br>
-res7: List[(Int, Int)] = List((1,4), (2,5))</p>
-<p>scala&gt; List(1).zip(List(4,5))<br>
-res8: List[(Int, Int)] = List((1,4))</p>
-<p>（5）partition ： 根据断言（就是某个条件，匿名函数）的结果，来进行分区<br>
-举例：<br>
-能被2整除的分成一个区，不能被2整除的分成另外一个区<br>
-scala&gt; numbers.partition((i:Int)=&gt;i%2==0)<br>
-res9: (List[Int], List[Int]) = (List(2, 4, 6, 8, 10),List(1, 3, 5, 7, 9))</p>
-<p>（6）find ： 查找第一个满足条件的元素<br>
-scala&gt; numbers.find(_%3==0)<br>
-res10: Option[Int] = Some(3)</p>
+<p>（4）zip操作：合并两个集合<br>scala&gt; List(1,2,3).zip(List(4,5,6))<br>res6: List[(Int, Int)] = List((1,4), (2,5), (3,6))</p>
+<p>//少的话匹配不上就不合并<br>scala&gt; List(1,2,3).zip(List(4,5))<br>res7: List[(Int, Int)] = List((1,4), (2,5))</p>
+<p>scala&gt; List(1).zip(List(4,5))<br>res8: List[(Int, Int)] = List((1,4))</p>
+<p>（5）partition ： 根据断言（就是某个条件，匿名函数）的结果，来进行分区<br>举例：<br>能被2整除的分成一个区，不能被2整除的分成另外一个区<br>scala&gt; numbers.partition((i:Int)=&gt;i%2==0)<br>res9: (List[Int], List[Int]) = (List(2, 4, 6, 8, 10),List(1, 3, 5, 7, 9))</p>
+<p>（6）find ： 查找第一个满足条件的元素<br>scala&gt; numbers.find(_%3==0)<br>res10: Option[Int] = Some(3)</p>
 <p>_%3==0 (i:Int)=&gt;i%3==0 一样</p>
-<p>（7）flatten：把嵌套的结果展开<br>
-scala&gt; List(List(2,4,6,8,10),List(1,3,5,7,9)).flatten<br>
-res11: List[Int] = List(2, 4, 6, 8, 10, 1, 3, 5, 7, 9)</p>
-<p>（8）flatmap : 相当于一个 map + flatten<br>
-scala&gt; var myList = List(List(2,4,6,8,10),List(1,3,5,7,9))<br>
-myList: List[List[Int]] = List(List(2, 4, 6, 8, 10), List(1, 3, 5, 7, 9))</p>
-<p>scala&gt; myList.flatMap(x=&gt;x.map(_*2))<br>
-res22: List[Int] = List(4, 8, 12, 16, 20, 2, 6, 10, 14, 18)</p>
+<p>（7）flatten：把嵌套的结果展开<br>scala&gt; List(List(2,4,6,8,10),List(1,3,5,7,9)).flatten<br>res11: List[Int] = List(2, 4, 6, 8, 10, 1, 3, 5, 7, 9)</p>
+<p>（8）flatmap : 相当于一个 map + flatten<br>scala&gt; var myList = List(List(2,4,6,8,10),List(1,3,5,7,9))<br>myList: List[List[Int]] = List(List(2, 4, 6, 8, 10), List(1, 3, 5, 7, 9))</p>
+<p>scala&gt; myList.flatMap(x=&gt;x.map(_*2))<br>res22: List[Int] = List(4, 8, 12, 16, 20, 2, 6, 10, 14, 18)</p>
 <p>myList.flatMap(x=&gt;x.map(_*2))</p>
-<p>执行过程：<br>
-1、将 List(2, 4, 6, 8, 10), List(1, 3, 5, 7, 9) 调用 map(_*2) 方法。x 代表一个List<br>
-2、flatten</p>
+<p>执行过程：<br>1、将 List(2, 4, 6, 8, 10), List(1, 3, 5, 7, 9) 调用 map(_*2) 方法。x 代表一个List<br>2、flatten</p>
 <pre><code class="highlight plaintext">package day4
 
 /**
@@ -579,13 +538,12 @@ object Demo2 {
     map()
   }
 }</code></pre>
-<h4 id="5、概念：闭包、柯里化">5、概念：闭包、柯里化</h4>
-<p>（1）闭包：就是函数的嵌套<br>
-在一个函数的里面，包含了另一个函数的定义<br>
-可以在内函数中访问外函数的变量</p>
+
+<h4 id="5、概念：闭包、柯里化"><a href="#5、概念：闭包、柯里化" class="headerlink" title="5、概念：闭包、柯里化"></a>5、概念：闭包、柯里化</h4><p>（1）闭包：就是函数的嵌套<br>在一个函数的里面，包含了另一个函数的定义<br>可以在内函数中访问外函数的变量</p>
 <p>举例：</p>
 <pre><code class="highlight plaintext">def mulBy(factor:Double) = (x:Double)=&gt;x*factor
         外                           内</code></pre>
+
 <p>乘以三：</p>
 <pre><code class="highlight plaintext">scala&gt; def mulBy(factor:Double) = (x:Double)=&gt;x*factor
 mulBy: (factor: Double)Double =&gt; Double
@@ -606,86 +564,40 @@ half: Double =&gt; Double = &lt;function1&gt;
 
 scala&gt; half(10)
 res3: Double = 5.0</code></pre>
-<p>引入柯里化：<br>
-scala&gt; mulBy(3)(10)<br>
-res4: Double = 30.0</p>
-<p>（2）柯里化<br>
-概念：柯里化函数：是把具有多个参数的函数，转化为一个函数链，每个节点上都是单一函数</p>
+
+<p>引入柯里化：<br>scala&gt; mulBy(3)(10)<br>res4: Double = 30.0</p>
+<p>（2）柯里化<br>概念：柯里化函数：是把具有多个参数的函数，转化为一个函数链，每个节点上都是单一函数</p>
 <p>def add(x:Int,y:Int) = x+y</p>
 <p>def add(x:Int)(y:Int) = x+y</p>
 <p>转化步骤：</p>
 <p>原始：def add(x:Int,y:Int) = x+y</p>
 <p>闭包：def add(x:Int) = (y:Int) =&gt; x+y</p>
 <p>简写：def add(x:Int)(y:Int) = x+y</p>
-<p>scala&gt; def add(x:Int)(y:Int) = x+y<br>
-add: (x: Int)(y: Int)Int</p>
-<p>scala&gt; add(1)(2)<br>
-res5: Int = 3</p>
-<h3 id="二、Scala集合">二、Scala集合</h3>
-<h4 id="1、可变集合和不可变集合（Map）">1、可变集合和不可变集合（Map）</h4>
-<p>immutable mutable<br>
-举例：<br>
-scala&gt; def math = scala.collection.immutable.Map(“Tom”-&gt;80,”Lily”-&gt;20)<br>
-math: scala.collection.immutable.Map[String,Int]</p>
-<p>scala&gt; def math = scala.collection.mutable.Map(“Tom”-&gt;80,”Lily”-&gt;20,”Mike”-&gt;95)<br>
-math: scala.collection.mutable.Map[String,Int]</p>
-<p>集合的操作：<br>
-获取集合中的值<br>
-scala&gt; math.get(“Tom”)<br>
-res1: Option[Int] = Some(80)</p>
-<p>scala&gt; math(“Tom”)<br>
-res2: Int = 80</p>
-<p>scala&gt; math(“Tom123”)<br>
-java.util.NoSuchElementException: key not found: Tom123<br>
-at scala.collection.MapLike$class.default(MapLike.scala:228)<br>
-at scala.collection.AbstractMap.default(Map.scala:59)<br>
-at scala.collection.mutable.HashMap.apply(HashMap.scala:65)<br>
-… 32 elided</p>
-<p>scala&gt; math.get(“Tom123”)<br>
-res3: Option[Int] = None</p>
-<p>scala&gt; math.contains(“Tom123”)<br>
-res4: Boolean = false</p>
-<p>scala&gt; math.getOrElse(“Tom123”,-1)<br>
-res5: Int = -1</p>
-<p>更新集合中的值：注意：必须是可变集合<br>
-scala&gt; math<br>
-res6: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 95, Tom -&gt; 80, Lily -&gt; 20)</p>
-<p>scala&gt; math(“Tom”)=0<br>
-scala&gt; math<br>
-res7: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 95, Tom -&gt; 80, Lily -&gt; 20)</p>
-<p>造成上述现象的原因，没有import包，如果import以后，问题解决：<br>
-scala&gt; import scala.collection.mutable._<br>
-import scala.collection.mutable._</p>
-<p>scala&gt; var math = Map(“Tom”-&gt;80,”Lily”-&gt;20,”Mike”-&gt;95)<br>
-math: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 95, Tom -&gt; 80, Lily -&gt; 20)</p>
-<p>scala&gt; math(“Tom”)=0<br>
-scala&gt; math<br>
-res8: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 95, Tom -&gt; 0, Lily -&gt; 20)</p>
-<p>添加新的元素<br>
-scala&gt; math(“Tom”)=80<br>
-scala&gt; math += “Bob”-&gt;85<br>
-res9: scala.collection.mutable.Map[String,Int] = Map(Bob -&gt; 85, Mike -&gt; 95, Tom -&gt; 80, Lily -&gt; 20)</p>
-<p>移出一个元素<br>
-scala&gt; math -= “Bob”<br>
-res10: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 95, Tom -&gt; 80, Lily -&gt; 20)</p>
-<h4 id="2、列表：可变列表，不可变列表">2、列表：可变列表，不可变列表</h4>
-<p>不可变列表 List<br>
-scala&gt; var myList=List(1,2,3)<br>
-myList: List[Int] = List(1, 2, 3)</p>
-<p>scala&gt; val nullList:List[Nothing] = List()<br>
-nullList: List[Nothing] = List()</p>
-<p>//二维列表<br>
-scala&gt; val dim : List[List[Int]] = List(List(1,2,3),List(4,5,6))<br>
-dim: List[List[Int]] = List(List(1, 2, 3), List(4, 5, 6))</p>
-<p>scala&gt; myList.head<br>
-res11: Int = 1</p>
-<p>scala&gt; myList.tail<br>
-res12: List[Int] = List(2, 3)</p>
+<p>scala&gt; def add(x:Int)(y:Int) = x+y<br>add: (x: Int)(y: Int)Int</p>
+<p>scala&gt; add(1)(2)<br>res5: Int = 3</p>
+<h3 id="二、Scala集合"><a href="#二、Scala集合" class="headerlink" title="二、Scala集合"></a>二、Scala集合</h3><h4 id="1、可变集合和不可变集合（Map）"><a href="#1、可变集合和不可变集合（Map）" class="headerlink" title="1、可变集合和不可变集合（Map）"></a>1、可变集合和不可变集合（Map）</h4><p>immutable mutable<br>举例：<br>scala&gt; def math = scala.collection.immutable.Map(“Tom”-&gt;80,”Lily”-&gt;20)<br>math: scala.collection.immutable.Map[String,Int]</p>
+<p>scala&gt; def math = scala.collection.mutable.Map(“Tom”-&gt;80,”Lily”-&gt;20,”Mike”-&gt;95)<br>math: scala.collection.mutable.Map[String,Int]</p>
+<p>集合的操作：<br>获取集合中的值<br>scala&gt; math.get(“Tom”)<br>res1: Option[Int] = Some(80)</p>
+<p>scala&gt; math(“Tom”)<br>res2: Int = 80</p>
+<p>scala&gt; math(“Tom123”)<br>java.util.NoSuchElementException: key not found: Tom123<br>at scala.collection.MapLike$class.default(MapLike.scala:228)<br>at scala.collection.AbstractMap.default(Map.scala:59)<br>at scala.collection.mutable.HashMap.apply(HashMap.scala:65)<br>… 32 elided</p>
+<p>scala&gt; math.get(“Tom123”)<br>res3: Option[Int] = None</p>
+<p>scala&gt; math.contains(“Tom123”)<br>res4: Boolean = false</p>
+<p>scala&gt; math.getOrElse(“Tom123”,-1)<br>res5: Int = -1</p>
+<p>更新集合中的值：注意：必须是可变集合<br>scala&gt; math<br>res6: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 95, Tom -&gt; 80, Lily -&gt; 20)</p>
+<p>scala&gt; math(“Tom”)=0<br>scala&gt; math<br>res7: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 95, Tom -&gt; 80, Lily -&gt; 20)</p>
+<p>造成上述现象的原因，没有import包，如果import以后，问题解决：<br>scala&gt; import scala.collection.mutable._<br>import scala.collection.mutable._</p>
+<p>scala&gt; var math = Map(“Tom”-&gt;80,”Lily”-&gt;20,”Mike”-&gt;95)<br>math: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 95, Tom -&gt; 80, Lily -&gt; 20)</p>
+<p>scala&gt; math(“Tom”)=0<br>scala&gt; math<br>res8: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 95, Tom -&gt; 0, Lily -&gt; 20)</p>
+<p>添加新的元素<br>scala&gt; math(“Tom”)=80<br>scala&gt; math += “Bob”-&gt;85<br>res9: scala.collection.mutable.Map[String,Int] = Map(Bob -&gt; 85, Mike -&gt; 95, Tom -&gt; 80, Lily -&gt; 20)</p>
+<p>移出一个元素<br>scala&gt; math -= “Bob”<br>res10: scala.collection.mutable.Map[String,Int] = Map(Mike -&gt; 95, Tom -&gt; 80, Lily -&gt; 20)</p>
+<h4 id="2、列表：可变列表，不可变列表"><a href="#2、列表：可变列表，不可变列表" class="headerlink" title="2、列表：可变列表，不可变列表"></a>2、列表：可变列表，不可变列表</h4><p>不可变列表 List<br>scala&gt; var myList=List(1,2,3)<br>myList: List[Int] = List(1, 2, 3)</p>
+<p>scala&gt; val nullList:List[Nothing] = List()<br>nullList: List[Nothing] = List()</p>
+<p>//二维列表<br>scala&gt; val dim : List[List[Int]] = List(List(1,2,3),List(4,5,6))<br>dim: List[List[Int]] = List(List(1, 2, 3), List(4, 5, 6))</p>
+<p>scala&gt; myList.head<br>res11: Int = 1</p>
+<p>scala&gt; myList.tail<br>res12: List[Int] = List(2, 3)</p>
 <p>注意：tail 是除了第一个元素外，其他的元素</p>
 <p>可变列表：LinedList 在 scala.collection.mutable 包中</p>
-<p>scala&gt; var myList = scala.collection.mutable.LinkedList(1,2,3,4)<br>
-warning: there was one deprecation warning; re-run with -deprecation for details<br>
-myList: scala.collection.mutable.LinkedList[Int] = LinkedList(1, 2, 3, 4)</p>
+<p>scala&gt; var myList = scala.collection.mutable.LinkedList(1,2,3,4)<br>warning: there was one deprecation warning; re-run with -deprecation for details<br>myList: scala.collection.mutable.LinkedList[Int] = LinkedList(1, 2, 3, 4)</p>
 <p>需求：把上面列表中，每一个元素都乘以2</p>
 <p>游标，指向列表的开始</p>
 <pre><code class="highlight plaintext">var cur = myList
@@ -698,82 +610,39 @@ while(cur != Nil ){
     //移动指针到下一个元素
     cur = cur.next
 }</code></pre>
-<p>scala&gt; var cur = myList<br>
-cur: scala.collection.mutable.LinkedList[Int] = LinkedList(1, 2, 3, 4)</p>
-<p>scala&gt; while(cur != Nil ){<br>
-| cur.elem = cur.elem*2<br>
-| cur = cur.next<br>
-| }</p>
-<p>scala&gt; myList<br>
-res13: scala.collection.mutable.LinkedList[Int] = LinkedList(2, 4, 6, 8)</p>
-<p>scala&gt; myList.map(_*2)<br>
-warning: there was one deprecation warning; re-run with -deprecation for details<br>
-res14: scala.collection.mutable.LinkedList[Int] = LinkedList(4, 8, 12, 16)</p>
-<h4 id="3、序列">3、序列</h4>
-<p>（*）数据库中也有序列：sequence 、 auto increment<br>
-（1）作为主键，实现自动增长<br>
-（2）提高性能，序列在Oracle是在内存中的</p>
-<p>（*）Vector Range<br>
-举例：<br>
-Vector 是一个带下标的序列，我们可以通过下标来访问Vector中的元素<br>
-scala&gt; var v = Vector(1,2,3,4,5,6)<br>
-v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4, 5, 6)</p>
-<p>Range ： 是一个整数的序列<br>
-scala&gt; Range(0,5)<br>
-res15: scala.collection.immutable.Range = Range(0, 1, 2, 3, 4)</p>
+
+<p>scala&gt; var cur = myList<br>cur: scala.collection.mutable.LinkedList[Int] = LinkedList(1, 2, 3, 4)</p>
+<p>scala&gt; while(cur != Nil ){<br>| cur.elem = cur.elem*2<br>| cur = cur.next<br>| }</p>
+<p>scala&gt; myList<br>res13: scala.collection.mutable.LinkedList[Int] = LinkedList(2, 4, 6, 8)</p>
+<p>scala&gt; myList.map(_*2)<br>warning: there was one deprecation warning; re-run with -deprecation for details<br>res14: scala.collection.mutable.LinkedList[Int] = LinkedList(4, 8, 12, 16)</p>
+<h4 id="3、序列"><a href="#3、序列" class="headerlink" title="3、序列"></a>3、序列</h4><p>（*）数据库中也有序列：sequence 、 auto increment<br>（1）作为主键，实现自动增长<br>（2）提高性能，序列在Oracle是在内存中的</p>
+<p>（*）Vector Range<br>举例：<br>Vector 是一个带下标的序列，我们可以通过下标来访问Vector中的元素<br>scala&gt; var v = Vector(1,2,3,4,5,6)<br>v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4, 5, 6)</p>
+<p>Range ： 是一个整数的序列<br>scala&gt; Range(0,5)<br>res15: scala.collection.immutable.Range = Range(0, 1, 2, 3, 4)</p>
 <p>从0开始，到5 ，但不包括5</p>
-<p>scala&gt; println(0 until 5)<br>
-Range(0, 1, 2, 3, 4)</p>
-<p>scala&gt; println(0 to 5)<br>
-Range(0, 1, 2, 3, 4, 5)</p>
-<p>Range可以相加<br>
-scala&gt; (‘0’ to ‘9’) ++ (‘A’ to ‘Z’)<br>
-res16: scala.collection.immutable.IndexedSeq[Char] = Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z)</p>
-<p>把Range转换成list<br>
-scala&gt; 1 to 5 toList<br>
-warning: there was one feature warning; re-run with -feature for details<br>
-res17: List[Int] = List(1, 2, 3, 4, 5)</p>
-<h4 id="4、集（Set）">4、集（Set）</h4>
-<p>不重复元素的集合，默认是HashSet，与java类似<br>
-scala&gt; var s1 = Set(1,2,10,8)<br>
-s1: scala.collection.immutable.Set[Int] = Set(1, 2, 10, 8)</p>
-<p>scala&gt; s1 + 10<br>
-res18: scala.collection.immutable.Set[Int] = Set(1, 2, 10, 8)</p>
-<p>scala&gt; s1 + 7<br>
-res19: scala.collection.immutable.Set[Int] = Set(10, 1, 2, 7, 8)</p>
-<p>scala&gt; s1<br>
-res20: scala.collection.immutable.Set[Int] = Set(1, 2, 10, 8)</p>
-<p>创建一个可排序的Set SortedSet<br>
-scala&gt; var s2 = scala.collection.mutable.SortedSet(1,2,3,10,8)<br>
-s2: scala.collection.mutable.SortedSet[Int] = TreeSet(1, 2, 3, 8, 10)</p>
-<p>判断元素是否存在<br>
-scala&gt; s2.contains(1)<br>
-res21: Boolean = true</p>
-<p>scala&gt; s2.contains(1231231)<br>
-res22: Boolean = false</p>
-<p>集的运算：union并集 intersect 交集 diff 差集<br>
-scala&gt; var s1 = Set(1,2,3,4,5,6)<br>
-s1: scala.collection.immutable.Set[Int] = Set(5, 1, 6, 2, 3, 4)</p>
-<p>scala&gt; var s2 = Set(5,6,7,8,9,10)<br>
-s2: scala.collection.immutable.Set[Int] = Set(5, 10, 6, 9, 7, 8)</p>
-<p>scala&gt; s1 union s2<br>
-res23: scala.collection.immutable.Set[Int] = Set(5, 10, 1, 6, 9, 2, 7, 3, 8, 4)</p>
-<p>scala&gt; s1 intersect s2<br>
-res24: scala.collection.immutable.Set[Int] = Set(5, 6)</p>
-<p>scala&gt; s1 diff s2<br>
-res25: scala.collection.immutable.Set[Int] = Set(1, 2, 3, 4)</p>
-<p>数据库里面的union操作，要求：<br>
-列数一样<br>
-列的类型一样</p>
+<p>scala&gt; println(0 until 5)<br>Range(0, 1, 2, 3, 4)</p>
+<p>scala&gt; println(0 to 5)<br>Range(0, 1, 2, 3, 4, 5)</p>
+<p>Range可以相加<br>scala&gt; (‘0’ to ‘9’) ++ (‘A’ to ‘Z’)<br>res16: scala.collection.immutable.IndexedSeq[Char] = Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z)</p>
+<p>把Range转换成list<br>scala&gt; 1 to 5 toList<br>warning: there was one feature warning; re-run with -feature for details<br>res17: List[Int] = List(1, 2, 3, 4, 5)</p>
+<h4 id="4、集（Set）"><a href="#4、集（Set）" class="headerlink" title="4、集（Set）"></a>4、集（Set）</h4><p>不重复元素的集合，默认是HashSet，与java类似<br>scala&gt; var s1 = Set(1,2,10,8)<br>s1: scala.collection.immutable.Set[Int] = Set(1, 2, 10, 8)</p>
+<p>scala&gt; s1 + 10<br>res18: scala.collection.immutable.Set[Int] = Set(1, 2, 10, 8)</p>
+<p>scala&gt; s1 + 7<br>res19: scala.collection.immutable.Set[Int] = Set(10, 1, 2, 7, 8)</p>
+<p>scala&gt; s1<br>res20: scala.collection.immutable.Set[Int] = Set(1, 2, 10, 8)</p>
+<p>创建一个可排序的Set SortedSet<br>scala&gt; var s2 = scala.collection.mutable.SortedSet(1,2,3,10,8)<br>s2: scala.collection.mutable.SortedSet[Int] = TreeSet(1, 2, 3, 8, 10)</p>
+<p>判断元素是否存在<br>scala&gt; s2.contains(1)<br>res21: Boolean = true</p>
+<p>scala&gt; s2.contains(1231231)<br>res22: Boolean = false</p>
+<p>集的运算：union并集 intersect 交集 diff 差集<br>scala&gt; var s1 = Set(1,2,3,4,5,6)<br>s1: scala.collection.immutable.Set[Int] = Set(5, 1, 6, 2, 3, 4)</p>
+<p>scala&gt; var s2 = Set(5,6,7,8,9,10)<br>s2: scala.collection.immutable.Set[Int] = Set(5, 10, 6, 9, 7, 8)</p>
+<p>scala&gt; s1 union s2<br>res23: scala.collection.immutable.Set[Int] = Set(5, 10, 1, 6, 9, 2, 7, 3, 8, 4)</p>
+<p>scala&gt; s1 intersect s2<br>res24: scala.collection.immutable.Set[Int] = Set(5, 6)</p>
+<p>scala&gt; s1 diff s2<br>res25: scala.collection.immutable.Set[Int] = Set(1, 2, 3, 4)</p>
+<p>数据库里面的union操作，要求：<br>列数一样<br>列的类型一样</p>
 <pre><code class="highlight plaintext">select A,B from ****
 union 
 select C,D from *****</code></pre>
-<p>函数的定义+返回值<br>
-def sum():Int =</p>
-<p>python数据分析<br>
-pyspark</p>
-<h4 id="5、模式匹配">5、模式匹配</h4>
-<p>相当于java中的switch case语句 但是 功能更强大</p>
+
+<p>函数的定义+返回值<br>def sum():Int =</p>
+<p>python数据分析<br>pyspark</p>
+<h4 id="5、模式匹配"><a href="#5、模式匹配" class="headerlink" title="5、模式匹配"></a>5、模式匹配</h4><p>相当于java中的switch case语句 但是 功能更强大</p>
 <pre><code class="highlight plaintext">package day5
 
 /**
@@ -884,8 +753,8 @@ object Demo1 {
     }
   }
 }</code></pre>
-<h4 id="6、样本类">6、样本类</h4>
-<p>定义： case class</p>
+
+<h4 id="6、样本类"><a href="#6、样本类" class="headerlink" title="6、样本类"></a>6、样本类</h4><p>定义： case class</p>
 <pre><code class="highlight plaintext">package day5
 /**
   * 使用case class 来实现模式匹配
@@ -907,9 +776,8 @@ object Demo2 {
     }
   }
 }</code></pre>
-<p>作用：<br>
-（1）支持模式匹配，instanceof<br>
-（2）定一个 Spark SQL 中的 schema ： 表结构</p>
+
+<p>作用：<br>（1）支持模式匹配，instanceof<br>（2）定一个 Spark SQL 中的 schema ： 表结构</p>
 <pre><code class="highlight plaintext">scala&gt; class Fruit
 defined class Fruit
 
@@ -930,12 +798,9 @@ scala&gt; println(a.isInstanceOf[Banana])
        println(a.isInstanceOf[Banana])
                              ^
 false</code></pre>
-<h3 id="三、Scala高级特性">三、Scala高级特性</h3>
-<h4 id="1、泛型">1、泛型</h4>
-<p>和java类似 T</p>
-<p><strong>1）泛型类</strong><br>
-定义类的时候，可以带有一个泛型的参数<br>
-例子：</p>
+
+<h3 id="三、Scala高级特性"><a href="#三、Scala高级特性" class="headerlink" title="三、Scala高级特性"></a>三、Scala高级特性</h3><h4 id="1、泛型"><a href="#1、泛型" class="headerlink" title="1、泛型"></a>1、泛型</h4><p>和java类似 T</p>
+<p><strong>1）泛型类</strong><br>定义类的时候，可以带有一个泛型的参数<br>例子：</p>
 <pre><code class="highlight plaintext">package day5
 
 /**
@@ -985,43 +850,31 @@ object Demo3{
     println(v2.get())
   }
 }</code></pre>
+
 <p><strong>2）泛型函数</strong></p>
 <p>定义一个函数，可以带有一个泛型的参数</p>
-<p>scala&gt; def mkIntArray(elem:Int*)=<code>Array[Int](elem:_*)</code><br>
-mkIntArray: (elem: Int*)Array[Int]</p>
-<p>scala&gt; mkIntArray(1,2,3)<br>
-res5: Array[Int] = Array(1, 2, 3)</p>
-<p>scala&gt; mkIntArray(1,2,3,4,5)<br>
-res6: Array[Int] = Array(1, 2, 3, 4, 5)</p>
-<p>scala&gt; def mkStringArray(elem:String*)=<code>Array[String](elem:_*)</code><br>
-mkStringArray: (elem: String*)Array[String]</p>
-<p>scala&gt; mkStringArray(“a”,“b”)<br>
-res7: Array[String] = Array(a, b)</p>
+<p>scala&gt; def mkIntArray(elem:Int*)=<code>Array[Int](elem:_*)</code><br>mkIntArray: (elem: Int*)Array[Int]</p>
+<p>scala&gt; mkIntArray(1,2,3)<br>res5: Array[Int] = Array(1, 2, 3)</p>
+<p>scala&gt; mkIntArray(1,2,3,4,5)<br>res6: Array[Int] = Array(1, 2, 3, 4, 5)</p>
+<p>scala&gt; def mkStringArray(elem:String*)=<code>Array[String](elem:_*)</code><br>mkStringArray: (elem: String*)Array[String]</p>
+<p>scala&gt; mkStringArray(“a”,”b”)<br>res7: Array[String] = Array(a, b)</p>
 <p>scala&gt; def mkArray[T:ClassTag]</p>
 <p>ClassTag ： 表示scala在运行时候的状态信息，这里表示调用时候数据类型</p>
-<p>scala&gt; import scala.reflect.ClassTag<br>
-import scala.reflect.ClassTag</p>
+<p>scala&gt; import scala.reflect.ClassTag<br>import scala.reflect.ClassTag</p>
 <pre><code class="highlight plaintext">scala&gt; def mkArray[T:ClassTag](elem:T*)= Array[T](elem:_*)
 mkArray: [T](elem: T*)(implicit evidence$1: scala.reflect.ClassTag[T])Array[T]</code></pre>
-<p>scala&gt; mkArray(1,2)<br>
-res8: Array[Int] = Array(1, 2)</p>
-<p>scala&gt; mkArray(“Hello”,“aaa”)<br>
-res9: Array[String] = Array(Hello, aaa)</p>
-<p>scala&gt; mkArray(“Hello”,1)<br>
-res10: Array[Any] = Array(Hello, 1)<br>
-泛型：但凡有重复的时候，考虑使用泛型</p>
+
+<p>scala&gt; mkArray(1,2)<br>res8: Array[Int] = Array(1, 2)</p>
+<p>scala&gt; mkArray(“Hello”,”aaa”)<br>res9: Array[String] = Array(Hello, aaa)</p>
+<p>scala&gt; mkArray(“Hello”,1)<br>res10: Array[Any] = Array(Hello, 1)<br>泛型：但凡有重复的时候，考虑使用泛型</p>
 <p><strong>3）上界和下界</strong></p>
-<p>Int x<br>
-规定x的取值范围 100 &lt;= x &lt;=1000</p>
-<p>泛型的取值范围：<br>
-T</p>
+<p>Int x<br>规定x的取值范围 100 &lt;= x &lt;=1000</p>
+<p>泛型的取值范围：<br>T</p>
 <p>类的继承关系 A —&gt; B —&gt; C —&gt; D 箭头指向子类</p>
 <p>定义T的取值范围 D &lt;: T &lt;: B</p>
 <p>T 的 取值范围 就是 B C D</p>
 <p>&lt;: 就是上下界的表示方法</p>
-<p>概念<br>
-上界 S &lt;： T 规定了 S的类型必须是 T的子类或本身<br>
-下界 U &gt;： T 规定了 U的类型必须是 T的父类或本身</p>
+<p>概念<br>上界 S &lt;： T 规定了 S的类型必须是 T的子类或本身<br>下界 U &gt;： T 规定了 U的类型必须是 T的父类或本身</p>
 <p>例子：</p>
 <pre><code class="highlight plaintext">package day5
 /**
@@ -1086,6 +939,7 @@ scala&gt; addTwoString(1,2)
 
 scala&gt; addTwoString(1.toString,2.toString)
 res13: String = 1 ********* 2</code></pre>
+
 <p><strong>4）视图界定 View bounds</strong></p>
 <p>就是上界和下界的扩展</p>
 <p>除了可以接收上界和下界规定的类型以外，还可以接收能够通过隐式转换过去的类型</p>
@@ -1104,12 +958,11 @@ int2String: (n: Int)String
 
 scala&gt; addTwoString(1,2)
 res14: String = 1 ********* 2</code></pre>
-<p><strong>执行过程</strong></p>
-<p>1、调用了 int2String Int =&gt; String<br>
-2、addTwoString(“1”,”2”)</p>
+
+<p><strong>执行过程</strong> </p>
+<p>1、调用了 int2String Int =&gt; String<br>2、addTwoString(“1”,”2”)</p>
 <p><strong>5）协变和逆变（概念）</strong></p>
-<p>协变：表示在类型参数前面加上 + 。泛型变量的值，可以是本身类型或者其子类类型<br>
-例子：</p>
+<p>协变：表示在类型参数前面加上 + 。泛型变量的值，可以是本身类型或者其子类类型<br>例子：</p>
 <pre><code class="highlight plaintext">package day5
 
 /**
@@ -1152,8 +1005,8 @@ object Demo4 {
     var c4 : EatSomething[Animal] = c3
   }
 }</code></pre>
-<p>逆变：表示在类型参数前面加上 - 。泛型变量的值，可以是本身类型或者其父类类型<br>
-例子：</p>
+
+<p>逆变：表示在类型参数前面加上 - 。泛型变量的值，可以是本身类型或者其父类类型<br>例子：</p>
 <pre><code class="highlight plaintext">package day5
 
 /**
@@ -1178,8 +1031,8 @@ object Demo5 {
     var c2 : EatSomething[Sparrow] = c1
   }
 }</code></pre>
-<h4 id="2、隐式转换">2、隐式转换</h4>
-<p><strong>1）隐式转换函数： implicit</strong></p>
+
+<h4 id="2、隐式转换"><a href="#2、隐式转换" class="headerlink" title="2、隐式转换"></a>2、隐式转换</h4><p><strong>1）隐式转换函数： implicit</strong></p>
 <pre><code class="highlight plaintext">package day5
 
 /**
@@ -1207,6 +1060,7 @@ object ImplicitDemo {
     new Monkey(f)
   }
 }</code></pre>
+
 <p><strong>2）隐式参数：使用implicit 修饰的函数参数</strong></p>
 <p>定义一个带有隐式参数的函数：</p>
 <pre><code class="highlight plaintext">scala&gt; def testPara(implicit name:String) = println("The value is " + name)
@@ -1220,9 +1074,8 @@ name: String = *****
 
 scala&gt; testPara
 The value is *****</code></pre>
-<p>定义一个隐式参数，找到两个值中比较小的那个值<br>
-100 23 –&gt;23<br>
-“Hello” “ABC” –&gt; ABC</p>
+
+<p>定义一个隐式参数，找到两个值中比较小的那个值<br>100 23 –&gt;23<br>“Hello” “ABC” –&gt; ABC</p>
 <pre><code class="highlight plaintext">scala&gt; def smaller[T](a:T,b:T)(implicit order : T =&gt; Ordered[T]) = if(a&lt;b) a else b
 smaller: [T](a: T, b: T)(implicit order: T =&gt; Ordered[T])T
 
@@ -1231,10 +1084,10 @@ res18: Int = 1
 
 scala&gt; smaller("Hello","ABC")
 res19: String = ABC</code></pre>
-<p>解释：<br>
-order 就是一个隐式参数，我们使用Scala中的 Ordered 类，表示该值可以被排序，也就是可以被比较</p>
+
+<p>解释：<br>order 就是一个隐式参数，我们使用Scala中的 Ordered 类，表示该值可以被排序，也就是可以被比较</p>
 <p>作用：扩充了属性的功能</p>
-<p><strong>3）隐式类 在类名前 加 implicit 关键字</strong></p>
+<p><strong>3）隐式类 在类名前 加 implicit 关键字</strong> </p>
 <p>作用：扩充类的功能</p>
 <pre><code class="highlight plaintext">package day5
 
@@ -1264,6 +1117,7 @@ object Demo6 {
     }
   }
 }</code></pre>
+
 
             </div>
             <hr/>
@@ -1514,13 +1368,9 @@ object Demo6 {
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Actor并发模型
-Java中的并发开发
-Java的并发编程是基于 共享数据 和 加锁 的一种机制。锁的是共享数据
-synchronized
-Scala中的并发开发
-不共享数据。依赖于 消息传递 的一种并发编程模式
-如果 Actor A 和
+                            Actor并发模型Java中的并发开发Java的并发编程是基于 共享数据 和 加锁 的一种机制。锁的是共享数据synchronized
+Scala中的并发开发不共享数据。依赖于 消息传递 的一种并发编程模式
+如果 Actor A 和 Act
                         
                     </div>
                     <div class="publish-info">
@@ -1573,10 +1423,7 @@ Scala中的并发开发
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、Scala编程语言
-2、Spark Core ： Spark内核 ，最重要的一个部分
-3、Spark SQL : 类似于 Hive 和Pig。数据分析引擎。sql语句提交到Spark集群中运行
-4、Spark Streaming ：类似
+                            1、Scala编程语言2、Spark Core ： Spark内核 ，最重要的一个部分3、Spark SQL : 类似于 Hive 和Pig。数据分析引擎。sql语句提交到Spark集群中运行4、Spark Streaming ：类似于 S
                         
                     </div>
                     <div class="publish-info">
@@ -1790,7 +1637,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

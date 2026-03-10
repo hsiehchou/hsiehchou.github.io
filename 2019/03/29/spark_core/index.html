@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,7 +384,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.8k
+                    9.6k
                 </div>
                 
 
@@ -407,230 +407,132 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Spark生态圈：<br>
-Spark Core ： RDD（弹性分布式数据集）<br>
-Spark SQL<br>
-Spark Streaming<br>
-Spark MLLib ：协同过滤，ALS，逻辑回归等等 –&gt; 机器学习<br>
-Spark Graphx ： 图计算</p>
-<h3 id="一、Spark-Core">一、Spark Core</h3>
-<h4 id="1、什么是Spark？特点">1、什么是Spark？特点</h4>
-<p><a target="_blank" rel="noopener" href="https://spark.apache.org/">https://spark.apache.org/</a><br>
-Apache Spark™ is a unified analytics engine for large-scale data processing.<br>
-特点：快、易用、通用性、兼容性（完全兼容Hadoop）</p>
-<p>快：快100倍（Hadoop 3 之前）<br>
-易用：支持多种语言开发<br>
-通用性：生态系统全<br>
-易用性：兼容Hadoop</p>
-<h3 id="二、安装和部署Spark、Spark-的-HA">二、安装和部署Spark、Spark 的 HA</h3>
-<h4 id="1、Spark体系结构">1、Spark体系结构</h4>
-<p>Spark的运行方式</p>
+                <p>Spark生态圈：<br>Spark Core ： RDD（弹性分布式数据集）<br>Spark SQL<br>Spark Streaming<br>Spark MLLib ：协同过滤，ALS，逻辑回归等等 –&gt; 机器学习<br>Spark Graphx ： 图计算</p>
+<h3 id="一、Spark-Core"><a href="#一、Spark-Core" class="headerlink" title="一、Spark Core"></a>一、Spark Core</h3><h4 id="1、什么是Spark？特点"><a href="#1、什么是Spark？特点" class="headerlink" title="1、什么是Spark？特点"></a>1、什么是Spark？特点</h4><p><a target="_blank" rel="noopener" href="https://spark.apache.org/">https://spark.apache.org/</a><br>Apache Spark™ is a unified analytics engine for large-scale data processing.<br>特点：快、易用、通用性、兼容性（完全兼容Hadoop）</p>
+<p>快：快100倍（Hadoop 3 之前）<br>易用：支持多种语言开发<br>通用性：生态系统全<br>易用性：兼容Hadoop</p>
+<h3 id="二、安装和部署Spark、Spark-的-HA"><a href="#二、安装和部署Spark、Spark-的-HA" class="headerlink" title="二、安装和部署Spark、Spark 的 HA"></a>二、安装和部署Spark、Spark 的 HA</h3><h4 id="1、Spark体系结构"><a href="#1、Spark体系结构" class="headerlink" title="1、Spark体系结构"></a>1、Spark体系结构</h4><p>Spark的运行方式</p>
 <p>Yarn</p>
 <p>Standalone：本机调试（Demo）</p>
 <p>Worker：从节点。每个服务器上，资源和任务的管理者。只负责管理一个节点</p>
-<p>执行过程：<br>
-一个Worker 有多个 Executor。 Executor是任务的执行者，按阶段（stage）划分任务。————&gt; RDD</p>
-<p>客户端：Driver Program 提交任务到集群中<br>
-1）spark-submit<br>
-2）spark-shell</p>
-<h4 id="2、Spark的搭建">2、Spark的搭建</h4>
-<p>1）准备工作：JDK 配置主机名 免密码登录</p>
-<p>2）伪分布式模式<br>
-在一台虚拟机上模拟分布式环境（Master和Worker在一个节点上）<br>
-<a target="_blank" rel="noopener" href="http://xn--spark-env-9i9x315l.sh">配置spark-env.sh</a><br>
-vi <a target="_blank" rel="noopener" href="http://spark-env.sh">spark-env.sh</a></p>
+<p>执行过程：<br>一个Worker 有多个 Executor。 Executor是任务的执行者，按阶段（stage）划分任务。————&gt; RDD</p>
+<p>客户端：Driver Program 提交任务到集群中<br>1）spark-submit<br>2）spark-shell</p>
+<h4 id="2、Spark的搭建"><a href="#2、Spark的搭建" class="headerlink" title="2、Spark的搭建"></a>2、Spark的搭建</h4><p>1）准备工作：JDK 配置主机名 免密码登录</p>
+<p>2）伪分布式模式<br>在一台虚拟机上模拟分布式环境（Master和Worker在一个节点上）<br>配置spark-env.sh<br>vi spark-env.sh</p>
 <pre><code class="highlight plaintext">export JAVA_HOME=/root/hd/jdk1.8.0_192
 export SPARK_MASTER_HOST=hsiehchou121
 export SPARK_MASTER_PORT=7077</code></pre>
-<p>配置slaves<br>
-vi slaves<br>
-hsiehchou121</p>
+
+<p>配置slaves<br>vi slaves<br>hsiehchou121</p>
 <p>浏览器访问hsiehchou121:8080</p>
 <p>在Spark中使用Scala语言</p>
 <pre><code class="highlight plaintext">[root@hsiehchou121 bin]# ./spark-shell --master spark://hsiehchou121:7077</code></pre>
-<p>3）全分布式环境<br>
-修改slave文件 拷贝到其他三台服务器 启动</p>
-<h4 id="3、Spark的-HA">3、Spark的 HA</h4>
-<p>回顾HA（高可用）<br>
-（<em>）HDFS Yarn Hbase Spark 主从结构<br>
-（</em>）单点故障</p>
-<p>（1）基于文件目录的单点恢复<br>
-主要用于开发或测试环境。当spark提供目录保存spark Application和worker的注册信息，并将他们的恢复状态写入该目录中，这时，一旦Master发生故障，就可以通过重新启动Master进程（sbin/start-master.sh），恢复已运行的spark Application和worker的注册信息</p>
+
+<p>3）全分布式环境<br>修改slave文件 拷贝到其他三台服务器 启动</p>
+<h4 id="3、Spark的-HA"><a href="#3、Spark的-HA" class="headerlink" title="3、Spark的 HA"></a>3、Spark的 HA</h4><p>回顾HA（高可用）<br>（<em>）HDFS Yarn Hbase Spark 主从结构<br>（</em>）单点故障</p>
+<p>（1）基于文件目录的单点恢复<br>主要用于开发或测试环境。当spark提供目录保存spark Application和worker的注册信息，并将他们的恢复状态写入该目录中，这时，一旦Master发生故障，就可以通过重新启动Master进程（sbin/start-master.sh），恢复已运行的spark Application和worker的注册信息</p>
 <p>基于文件系统的单点恢复，主要是在spark-en.sh里对SPARK_DAEMON_JAVA_OPTS设置</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">配置参数</th>
-<th style="text-align:center">参考值</th>
+<th align="center">配置参数</th>
+<th align="center">参考值</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">spark.deploy.recoveryMode</td>
-<td style="text-align:center">设置为FILESYSTEM开启单点恢复功能，默认值：NONE</td>
+<tbody><tr>
+<td align="center">spark.deploy.recoveryMode</td>
+<td align="center">设置为FILESYSTEM开启单点恢复功能，默认值：NONE</td>
 </tr>
 <tr>
-<td style="text-align:center">spark.deploy.recoveryDirectory</td>
-<td style="text-align:center">Spark 保存恢复状态的目录</td>
+<td align="center">spark.deploy.recoveryDirectory</td>
+<td align="center">Spark 保存恢复状态的目录</td>
 </tr>
-</tbody>
-</table>
-<p><strong>参考</strong>：<br>
-export SPARK_DAEMON_JAVA_OPTS=”-Dspark.deploy.recoveryMode=FILESYSTEM -Dspark.deploy.recoveryDirectory=/root/hd/spark-2.1.0-bin-hadoop2.7/recovery”</p>
-<p>（*）本质：还是只有一个主节点Master，创建了一个恢复目录，保存集群状态和任务的信息<br>
-当Master挂掉，重新启动时，会从恢复目录下读取状态信息，恢复出来原来的状态</p>
+</tbody></table>
+<p><strong>参考</strong>：<br>export SPARK_DAEMON_JAVA_OPTS=”-Dspark.deploy.recoveryMode=FILESYSTEM -Dspark.deploy.recoveryDirectory=/root/hd/spark-2.1.0-bin-hadoop2.7/recovery”</p>
+<p>（*）本质：还是只有一个主节点Master，创建了一个恢复目录，保存集群状态和任务的信息<br>当Master挂掉，重新启动时，会从恢复目录下读取状态信息，恢复出来原来的状态</p>
 <p>用途：这个只用于开发和测试，但是生产使用用ZooKeeper</p>
-<p>export SPARK_DAEMON_JAVA_OPTS=“-Dspark.deploy.recoveryMode=FILESYSTEM -Dspark.deploy.recoveryDirectory=/root/hd/spark-2.1.0-bin-hadoop2.7/recovery”</p>
-<p>（2）基于ZooKeeper ：和Hadoop类似<br>
-ZooKeeper提供了一个Leader Election机制，利用这个机制可以保证虽然集群存在多个Master，但是只有一个是Active的，其他的都是Standby。当Active的Master出现故障时，另外的一个Standby Master会被选举出来。由于集群的信息，包括Worker， Driver和Application的信息都已经持久化到ZooKeeper，因此在切换的过程中只会影响新Job的提交，对于正在进行的Job没有任何的影响</p>
+<p>export SPARK_DAEMON_JAVA_OPTS=”-Dspark.deploy.recoveryMode=FILESYSTEM -Dspark.deploy.recoveryDirectory=/root/hd/spark-2.1.0-bin-hadoop2.7/recovery”</p>
+<p>（2）基于ZooKeeper ：和Hadoop类似<br>ZooKeeper提供了一个Leader Election机制，利用这个机制可以保证虽然集群存在多个Master，但是只有一个是Active的，其他的都是Standby。当Active的Master出现故障时，另外的一个Standby Master会被选举出来。由于集群的信息，包括Worker， Driver和Application的信息都已经持久化到ZooKeeper，因此在切换的过程中只会影响新Job的提交，对于正在进行的Job没有任何的影响</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">配置参数</th>
-<th style="text-align:center">参考值</th>
+<th align="center">配置参数</th>
+<th align="center">参考值</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">spark.deploy.recoveryMode</td>
-<td style="text-align:center">设置为ZOOKEEPER开启单点恢复功能，默认值：NONE</td>
+<tbody><tr>
+<td align="center">spark.deploy.recoveryMode</td>
+<td align="center">设置为ZOOKEEPER开启单点恢复功能，默认值：NONE</td>
 </tr>
 <tr>
-<td style="text-align:center">spark.deploy.zookeeper.url</td>
-<td style="text-align:center">ZooKeeper集群的地址</td>
+<td align="center">spark.deploy.zookeeper.url</td>
+<td align="center">ZooKeeper集群的地址</td>
 </tr>
 <tr>
-<td style="text-align:center">spark.deploy.zookeeper.dir</td>
-<td style="text-align:center">Spark信息在ZK中的保存目录，默认：/spark</td>
+<td align="center">spark.deploy.zookeeper.dir</td>
+<td align="center">Spark信息在ZK中的保存目录，默认：/spark</td>
 </tr>
-</tbody>
-</table>
-<p><strong>参考</strong>：<br>
-export SPARK_DAEMON_JAVA_OPTS=”-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=hsiehchou121:2181,hsiehchou122:2181,hsiehchou123:2181,hsiehchou124:2181 -Dspark.deploy.zookeeper.dir=/spark”</p>
-<p>（*）复习一下zookeeper：<br>
-相当于一个数据库，把一些信息存放在zookeeper中，比如集群的信息<br>
-数据同步功能，选举功能，分布式锁功能</p>
+</tbody></table>
+<p><strong>参考</strong>：<br>export SPARK_DAEMON_JAVA_OPTS=”-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=hsiehchou121:2181,hsiehchou122:2181,hsiehchou123:2181,hsiehchou124:2181 -Dspark.deploy.zookeeper.dir=/spark”</p>
+<p>（*）复习一下zookeeper：<br>相当于一个数据库，把一些信息存放在zookeeper中，比如集群的信息<br>数据同步功能，选举功能，分布式锁功能</p>
 <p>数据同步：给一个节点中写入数据，可以同步到其他节点</p>
 <p>选举：Zookeeper中存在不同的角色，Leader Follower。如果Leader挂掉，重新选举Leader</p>
 <p>分布式锁：秒杀。以目录节点的方式来保存数据</p>
-<p>修改 <a target="_blank" rel="noopener" href="http://spark-env.sh">spark-env.sh</a></p>
+<p>修改 spark-env.sh</p>
 <pre><code class="highlight plaintext">export JAVA_HOME=/root/hd/jdk1.8.0_192
 #export SPARK_MASTER_HOST=hsiehchou121
 #export SPARK_MASTER_PORT=7077
 #export SPARK_DAEMON_JAVA_OPTS="-Dspark.deploy.recoveryMode=FILESYSTEM -Dspark.deploy.recoveryDirectory=/root/hd/spark-2.1.0-bin-hadoop2.7/recovery"
 export SPARK_DAEMON_JAVA_OPTS="-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=hsiehchou121:2181,hsiehchou122:2181,hsiehchou123:2181,hsiehchou124:2181 -Dspark.deploy.zookeeper.dir=/spark"</code></pre>
-<p>同步到其他三台服务器<br>
-[root@hsiehchou121 spark-2.1.0-bin-hadoop2.7]# scp conf/spark-env.sh hsiehchou122:/root/hd/spark-2.1.0-bin-hadoop2.7/conf<br>
-[root@hsiehchou121 spark-2.1.0-bin-hadoop2.7]# scp conf/spark-env.sh hsiehchou123:/root/hd/spark-2.1.0-bin-hadoop2.7/conf<br>
-[root@hsiehchou121 spark-2.1.0-bin-hadoop2.7]# scp conf/spark-env.sh hsiehchou124:/root/hd/spark-2.1.0-bin-hadoop2.7/conf</p>
-<p>在hsiehchou121 start-all hsiehchou121 master hsiehchou122 Worker hsiehchou123 Worker hsiehchou124 Worker<br>
-在hsiehchou121 start-master hsiehchou121 master hsiehchou122 master（standby） hsiehchou122 Worker hsiehchou123 Worker hsiehchou124 Worker</p>
-<p>在hsiehchou121 上kill master<br>
-hsiehchou122 master（Active） hsiehchou122 Worker hsiehchou123 Worker hsiehchou124 Worker</p>
+
+<p>同步到其他三台服务器<br>[root@hsiehchou121 spark-2.1.0-bin-hadoop2.7]# scp conf/spark-env.sh hsiehchou122:/root/hd/spark-2.1.0-bin-hadoop2.7/conf<br>[root@hsiehchou121 spark-2.1.0-bin-hadoop2.7]# scp conf/spark-env.sh hsiehchou123:/root/hd/spark-2.1.0-bin-hadoop2.7/conf<br>[root@hsiehchou121 spark-2.1.0-bin-hadoop2.7]# scp conf/spark-env.sh hsiehchou124:/root/hd/spark-2.1.0-bin-hadoop2.7/conf</p>
+<p>在hsiehchou121 start-all hsiehchou121 master hsiehchou122 Worker hsiehchou123 Worker hsiehchou124 Worker<br>在hsiehchou121 start-master hsiehchou121 master hsiehchou122 master（standby） hsiehchou122 Worker hsiehchou123 Worker hsiehchou124 Worker</p>
+<p>在hsiehchou121 上kill master<br>hsiehchou122 master（Active） hsiehchou122 Worker hsiehchou123 Worker hsiehchou124 Worker</p>
 <p>在网页<a target="_blank" rel="noopener" href="http://192.168.116.122:8080/">http://192.168.116.122:8080/</a> 可以看到相应信息</p>
-<h3 id="三、执行Spark的任务：两个工具">三、执行Spark的任务：两个工具</h3>
-<h4 id="1、spark-submit：用于提交Spark的任务">1、spark-submit：用于提交Spark的任务</h4>
-<p>任务：jar</p>
+<h3 id="三、执行Spark的任务：两个工具"><a href="#三、执行Spark的任务：两个工具" class="headerlink" title="三、执行Spark的任务：两个工具"></a>三、执行Spark的任务：两个工具</h3><h4 id="1、spark-submit：用于提交Spark的任务"><a href="#1、spark-submit：用于提交Spark的任务" class="headerlink" title="1、spark-submit：用于提交Spark的任务"></a>1、spark-submit：用于提交Spark的任务</h4><p>任务：jar</p>
 <p>举例：蒙特卡洛求PI（圆周率）</p>
-<p>./spark-submit <code>--master</code> spark://hsiehchou121:7077 <code>--class</code><br>
-<code>--class</code>指明主程序的名字</p>
+<p>./spark-submit <code>--master</code> spark://hsiehchou121:7077 <code>--class</code><br><code>--class</code>指明主程序的名字</p>
 <pre><code class="highlight plaintext">[root@hsiehchou121 /]#cd /root/hd/spark-2.1.0-bin-hadoop2.7/bin
 [root@hsiehchou121 bin]# ./spark-submit --master spark://hsiehchou121:7077 --class org.apache.spark.examples.SparkPi /root/hd/spark-2.1.0-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.1.0.jar 100</code></pre>
 <p>其中100指定执行的次数</p>
-<h4 id="2、spark-shell-相当于REPL">2、spark-shell 相当于REPL</h4>
-<p>spark-shell是Spark自带的交互式Shell程序，方便用户进行交互式编程，用户可以在该命令行下用scala编写spark程序<br>
-（*）启动Spark Shell：spark-shell<br>
-也可以使用以下参数：<br>
-参数说明：<br>
-<code>--master</code> spark://hsiehchou121:7077 指定Master的地址<br>
-<code>--executor-memory</code> 2g 指定每个worker可用内存为2G<br>
-<code>--total-executor-cores</code> 2 指定整个集群使用的cup核数为2个<br>
-例如：</p>
-<p>spark-shell <code>--master</code> spark://hsiehchou121:7077 <code>--executor-memory</code> 2g <code>--total-executor-cores</code> 2<br>
-注意：<br>
-如果启动spark shell时没有指定master地址，但是也可以正常启动spark shell和执行spark shell中的程序，其实是启动了spark的local模式，该模式仅在本机启动一个进程，没有与集群建立联系</p>
-<p>作为一个独立的Application运行<br>
-两种模式：<br>
-（1）<strong>本地模式</strong><br>
-spark-shell 后面不接任何参数，代表本地模式<br>
-./spark-shell<br>
-Spark context available as ‘sc’ (master = local[<em>], app id = local-1554372019995).<br>
-sc 是 SparkContext 对象名。 local[</em>] 代表本地模式，不提交到集群中运行</p>
-<p>（2）<strong>集群模式</strong><br>
-[root@hsiehchou121 bin]# ./spark-shell <code>--master</code> spark://hsiehchou121:7077<br>
-提交到集群运行<br>
-Spark context available as ‘sc’ (master = spark://hsiehchou121:7077, app id = app-20190404190030-0000).</p>
-<p>master = spark://hsiehchou121:7077<br>
-Spark session available as ‘spark’<br>
-Spark Session 是 2.0 以后提供的，利用 SparkSession 可以访问spark所有组件</p>
-<p>示例：<br>
-<strong>WordCount程序</strong></p>
+<h4 id="2、spark-shell-相当于REPL"><a href="#2、spark-shell-相当于REPL" class="headerlink" title="2、spark-shell 相当于REPL"></a>2、spark-shell 相当于REPL</h4><p>spark-shell是Spark自带的交互式Shell程序，方便用户进行交互式编程，用户可以在该命令行下用scala编写spark程序<br>（*）启动Spark Shell：spark-shell<br>也可以使用以下参数：<br>参数说明：<br><code>--master</code> spark://hsiehchou121:7077 指定Master的地址<br><code>--executor-memory</code> 2g 指定每个worker可用内存为2G<br><code>--total-executor-cores</code> 2 指定整个集群使用的cup核数为2个<br>例如：</p>
+<p>spark-shell <code>--master</code> spark://hsiehchou121:7077 <code>--executor-memory</code> 2g <code>--total-executor-cores</code> 2<br>注意：<br>如果启动spark shell时没有指定master地址，但是也可以正常启动spark shell和执行spark shell中的程序，其实是启动了spark的local模式，该模式仅在本机启动一个进程，没有与集群建立联系</p>
+<p>作为一个独立的Application运行<br>两种模式：<br>（1）<strong>本地模式</strong><br>spark-shell 后面不接任何参数，代表本地模式<br>./spark-shell<br>Spark context available as ‘sc’ (master = local[<em>], app id = local-1554372019995).<br>sc 是 SparkContext 对象名。 local[</em>] 代表本地模式，不提交到集群中运行</p>
+<p>（2）<strong>集群模式</strong><br>[root@hsiehchou121 bin]# ./spark-shell <code>--master</code> spark://hsiehchou121:7077<br>提交到集群运行<br>Spark context available as ‘sc’ (master = spark://hsiehchou121:7077, app id = app-20190404190030-0000).</p>
+<p>master = spark://hsiehchou121:7077<br>Spark session available as ‘spark’<br>Spark Session 是 2.0 以后提供的，利用 SparkSession 可以访问spark所有组件</p>
+<p>示例：<br><strong>WordCount程序</strong> </p>
 <p>程序如下：</p>
 <pre><code class="highlight plaintext">sc.textFile("hdfs://192.168.116.121:9000/data.txt").flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).saveAsTextFile("hdfs://192.168.116.121:9000/output/wc")</code></pre>
-<p>说明：<br>
-sc是SparkContext对象，该对象时提交spark程序的入口<br>
-textFile(“hdfs://192.168.116.121:9000/data.txt”)是hdfs中读取数据<br>
-flatMap(<em>.split(” “))先map在压平<br>
-map((</em>,1))将单词和1构成元组<br>
-reduceByKey(+)按照key进行reduce，并将value累加<br>
-saveAsTextFile(“hdfs://192.168.116.121:9000/output/wc”)将结果写入到hdfs中</p>
-<p>（*）处理本地文件，把结果打印到屏幕上<br>
-vi /root/hd/tmp_files/test_WordCount.txt<br>
-I love China<br>
-I love Jiangsu<br>
-Jiangsu is a beautiful place in China</p>
+<p>说明：<br>sc是SparkContext对象，该对象时提交spark程序的入口<br>textFile(“hdfs://192.168.116.121:9000/data.txt”)是hdfs中读取数据<br>flatMap(<em>.split(” “))先map在压平<br>map((</em>,1))将单词和1构成元组<br>reduceByKey(+)按照key进行reduce，并将value累加<br>saveAsTextFile(“hdfs://192.168.116.121:9000/output/wc”)将结果写入到hdfs中</p>
+<p>（*）处理本地文件，把结果打印到屏幕上<br>vi /root/hd/tmp_files/test_WordCount.txt<br>I love China<br>I love Jiangsu<br>Jiangsu is a beautiful place in China</p>
 <pre><code class="highlight plaintext">scala&gt; sc.textFile("/root/hd/tmp_files/test_WordCount.txt").flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).collect
 res0: Array[(String, Int)] = Array((is,1), (love,2), (China,2), (a,1), (Jiangsu,2), (I,2), (in,1), (place,1), (beautiful,1))</code></pre>
+
 <p>（*）处理HDFS文件，结果保存在HDFS上</p>
 <pre><code class="highlight plaintext">[root@hsiehchou121 tmp_files]# hdfs dfs -mkdir /tmp_files
 [root@hsiehchou121 tmp_files]# hdfs dfs -copyFromLocal ~/hd/tmp_files/test_WordCount.txt /tmp_files</code></pre>
 <pre><code class="highlight plaintext">scala&gt; sc.textFile("hdfs://hsiehchou121:9000/tmp_files/test_WordCount.txt").flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).saveAsTextFile("hdfs://hsiehchou121:9000/out/0404/test_WordCount")</code></pre>
-<p>-rw-r–r– 3 root supergroup 0 2019-04-04 19:12 /out/0404/test_WordCount/_SUCCESS<br>
--rw-r–r– 3 root supergroup 16 2019-04-04 19:12 /out/0404/test_WordCount/part-00000<br>
--rw-r–r– 3 root supergroup 65 2019-04-04 19:12 /out/0404/test_WordCount/part-00001</p>
+
+<p>-rw-r–r– 3 root supergroup 0 2019-04-04 19:12 /out/0404/test_WordCount/_SUCCESS<br>-rw-r–r– 3 root supergroup 16 2019-04-04 19:12 /out/0404/test_WordCount/part-00000<br>-rw-r–r– 3 root supergroup 65 2019-04-04 19:12 /out/0404/test_WordCount/part-00001</p>
 <p>_SUCCESS 代表程序执行成功</p>
 <p>part-00000 part-00001 结果文件，分区。里面内容不重复</p>
-<p>（*）单步运行WordCount —-&gt; RDD<br>
-scala&gt; val rdd1 = sc.textFile(“/root/hd/tmp_files/test_WordCount.txt”)<br>
-rdd1: org.apache.spark.rdd.RDD[String] = /root/hd/tmp_files/test_WordCount.txt MapPartitionsRDD[12] at textFile at <code>&lt;console&gt;:</code>24</p>
-<p>scala&gt; rdd1.collect<br>
-res5: Array[String] = Array(I love China, I love Jiangsu, Jiangsu is a beautiful place in China)</p>
-<p>scala&gt; val rdd2 = rdd1.flatMap(_.split(" "))<br>
-rdd2: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[14] at flatMap at <code>&lt;console&gt;</code>:26</p>
-<p>scala&gt; rdd2.collect<br>
-res6: Array[String] = Array(I, love, China, I, love, Jiangsu, Jiangsu, is, a, beautiful, place, in, China)</p>
-<p>scala&gt; val rdd3 = rdd2.map((_,1))<br>
-rdd3: org.apache.spark.rdd.RDD[(String, Int)] = MapPartitionsRDD[15] at map at <code>&lt;console&gt;</code>:28</p>
-<p>scala&gt; rdd3.collect<br>
-res7: Array[(String, Int)] = Array((I,1), (love,1), (China,1), (I,1), (love,1), (Jiangsu,1), (Jiangsu,1), (is,1), (a,1), (beautiful,1), (place,1), (in,1), (China,1))</p>
-<p>scala&gt; val rdd4 = rdd3.reduceByKey(<em>+</em>)<br>
-rdd4: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[16] at reduceByKey at <code>&lt;console&gt;</code>:30</p>
-<p>scala&gt; rdd4.collect<br>
-res8: Array[(String, Int)] = Array((is,1), (love,2), (China,2), (a,1), (Jiangsu,2), (I,2), (in,1), (place,1), (beautiful,1))</p>
-<p><strong>RDD 弹性分布式数据集</strong></p>
-<p>（1）依赖关系 ： 宽依赖和窄依赖<br>
-（2）算子：<br>
-函数：<br>
-Transformation ： 延时计算 map flatMap textFile<br>
-Action ： 立即触发计算 collect</p>
+<p>（*）单步运行WordCount —-&gt; RDD<br>scala&gt; val rdd1 = sc.textFile(“/root/hd/tmp_files/test_WordCount.txt”)<br>rdd1: org.apache.spark.rdd.RDD[String] = /root/hd/tmp_files/test_WordCount.txt MapPartitionsRDD[12] at textFile at <code>&lt;console&gt;:</code>24</p>
+<p>scala&gt; rdd1.collect<br>res5: Array[String] = Array(I love China, I love Jiangsu, Jiangsu is a beautiful place in China)</p>
+<p>scala&gt; val rdd2 = rdd1.flatMap(_.split(“ “))<br>rdd2: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[14] at flatMap at <code>&lt;console&gt;</code>:26</p>
+<p>scala&gt; rdd2.collect<br>res6: Array[String] = Array(I, love, China, I, love, Jiangsu, Jiangsu, is, a, beautiful, place, in, China)</p>
+<p>scala&gt; val rdd3 = rdd2.map((_,1))<br>rdd3: org.apache.spark.rdd.RDD[(String, Int)] = MapPartitionsRDD[15] at map at <code>&lt;console&gt;</code>:28</p>
+<p>scala&gt; rdd3.collect<br>res7: Array[(String, Int)] = Array((I,1), (love,1), (China,1), (I,1), (love,1), (Jiangsu,1), (Jiangsu,1), (is,1), (a,1), (beautiful,1), (place,1), (in,1), (China,1))</p>
+<p>scala&gt; val rdd4 = rdd3.reduceByKey(<em>+</em>)<br>rdd4: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[16] at reduceByKey at <code>&lt;console&gt;</code>:30</p>
+<p>scala&gt; rdd4.collect<br>res8: Array[(String, Int)] = Array((is,1), (love,2), (China,2), (a,1), (Jiangsu,2), (I,2), (in,1), (place,1), (beautiful,1))</p>
+<p><strong>RDD 弹性分布式数据集</strong> </p>
+<p>（1）依赖关系 ： 宽依赖和窄依赖<br>（2）算子：<br>函数：<br>Transformation ： 延时计算 map flatMap textFile<br>Action ： 立即触发计算 collect</p>
 <p>说明：</p>
-<p><strong>scala复习</strong></p>
-<p>（*）flatten：把嵌套的结果展开<br>
-scala&gt; List(List(2,4,6,8,10),List(1,3,5,7,9)).flatten<br>
-res21: List[Int] = List(2, 4, 6, 8, 10, 1, 3, 5, 7, 9)</p>
-<p>（*）flatmap : 相当于一个 map + flatten<br>
-scala&gt; var myList = List(List(2,4,6,8,10),List(1,3,5,7,9))<br>
-myList: List[List[Int]] = List(List(2, 4, 6, 8, 10), List(1, 3, 5, 7, 9))</p>
-<p>scala&gt; myList.flatMap(x=&gt;x.map(_*2))<br>
-res22: List[Int] = List(4, 8, 12, 16, 20, 2, 6, 10, 14, 18)</p>
+<p><strong>scala复习</strong> </p>
+<p>（*）flatten：把嵌套的结果展开<br>scala&gt; List(List(2,4,6,8,10),List(1,3,5,7,9)).flatten<br>res21: List[Int] = List(2, 4, 6, 8, 10, 1, 3, 5, 7, 9)</p>
+<p>（*）flatmap : 相当于一个 map + flatten<br>scala&gt; var myList = List(List(2,4,6,8,10),List(1,3,5,7,9))<br>myList: List[List[Int]] = List(List(2, 4, 6, 8, 10), List(1, 3, 5, 7, 9))</p>
+<p>scala&gt; myList.flatMap(x=&gt;x.map(_*2))<br>res22: List[Int] = List(4, 8, 12, 16, 20, 2, 6, 10, 14, 18)</p>
 <p>myList.flatMap(x=&gt;x.map(_*2))</p>
-<p>执行过程：<br>
-（1）将 List(2, 4, 6, 8, 10), List(1, 3, 5, 7, 9) 调用 map(_*2) 方法。x 代表一个List<br>
-（2）flatten<br>
-（3）在IDE中开发scala版本和Java版本的WorkCount</p>
-<h3 id="四、WordCount（Scala版本和Java版本）">四、WordCount（Scala版本和Java版本）</h3>
-<h4 id="1、Scala版本的WordCount">1、Scala版本的WordCount</h4>
-<p>新建一个工程，把jar引入到工程中</p>
+<p>执行过程：<br>（1）将 List(2, 4, 6, 8, 10), List(1, 3, 5, 7, 9) 调用 map(_*2) 方法。x 代表一个List<br>（2）flatten<br>（3）在IDE中开发scala版本和Java版本的WorkCount</p>
+<h3 id="四、WordCount（Scala版本和Java版本）"><a href="#四、WordCount（Scala版本和Java版本）" class="headerlink" title="四、WordCount（Scala版本和Java版本）"></a>四、WordCount（Scala版本和Java版本）</h3><h4 id="1、Scala版本的WordCount"><a href="#1、Scala版本的WordCount" class="headerlink" title="1、Scala版本的WordCount"></a>1、Scala版本的WordCount</h4><p>新建一个工程，把jar引入到工程中</p>
 <pre><code class="highlight plaintext">package day1
 
 import org.apache.spark.SparkConf
@@ -663,11 +565,11 @@ object WordCount {
     sc.stop()
   }
 }</code></pre>
+
 <p>export Demo1.jar 点击下一步，把jar包上传到服务器上/root/hd/tmp_files/下</p>
 <p>在spark里面的bin目录下输入</p>
 <p>[root@hsiehchou121 bin]# ./spark-submit <code>--master</code> spark://hsiehchou121:7077 <code>--class</code> day1.WordCount /root/hd/tmp_files/Demo1.jar hdfs://hsiehchou121:9000/tmp_files/test_WordCount.txt hdfs://hsiehchou121:9000/out/0405/Demo1</p>
-<h4 id="2、Java版本的WordCount">2、Java版本的WordCount</h4>
-<pre><code class="highlight plaintext">package day1;
+<h4 id="2、Java版本的WordCount"><a href="#2、Java版本的WordCount" class="headerlink" title="2、Java版本的WordCount"></a>2、Java版本的WordCount</h4><pre><code class="highlight plaintext">package day1;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -729,389 +631,192 @@ public class JavaWordCount {
         sc.stop();
     }
 }</code></pre>
+
 <p>[root@hsiehchou121 bin]# ./spark-submit <code>--master</code> spark://hsiehchou121:7077 <code>--class</code> day1.JavaWordCount /root/hd/tmp_files/Demo2.jar</p>
-<h3 id="五、分析Spark的任务流程">五、分析Spark的任务流程</h3>
-<h4 id="1、分析WordCount程序处理过程">1、分析WordCount程序处理过程</h4>
-<p><img src="/medias/WordCount%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90.PNG" alt="WordCount程序分析"></p>
-<h4 id="2、Spark调度任务的过程">2、Spark调度任务的过程</h4>
-<p>提交到及群众运行任务时，spark执行任务调度<br>
-<img src="/medias/spark%E7%9A%84%E8%B0%83%E7%94%A8%E4%BB%BB%E5%8A%A1%E8%BF%87%E7%A8%8B.PNG" alt="spark的调用任务过程"></p>
-<h3 id="六、RDD和RDD特性、RDD的算子">六、RDD和RDD特性、RDD的算子</h3>
-<h4 id="1、RDD：弹性分布式数据集">1、RDD：弹性分布式数据集</h4>
-<p>（<em>）Spark中最基本的数据抽象<br>
-（</em>）RDD的特性</p>
-<p>Internally, each RDD is characterized by five main properties:<br>
-*</p>
-<p>A list of partitions<br>
-1）是一组分区<br>
-RDD由分区组成，每个分区运行在不同的Worker上，通过这种方式来实现分布式计算</p>
+<h3 id="五、分析Spark的任务流程"><a href="#五、分析Spark的任务流程" class="headerlink" title="五、分析Spark的任务流程"></a>五、分析Spark的任务流程</h3><h4 id="1、分析WordCount程序处理过程"><a href="#1、分析WordCount程序处理过程" class="headerlink" title="1、分析WordCount程序处理过程"></a>1、分析WordCount程序处理过程</h4><p><img src="/medias/WordCount%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90.PNG" alt="WordCount程序分析"></p>
+<h4 id="2、Spark调度任务的过程"><a href="#2、Spark调度任务的过程" class="headerlink" title="2、Spark调度任务的过程"></a>2、Spark调度任务的过程</h4><p>提交到及群众运行任务时，spark执行任务调度<br><img src="/medias/spark%E7%9A%84%E8%B0%83%E7%94%A8%E4%BB%BB%E5%8A%A1%E8%BF%87%E7%A8%8B.PNG" alt="spark的调用任务过程"></p>
+<h3 id="六、RDD和RDD特性、RDD的算子"><a href="#六、RDD和RDD特性、RDD的算子" class="headerlink" title="六、RDD和RDD特性、RDD的算子"></a>六、RDD和RDD特性、RDD的算子</h3><h4 id="1、RDD：弹性分布式数据集"><a href="#1、RDD：弹性分布式数据集" class="headerlink" title="1、RDD：弹性分布式数据集"></a>1、RDD：弹性分布式数据集</h4><p>（<em>）Spark中最基本的数据抽象<br>（</em>）RDD的特性</p>
+<p>Internally, each RDD is characterized by five main properties:<br>*</p>
+<p>A list of partitions<br>1）是一组分区<br>RDD由分区组成，每个分区运行在不同的Worker上，通过这种方式来实现分布式计算</p>
 <p><img src="/medias/RDD.PNG" alt="RDD"></p>
-<p>A function for computing each split<br>
-在RDD中，提供算子处理每个分区中的数据</p>
-<p>-A list of dependencies on other RDDs<br>
-RDD存在依赖关系：宽依赖和窄依赖</p>
-<p>Optionally, a Partitioner for key-value RDDs (e.g. to say that the RDD is hash-partitioned)<br>
-可以自定义分区规则来创建RDD</p>
-<p>Optionally, a list of preferred locations to compute each split on (e.g. block locations for an HDFS file)<br>
-优先选择离文件位置近的节点来执行</p>
-<p><strong>如何创建RDD</strong><br>
-（1）通过SparkContext.parallelize方法来创建</p>
-<p>scala&gt; val rdd1 = sc.parallelize(Array(1,2,3,4,5,6,7,8),3)<br>
-rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[32] at parallelize at <code>&lt;console&gt;</code>:29</p>
-<p>scala&gt; rdd1.partitions.length<br>
-res35: Int = 3</p>
-<p>scala&gt; val rdd1 = sc.parallelize(Array(1,2,3,4,5,6,7,8),2)<br>
-rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[33] at parallelize at <code>&lt;console&gt;</code>:29</p>
-<p>scala&gt; rdd1.partitions.length<br>
-res36: Int = 2</p>
-<p>（2）通过外部数据源来创建<br>
-sc.textFile()</p>
-<p>scala&gt; val rdd2 = sc.textFile(“/root/hd/tmp_files/test_WordCount.txt”)<br>
-rdd2: org.apache.spark.rdd.RDD[String] = /usr/local/tmp_files/test_WordCount.txt MapPartitionsRDD[35] at textFile at <code>&lt;console&gt;</code>:29</p>
-<h4 id="2、-算子">2、 算子</h4>
-<p><strong>1）Transformation</strong><br>
-map(func)：相当于for循环，返回一个新的RDD</p>
-<p>filter(func)：过滤<br>
-flatMap(func)：flat+map 压平</p>
-<p>mapPartitions(func)：对RDD中的每个分区进行操作<br>
-mapPartitionsWithIndex(func)：对RDD中的每个分区进行操作，可以取到分区号</p>
+<p>A function for computing each split<br>在RDD中，提供算子处理每个分区中的数据</p>
+<p>-A list of dependencies on other RDDs<br>RDD存在依赖关系：宽依赖和窄依赖</p>
+<p>Optionally, a Partitioner for key-value RDDs (e.g. to say that the RDD is hash-partitioned)<br>可以自定义分区规则来创建RDD</p>
+<p>Optionally, a list of preferred locations to compute each split on (e.g. block locations for an HDFS file)<br>优先选择离文件位置近的节点来执行</p>
+<p><strong>如何创建RDD</strong><br>（1）通过SparkContext.parallelize方法来创建</p>
+<p>scala&gt; val rdd1 = sc.parallelize(Array(1,2,3,4,5,6,7,8),3)<br>rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[32] at parallelize at <code>&lt;console&gt;</code>:29</p>
+<p>scala&gt; rdd1.partitions.length<br>res35: Int = 3</p>
+<p>scala&gt; val rdd1 = sc.parallelize(Array(1,2,3,4,5,6,7,8),2)<br>rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[33] at parallelize at <code>&lt;console&gt;</code>:29</p>
+<p>scala&gt; rdd1.partitions.length<br>res36: Int = 2</p>
+<p>（2）通过外部数据源来创建<br>sc.textFile()</p>
+<p>scala&gt; val rdd2 = sc.textFile(“/root/hd/tmp_files/test_WordCount.txt”)<br>rdd2: org.apache.spark.rdd.RDD[String] = /usr/local/tmp_files/test_WordCount.txt MapPartitionsRDD[35] at textFile at <code>&lt;console&gt;</code>:29</p>
+<h4 id="2、-算子"><a href="#2、-算子" class="headerlink" title="2、 算子"></a>2、 算子</h4><p><strong>1）Transformation</strong><br>map(func)：相当于for循环，返回一个新的RDD</p>
+<p>filter(func)：过滤<br>flatMap(func)：flat+map 压平</p>
+<p>mapPartitions(func)：对RDD中的每个分区进行操作<br>mapPartitionsWithIndex(func)：对RDD中的每个分区进行操作，可以取到分区号</p>
 <p>sample(withReplacement, fraction, seed)：采样</p>
-<p><strong>集合运算</strong><br>
-union(otherDataset)：对源RDD和参数RDD求并集后返回一个新的RDD<br>
-intersection(otherDataset)：对源RDD和参数RDD求交集后返回一个新的RDD</p>
+<p><strong>集合运算</strong><br>union(otherDataset)：对源RDD和参数RDD求并集后返回一个新的RDD<br>intersection(otherDataset)：对源RDD和参数RDD求交集后返回一个新的RDD</p>
 <p>distinct([numTasks]))：去重</p>
-<p><strong>聚合操作</strong>：<strong>group by</strong><br>
-groupByKey([numTasks]) ：在一个(K,V)的RDD上调用，返回一个(K, Iterator[V])的RDD<br>
-reduceByKey(func, [numTasks])：在一个(K,V)的RDD上调用，返回一个(K,V)的RDD，使用指定的reduce函数，将相同key的值聚合到一起，与groupByKey类似，reduce任务的个数可以通过第二个可选的参数来设置<br>
-aggregateByKey(zeroValue)(seqOp,combOp,[numTasks])：按照key进行聚合</p>
-<p><strong>排序</strong><br>
-sortByKey([ascending], [numTasks])：在一个(K,V)的RDD上调用，K必须实现Ordered接口，返回一个按照key进行排序的(K,V)的RDD<br>
-sortBy(func,[ascending], [numTasks])：与sortByKey类似，但是更灵活</p>
-<p>join(otherDataset, [numTasks])：在类型为(K,V)和(K,W)的RDD上调用，返回一个相同key对应的所有元素对在一起的(K,(V,W))的RDD<br>
-cogroup(otherDataset, [numTasks])：在类型为(K,V)和(K,W)的RDD上调用，返回一个(K,(Iterable,Iterable))类型的RDD<br>
-cartesian(otherDataset)<br>
-pipe(command, [envVars])<br>
-coalesce(numPartitions)</p>
-<p><strong>重分区</strong>：<br>
-repartition(numPartitions)<br>
-repartitionAndSortWithinPartitions(partitioner)</p>
-<p>举例：<br>
-（1）创建一个RDD，每个元素乘以2，再排序<br>
-scala&gt; val rdd1 = sc.parallelize(Array(3,4,5,100,79,81,6,8))<br>
-rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[0] at parallelize at <code>&lt;console&gt;</code>:24</p>
-<p>scala&gt; val rdd2 = rdd1.map(_*2)<br>
-rdd2: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[1] at map at <code>&lt;console&gt;</code>:26</p>
-<p>scala&gt; rdd2.collect<br>
-res0: Array[Int] = Array(6, 8, 10, 200, 158, 162, 12, 16)</p>
-<p>scala&gt; rdd2.sortBy(x=&gt;x,true).collect<br>
-res1: Array[Int] = Array(6, 8, 10, 12, 16, 158, 162, 200)</p>
-<p>scala&gt; rdd2.sortBy(x=&gt;x,false).collect<br>
-res2: Array[Int] = Array(200, 162, 158, 16, 12, 10, 8, 6)</p>
-<p>def sortBy[K](f: (T) ⇒ K, ascending: Boolean = true)<br>
-过滤出大于20的元素：</p>
-<p>scala&gt; val rdd3 = rdd2.filter(_&gt;20)<br>
-rdd3: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[53] at filter at <code>&lt;console&gt;</code>:33+</p>
-<p>scala&gt; rdd3.collect<br>
-res3: Array[Int] = Array(200, 158, 162)</p>
-<p>（2）字符串（字符）类型的RDD<br>
-scala&gt; val rdd4 = sc.parallelize(Array(“a b c”,“d e f”,“g h i”))<br>
-rdd4: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[28] at parallelize at <code>&lt;console&gt;</code>:24</p>
-<p>scala&gt; rdd4.flatMap(_.split(" ")).collect<br>
-res4: Array[String] = Array(a, b, c, d, e, f, g, h, i)</p>
-<h4 id="3、RDD的集合运算">3、RDD的集合运算</h4>
-<p>scala&gt; val rdd5 = sc.parallelize(List(1,2,3,6,7,8,100))<br>
-rdd5: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[0] at parallelize at <console>:24</console></p>
-<p>scala&gt; val rdd6 = sc.parallelize(List(1,2,3,4))<br>
-rdd6: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[1] at parallelize at <console>:24</console></p>
-<p>scala&gt; val rdd7 = rdd5.union(rdd6)<br>
-rdd7: org.apache.spark.rdd.RDD[Int] = UnionRDD[2] at union at <console>:28</console></p>
-<p>scala&gt; rdd7.collect<br>
-res5: Array[Int] = Array(1, 2, 3, 6, 7, 8, 100, 1, 2, 3, 4)</p>
-<p>scala&gt; rdd7.distinct.collect<br>
-res6: Array[Int] = Array(100, 4, 8, 1, 6, 2, 3, 7)</p>
-<h4 id="4、分组操作：reduceByKey">4、分组操作：reduceByKey</h4>
-<key value="">
+<p><strong>聚合操作</strong>：<strong>group by</strong><br>groupByKey([numTasks]) ：在一个(K,V)的RDD上调用，返回一个(K, Iterator[V])的RDD<br>reduceByKey(func, [numTasks])：在一个(K,V)的RDD上调用，返回一个(K,V)的RDD，使用指定的reduce函数，将相同key的值聚合到一起，与groupByKey类似，reduce任务的个数可以通过第二个可选的参数来设置<br>aggregateByKey(zeroValue)(seqOp,combOp,[numTasks])：按照key进行聚合</p>
+<p><strong>排序</strong><br>sortByKey([ascending], [numTasks])：在一个(K,V)的RDD上调用，K必须实现Ordered接口，返回一个按照key进行排序的(K,V)的RDD<br>sortBy(func,[ascending], [numTasks])：与sortByKey类似，但是更灵活</p>
+<p>join(otherDataset, [numTasks])：在类型为(K,V)和(K,W)的RDD上调用，返回一个相同key对应的所有元素对在一起的(K,(V,W))的RDD<br>cogroup(otherDataset, [numTasks])：在类型为(K,V)和(K,W)的RDD上调用，返回一个(K,(Iterable,Iterable))类型的RDD<br>cartesian(otherDataset)<br>pipe(command, [envVars])<br>coalesce(numPartitions)</p>
+<p><strong>重分区</strong>：<br>repartition(numPartitions)<br>repartitionAndSortWithinPartitions(partitioner)</p>
+<p>举例：<br>（1）创建一个RDD，每个元素乘以2，再排序<br>scala&gt; val rdd1 = sc.parallelize(Array(3,4,5,100,79,81,6,8))<br>rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[0] at parallelize at <code>&lt;console&gt;</code>:24</p>
+<p>scala&gt; val rdd2 = rdd1.map(_*2)<br>rdd2: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[1] at map at <code>&lt;console&gt;</code>:26</p>
+<p>scala&gt; rdd2.collect<br>res0: Array[Int] = Array(6, 8, 10, 200, 158, 162, 12, 16)                       </p>
+<p>scala&gt; rdd2.sortBy(x=&gt;x,true).collect<br>res1: Array[Int] = Array(6, 8, 10, 12, 16, 158, 162, 200)</p>
+<p>scala&gt; rdd2.sortBy(x=&gt;x,false).collect<br>res2: Array[Int] = Array(200, 162, 158, 16, 12, 10, 8, 6)     </p>
+<p>def sortBy[K](f: (T) ⇒ K, ascending: Boolean = true)<br>过滤出大于20的元素：</p>
+<p>scala&gt; val rdd3 = rdd2.filter(_&gt;20)<br>rdd3: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[53] at filter at <code>&lt;console&gt;</code>:33+</p>
+<p>scala&gt; rdd3.collect<br>res3: Array[Int] = Array(200, 158, 162)   </p>
+<p>（2）字符串（字符）类型的RDD<br>scala&gt; val rdd4 = sc.parallelize(Array(“a b c”,”d e f”,”g h i”))<br>rdd4: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[28] at parallelize at <code>&lt;console&gt;</code>:24</p>
+<p>scala&gt; rdd4.flatMap(_.split(“ “)).collect<br>res4: Array[String] = Array(a, b, c, d, e, f, g, h, i)</p>
+<h4 id="3、RDD的集合运算"><a href="#3、RDD的集合运算" class="headerlink" title="3、RDD的集合运算"></a>3、RDD的集合运算</h4><p>scala&gt; val rdd5 = sc.parallelize(List(1,2,3,6,7,8,100))<br>rdd5: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[0] at parallelize at <console>:24</console></p>
+<p>scala&gt; val rdd6 = sc.parallelize(List(1,2,3,4))<br>rdd6: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[1] at parallelize at <console>:24</console></p>
+<p>scala&gt; val rdd7 = rdd5.union(rdd6)<br>rdd7: org.apache.spark.rdd.RDD[Int] = UnionRDD[2] at union at <console>:28</console></p>
+<p>scala&gt; rdd7.collect<br>res5: Array[Int] = Array(1, 2, 3, 6, 7, 8, 100, 1, 2, 3, 4)                     </p>
+<p>scala&gt; rdd7.distinct.collect<br>res6: Array[Int] = Array(100, 4, 8, 1, 6, 2, 3, 7)</p>
+<h4 id="4、分组操作：reduceByKey"><a href="#4、分组操作：reduceByKey" class="headerlink" title="4、分组操作：reduceByKey"></a>4、分组操作：reduceByKey</h4><key value="">
 scala&gt; val rdd1 = sc.parallelize(List(("Time",1800),("Dadi",2400),("Giu",1600)))
 rdd1: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[6] at parallelize at <console>:24
-<p>scala&gt; val rdd2 = sc.parallelize(List((“Dadi”,1300),(“Time”,2900),(“Mi”,600)))<br>
-rdd2: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[7] at parallelize at <console>:24</console></p>
-<p>scala&gt; val rdd3 = rdd1 union rdd2<br>
-rdd3: org.apache.spark.rdd.RDD[(String, Int)] = UnionRDD[8] at union at <console>:28</console></p>
-<p>scala&gt; rdd3.collect<br>
-res3: Array[(String, Int)] = Array((Time,1800), (Dadi,2400), (Giu,1600), (Dadi,1300), (Time,2900), (Mi,600))</p>
-<p>scala&gt; val rdd4 = rdd3.groupByKey<br>
-rdd4: org.apache.spark.rdd.RDD[(String, Iterable[Int])] = ShuffledRDD[9] at groupByKey at <console>:30</console></p>
-<p>scala&gt; rdd4.collect<br>
-res4: Array[(String, Iterable[Int])] = Array((Mi,CompactBuffer(600)),<br>
-(Time,CompactBuffer(1800, 2900)),<br>
-(Dadi,CompactBuffer(2400, 1300)),<br>
-(Giu,CompactBuffer(1600)))</p>
-<p>scala&gt; rdd3.reduceByKey(<em>+</em>).collect<br>
-res5: Array[(String, Int)] = Array((Mi,600), (Time,4700), (Dadi,3700), (Giu,1600))<br>
-reduceByKey will provide much better performance.<br>
-官方不推荐使用 groupByKey 推荐使用 reduceByKey</p>
-<h4 id="5、cogroup">5、cogroup</h4>
-<p>在类型为(K,V)和(K,W)的RDD上调用，返回一个(K,(Iterable,Iterable))类型的RDD</p>
+
+<p>scala&gt; val rdd2 = sc.parallelize(List((“Dadi”,1300),(“Time”,2900),(“Mi”,600)))<br>rdd2: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[7] at parallelize at <console>:24</console></p>
+<p>scala&gt; val rdd3 = rdd1 union rdd2<br>rdd3: org.apache.spark.rdd.RDD[(String, Int)] = UnionRDD[8] at union at <console>:28</console></p>
+<p>scala&gt; rdd3.collect<br>res3: Array[(String, Int)] = Array((Time,1800), (Dadi,2400), (Giu,1600), (Dadi,1300), (Time,2900), (Mi,600))</p>
+<p>scala&gt; val rdd4 = rdd3.groupByKey<br>rdd4: org.apache.spark.rdd.RDD[(String, Iterable[Int])] = ShuffledRDD[9] at groupByKey at <console>:30</console></p>
+<p>scala&gt; rdd4.collect<br>res4: Array[(String, Iterable[Int])] = Array((Mi,CompactBuffer(600)),<br>      (Time,CompactBuffer(1800, 2900)),<br>      (Dadi,CompactBuffer(2400, 1300)),<br>      (Giu,CompactBuffer(1600)))</p>
+<p>scala&gt; rdd3.reduceByKey(<em>+</em>).collect<br>res5: Array[(String, Int)] = Array((Mi,600), (Time,4700), (Dadi,3700), (Giu,1600))<br>reduceByKey will provide much better performance.<br>官方不推荐使用 groupByKey 推荐使用 reduceByKey</p>
+<h4 id="5、cogroup"><a href="#5、cogroup" class="headerlink" title="5、cogroup"></a>5、cogroup</h4><p>在类型为(K,V)和(K,W)的RDD上调用，返回一个(K,(Iterable,Iterable))类型的RDD</p>
 <p>对两个RDD中的KV元素，每个RDD中相同key中的元素分别聚合成一个集合。与reduceByKey不同的是针对两个RDD中相同的key的元素进行合并，与groupByKey返回值上与区别</p>
-<p>scala&gt; val rdd1 = sc.parallelize(List((“Tim”,1),(“Tim”,2),(“Jert”,3),(“kiy”,2)))<br>
-rdd1: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[11] at parallelize at <console>:24</console></p>
-<p>scala&gt; val rdd1 = sc.parallelize(List((“Tim”,1),(“Tim”,2),(“Jert”,3),(“Kiy”,2)))<br>
-rdd1: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[12] at parallelize at <console>:24</console></p>
-<p>scala&gt; val rdd2 = sc.parallelize(List((“Jert”,2),(“Tim”,1),(“Sun”,2)))<br>
-rdd2: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[13] at parallelize at <console>:24</console></p>
-<p>scala&gt; val rdd3 = rdd1.cogroup(rdd2)<br>
-rdd3: org.apache.spark.rdd.RDD[(String, (Iterable[Int], Iterable[Int]))] = MapPartitionsRDD[15] at cogroup at <console>:28</console></p>
-<p>scala&gt; rdd3.collect<br>
-res6: Array[(String, (Iterable[Int], Iterable[Int]))] = Array(<br>
-(Tim,(CompactBuffer(1, 2),CompactBuffer(1))),<br>
-(Sun,(CompactBuffer(),CompactBuffer(2))),<br>
-(Kiy,(CompactBuffer(2),CompactBuffer())),<br>
-(Jert,(CompactBuffer(3),CompactBuffer(2))))</p>
-<h4 id="6、reduce操作（Action）">6、reduce操作（Action）</h4>
-<p><strong>聚合操作</strong></p>
-<p>scala&gt; val rdd1 = sc.parallelize(List(1,2,3,4,5))<br>
-rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[16] at parallelize at <console>:24</console></p>
-<p>scala&gt; rdd1.reduce(<em>+</em>)<br>
-res7: Int = 15</p>
-<h4 id="7、需求：按照value排序">7、需求：按照value排序</h4>
-<p>做法：<br>
-1）交换，把key 和 value交换，然后调用sortByKey方法<br>
-2）再次交换</p>
-<p>scala&gt; val rdd1 = sc.parallelize(List((“tim”,1),(“jery”,3),(“kef”,2),(“sun”,2)))<br>
-rdd1: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[17] at parallelize at <console>:24</console></p>
-<p>scala&gt; val rdd2 = sc.parallelize(List((“jery”,1),(“tim”,3),(“sun”,5),(“kef”,1)))<br>
-rdd2: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[18] at parallelize at <console>:24</console></p>
-<p>scala&gt; val rdd3 = rdd1.union(rdd2)<br>
-rdd3: org.apache.spark.rdd.RDD[(String, Int)] = UnionRDD[19] at union at <console>:28</console></p>
-<p>scala&gt; val rdd4 = rdd3.reduceByKey(<em>+</em>)<br>
-rdd4: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[20] at reduceByKey at <console>:30</console></p>
-<p>scala&gt; rdd4.collect<br>
-res8: Array[(String, Int)] = Array((tim,4), (kef,3), (sun,7), (jery,4))</p>
-<p>scala&gt; val rdd5 = rdd4.map(t=&gt;(t._2,t._1)).sortByKey(false).map(t=&gt;(t._2,t._1))<br>
-rdd5: org.apache.spark.rdd.RDD[(String, Int)] = MapPartitionsRDD[25] at map at <console>:32</console></p>
-<p>scala&gt; rdd5.collect<br>
-res10: Array[(String, Int)] = Array((sun,7), (tim,4), (jery,4), (kef,3))</p>
-<p>（2）Action<br>
-reduce(func)：通过func函数聚集RDD中的所有元素，这个功能必须是课交换且可并联的</p>
-<p>collect()：在驱动程序中，以数组的形式返回数据集的所有元素<br>
-count()：返回RDD的元素个数<br>
-first()：返回RDD的第一个元素（类似于take(1)）<br>
-take(n)：返回一个由数据集的前n个元素组成的数组</p>
+<p>scala&gt; val rdd1 = sc.parallelize(List((“Tim”,1),(“Tim”,2),(“Jert”,3),(“kiy”,2)))<br>rdd1: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[11] at parallelize at <console>:24</console></p>
+<p>scala&gt; val rdd1 = sc.parallelize(List((“Tim”,1),(“Tim”,2),(“Jert”,3),(“Kiy”,2)))<br>rdd1: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[12] at parallelize at <console>:24</console></p>
+<p>scala&gt; val rdd2 = sc.parallelize(List((“Jert”,2),(“Tim”,1),(“Sun”,2)))<br>rdd2: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[13] at parallelize at <console>:24</console></p>
+<p>scala&gt; val rdd3 = rdd1.cogroup(rdd2)<br>rdd3: org.apache.spark.rdd.RDD[(String, (Iterable[Int], Iterable[Int]))] = MapPartitionsRDD[15] at cogroup at <console>:28</console></p>
+<p>scala&gt; rdd3.collect<br>res6: Array[(String, (Iterable[Int], Iterable[Int]))] = Array(<br>(Tim,(CompactBuffer(1, 2),CompactBuffer(1))),<br>(Sun,(CompactBuffer(),CompactBuffer(2))),<br>(Kiy,(CompactBuffer(2),CompactBuffer())),<br>(Jert,(CompactBuffer(3),CompactBuffer(2))))</p>
+<h4 id="6、reduce操作（Action）"><a href="#6、reduce操作（Action）" class="headerlink" title="6、reduce操作（Action）"></a>6、reduce操作（Action）</h4><p><strong>聚合操作</strong></p>
+<p>scala&gt; val rdd1 = sc.parallelize(List(1,2,3,4,5))<br>rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[16] at parallelize at <console>:24</console></p>
+<p>scala&gt; rdd1.reduce(<em>+</em>)<br>res7: Int = 15</p>
+<h4 id="7、需求：按照value排序"><a href="#7、需求：按照value排序" class="headerlink" title="7、需求：按照value排序"></a>7、需求：按照value排序</h4><p>做法：<br>1）交换，把key 和 value交换，然后调用sortByKey方法<br>2）再次交换</p>
+<p>scala&gt; val rdd1 = sc.parallelize(List((“tim”,1),(“jery”,3),(“kef”,2),(“sun”,2)))<br>rdd1: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[17] at parallelize at <console>:24</console></p>
+<p>scala&gt; val rdd2 = sc.parallelize(List((“jery”,1),(“tim”,3),(“sun”,5),(“kef”,1)))<br>rdd2: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[18] at parallelize at <console>:24</console></p>
+<p>scala&gt; val rdd3 = rdd1.union(rdd2)<br>rdd3: org.apache.spark.rdd.RDD[(String, Int)] = UnionRDD[19] at union at <console>:28</console></p>
+<p>scala&gt; val rdd4 = rdd3.reduceByKey(<em>+</em>)<br>rdd4: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[20] at reduceByKey at <console>:30</console></p>
+<p>scala&gt; rdd4.collect<br>res8: Array[(String, Int)] = Array((tim,4), (kef,3), (sun,7), (jery,4))</p>
+<p>scala&gt; val rdd5 = rdd4.map(t=&gt;(t._2,t._1)).sortByKey(false).map(t=&gt;(t._2,t._1))<br>rdd5: org.apache.spark.rdd.RDD[(String, Int)] = MapPartitionsRDD[25] at map at <console>:32</console></p>
+<p>scala&gt; rdd5.collect<br>res10: Array[(String, Int)] = Array((sun,7), (tim,4), (jery,4), (kef,3))</p>
+<p>（2）Action<br>reduce(func)：通过func函数聚集RDD中的所有元素，这个功能必须是课交换且可并联的</p>
+<p>collect()：在驱动程序中，以数组的形式返回数据集的所有元素<br>count()：返回RDD的元素个数<br>first()：返回RDD的第一个元素（类似于take(1)）<br>take(n)：返回一个由数据集的前n个元素组成的数组</p>
 <p>takeSample(withReplacement,num, [seed])：返回一个数组，该数组由从数据集中随机采样的num个元素组成，可以选择是否用随机数替换不足的部分，seed用于指定随机数生成器种子</p>
 <p>takeOrdered(n, [ordering])：takeOrdered和top类似，只不过以和top相反的顺序返回元素</p>
 <p>saveAsTextFile(path)：将数据集的元素以textfile的形式保存到HDFS文件系统或者其他支持的文件系统，对于每个元素，Spark将会调用toString方法，将它装换为文件中的文本</p>
 <p>saveAsSequenceFile(path) ：将数据集中的元素以Hadoop sequencefile的格式保存到指定的目录下，可以使HDFS或者其他Hadoop支持的文件系统</p>
 <p>saveAsObjectFile(path) ：saveAsObjectFile用于将RDD中的元素序列化成对象，存储到文件中</p>
 <p>countByKey()：针对(K,V)类型的RDD，返回一个(K,Int)的map，表示每一个key对应的元素个数</p>
-<p>foreach(func)：在数据集的每一个元素上，运行函数func进行更新。<br>
-与map类似，没有返回值</p>
-<p>3）特性<br>
-（1）<strong>RDD的缓存机制</strong><br>
-RDD通过persist方法或cache方法可以将前面的计算结果缓存，但是并不是这两个方法被调用时立即缓存，而是触发后面的action时，该RDD将会被缓存在计算节点的内存中，并供后面重用</p>
+<p>foreach(func)：在数据集的每一个元素上，运行函数func进行更新。<br>与map类似，没有返回值</p>
+<p>3）特性<br>（1）<strong>RDD的缓存机制</strong><br>RDD通过persist方法或cache方法可以将前面的计算结果缓存，但是并不是这两个方法被调用时立即缓存，而是触发后面的action时，该RDD将会被缓存在计算节点的内存中，并供后面重用</p>
 <p>通过查看源码发现cache最终也是调用了persist方法，默认的存储级别都是仅在内存存储一份，Spark的存储级别还有好多种，存储级别在object StorageLevel中定义的</p>
 <p>缓存有可能丢失，或者存储存储于内存的数据由于内存不足而被删除，RDD的缓存容错机制保证了即使缓存丢失也能保证计算的正确执行。通过基于RDD的一系列转换，丢失的数据会被重算，由于RDD的各个Partition是相对独立的，因此只需要计算丢失的部分即可，并不需要重算全部Partition</p>
-<p>（<em>）作用：提高性能<br>
-（</em>）使用：标识RDD可以被缓存 persist cache<br>
-（*）可以缓存的位置：</p>
-<p>val NONE = new StorageLevel(false, false, false, false)<br>
-val DISK_ONLY = new StorageLevel(true, false, false, false)<br>
-val DISK_ONLY_2 = new StorageLevel(true, false, false, false, 2)<br>
-val MEMORY_ONLY = new StorageLevel(false, true, false, true)<br>
-val MEMORY_ONLY_2 = new StorageLevel(false, true, false, true, 2)<br>
-val MEMORY_ONLY_SER = new StorageLevel(false, true, false, false)<br>
-val MEMORY_ONLY_SER_2 = new StorageLevel(false, true, false, false, 2)<br>
-val MEMORY_AND_DISK = new StorageLevel(true, true, false, true)<br>
-val MEMORY_AND_DISK_2 = new StorageLevel(true, true, false, true, 2)<br>
-val MEMORY_AND_DISK_SER = new StorageLevel(true, true, false, false)<br>
-val MEMORY_AND_DISK_SER_2 = new StorageLevel(true, true, false, false, 2)<br>
-val OFF_HEAP = new StorageLevel(true, true, true, false, 1)</p>
+<p>（<em>）作用：提高性能<br>（</em>）使用：标识RDD可以被缓存 persist cache<br>（*）可以缓存的位置：</p>
+<p>val NONE = new StorageLevel(false, false, false, false)<br>val DISK_ONLY = new StorageLevel(true, false, false, false)<br>val DISK_ONLY_2 = new StorageLevel(true, false, false, false, 2)<br>val MEMORY_ONLY = new StorageLevel(false, true, false, true)<br>val MEMORY_ONLY_2 = new StorageLevel(false, true, false, true, 2)<br>val MEMORY_ONLY_SER = new StorageLevel(false, true, false, false)<br>val MEMORY_ONLY_SER_2 = new StorageLevel(false, true, false, false, 2)<br>val MEMORY_AND_DISK = new StorageLevel(true, true, false, true)<br>val MEMORY_AND_DISK_2 = new StorageLevel(true, true, false, true, 2)<br>val MEMORY_AND_DISK_SER = new StorageLevel(true, true, false, false)<br>val MEMORY_AND_DISK_SER_2 = new StorageLevel(true, true, false, false, 2)<br>val OFF_HEAP = new StorageLevel(true, true, true, false, 1)</p>
 <p>/**</p>
 <ul>
-<li>Persist this RDD with the default storage level (<code>MEMORY_ONLY</code>).<br>
-*/<br>
-def persist(): this.type = persist(StorageLevel.MEMORY_ONLY)</li>
+<li>Persist this RDD with the default storage level (<code>MEMORY_ONLY</code>).<br> */<br>def persist(): this.type = persist(StorageLevel.MEMORY_ONLY)</li>
 </ul>
 <p>/**</p>
 <ul>
-<li>Persist this RDD with the default storage level (<code>MEMORY_ONLY</code>).<br>
-*/<br>
-def cache(): this.type = persist()<br>
-举例：测试数据，92万条<br>
-进入spark-shell命令</li>
+<li>Persist this RDD with the default storage level (<code>MEMORY_ONLY</code>).<br> */<br>def cache(): this.type = persist()<br>举例：测试数据，92万条<br>进入spark-shell命令</li>
 </ul>
 <p>./spark-shell <code>--master</code> spark://hsiehchou121:7077</p>
-<p>scala&gt; val rdd1 = sc.textFile(“hdfs://192.168.116.121:9000/tmp_files/test_Cache.txt”)<br>
-rdd1: org.apache.spark.rdd.RDD[String] = hdfs://192.168.116.121:9000/tmp_files/test_Cache.txt MapPartitionsRDD[3] at textFile at <code>&lt;console&gt;</code>:24</p>
-<p>scala&gt; rdd1.count  --&gt; 直接出发计算<br>
-res0: Long = 921911</p>
-<p>scala&gt; rdd1.cache  --&gt; 标识RDD可以被缓存，不会触发计算<br>
-res1: rdd1.type = hdfs://192.168.116.121:9000/tmp_files/test_Cache.txt MapPartitionsRDD[3] at textFile at <code>&lt;console&gt;</code>:24</p>
-<p>scala&gt; rdd1.count   --&gt; 和第一步一样，触发计算，但是，把结果进行缓存<br>
-res2: Long = 921911</p>
-<p>scala&gt; rdd1.count   --&gt;  从缓存中直接读出结果<br>
-res3: Long = 921911</p>
-<p>（2）<strong>RDD的容错机制：通过检查点来实现</strong><br>
-检查点（本质是通过将RDD写入Disk做检查点）是为了通过lineage（血统）做容错的辅助，lineage过长会造成容错成本过高，这样就不如在中间阶段做检查点容错，如果之后有节点出现问题而丢失分区，从做检查点的RDD开始重做Lineage，就会减少开销</p>
+<p>scala&gt; val rdd1 = sc.textFile(“hdfs://192.168.116.121:9000/tmp_files/test_Cache.txt”)<br>rdd1: org.apache.spark.rdd.RDD[String] = hdfs://192.168.116.121:9000/tmp_files/test_Cache.txt MapPartitionsRDD[3] at textFile at <code>&lt;console&gt;</code>:24</p>
+<p>scala&gt; rdd1.count  –&gt; 直接出发计算<br>res0: Long = 921911                                                       </p>
+<p>scala&gt; rdd1.cache  –&gt; 标识RDD可以被缓存，不会触发计算<br>res1: rdd1.type = hdfs://192.168.116.121:9000/tmp_files/test_Cache.txt MapPartitionsRDD[3] at textFile at <code>&lt;console&gt;</code>:24</p>
+<p>scala&gt; rdd1.count   –&gt; 和第一步一样，触发计算，但是，把结果进行缓存<br>res2: Long = 921911                                                          </p>
+<p>scala&gt; rdd1.count   –&gt;  从缓存中直接读出结果<br>res3: Long = 921911</p>
+<p>（2）<strong>RDD的容错机制：通过检查点来实现</strong><br>检查点（本质是通过将RDD写入Disk做检查点）是为了通过lineage（血统）做容错的辅助，lineage过长会造成容错成本过高，这样就不如在中间阶段做检查点容错，如果之后有节点出现问题而丢失分区，从做检查点的RDD开始重做Lineage，就会减少开销</p>
 <p>设置checkpoint的目录，可以是本地的文件夹、也可以是HDFS。一般是在具有容错能力，高可靠的文件系统上(比如HDFS, S3等)设置一个检查点路径，用于保存检查点数据</p>
 <p>/**</p>
 <p>Mark this RDD for checkpointing. It will be saved to a file inside the checkpoint</p>
 <p>directory set with SparkContext#setCheckpointDir and all references to its parent</p>
 <p>RDDs will be removed. This function must be called before any job has been</p>
 <p>executed on this RDD. It is strongly recommended that this RDD is persisted in</p>
-<p>memory, otherwise saving it on a file will require recomputation.<br>
-*/</p>
-<p>（*）复习检查点：<br>
-HDFS中的检查点：有SecondaryNamenode来实现日志的合并</p>
-<p>（*）RDD的检查点：容错<br>
-概念：血统 Lineage<br>
-理解：表示任务执行的生命周期<br>
-WordCount textFile —&gt; redceByKey</p>
+<p>memory, otherwise saving it on a file will require recomputation.<br>*/</p>
+<p>（*）复习检查点：<br>HDFS中的检查点：有SecondaryNamenode来实现日志的合并</p>
+<p>（*）RDD的检查点：容错<br>概念：血统 Lineage<br>理解：表示任务执行的生命周期<br>WordCount textFile —&gt; redceByKey</p>
 <p>如果血统越长，越容易出错</p>
 <p>假如有检查点，可以从最近的一个检查点开始，往后面计算。不用重头计算</p>
-<p>（*）RDD检查点的类型<br>
-（1）基于本地目录：需要将Spark shell 或者任务运行在本地模式上（setMaster(“local”)）<br>
-开发和测试</p>
-<p>（2）HDFS目录：用于生产<br>
-sc.setCheckPointDir(目录)</p>
-<p>举例：<strong>设置检查点</strong><br>
-scala&gt; var rdd1 = sc.textFile(“hdfs://192.168.116.121:9000/tmp_files/test_Cache.txt”)<br>
-rdd1: org.apache.spark.rdd.RDD[String] = hdfs://192.168.116.121:9000/tmp_files/test_Cache.txt MapPartitionsRDD[1] at textFile at <code>&lt;console&gt;</code>:24</p>
-<p>设置检查点目录：<br>
-scala&gt; sc.setCheckpointDir(“hdfs://192.168.116.121:9000/sparkchkpt”)</p>
-<p>标识rdd1可以执行检查点操作<br>
-scala&gt; rdd1.checkpoint</p>
-<p>scala&gt; rdd1.count<br>
-res2: Long = 921911</p>
+<p>（*）RDD检查点的类型<br>（1）基于本地目录：需要将Spark shell 或者任务运行在本地模式上（setMaster(“local”)）<br>开发和测试</p>
+<p>（2）HDFS目录：用于生产<br>sc.setCheckPointDir(目录)</p>
+<p>举例：<strong>设置检查点</strong><br>scala&gt; var rdd1 = sc.textFile(“hdfs://192.168.116.121:9000/tmp_files/test_Cache.txt”)<br>rdd1: org.apache.spark.rdd.RDD[String] = hdfs://192.168.116.121:9000/tmp_files/test_Cache.txt MapPartitionsRDD[1] at textFile at <code>&lt;console&gt;</code>:24</p>
+<p>设置检查点目录：<br>scala&gt; sc.setCheckpointDir(“hdfs://192.168.116.121:9000/sparkchkpt”)</p>
+<p>标识rdd1可以执行检查点操作<br>scala&gt; rdd1.checkpoint</p>
+<p>scala&gt; rdd1.count<br>res2: Long = 921911</p>
 <p>（3）**依赖关系：宽依赖，窄依赖 **</p>
 <p><strong>Stage是每一个job处理过程要分为的几个阶段</strong></p>
 <p><img src="/medias/Stage%E5%88%92%E5%88%86.PNG" alt="Stage划分"></p>
-<p>划分任务执行的stage<br>
-RDD和它依赖的父RDD（s）的关系有两种不同的类型，即窄依赖（narrow dependency）和宽依赖（wide dependency）</p>
-<p><strong>窄依赖</strong>指的是每一个父RDD的Partition最多被子RDD的一个Partition使用（一（父）对一（子））<br>
-总结：<strong>窄依赖</strong>我们形象的比喻为<strong>独生子女</strong></p>
-<p><strong>宽依赖</strong>指的是多个子RDD的Partition会依赖同一个父RDD的Partition（一（父）对多（子））<br>
-总结：<strong>宽依赖</strong>我们形象的比喻为<strong>超生</strong></p>
+<p>划分任务执行的stage<br>RDD和它依赖的父RDD（s）的关系有两种不同的类型，即窄依赖（narrow dependency）和宽依赖（wide dependency）</p>
+<p><strong>窄依赖</strong>指的是每一个父RDD的Partition最多被子RDD的一个Partition使用（一（父）对一（子））<br>总结：<strong>窄依赖</strong>我们形象的比喻为<strong>独生子女</strong></p>
+<p><strong>宽依赖</strong>指的是多个子RDD的Partition会依赖同一个父RDD的Partition（一（父）对多（子））<br>总结：<strong>宽依赖</strong>我们形象的比喻为<strong>超生</strong></p>
 <p>DAG(Directed Acyclic Graph)叫做有向无环图，原始的RDD通过一系列的转换就就形成了DAG，根据RDD之间的依赖关系的不同将DAG划分成不同的Stage，对于窄依赖，partition的转换处理在Stage中完成计算。对于宽依赖，由于有Shuffle的存在，只能在parent RDD处理完成后，才能开始接下来的计算，因此<strong>宽依赖是划分Stage的依据</strong></p>
-<h3 id="七、RDD的高级算子">七、RDD的高级算子</h3>
-<h4 id="1、mapPartitionsWithIndex">1、mapPartitionsWithIndex</h4>
-<p>对RDD中的每个分区（带有下标）进行操作，下标用index表示<br>
-通过这个算子，我们可以获取分区号</p>
-<p>def mapPartitionsWithIndex&lt;a href="<br>
-f: %28Int, Iterator%5bT%5d%29 ⇒ Iterator%5bU%5d,<br>
-preservesPartitioning: Boolean = false”&gt;U(implicit arg0: ClassTag[U]): RDD[U]</p>
+<h3 id="七、RDD的高级算子"><a href="#七、RDD的高级算子" class="headerlink" title="七、RDD的高级算子"></a>七、RDD的高级算子</h3><h4 id="1、mapPartitionsWithIndex"><a href="#1、mapPartitionsWithIndex" class="headerlink" title="1、mapPartitionsWithIndex"></a>1、mapPartitionsWithIndex</h4><p>对RDD中的每个分区（带有下标）进行操作，下标用index表示<br>通过这个算子，我们可以获取分区号</p>
+<p>def mapPartitionsWithIndex&lt;a href=”<br>f: %28Int, Iterator%5bT%5d%29 ⇒ Iterator%5bU%5d,<br>preservesPartitioning: Boolean = false”&gt;U(implicit arg0: ClassTag[U]): RDD[U]</p>
 <p>通过将函数应用于此RDD的每个分区来返回新的RDD，同时跟踪原始分区的索引</p>
 <p>preservesPartitioning指输入函数是否保留分区器，除非是一对RDD并且输入函数不修改keys，否则应该是false</p>
 <p>参数：f是个函数参数 f 中第一个参数是Int，代表分区号，第二个Iterator[T]代表分区中的元素</p>
 <p>举例：把分区中的元素，包括分区号，都打印出来</p>
-<p>scala&gt; val rdd1 = sc.parallelize(List(1,2,3,4,5,6,7,8),3)<br>
-rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[3] at parallelize at <code>&lt;console&gt;</code>:24</p>
-<p>scala&gt; def fun1(index:Int, iter:Iterator[Int]) : Iterator[String] = {<br>
-| iter.toList.map(x =&gt; “[partId: “+ index +” , value = " + x + " ]”).iterator<br>
-| }<br>
-fun1: (index: Int, iter: Iterator[Int])Iterator[String]</p>
-<p>scala&gt; rdd1.mapPartitionsWithIndex(fun1).collect<br>
-res3: Array[String] = Array(<br>
-[partId: 0 , value = 1 ], [partId: 0 , value = 2 ],<br>
-[partId: 1 , value = 3 ], [partId: 1 , value = 4 ], [partId: 1 , value = 5 ],<br>
-[partId: 2 , value = 6 ], [partId: 2 , value = 7 ], [partId: 2 , value = 8 ])</p>
-<h4 id="2、aggregate">2、aggregate</h4>
-<p>聚合操作。类似于分组<br>
-（*）先对局部进行聚合操作，再对全局进行聚合操作</p>
-<p><strong>调用聚合操作</strong><br>
-scala&gt; val rdd2 = sc.parallelize(List(1,2,3,4,5),2)<br>
-rdd2: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[5] at parallelize at <code>&lt;console&gt;</code>:24</p>
-<p>scala&gt; rdd2.mapPartitionsWithIndex(fun1).collect<br>
-res4: Array[String] = Array(<br>
-[partId : 0 , value = 1 ], [partId : 0 , value = 2 ],<br>
-[partId : 1 , value = 3 ], [partId : 1 , value = 4 ], [partId : 1 , value = 5 ])</p>
-<p>scala&gt; import scala.math._<br>
-import scala.math._</p>
+<p>scala&gt; val rdd1 = sc.parallelize(List(1,2,3,4,5,6,7,8),3)<br>rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[3] at parallelize at <code>&lt;console&gt;</code>:24</p>
+<p>scala&gt; def fun1(index:Int, iter:Iterator[Int]) : Iterator[String] = {<br>     | iter.toList.map(x =&gt; “[partId: “+ index +” , value = “ + x + “ ]”).iterator<br>     | }<br>fun1: (index: Int, iter: Iterator[Int])Iterator[String]</p>
+<p>scala&gt; rdd1.mapPartitionsWithIndex(fun1).collect<br>res3: Array[String] = Array(<br>[partId: 0 , value = 1 ], [partId: 0 , value = 2 ],<br>[partId: 1 , value = 3 ], [partId: 1 , value = 4 ], [partId: 1 , value = 5 ],<br>[partId: 2 , value = 6 ], [partId: 2 , value = 7 ], [partId: 2 , value = 8 ])</p>
+<h4 id="2、aggregate"><a href="#2、aggregate" class="headerlink" title="2、aggregate"></a>2、aggregate</h4><p>聚合操作。类似于分组<br>（*）先对局部进行聚合操作，再对全局进行聚合操作</p>
+<p><strong>调用聚合操作</strong><br>scala&gt; val rdd2 = sc.parallelize(List(1,2,3,4,5),2)<br>rdd2: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[5] at parallelize at <code>&lt;console&gt;</code>:24</p>
+<p>scala&gt; rdd2.mapPartitionsWithIndex(fun1).collect<br>res4: Array[String] = Array(<br>[partId : 0 , value = 1 ], [partId : 0 , value = 2 ],<br>[partId : 1 , value = 3 ], [partId : 1 , value = 4 ], [partId : 1 , value = 5 ])</p>
+<p>scala&gt; import scala.math._<br>import scala.math._</p>
 <pre><code class="highlight plaintext">scala&gt; rdd2.aggregate(0)(max(_,_),_+_)
 res6: Int = 7</code></pre>
+
 <p>说明：aggregate</p>
 <pre><code class="highlight plaintext">(0) 初始值是 0 
 (max(_,_) 局部操作的函数
 ,   _+_   全局操作的函数
 )</code></pre>
+
 <pre><code class="highlight plaintext">scala&gt; rdd2.aggregate(100)(max(_,_),_+_)
 res8: Int = 300</code></pre>
-<p>分析结果：初始值是100，代表每个分区多了一个100<br>
-全局操作，也多了一个100<br>
-100+100+100 = 300</p>
-<p>对RDD中的元素进行求和<br>
-RDD.map</p>
+
+<p>分析结果：初始值是100，代表每个分区多了一个100<br>全局操作，也多了一个100<br>100+100+100 = 300</p>
+<p>对RDD中的元素进行求和<br>RDD.map</p>
 <p><strong>聚合操作（效率大于map）</strong></p>
 <pre><code class="highlight plaintext">scala&gt; rdd2.aggregate(0)(_+_,_+_)
 res9: Int = 15</code></pre>
+
 <p>相当于MapReduce 的 Combiner</p>
 <pre><code class="highlight plaintext">scala&gt; rdd2.aggregate(10)(_+_,_+_)
 res10: Int = 45</code></pre>
+
 <p>（*）对字符串操作</p>
-<p>scala&gt; val rdd2 = sc.parallelize(List(“a”,“b”,“c”,“d”,“e”,“f”),2)<br>
-rdd2: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[7] at parallelize at <code>&lt;console&gt;</code>:27</p>
+<p>scala&gt; val rdd2 = sc.parallelize(List(“a”,”b”,”c”,”d”,”e”,”f”),2)<br>rdd2: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[7] at parallelize at <code>&lt;console&gt;</code>:27</p>
 <pre><code class="highlight plaintext">scala&gt; rdd2.aggregate("")(_+_,_+_)
 res11: String = abcdef
 
 scala&gt; rdd2.aggregate("*")(_+_,_+_)
 res12: String = **def*abc</code></pre>
-<p>结果分析:<br>
-*abc *def</p>
-<p>**def*abc</p>
-<p>（*）复杂的例子<br>
-1）<br>
-scala&gt; val rdd3 = sc.parallelize(List(“12”,“23”,“345”,“4567”),2)<br>
-rdd3: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[8] at parallelize at <code>&lt;console&gt;</code>:27</p>
-<p>scala&gt; def fun1(index:Int, iter:Iterator[String]) : Iterator[String] = {<br>
-| iter.toList.map(x =&gt; “[partId : " + index + " , value = " + x + " ]”).iterator<br>
-| }</p>
-<p>scala&gt; rdd3.mapPartitionsWithIndex(fun1).collect<br>
-res17: Array[String] = Array(<br>
-[partId : 0 , value = 12 ], [partId : 0 , value = 23 ],<br>
-[partId : 1 , value = 345 ], [partId : 1 , value = 4567 ])</p>
-<p>scala&gt; rdd3.aggregate(“”)((x,y)=&gt; math.max(x.length,y.length).toString,(x,y)=&gt;x+y)<br>
-res13: String = 42<br>
-执行过程：<br>
-第一个分区：<br>
-第一次比较： “” “12” 长度最大值 2 2–&gt;”2”<br>
-第二次比较： “2” “23” 长度最大值 2 2–&gt;”2”</p>
-<p>第二个分区：<br>
-第一次比较： “” “345” 长度最大值 3 3–&gt;”3”<br>
-第二次比较： “3” “4567” 长度最大值 4 4–&gt;”4”<br>
-结果：24 或者42</p>
-<p>2）<br>
-scala&gt; rdd3.aggregate(“”)((x,y)=&gt; math.min(x.length,y.length).toString,(x,y)=&gt;x+y)<br>
-res18: String = 11<br>
-执行过程：<br>
-第一个分区：<br>
-第一次比较： “” “12” 长度最小值 0 0–&gt;”0”<br>
-第二次比较： “0” “23” 长度最小值 1 1–&gt;”1”</p>
-<p>第二个分区：<br>
-第一次比较： “” “345” 长度最小值 0 0–&gt;”0”<br>
-第二次比较： “0” “4567” 长度最小值 1 1–&gt;”1”</p>
-<p>val rdd3 = sc.parallelize(List(“12”,“23”,“345”,“”),2)<br>
-rdd3.aggregate(“”)((x,y)=&gt; math.min(x.length,y.length).toString,(x,y)=&gt;x+y)</p>
-<p>scala&gt; val rdd3 = sc.parallelize(List(“12”,“23”,“345”,“”),2)<br>
-rdd3: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[10] at parallelize at <console>:27</console></p>
-<p>scala&gt; rdd3.aggregate(“”)((x,y)=&gt; math.min(x.length,y.length).toString,(x,y)=&gt;x+y)<br>
-res19: String = 10</p>
-<p>scala&gt; rdd3.aggregate(“”)((x,y)=&gt; math.min(x.length,y.length).toString,(x,y)=&gt;x+y)<br>
-res20: String = 01<br>
-3）aggregateByKey：类似于aggregate，区别：操作的是 key value 的数据类型</p>
-<p>scala&gt; val pairRDD = sc.parallelize(List((“cat”,2),(“cat”,5),(“mouse”,4),(“cat”,12),(“dog”,12),(“mouse”,2)),2)<br>
-pairRDD: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[0] at parallelize at <code>&lt;console&gt;</code>:24</p>
-<p>scala&gt; def fun3(index:Int, iter:Iterator[(String,Int)]) : Iterator[String] = {<br>
-| iter.toList.map(x=&gt;“partId : " + index + " , value = " + x + " ]”).iterator<br>
-| }<br>
-fun3: (index: Int, iter: Iterator[(String, Int)])Iterator[String]</p>
-<p>scala&gt; pairRDD.mapPartitionsWithIndex(fun3).collect<br>
-res0: Array[String] = Array(<br>
-partId : 0 , value = (cat,2) ], partId : 0 , value = (cat,5) ], partId : 0 , value = (mouse,4) ],<br>
-partId : 1 , value = (cat,12) ], partId : 1 , value = (dog,12) ], partId : 1 , value = (mouse,2) ])</p>
-<p>1.将每个动物园（分区）中，动物数最多的动物，进行求和<br>
-动物园0<br>
-[partId : 0 , value = (cat,2) ], [partId : 0 , value = (cat,5) ], [partId : 0 , value = (mouse,4) ],</p>
-<p>动物园1<br>
-[partId : 1 , value = (cat,12) ], [partId : 1 , value = (dog,12) ], [partId : 1 , value = (mouse,2) ])</p>
+
+<p>结果分析:<br>*abc *def</p>
+<p>*<em>def</em>abc</p>
+<p>（*）复杂的例子<br>1）<br>scala&gt; val rdd3 = sc.parallelize(List(“12”,”23”,”345”,”4567”),2)<br>rdd3: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[8] at parallelize at <code>&lt;console&gt;</code>:27</p>
+<p>scala&gt; def fun1(index:Int, iter:Iterator[String]) : Iterator[String] = {<br> | iter.toList.map(x =&gt; “[partId : “ + index + “ , value = “ + x + “ ]”).iterator<br> | }</p>
+<p>scala&gt; rdd3.mapPartitionsWithIndex(fun1).collect<br>res17: Array[String] = Array(<br>[partId : 0 , value = 12 ], [partId : 0 , value = 23 ],<br>[partId : 1 , value = 345 ], [partId : 1 , value = 4567 ])</p>
+<p>scala&gt; rdd3.aggregate(“”)((x,y)=&gt; math.max(x.length,y.length).toString,(x,y)=&gt;x+y)<br>res13: String = 42<br>执行过程：<br>第一个分区：<br>第一次比较： “” “12” 长度最大值 2 2–&gt;”2”<br>第二次比较： “2” “23” 长度最大值 2 2–&gt;”2”</p>
+<p>第二个分区：<br>第一次比较： “” “345” 长度最大值 3 3–&gt;”3”<br>第二次比较： “3” “4567” 长度最大值 4 4–&gt;”4”<br>结果：24 或者42</p>
+<p>2）<br>scala&gt; rdd3.aggregate(“”)((x,y)=&gt; math.min(x.length,y.length).toString,(x,y)=&gt;x+y)<br>res18: String = 11<br>执行过程：<br>第一个分区：<br>第一次比较： “” “12” 长度最小值 0 0–&gt;”0”<br>第二次比较： “0” “23” 长度最小值 1 1–&gt;”1”</p>
+<p>第二个分区：<br>第一次比较： “” “345” 长度最小值 0 0–&gt;”0”<br>第二次比较： “0” “4567” 长度最小值 1 1–&gt;”1”</p>
+<p>val rdd3 = sc.parallelize(List(“12”,”23”,”345”,””),2)<br>rdd3.aggregate(“”)((x,y)=&gt; math.min(x.length,y.length).toString,(x,y)=&gt;x+y)</p>
+<p>scala&gt; val rdd3 = sc.parallelize(List(“12”,”23”,”345”,””),2)<br>rdd3: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[10] at parallelize at <console>:27</console></p>
+<p>scala&gt; rdd3.aggregate(“”)((x,y)=&gt; math.min(x.length,y.length).toString,(x,y)=&gt;x+y)<br>res19: String = 10</p>
+<p>scala&gt; rdd3.aggregate(“”)((x,y)=&gt; math.min(x.length,y.length).toString,(x,y)=&gt;x+y)<br>res20: String = 01<br>3）aggregateByKey：类似于aggregate，区别：操作的是 key value 的数据类型</p>
+<p>scala&gt; val pairRDD = sc.parallelize(List((“cat”,2),(“cat”,5),(“mouse”,4),(“cat”,12),(“dog”,12),(“mouse”,2)),2)<br>pairRDD: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[0] at parallelize at <code>&lt;console&gt;</code>:24</p>
+<p>scala&gt; def fun3(index:Int, iter:Iterator[(String,Int)]) : Iterator[String] = {<br>     | iter.toList.map(x=&gt;”partId : “ + index + “ , value = “ + x + “ ]”).iterator<br>     | }<br>fun3: (index: Int, iter: Iterator[(String, Int)])Iterator[String]</p>
+<p>scala&gt; pairRDD.mapPartitionsWithIndex(fun3).collect<br>res0: Array[String] = Array(<br>partId : 0 , value = (cat,2) ], partId : 0 , value = (cat,5) ], partId : 0 , value = (mouse,4) ],<br>partId : 1 , value = (cat,12) ], partId : 1 , value = (dog,12) ], partId : 1 , value = (mouse,2) ])</p>
+<p>1.将每个动物园（分区）中，动物数最多的动物，进行求和<br>动物园0<br>[partId : 0 , value = (cat,2) ], [partId : 0 , value = (cat,5) ], [partId : 0 , value = (mouse,4) ],</p>
+<p>动物园1<br>[partId : 1 , value = (cat,12) ], [partId : 1 , value = (dog,12) ], [partId : 1 , value = (mouse,2) ])</p>
 <pre><code class="highlight plaintext">pairRDD.aggregateByKey(0)(math.max(_,_),_+_)
 
 scala&gt; pairRDD.aggregateByKey(0)(math.max(_,_),_+_).collect
@@ -1121,66 +826,21 @@ res1: Array[(String, Int)] = Array((dog,12), (cat,17), (mouse,6))</code></pre>
 
 scala&gt; pairRDD.reduceByKey(_+_).collect
 res27: Array[(String, Int)] = Array((dog,12), (cat,19), (mouse,6))</code></pre>
+
 <p>aggregateByKey效率更高</p>
-<p>4）<strong>coalesce与repartition</strong><br>
-与分区有关<br>
-都是对RDD进行重分区</p>
-<p>区别：<br>
-coalesce 默认不会进行Shuffle 默认 false 如需修改分区，需置为true</p>
+<p>4）<strong>coalesce与repartition</strong><br>与分区有关<br>都是对RDD进行重分区</p>
+<p>区别：<br>coalesce 默认不会进行Shuffle 默认 false 如需修改分区，需置为true</p>
 <p>repartition 会进行Shuffle</p>
-<p>scala&gt; val rdd1 = sc.parallelize(List(1,2,3,4,5,6,7,8,9),2)<br>
-rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[5] at parallelize at <code>&lt;console&gt;</code></p>
-<p>scala&gt; val rdd2 = rdd1.repartition(3)<br>
-rdd2: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[9] at repartition at <code>&lt;console&gt;</code>:26</p>
-<p>scala&gt; rdd2.partitions.length<br>
-res4: Int = 3</p>
-<p>scala&gt; val rdd3 = rdd1.coalesce(3,true)<br>
-rdd3: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[13] at coalesce at <code>&lt;console&gt;</code>:26</p>
-<p>scala&gt; rdd3.partitions.length<br>
-res5: Int = 3</p>
-<p>scala&gt; val rdd4 = rdd1.coalesce(4)<br>
-rdd4: org.apache.spark.rdd.RDD[Int] = CoalescedRDD[14] at coalesce at <code>&lt;console&gt;</code>:26</p>
-<p>scala&gt; rdd4.partitions.length<br>
-res6: Int = 2</p>
-<p>5）<strong>其他高级算子</strong><br>
-比较好的高级算子的博客（推荐）<br>
-<a target="_blank" rel="noopener" href="http://homepage.cs.latrobe.edu.au/zhe/ZhenHeSparkRDDAPIExamples.html">http://homepage.cs.latrobe.edu.au/zhe/ZhenHeSparkRDDAPIExamples.html</a></p>
-<h3 id="八、编程案例">八、编程案例</h3>
-<h4 id="1、分析日志">1、分析日志</h4>
-<p>需求：找到访问量最高的两个网页<br>
-（<em>）第一步：对网页的访问量求和<br>
-（</em>）第二步：排序，降序</p>
-<p><strong>日志数据</strong><br>
-192.168.88.1 - - [30/Jul/2017:12:53:43 +0800] “GET /MyDemoWeb/ HTTP/1.1” 200 259<br>
-192.168.88.1 - - [30/Jul/2017:12:53:43 +0800] “GET /MyDemoWeb/head.jsp HTTP/1.1” 200 713<br>
-192.168.88.1 - - [30/Jul/2017:12:53:43 +0800] “GET /MyDemoWeb/body.jsp HTTP/1.1” 200 240<br>
-192.168.88.1 - - [30/Jul/2017:12:54:37 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:38 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:38 +0800] “GET /MyDemoWeb/java.jsp HTTP/1.1” 200 240<br>
-192.168.88.1 - - [30/Jul/2017:12:54:40 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:40 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:41 +0800] “GET /MyDemoWeb/mysql.jsp HTTP/1.1” 200 241<br>
-192.168.88.1 - - [30/Jul/2017:12:54:41 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:42 +0800] “GET /MyDemoWeb/web.jsp HTTP/1.1” 200 239<br>
-192.168.88.1 - - [30/Jul/2017:12:54:42 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:52 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:52 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:53 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:54 +0800] “GET /MyDemoWeb/mysql.jsp HTTP/1.1” 200 241<br>
-192.168.88.1 - - [30/Jul/2017:12:54:54 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:54 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:56 +0800] “GET /MyDemoWeb/web.jsp HTTP/1.1” 200 239<br>
-192.168.88.1 - - [30/Jul/2017:12:54:56 +0800] “GET /MyDemoWeb/java.jsp HTTP/1.1” 200 240<br>
-192.168.88.1 - - [30/Jul/2017:12:54:57 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:57 +0800] “GET /MyDemoWeb/java.jsp HTTP/1.1” 200 240<br>
-192.168.88.1 - - [30/Jul/2017:12:54:58 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:58 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:59 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:54:59 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:55:43 +0800] “GET /MyDemoWeb/mysql.jsp HTTP/1.1” 200 241<br>
-192.168.88.1 - - [30/Jul/2017:12:55:43 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>
-192.168.88.1 - - [30/Jul/2017:12:55:43 +0800] “GET /MyDemoWeb/web.jsp HTTP/1.1” 200 239<br>
-192.168.88.1 - - [30/Jul/2017:12:55:43 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242</p>
+<p>scala&gt; val rdd1 = sc.parallelize(List(1,2,3,4,5,6,7,8,9),2)<br>rdd1: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[5] at parallelize at <code>&lt;console&gt;</code></p>
+<p>scala&gt; val rdd2 = rdd1.repartition(3)<br>rdd2: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[9] at repartition at <code>&lt;console&gt;</code>:26</p>
+<p>scala&gt; rdd2.partitions.length<br>res4: Int = 3</p>
+<p>scala&gt; val rdd3 = rdd1.coalesce(3,true)<br>rdd3: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[13] at coalesce at <code>&lt;console&gt;</code>:26</p>
+<p>scala&gt; rdd3.partitions.length<br>res5: Int = 3</p>
+<p>scala&gt; val rdd4 = rdd1.coalesce(4)<br>rdd4: org.apache.spark.rdd.RDD[Int] = CoalescedRDD[14] at coalesce at <code>&lt;console&gt;</code>:26</p>
+<p>scala&gt; rdd4.partitions.length<br>res6: Int = 2</p>
+<p>5）<strong>其他高级算子</strong><br>比较好的高级算子的博客（推荐）<br><a target="_blank" rel="noopener" href="http://homepage.cs.latrobe.edu.au/zhe/ZhenHeSparkRDDAPIExamples.html">http://homepage.cs.latrobe.edu.au/zhe/ZhenHeSparkRDDAPIExamples.html</a></p>
+<h3 id="八、编程案例"><a href="#八、编程案例" class="headerlink" title="八、编程案例"></a>八、编程案例</h3><h4 id="1、分析日志"><a href="#1、分析日志" class="headerlink" title="1、分析日志"></a>1、分析日志</h4><p>需求：找到访问量最高的两个网页<br>（<em>）第一步：对网页的访问量求和<br>（</em>）第二步：排序，降序 </p>
+<p><strong>日志数据</strong><br>192.168.88.1 - - [30/Jul/2017:12:53:43 +0800] “GET /MyDemoWeb/ HTTP/1.1” 200 259<br>192.168.88.1 - - [30/Jul/2017:12:53:43 +0800] “GET /MyDemoWeb/head.jsp HTTP/1.1” 200 713<br>192.168.88.1 - - [30/Jul/2017:12:53:43 +0800] “GET /MyDemoWeb/body.jsp HTTP/1.1” 200 240<br>192.168.88.1 - - [30/Jul/2017:12:54:37 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:38 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:38 +0800] “GET /MyDemoWeb/java.jsp HTTP/1.1” 200 240<br>192.168.88.1 - - [30/Jul/2017:12:54:40 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:40 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:41 +0800] “GET /MyDemoWeb/mysql.jsp HTTP/1.1” 200 241<br>192.168.88.1 - - [30/Jul/2017:12:54:41 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:42 +0800] “GET /MyDemoWeb/web.jsp HTTP/1.1” 200 239<br>192.168.88.1 - - [30/Jul/2017:12:54:42 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:52 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:52 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:53 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:54 +0800] “GET /MyDemoWeb/mysql.jsp HTTP/1.1” 200 241<br>192.168.88.1 - - [30/Jul/2017:12:54:54 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:54 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:56 +0800] “GET /MyDemoWeb/web.jsp HTTP/1.1” 200 239<br>192.168.88.1 - - [30/Jul/2017:12:54:56 +0800] “GET /MyDemoWeb/java.jsp HTTP/1.1” 200 240<br>192.168.88.1 - - [30/Jul/2017:12:54:57 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:57 +0800] “GET /MyDemoWeb/java.jsp HTTP/1.1” 200 240<br>192.168.88.1 - - [30/Jul/2017:12:54:58 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:58 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:59 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:54:59 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:55:43 +0800] “GET /MyDemoWeb/mysql.jsp HTTP/1.1” 200 241<br>192.168.88.1 - - [30/Jul/2017:12:55:43 +0800] “GET /MyDemoWeb/oracle.jsp HTTP/1.1” 200 242<br>192.168.88.1 - - [30/Jul/2017:12:55:43 +0800] “GET /MyDemoWeb/web.jsp HTTP/1.1” 200 239<br>192.168.88.1 - - [30/Jul/2017:12:55:43 +0800] “GET /MyDemoWeb/hadoop.jsp HTTP/1.1” 200 242</p>
 <pre><code class="highlight plaintext">package day2
 
 import org.apache.spark.SparkConf
@@ -1229,11 +889,9 @@ object MyTomcatLogCount {
     sc.stop()
   }
 }</code></pre>
-<p>结果：<br>
-(/hadoop.jsp,9)<br>
-(/oracle.jsp,9)</p>
-<h4 id="2、创建自定义分区">2、创建自定义分区</h4>
-<p>根据jsp文件的名字，将各自的访问日志放入到不同的分区文件中</p>
+
+<p>结果：<br>(/hadoop.jsp,9)<br>(/oracle.jsp,9)</p>
+<h4 id="2、创建自定义分区"><a href="#2、创建自定义分区" class="headerlink" title="2、创建自定义分区"></a>2、创建自定义分区</h4><p>根据jsp文件的名字，将各自的访问日志放入到不同的分区文件中</p>
 <pre><code class="highlight plaintext">package day2
 
 import org.apache.spark.SparkConf
@@ -1308,8 +966,8 @@ class MyWebPartitioner(jspList : Array[String]) extends Partitioner{
   //根据jsp，返回对应的分区
   def getPartition(key : Any) : Int = partitionMap.getOrElse(key.toString(),0)
 }</code></pre>
-<h4 id="3、使用JDBCRDD-操作数据库">3、使用JDBCRDD 操作数据库</h4>
-<p>将RDD的数据保存到mysql数据库中</p>
+
+<h4 id="3、使用JDBCRDD-操作数据库"><a href="#3、使用JDBCRDD-操作数据库" class="headerlink" title="3、使用JDBCRDD 操作数据库"></a>3、使用JDBCRDD 操作数据库</h4><p>将RDD的数据保存到mysql数据库中</p>
 <pre><code class="highlight plaintext">package day2
 
 import java.sql.DriverManager
@@ -1346,65 +1004,55 @@ object MyMysqlDemo {
     sc.stop()    
   }
 }</code></pre>
-<p>mysql的company的emp数据<br>
-1 Tom 10 2400<br>
-2 Alis 11 1900<br>
-3 Kei 12 1500<br>
-4 Mi 11 900<br>
-结果<br>
-ArrayBuffer((Alis,1900), (Kei,1500))</p>
+
+<p>mysql的company的emp数据<br>1 Tom 10 2400<br>2 Alis 11 1900<br>3 Kei 12 1500<br>4 Mi 11 900<br>结果<br>ArrayBuffer((Alis,1900), (Kei,1500))</p>
 <p>JdbcRDD参数说明</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">参数名称</th>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">说明</th>
+<th align="center">参数名称</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">sc</td>
-<td style="text-align:center">org.apache.spark.SparkContext</td>
-<td style="text-align:center">Spark Context对象</td>
+<tbody><tr>
+<td align="center">sc</td>
+<td align="center">org.apache.spark.SparkContext</td>
+<td align="center">Spark Context对象</td>
 </tr>
 <tr>
-<td style="text-align:center">getConnection</td>
-<td style="text-align:center">scala.Function0[java.sql.Connection]</td>
-<td style="text-align:center">得到一个数据库Connection</td>
+<td align="center">getConnection</td>
+<td align="center">scala.Function0[java.sql.Connection]</td>
+<td align="center">得到一个数据库Connection</td>
 </tr>
 <tr>
-<td style="text-align:center">sql</td>
-<td style="text-align:center">scala.Predef.String</td>
-<td style="text-align:center">执行的SQL语句</td>
+<td align="center">sql</td>
+<td align="center">scala.Predef.String</td>
+<td align="center">执行的SQL语句</td>
 </tr>
 <tr>
-<td style="text-align:center">lowerBound</td>
-<td style="text-align:center">scala.Long</td>
-<td style="text-align:center">下边界值，即：SQL的第一个参数</td>
+<td align="center">lowerBound</td>
+<td align="center">scala.Long</td>
+<td align="center">下边界值，即：SQL的第一个参数</td>
 </tr>
 <tr>
-<td style="text-align:center">upperBound</td>
-<td style="text-align:center">scala.Long</td>
-<td style="text-align:center">上边界值，即：SQL的第二个参数</td>
+<td align="center">upperBound</td>
+<td align="center">scala.Long</td>
+<td align="center">上边界值，即：SQL的第二个参数</td>
 </tr>
 <tr>
-<td style="text-align:center">numPartitions</td>
-<td style="text-align:center">scala.Int</td>
-<td style="text-align:center">分区的个数，即：启动多少个Executor</td>
+<td align="center">numPartitions</td>
+<td align="center">scala.Int</td>
+<td align="center">分区的个数，即：启动多少个Executor</td>
 </tr>
 <tr>
-<td style="text-align:center">mapRow</td>
-<td style="text-align:center">scala.Function1[java.sql.ResultSet, T]</td>
-<td style="text-align:center">得到的结果集</td>
+<td align="center">mapRow</td>
+<td align="center">scala.Function1[java.sql.ResultSet, T]</td>
+<td align="center">得到的结果集</td>
 </tr>
-</tbody>
-</table>
-<p>JdbcRDD的缺点：从上面的参数说明可以看出，JdbcRDD有以下两个缺点：<br>
-（1）执行的SQL必须有两个参数，并类型都是Long<br>
-（2）得到的结果是ResultSet，即：只支持select操作</p>
-<h4 id="4、操作数据库：把结果存放到数据库中">4、操作数据库：把结果存放到数据库中</h4>
-<pre><code class="highlight plaintext">package day3
+</tbody></table>
+<p>JdbcRDD的缺点：从上面的参数说明可以看出，JdbcRDD有以下两个缺点：<br>（1）执行的SQL必须有两个参数，并类型都是Long<br>（2）得到的结果是ResultSet，即：只支持select操作</p>
+<h4 id="4、操作数据库：把结果存放到数据库中"><a href="#4、操作数据库：把结果存放到数据库中" class="headerlink" title="4、操作数据库：把结果存放到数据库中"></a>4、操作数据库：把结果存放到数据库中</h4><pre><code class="highlight plaintext">package day3
 
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
@@ -1533,6 +1181,7 @@ object MyTomcatLogCountToMysql {
       }
   }
 }</code></pre>
+
 </console></key>
             </div>
             <hr/>
@@ -1784,10 +1433,7 @@ object MyTomcatLogCountToMysql {
                     <div class="summary block-with-text">
                         
                             Spark SQL 类似于Hive
-一、Spark SQL 基础
-1、什么是Spark SQL
-Spark SQL is Apache Spark’s module for working with structured data.
-Spa
+一、Spark SQL 基础1、什么是Spark SQLSpark SQL is Apache Spark’s module for working with structured data.Spark 
                         
                     </div>
                     <div class="publish-info">
@@ -1840,13 +1486,9 @@ Spa
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Actor并发模型
-Java中的并发开发
-Java的并发编程是基于 共享数据 和 加锁 的一种机制。锁的是共享数据
-synchronized
-Scala中的并发开发
-不共享数据。依赖于 消息传递 的一种并发编程模式
-如果 Actor A 和
+                            Actor并发模型Java中的并发开发Java的并发编程是基于 共享数据 和 加锁 的一种机制。锁的是共享数据synchronized
+Scala中的并发开发不共享数据。依赖于 消息传递 的一种并发编程模式
+如果 Actor A 和 Act
                         
                     </div>
                     <div class="publish-info">
@@ -2060,7 +1702,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

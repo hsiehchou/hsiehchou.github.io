@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -403,84 +403,17 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、计算机语言发展史">1、计算机语言发展史</h4>
-<p>Java语言是计算机语言的一种<br>
-（1）语言：汉语 英语 阿拉伯语 日语—&gt;人与人进行沟通的 一种方式<br>
-语义。—-》自然语言处理 人工智能中 文本分析 NLP<br>
-（2）机器语言：人与计算机沟通的语言。—Java 就是其中一种<br>
-类似于英语在自然语言中的地位 很流行 很主流<br>
-a、机器语言–初级形态：用二进制编码来表示计算机能够识别和执行的一种机器指令集合<br>
-例如：0 1 二进制编码 10进制<br>
-101010110—》启动声卡<br>
-b、机器语言—中级形态：汇编语言，用一种助记符来机器指令，成为符号语言。<br>
-例如：mov–表示数据的移动<br>
-rm-删除<br>
-add<br>
-c、机器语言—-高级形态：高级语言。一种接近人们使用习惯高级程序语言<br>
-例如：c=a+b; 实现数据的加和<br>
-常见的高级程序语言：Java、C、C++、C#、R、Python、Scala、VB、PHP等等</p>
-<h4 id="2、Java语言概述">2、Java语言概述</h4>
-<p>Java语言是一门非常年轻的语言 90后。最早是SUN —–Jamse Gosling（Java之父）<br>
-Oak–橡树。—Java 看到一个人 拿着爪哇杯 喝咖啡<br>
-Java语言随着互联网的发展，跨系统、跨平台 能够运行<br>
-Java语言获得了飞速的发展<br>
-Java 也形成了自己的一套方法 体系。封装了很多成熟可用的方法可以直接调用<br>
-API文档 —葵花宝典 Java 字典</p>
-<h4 id="3、Java语言的特性和优点">3、Java语言的特性和优点</h4>
-<p>（1）跨平台—一次编写 到处运行<br>
-（2）面向对象—万事万物，皆为对象。 类<br>
-（3）相对简单—有C语言基础或者其他语言基础，语言之间是有相同性<br>
-要知道 Java语言的基本语法、基本数据类型、基本程序控制</p>
-<h4 id="4、Java的开发环境">4、Java的开发环境</h4>
-<p>（1）JDK：Java development Kit： 开发者工具包<br>
-（2）JRE：Java Runtime Environment：Java 运行环境—只做运行 不做开发时<br>
-（3）JVM：Java Virtual Machine：Java 虚拟机<br>
-所有的Java程序都运行在 jvm上<br>
-JDK或JRE具备后，程序会调用生成 JVM<br>
-JDk包含JRE</p>
-<h4 id="5、JDK的安装与配置">5、JDK的安装与配置</h4>
-<p>jdk 下载官网地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/Java/Javase/downloads/jdk8-downloads-2133151.html">https://www.oracle.com/technetwork/Java/Javase/downloads/jdk8-downloads-2133151.html</a><br>
-（1）针对从官网上下载的 .exe的安装包<br>
-a、 选择适合你电脑操作系统和位数的 JDK版本<br>
-例如Mac linux 还有 32位或64位<br>
-b、要增加以下<br>
-1）Java_HOME:jdk 安装的目录。C:\Program Files\Java\jdk1.8.0_171<br>
-2）在 Path里面 增加 ：<br>
-英文的字符<br>
-;%Java_HOME%\bin;%Java_HOME%\jre\bin<br>
-一定要记得点确定。还要把cmd给关掉，重新打开 cmd 输入Java、Javac等命令验证<br>
-（2）考一个jdk安装包，之后再Java_home里面进行更改<br>
-（3）classpath可以不添加</p>
-<h4 id="6、Java程序的概述">6、Java程序的概述</h4>
-<p>Java程序需要首先完成：<br>
-（1）Java源文件， .Java 结尾的文件<br>
-（2）编译生成字节码文件，.class 结尾的文件 很多编码 二进制（16进制）组成的文件<br>
-（3）将字节码文件 编译器（compiler） JVM能够识别和运行的文件<br>
-首先编写源文件–》其次通过编译成.class文件–》最后JVM运行</p>
-<h4 id="7、DOS常见的命令">7、DOS常见的命令</h4>
-<p>dir:列出当前目录下的文件及文件夹<br>
-换盘：直接输入盘符：，例如 切换到D盘 D:<br>
-cd:换目录 tab键 可以自动补齐。把目录的名字进行补齐<br>
-md:新建文件目录<br>
-del:删除文件目录<br>
-cls:清屏<br>
-exit：退出<br>
-上下箭头：可以调用之前输出的命令</p>
-<h4 id="8、第一个Helloworld-Java程序">8、第一个Helloworld Java程序</h4>
-<p>（1）helloworld 的文件名字一定要与 类名（class 后面紧跟的 名字）保持一致<br>
-（2）设置一下 .Java 源文件编码方式 UTF-8<br>
-（3）如果设置为 UTF-8 会发现中文输出为乱码，原因是 Java源文件的编码方式与<br>
-Java编译时的编码方式不一样，造成了乱码</p>
-<h4 id="9、Java注释">9、Java注释</h4>
-<p>单行注释 //<br>
-多行注释 /**/<br>
-文档注释 /*/<br>
-代码注释很重要 因为不止是对别人看你或理解你的代码，而且对你自己也有好处。</p>
-<h4 id="10、Java标识符">10、Java标识符</h4>
-<p>所谓标识符就是对Java当中的 变量、类名、对象名、函数等自己的名字，名字必须得符合规范<br>
-字母、数字、下划线和美元符号组成</p>
-<h4 id="11、Java关键字">11、Java关键字</h4>
-<p>以Java来编码的 文件 ，蓝色的字符 关键字</p>
+                <h4 id="1、计算机语言发展史"><a href="#1、计算机语言发展史" class="headerlink" title="1、计算机语言发展史"></a>1、计算机语言发展史</h4><p>Java语言是计算机语言的一种<br>（1）语言：汉语 英语 阿拉伯语 日语—&gt;人与人进行沟通的 一种方式<br>语义。—-》自然语言处理 人工智能中 文本分析 NLP<br>（2）机器语言：人与计算机沟通的语言。—Java 就是其中一种<br>类似于英语在自然语言中的地位 很流行 很主流<br>a、机器语言–初级形态：用二进制编码来表示计算机能够识别和执行的一种机器指令集合<br>例如：0 1 二进制编码 10进制<br>101010110—》启动声卡<br>b、机器语言—中级形态：汇编语言，用一种助记符来机器指令，成为符号语言。<br>例如：mov–表示数据的移动<br>rm-删除<br>add<br>c、机器语言—-高级形态：高级语言。一种接近人们使用习惯高级程序语言<br>例如：c=a+b; 实现数据的加和<br>常见的高级程序语言：Java、C、C++、C#、R、Python、Scala、VB、PHP等等</p>
+<h4 id="2、Java语言概述"><a href="#2、Java语言概述" class="headerlink" title="2、Java语言概述"></a>2、Java语言概述</h4><p>Java语言是一门非常年轻的语言 90后。最早是SUN —–Jamse Gosling（Java之父）<br>Oak–橡树。—Java 看到一个人 拿着爪哇杯 喝咖啡<br>Java语言随着互联网的发展，跨系统、跨平台 能够运行<br>Java语言获得了飞速的发展<br>Java 也形成了自己的一套方法 体系。封装了很多成熟可用的方法可以直接调用<br>API文档 —葵花宝典 Java 字典</p>
+<h4 id="3、Java语言的特性和优点"><a href="#3、Java语言的特性和优点" class="headerlink" title="3、Java语言的特性和优点"></a>3、Java语言的特性和优点</h4><p>（1）跨平台—一次编写 到处运行<br>（2）面向对象—万事万物，皆为对象。 类<br>（3）相对简单—有C语言基础或者其他语言基础，语言之间是有相同性<br>要知道 Java语言的基本语法、基本数据类型、基本程序控制</p>
+<h4 id="4、Java的开发环境"><a href="#4、Java的开发环境" class="headerlink" title="4、Java的开发环境"></a>4、Java的开发环境</h4><p>（1）JDK：Java development Kit： 开发者工具包<br>（2）JRE：Java Runtime Environment：Java 运行环境—只做运行 不做开发时<br>（3）JVM：Java Virtual Machine：Java 虚拟机<br>所有的Java程序都运行在 jvm上<br>JDK或JRE具备后，程序会调用生成 JVM<br>JDk包含JRE</p>
+<h4 id="5、JDK的安装与配置"><a href="#5、JDK的安装与配置" class="headerlink" title="5、JDK的安装与配置"></a>5、JDK的安装与配置</h4><p>jdk 下载官网地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/Java/Javase/downloads/jdk8-downloads-2133151.html">https://www.oracle.com/technetwork/Java/Javase/downloads/jdk8-downloads-2133151.html</a><br>（1）针对从官网上下载的 .exe的安装包<br>a、 选择适合你电脑操作系统和位数的 JDK版本<br>例如Mac linux 还有 32位或64位<br>b、要增加以下<br>1）Java_HOME:jdk 安装的目录。C:\Program Files\Java\jdk1.8.0_171<br>2）在 Path里面 增加 ：<br>英文的字符<br>;%Java_HOME%\bin;%Java_HOME%\jre\bin<br>一定要记得点确定。还要把cmd给关掉，重新打开 cmd 输入Java、Javac等命令验证<br>（2）考一个jdk安装包，之后再Java_home里面进行更改<br>（3）classpath可以不添加</p>
+<h4 id="6、Java程序的概述"><a href="#6、Java程序的概述" class="headerlink" title="6、Java程序的概述"></a>6、Java程序的概述</h4><p>Java程序需要首先完成：<br>（1）Java源文件， .Java 结尾的文件<br>（2）编译生成字节码文件，.class 结尾的文件 很多编码 二进制（16进制）组成的文件<br>（3）将字节码文件 编译器（compiler） JVM能够识别和运行的文件<br>首先编写源文件–》其次通过编译成.class文件–》最后JVM运行</p>
+<h4 id="7、DOS常见的命令"><a href="#7、DOS常见的命令" class="headerlink" title="7、DOS常见的命令"></a>7、DOS常见的命令</h4><p>dir:列出当前目录下的文件及文件夹<br>换盘：直接输入盘符：，例如 切换到D盘 D:<br>cd:换目录 tab键 可以自动补齐。把目录的名字进行补齐<br>md:新建文件目录<br>del:删除文件目录<br>cls:清屏<br>exit：退出<br>上下箭头：可以调用之前输出的命令</p>
+<h4 id="8、第一个Helloworld-Java程序"><a href="#8、第一个Helloworld-Java程序" class="headerlink" title="8、第一个Helloworld Java程序"></a>8、第一个Helloworld Java程序</h4><p>（1）helloworld 的文件名字一定要与 类名（class 后面紧跟的 名字）保持一致<br>（2）设置一下 .Java 源文件编码方式 UTF-8<br>（3）如果设置为 UTF-8 会发现中文输出为乱码，原因是 Java源文件的编码方式与<br>Java编译时的编码方式不一样，造成了乱码</p>
+<h4 id="9、Java注释"><a href="#9、Java注释" class="headerlink" title="9、Java注释"></a>9、Java注释</h4><p>单行注释 //<br>多行注释 /**/<br>文档注释 /*/<br>代码注释很重要 因为不止是对别人看你或理解你的代码，而且对你自己也有好处。</p>
+<h4 id="10、Java标识符"><a href="#10、Java标识符" class="headerlink" title="10、Java标识符"></a>10、Java标识符</h4><p>所谓标识符就是对Java当中的 变量、类名、对象名、函数等自己的名字，名字必须得符合规范<br>字母、数字、下划线和美元符号组成</p>
+<h4 id="11、Java关键字"><a href="#11、Java关键字" class="headerlink" title="11、Java关键字"></a>11、Java关键字</h4><p>以Java来编码的 文件 ，蓝色的字符 关键字</p>
 
             </div>
             <hr/>
@@ -727,14 +660,7 @@ Java编译时的编码方式不一样，造成了乱码</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、Java注释
-(1)单行注释 //
-只能注释一行，而且注释使用实在 // 之后。不会运行
-例如：
-(2)多行注释 /**/
-可以注释多行内容。 主要用来说明一段代码或者一个函数的作用
-(3)文档注释 /*/
-主要用来说明类的功能，包含的
+                            1、Java注释(1)单行注释 //只能注释一行，而且注释使用实在 // 之后。不会运行例如：(2)多行注释 /**/可以注释多行内容。 主要用来说明一段代码或者一个函数的作用(3)文档注释 /*/主要用来说明类的功能，包含的函数、字段以及
                         
                     </div>
                     <div class="publish-info">
@@ -783,11 +709,7 @@ Java编译时的编码方式不一样，造成了乱码</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、计算机语言发展史
-Java语言是计算机语言的一种
-（1）语言：汉语 英语 阿拉伯语 日语—&gt;人与人进行沟通的 一种方式
-语义。—-》自然语言处理 人工智能中 文本分析 NLP
-（2）机器语言：人与计算机沟通的语言。—Java 就是
+                            1、计算机语言发展史Java语言是计算机语言的一种（1）语言：汉语 英语 阿拉伯语 日语—&gt;人与人进行沟通的 一种方式语义。—-》自然语言处理 人工智能中 文本分析 NLP（2）机器语言：人与计算机沟通的语言。—Java 就是其中一种
                         
                     </div>
                     <div class="publish-info">
@@ -998,7 +920,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

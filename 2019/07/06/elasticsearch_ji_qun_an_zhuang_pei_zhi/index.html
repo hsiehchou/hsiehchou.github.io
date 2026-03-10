@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,7 +384,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    339
+                    328
                 </div>
                 
 
@@ -407,31 +407,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>安装Elasticsearch</strong><br>
-mkdir /opt/software/elasticsearch/data/</p>
+                <p><strong>安装Elasticsearch</strong><br>mkdir /opt/software/elasticsearch/data/</p>
 <p>mkdir /opt/software/elasticsearch/logs/</p>
 <p>chmod 777 /opt/software/elasticsearch/data/</p>
-<p>useradd elasticsearch<br>
-passwd elasticsearch</p>
+<p>useradd elasticsearch<br>passwd elasticsearch</p>
 <p>chown -R elasticsearch elasticsearch/</p>
-<p><strong>vim /etc/security/limits.conf</strong><br>
-添加如下内容:<br>
-<code>*</code> <strong>soft nofile 65536</strong><br>
-<code>*</code> <strong>hard nofile 131072</strong><br>
-<code>*</code> <strong>soft nproc 2048</strong><br>
-<code>*</code> <strong>hard nproc 4096</strong></p>
-<p>进入limits.d目录下修改配置文件<br>
-<strong>vim /etc/security/limits.d/90-nproc.conf</strong></p>
-<p>修改如下内容：<br>
-<strong>soft nproc 4096（修改为此参数，6版本的默认就是4096）</strong></p>
-<p>修改配置sysctl.conf<br>
-<strong>vim /etc/sysctl.conf</strong></p>
-<p>添加下面配置：<br>
-<strong>vm.max_map_count=655360</strong></p>
-<p>并执行命令：<br>
-<strong>sysctl -p</strong></p>
-<p><strong>hadoop1的conf配置</strong><br>
-<strong>elasticsearch.yml</strong></p>
+<p><strong>vim /etc/security/limits.conf</strong><br>添加如下内容:<br><code>*</code> <strong>soft nofile 65536</strong><br><code>*</code> <strong>hard nofile 131072</strong><br><code>*</code> <strong>soft nproc 2048</strong><br><code>*</code> <strong>hard nproc 4096</strong></p>
+<p>进入limits.d目录下修改配置文件<br><strong>vim /etc/security/limits.d/90-nproc.conf</strong></p>
+<p>修改如下内容：<br><strong>soft nproc 4096（修改为此参数，6版本的默认就是4096）</strong></p>
+<p>修改配置sysctl.conf<br><strong>vim /etc/sysctl.conf</strong></p>
+<p>添加下面配置：<br><strong>vm.max_map_count=655360</strong></p>
+<p>并执行命令：<br><strong>sysctl -p</strong></p>
+<p><strong>hadoop1的conf配置</strong><br><strong>elasticsearch.yml</strong></p>
 <pre><code class="highlight plaintext">cluster.name: xz_es
 
 node.name: node-1
@@ -451,12 +438,9 @@ bootstrap.system_call_filter: false
 network.host: 192.168.116.201
 
 discovery.zen.ping.unicast.hosts: ["hadoop1", "hadoop2", "hadoop3"]</code></pre>
-<p><strong>jvm.options</strong><br>
-修改下<br>
--Xms64m<br>
--Xmx64m</p>
-<p><strong>hadoop2的conf配置</strong><br>
-<strong>elasticsearch.yml</strong></p>
+
+<p><strong>jvm.options</strong><br>修改下<br>-Xms64m<br>-Xmx64m</p>
+<p><strong>hadoop2的conf配置</strong><br><strong>elasticsearch.yml</strong></p>
 <pre><code class="highlight plaintext">cluster.name: xz_es
 
 node.name: node-2
@@ -476,12 +460,9 @@ bootstrap.system_call_filter: false
 network.host: 192.168.116.202
 
 discovery.zen.ping.unicast.hosts: ["hadoop1", "hadoop2", "hadoop3"]</code></pre>
-<p><strong>jvm.options</strong><br>
-修改下<br>
--Xms64m<br>
--Xmx64m</p>
-<p><strong>hadoop3的conf配置</strong><br>
-<strong>elasticsearch.yml</strong></p>
+
+<p><strong>jvm.options</strong><br>修改下<br>-Xms64m<br>-Xmx64m</p>
+<p><strong>hadoop3的conf配置</strong><br><strong>elasticsearch.yml</strong></p>
 <pre><code class="highlight plaintext">cluster.name: xz_es
 
 node.name: node-3
@@ -501,10 +482,8 @@ bootstrap.system_call_filter: false
 network.host: 192.168.116.203
 
 discovery.zen.ping.unicast.hosts: ["hadoop1", "hadoop2", "hadoop3"]</code></pre>
-<p><strong>jvm.options</strong><br>
-修改下<br>
--Xms64m<br>
--Xmx64m</p>
+
+<p><strong>jvm.options</strong><br>修改下<br>-Xms64m<br>-Xmx64m</p>
 <p><strong>Kibana的conf配置</strong></p>
 <p><strong>kibana.yml</strong></p>
 <pre><code class="highlight plaintext">server.port: 5601
@@ -512,13 +491,9 @@ discovery.zen.ping.unicast.hosts: ["hadoop1", "hadoop2", "hadoop3"]</code></pre>
 server.host: "192.168.116.202"
 
 elasticsearch.url: "http://192.168.116.201:9200"</code></pre>
-<p><strong>运行Elasticsearch</strong><br>
-cd /opt/software/elasticsearch<br>
-su elasticsearch<br>
-bin/elasticsearch &amp;</p>
-<p><strong>运行Kibana</strong><br>
-cd /opt/software/kibana/<br>
-bin/kibana &amp;</p>
+
+<p><strong>运行Elasticsearch</strong><br>cd /opt/software/elasticsearch<br>su elasticsearch<br>bin/elasticsearch &amp;</p>
+<p><strong>运行Kibana</strong><br>cd /opt/software/kibana/<br>bin/kibana &amp;</p>
 
             </div>
             <hr/>
@@ -826,8 +801,7 @@ ES集群之间是通过9300端口进行通讯
                     <div class="summary block-with-text">
                         
                             一万小时天才理论（阅读笔记）
-前言
-上大一时，我就听人讲过一个人只要在一个领域专攻1万小时，那么这个人便会成为这个领域的专家，把时间分配到每天3小时，需要10年，每天8小时（当然这很不现实，不可能工作的所有时间都花在学习上，还有周末休息啥的
+前言上大一时，我就听人讲过一个人只要在一个领域专攻1万小时，那么这个人便会成为这个领域的专家，把时间分配到每天3小时，需要10年，每天8小时（当然这很不现实，不可能工作的所有时间都花在学习上，还有周末休息啥的）
                         
                     </div>
                     <div class="publish-info">
@@ -1041,7 +1015,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    686
+                    683
                 </div>
                 
 
@@ -403,77 +403,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、数组概述">1、数组概述</h4>
-<p>数组是相同数据类型的一组数据集合。 4类8种基本数据类型<br>
-数组有索引–代表不同的数值<br>
-football[7]–&gt;C罗<br>
-Basketball[23]–&gt;乔丹<br>
-不同的球队 可以看成不同的数组<br>
-同一个球队里面 每个球员的编号 唯一<br>
-数组的长度固定<br>
-数组的索引从0开始<br>
-length 数组大小</p>
-<h4 id="2、一维数组">2、一维数组</h4>
-<p>（1）定义数组<br>
-dataType 数组名[]<br>
-dataType[] 数组名—-》<br>
-例如： int[] array;<br>
-（2）初始化数组<br>
-a、首先要确定数组的大小<br>
-定义时候直接确定：dataType[] array=new dataType[size];<br>
-dataType[] array;<br>
-array=new dataType[size];<br>
-(3) 数组的赋值<br>
-给数组的元素进行赋值<br>
-a、 动态赋值<br>
-b、静态赋值</p>
+                <h4 id="1、数组概述"><a href="#1、数组概述" class="headerlink" title="1、数组概述"></a>1、数组概述</h4><p>数组是相同数据类型的一组数据集合。 4类8种基本数据类型<br>数组有索引–代表不同的数值<br>football[7]–&gt;C罗<br>Basketball[23]–&gt;乔丹<br>不同的球队 可以看成不同的数组<br>同一个球队里面 每个球员的编号 唯一<br>数组的长度固定<br>数组的索引从0开始<br>length 数组大小</p>
+<h4 id="2、一维数组"><a href="#2、一维数组" class="headerlink" title="2、一维数组"></a>2、一维数组</h4><p>（1）定义数组<br>dataType 数组名[]<br>dataType[] 数组名—-》<br>例如： int[] array;<br>（2）初始化数组<br>a、首先要确定数组的大小<br>定义时候直接确定：dataType[] array=new dataType[size];<br>dataType[] array;<br>array=new dataType[size];<br>(3) 数组的赋值<br>给数组的元素进行赋值<br>a、 动态赋值<br>b、静态赋值</p>
 <pre><code class="highlight plaintext">dataType[] array=new dataType[]{}; 
 dataType[] array={};</code></pre>
-<h4 id="3、二维数组">3、二维数组</h4>
-<p>矩阵。 m[i][j] 第i行 j列<br>
-表示一个 由行列组成的数据，例如 表格<br>
-10个班级 每个班级有 20 学生 成绩 记录下来<br>
-用行数 表示 班级<br>
-用列数表示 每个班级的学生<br>
-a[10][20]=成绩<br>
-比如： 小明 第2 班级的底1号学生<br>
-a[1][0]=90;<br>
-String[] s;<br>
-(1)二维数组的声明<br>
-dataType[][] d_arr=new dataType[row][col];<br>
-(2)二维数据的初始化<br>
-a、动态赋值<br>
-嵌套for循环 遍历二维数组的每个元素<br>
-b、静态赋值</p>
+
+<h4 id="3、二维数组"><a href="#3、二维数组" class="headerlink" title="3、二维数组"></a>3、二维数组</h4><p>矩阵。 m[i][j] 第i行 j列<br>表示一个 由行列组成的数据，例如 表格<br>10个班级 每个班级有 20 学生 成绩 记录下来<br>用行数 表示 班级<br>用列数表示 每个班级的学生<br>a[10][20]=成绩<br>比如： 小明 第2 班级的底1号学生<br>a[1][0]=90;<br>String[] s;<br>(1)二维数组的声明<br>dataType[][] d_arr=new dataType[row][col];<br>(2)二维数据的初始化<br>a、动态赋值<br>嵌套for循环 遍历二维数组的每个元素<br>b、静态赋值 </p>
 <pre><code class="highlight plaintext">dataType[][] d_arr=new dataType[][]{{},,…,{}}; 
 dataTyep[][] d_arr={{},{},…,{}};</code></pre>
+
 <p>二维数组实现 矩阵相乘</p>
-<h4 id="4、方法的概述">4、方法的概述</h4>
-<p>解决某件事情的办法；函数 main<br>
-计算一个结果<br>
-处理一段业务逻辑<br>
-有助于程序的模块化开发和处理<br>
-方法=函数<br>
-main函数里面 String[] args 表示的 main函数接受的参数</p>
-<h4 id="5、方法的定义格式">5、方法的定义格式</h4>
-<p>修饰符 返回值类型 方法的名字（参数列表…）{<br>
-方法的功能主体<br>
-return ；// 也可以没有<br>
-}</p>
-<h4 id="6、方法定义的注意事项">6、方法定义的注意事项</h4>
-<p>（1）方法不能定义在其他方法之中 独一性<br>
-（2）方法如果有返回值类型 一定要返回相应类型的数据<br>
-例如： double func1（） { return double；不能为 int}<br>
-（3）调用方法的时候 参数列表一定要对应好<br>
-例如 func1（int a,b,c）{ (a+b)*c}<br>
-（4）方法不能重复定义 如果一个方法名字 已经用过了 如果还要用 就需要重载<br>
-（5） 参数类型与返回值类型无关</p>
-<h4 id="7、方法的重载特性">7、方法的重载特性</h4>
-<p>同一个类中 允许出现同名的方法，只是方法的参数列表不同，这样的方法称为重载<br>
-参数列表不同：表示 参数的个数不同 参数数据类型不同<br>
-（1）重载与参数变量名无关<br>
-（2）重载与返回值类型无关<br>
-（3）重载与修饰符无关</p>
+<h4 id="4、方法的概述"><a href="#4、方法的概述" class="headerlink" title="4、方法的概述"></a>4、方法的概述</h4><p>解决某件事情的办法；函数 main<br>计算一个结果<br>处理一段业务逻辑<br>有助于程序的模块化开发和处理<br>方法=函数<br>main函数里面 String[] args 表示的 main函数接受的参数</p>
+<h4 id="5、方法的定义格式"><a href="#5、方法的定义格式" class="headerlink" title="5、方法的定义格式"></a>5、方法的定义格式</h4><p>修饰符 返回值类型 方法的名字（参数列表…）{<br>方法的功能主体<br>return ；// 也可以没有<br>}</p>
+<h4 id="6、方法定义的注意事项"><a href="#6、方法定义的注意事项" class="headerlink" title="6、方法定义的注意事项"></a>6、方法定义的注意事项</h4><p>（1）方法不能定义在其他方法之中 独一性<br>（2）方法如果有返回值类型 一定要返回相应类型的数据<br>例如： double func1（） { return double；不能为 int}<br>（3）调用方法的时候 参数列表一定要对应好<br>例如 func1（int a,b,c）{ (a+b)*c}<br>（4）方法不能重复定义 如果一个方法名字 已经用过了 如果还要用 就需要重载<br>（5） 参数类型与返回值类型无关</p>
+<h4 id="7、方法的重载特性"><a href="#7、方法的重载特性" class="headerlink" title="7、方法的重载特性"></a>7、方法的重载特性</h4><p>同一个类中 允许出现同名的方法，只是方法的参数列表不同，这样的方法称为重载<br>参数列表不同：表示 参数的个数不同 参数数据类型不同<br>（1）重载与参数变量名无关<br>（2）重载与返回值类型无关<br>（3）重载与修饰符无关</p>
 
             </div>
             <hr/>
@@ -720,12 +663,7 @@ return ；// 也可以没有<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、Eclipse 使用
-IDE：
-idea myeclipse eclipse NetBeans （visual studio）
-idea 目前比较流行 有兴趣的可以了解下
-Git：版本管理工具 从GIt上下载工程
-JSP：页面 web应
+                            1、Eclipse 使用IDE：idea myeclipse eclipse NetBeans （visual studio）idea 目前比较流行 有兴趣的可以了解下Git：版本管理工具 从GIt上下载工程JSP：页面 web应用 开发j
                         
                     </div>
                     <div class="publish-info">
@@ -774,13 +712,8 @@ JSP：页面 web应
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、位运算符
-主要针对二进制数。 只有 0 1 两种形态。加快运行速度
-&amp;：位与 两个数同时为1 则为1 否则为0
-|：位或 两个数中有一个为1 则为1 否则为0
-^: 异或 相同为0 不同为1
-: 右移运算符 代表位数向右移动
-&
+                            1、位运算符主要针对二进制数。 只有 0 1 两种形态。加快运行速度&amp;：位与 两个数同时为1 则为1 否则为0|：位或 两个数中有一个为1 则为1 否则为0^: 异或 相同为0 不同为1
+: 右移运算符 代表位数向右移动&lt;&l
                         
                     </div>
                     <div class="publish-info">
@@ -990,7 +923,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

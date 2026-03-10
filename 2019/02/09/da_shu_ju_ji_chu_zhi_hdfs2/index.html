@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -407,94 +407,34 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、HDFS下载文件原理">1、HDFS下载文件原理</h4>
-<p>1、请求<br>
-2、创建client<br>
-DFS –&gt;DFSClient<br>
-3、建立RPC通信<br>
-4、得到代理对象proxy，通过代理对象请求得到文件元信息<br>
-5、查找元信息<br>
-6、返回元信息<br>
-7、创建输入流<br>
-8、下载数据块<br>
-FSDataInputStream<br>
-9、整合下载文件</p>
+                <h4 id="1、HDFS下载文件原理"><a href="#1、HDFS下载文件原理" class="headerlink" title="1、HDFS下载文件原理"></a>1、HDFS下载文件原理</h4><p>1、请求<br>2、创建client<br>DFS –&gt;DFSClient<br>3、建立RPC通信<br>4、得到代理对象proxy，通过代理对象请求得到文件元信息<br>5、查找元信息<br>6、返回元信息<br>7、创建输入流<br>8、下载数据块<br>FSDataInputStream<br>9、整合下载文件</p>
 <p>注意：HDFS维护失败列表</p>
-<h4 id="2、安全模式-safe-mode">2、安全模式 safe mode</h4>
-<p>检查副本率是否满足配置要求。副本率不够的时候，会水平复制，当下次那个挂掉的节点如果又活过来的话，副本数就会超过N了，就超了，系统会自动选一个多余的副本删掉<br>
-（1）冗余度：dfs.replication 3.有几个冗余的副本<br>
-hdfs-site.xml</p>
+<h4 id="2、安全模式-safe-mode"><a href="#2、安全模式-safe-mode" class="headerlink" title="2、安全模式 safe mode"></a>2、安全模式 safe mode</h4><p>检查副本率是否满足配置要求。副本率不够的时候，会水平复制，当下次那个挂掉的节点如果又活过来的话，副本数就会超过N了，就超了，系统会自动选一个多余的副本删掉<br>（1）冗余度：dfs.replication 3.有几个冗余的副本<br>hdfs-site.xml</p>
 <pre><code class="highlight plaintext">&lt;!--注释配置数据块的冗余度，默认是3--&gt;
 &lt;property&gt;
        &lt;name&gt;dfs.replication&lt;/name&gt;
        &lt;value&gt;1&lt;/value&gt;
 &lt;/property&gt;</code></pre>
-<p>（2）副本率：数据块实际冗余度（M），HDFS配置的数据块应该具有的冗余度（N）<br>
-M/N*100%;<br>
-例如：知否知否.avi M=2；HDFS配置的 N=3；<br>
-2/3=0.667。要求的副本率为 0.99，系统会水平复制数据块到其他节点<br>
-如果是副本率过高，M=6，N=3，副本率=2；大于0.99.系统会删除多余的数据块<br>
-在安全模式下 无法操作HDFS，因为正在进行副本率的检查工作<br>
-进入或查看安全模式的命令：<br>
-hdfs dfsadmin -safemode get/enter/leave/wait</p>
-<h4 id="3、快照：是一种备份，默认：HDFS快照是关闭">3、快照：是一种备份，默认：HDFS快照是关闭</h4>
-<p>一般不建议使用<br>
-快照的本质：将需要备份的数据放到一个隐藏目录下<br>
-（1）开启和关闭快照<br>
-hdfs dfsadmin -allowSnapshot <code>&lt;snapshotDir&gt;</code><br>
-hdfs dfsadmin -disallowSnapshot<br>
-hdfs lsSnapshottableDir //查看开启快照的所有文件夹</p>
-<p>（2）创建快照<br>
-需要创建快照的目录 快照目录的名字<br>
-hdfs dfs -createSnapshot /test1 backup_test1_20190216<br>
-快照打出的日志：<br>
-Created snapshot /test1/.snapshot/backup_test1_20190216</p>
-<p>（3）删除快照<br>
-hdfs dfs -deleteSnapshot /test1 backupt1_test1_20190216</p>
-<p>（4）恢复快照<br>
-hdfs dfs -cp /test1/.snapshot/backup_test1_20190216/a.txt /test1</p>
-<h4 id="4、回收站：默认HDFS的回收站禁用">4、回收站：默认HDFS的回收站禁用</h4>
-<p>（1）回收站的配置：<br>
-core-site.xml fs.trash.interval(时间间隔 分钟)<br>
-关闭集群后才能起作用</p>
+
+<p>（2）副本率：数据块实际冗余度（M），HDFS配置的数据块应该具有的冗余度（N）<br>M/N*100%;<br>例如：知否知否.avi M=2；HDFS配置的 N=3；<br>2/3=0.667。要求的副本率为 0.99，系统会水平复制数据块到其他节点<br>如果是副本率过高，M=6，N=3，副本率=2；大于0.99.系统会删除多余的数据块<br>在安全模式下 无法操作HDFS，因为正在进行副本率的检查工作<br>进入或查看安全模式的命令：<br>hdfs dfsadmin -safemode get/enter/leave/wait</p>
+<h4 id="3、快照：是一种备份，默认：HDFS快照是关闭"><a href="#3、快照：是一种备份，默认：HDFS快照是关闭" class="headerlink" title="3、快照：是一种备份，默认：HDFS快照是关闭"></a>3、快照：是一种备份，默认：HDFS快照是关闭</h4><p>一般不建议使用<br>快照的本质：将需要备份的数据放到一个隐藏目录下<br>（1）开启和关闭快照<br>hdfs dfsadmin -allowSnapshot <code>&lt;snapshotDir&gt;</code><br>hdfs dfsadmin -disallowSnapshot<br>hdfs lsSnapshottableDir //查看开启快照的所有文件夹  </p>
+<p>（2）创建快照<br>需要创建快照的目录 快照目录的名字<br>hdfs dfs -createSnapshot /test1 backup_test1_20190216<br>快照打出的日志：<br>Created snapshot /test1/.snapshot/backup_test1_20190216 </p>
+<p>（3）删除快照<br>hdfs dfs -deleteSnapshot /test1 backupt1_test1_20190216 </p>
+<p>（4）恢复快照<br>hdfs dfs -cp /test1/.snapshot/backup_test1_20190216/a.txt /test1</p>
+<h4 id="4、回收站：默认HDFS的回收站禁用"><a href="#4、回收站：默认HDFS的回收站禁用" class="headerlink" title="4、回收站：默认HDFS的回收站禁用"></a>4、回收站：默认HDFS的回收站禁用</h4><p>（1）回收站的配置：<br>core-site.xml fs.trash.interval(时间间隔 分钟)<br>关闭集群后才能起作用</p>
 <pre><code class="highlight plaintext">&lt;!--配置回收站，单位是分钟，默认是0--&gt;
 &lt;property&gt;
     &lt;name&gt;fs.trash.interval&lt;/name&gt;
     &lt;value&gt;1440&lt;/value&gt;
 &lt;/property&gt;</code></pre>
-<p>（2）本质是剪切：回收站开启之后，会把删除的文件放到一个/user/root/.Trash/Current<br>
-（3）回收站恢复也就是粘贴的过程<br>
-hdfs dfs -cp /user/root/.Trash/Current /</p>
-<h4 id="5、配额：Quota">5、配额：Quota</h4>
-<p>（1）名称配额<br>
-限定HDFS目录下，存放文件（目录）的个数&gt;1，最多存放N-1个<br>
-setQuota–指定名称配额<br>
-clrQuota–清除名称配额<br>
-例如：<br>
-hdfs dfs -mkdir /myquota1<br>
-hdfs dfsadmin -setQuota 3 /myquota1<br>
-hdfs dfs -put ~/a.txt /myquota1—-第1个<br>
-hdfs dfs -put ~/student01.txt /myquota1–第2个<br>
-hdfs dfs -put ~/students01.txt /myquota1—第3个 无法放<br>
-错误：put: The NameSpace quota (directories and files) of directory /myquota1 is exceeded: quota=3 file count=4</p>
-<p>（2）空间配额 –必须要大于 默认数据块大小<br>
-setSpaceQuota<br>
-clrSpaceQuota</p>
-<h4 id="6、HDFS底层原理-RPC">6、HDFS底层原理-RPC</h4>
-<p>Remote Procedure Call：远程过程调用，调用代码不在本地执行，实现调用者与被调用者之间的连接和通信</p>
+
+<p>（2）本质是剪切：回收站开启之后，会把删除的文件放到一个/user/root/.Trash/Current<br>（3）回收站恢复也就是粘贴的过程<br>hdfs dfs -cp /user/root/.Trash/Current /</p>
+<h4 id="5、配额：Quota"><a href="#5、配额：Quota" class="headerlink" title="5、配额：Quota"></a>5、配额：Quota</h4><p>（1）名称配额<br>限定HDFS目录下，存放文件（目录）的个数&gt;1，最多存放N-1个<br>setQuota–指定名称配额<br>clrQuota–清除名称配额<br>例如：<br>hdfs dfs -mkdir /myquota1<br>hdfs dfsadmin -setQuota 3 /myquota1<br>hdfs dfs -put ~/a.txt /myquota1—-第1个<br>hdfs dfs -put ~/student01.txt /myquota1–第2个<br>hdfs dfs -put ~/students01.txt /myquota1—第3个 无法放<br>错误：put: The NameSpace quota (directories and files) of directory /myquota1 is exceeded: quota=3 file count=4 </p>
+<p>（2）空间配额 –必须要大于 默认数据块大小<br>setSpaceQuota<br>clrSpaceQuota</p>
+<h4 id="6、HDFS底层原理-RPC"><a href="#6、HDFS底层原理-RPC" class="headerlink" title="6、HDFS底层原理-RPC"></a>6、HDFS底层原理-RPC</h4><p>Remote Procedure Call：远程过程调用，调用代码不在本地执行，实现调用者与被调用者之间的连接和通信 </p>
 <p>基于Client server，相当于 DFSClient 相当于客户端。NameNode集群相当于Server</p>
-<h4 id="7、HDFS底层原理-代理对象Proxy">7、HDFS底层原理-代理对象Proxy</h4>
-<p>（1）代理—明星的经纪人<br>
-是一种设计模式，提供了对目标对象的另一种访问方式。通过代理对象访问目标对象<br>
-（2）代理分为静态代理和动态代理<br>
-a、静态代理：接口的定义 实现接口，被代理对象与对象实现相同的接口<br>
-b、动态代理：接口的定义 不需要实现接口（匿名内部类+反射 invoke）</p>
-<h4 id="8、RPC与Proxy程序示例">8、RPC与Proxy程序示例</h4>
-<p>针对log4j warn<br>
-log4j:WARN No appenders could be found for logger (org.apache.hadoop.metrics2.lib.MutableMetricsFactory).<br>
-log4j:WARN Please initialize the log4j system properly.<br>
-log4j:WARN See <a target="_blank" rel="noopener" href="http://logging.apache.org/log4j/1.2/faq.html#noconfig">http://logging.apache.org/log4j/1.2/faq.html#noconfig</a> for more info.<br>
-可以在src/resource/通过 增加 log4j.properties解决</p>
+<h4 id="7、HDFS底层原理-代理对象Proxy"><a href="#7、HDFS底层原理-代理对象Proxy" class="headerlink" title="7、HDFS底层原理-代理对象Proxy"></a>7、HDFS底层原理-代理对象Proxy</h4><p>（1）代理—明星的经纪人<br>是一种设计模式，提供了对目标对象的另一种访问方式。通过代理对象访问目标对象<br>（2）代理分为静态代理和动态代理<br>a、静态代理：接口的定义 实现接口，被代理对象与对象实现相同的接口<br>b、动态代理：接口的定义 不需要实现接口（匿名内部类+反射 invoke）</p>
+<h4 id="8、RPC与Proxy程序示例"><a href="#8、RPC与Proxy程序示例" class="headerlink" title="8、RPC与Proxy程序示例"></a>8、RPC与Proxy程序示例</h4><p>针对log4j warn<br>log4j:WARN No appenders could be found for logger (org.apache.hadoop.metrics2.lib.MutableMetricsFactory).<br>log4j:WARN Please initialize the log4j system properly.<br>log4j:WARN See <a target="_blank" rel="noopener" href="http://logging.apache.org/log4j/1.2/faq.html#noconfig">http://logging.apache.org/log4j/1.2/faq.html#noconfig</a> for more info.<br>可以在src/resource/通过 增加 log4j.properties解决</p>
 
             </div>
             <hr/>
@@ -745,11 +685,10 @@ log4j:WARN See <a target="_blank" rel="noopener" href="http://logging.apache.org
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、hdfs的副本的配置
-修改hdfs-site.xml文件
+                            1、hdfs的副本的配置修改hdfs-site.xml文件
 &lt;!-- 注释配置数据块的冗余度，默认是3 --&gt;
 &lt;property&gt;
-    &lt;name&gt;dfs.replication&lt;/name
+    &lt;name&gt;dfs.replication&lt;/name&
                         
                     </div>
                     <div class="publish-info">
@@ -802,11 +741,7 @@ log4j:WARN See <a target="_blank" rel="noopener" href="http://logging.apache.org
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、免密码登录的原理和配置
-ssh不对称加密算法（加密和解密是两个文件）（对称加密： 加密和解密文件是同一个）
-（1）公钥–锁：给出去 给其他机器
-（2）私钥–钥匙：自己留着，解密
-step1:ssh-keygen -t rsa(3次回车)
+                            1、免密码登录的原理和配置ssh不对称加密算法（加密和解密是两个文件）（对称加密： 加密和解密文件是同一个）（1）公钥–锁：给出去 给其他机器（2）私钥–钥匙：自己留着，解密step1:ssh-keygen -t rsa(3次回车)step
                         
                     </div>
                     <div class="publish-info">
@@ -1020,7 +955,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    641
+                    626
                 </div>
                 
 
@@ -403,75 +403,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、MySQL概要">1、MySQL概要</h4>
-<p>关系型数据库。—Access数据库 oracle数据库、Postgresql-<br>
-非关系型数据库。—-Hbase等<br>
-库：—package<br>
-表：–class<br>
-字段：–属性<br>
-Oracle旗下产品—-分两种 （GPL协议的 社区版和企业版）<br>
-CDH HDP–后面大数据给大家讲 Apache–hive hdfs hadoop</p>
-<p>RDBMS：关系数据库管理系统。将数据存储在不同的库表里面<br>
-支持标准的SQL语句100%<br>
-体积小 速度快<br>
-<a target="_blank" rel="noopener" href="https://www.mysql.com/%E2%80%94%E3%80%8BMySQL">https://www.mysql.com/—》MySQL</a> Community Edition (GPL)-》MySQL OnWindows<br>
-MySQL Installer-》Windows (x86, 32-bit), MSI Installer 8.0.13 313.8M</p>
+                <h4 id="1、MySQL概要"><a href="#1、MySQL概要" class="headerlink" title="1、MySQL概要"></a>1、MySQL概要</h4><p>关系型数据库。—Access数据库 oracle数据库、Postgresql-<br>非关系型数据库。—-Hbase等<br>库：—package<br>表：–class<br>字段：–属性<br>Oracle旗下产品—-分两种 （GPL协议的 社区版和企业版）<br>CDH HDP–后面大数据给大家讲 Apache–hive hdfs hadoop</p>
+<p>RDBMS：关系数据库管理系统。将数据存储在不同的库表里面<br>支持标准的SQL语句100%<br>体积小 速度快<br><a target="_blank" rel="noopener" href="https://www.mysql.com/%E2%80%94%E3%80%8BMySQL">https://www.mysql.com/—》MySQL</a> Community Edition (GPL)-》MySQL OnWindows<br>MySQL Installer-》Windows (x86, 32-bit), MSI Installer 8.0.13 313.8M</p>
 <p>mysql-installer-community-8.0.13.0.msi</p>
-<h4 id="2、MySQL安装">2、MySQL安装</h4>
-<p>DBA–数据库管理员<br>
-黑框框+workbench<br>
-show databases;–展示所有库<br>
-show tables;–展示所有表;<br>
-describe city;–展示表里面的字段信息<br>
-select * from city limit 10;</p>
-<h4 id="3、Navicat安装与操作MySQL">3、Navicat安装与操作MySQL</h4>
-<p>Navicat Premium 是一套数据库开发工具，让你从单一应用程序中同时连接 MySQL、MariaDB、MongoDB、SQL Server、Oracle、PostgreSQL 和 SQLite 数据库。它与 Amazon RDS、Amazon Aurora、Amazon Redshift、Microsoft Azure、Oracle Cloud、MongoDB Atlas、<br>
-阿里云、腾讯云和华为云等云数据库兼容。可以快速轻松地创建、管理和维护数据库</p>
-<p>更新数据库的密码<br>
-ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘密码’;</p>
-<h4 id="4、MySQL数据类型">4、MySQL数据类型</h4>
-<p>（1）数值类型<br>
-a、整型<br>
-tinyint 1个字节<br>
-smallint 2个字节<br>
-mediumint 3个字节<br>
-int 4<br>
-bigint 8<br>
-b、浮点型（float double）<br>
-float(M,D) 小数位数部分会四舍五入。M=3 D=2 3.15<br>
-c、定点数<br>
-可变长度 decimal(M,D) M:表示总的有效位数，D表示小数的位数<br>
-3.14<br>
-3.145</p>
-<p>（2）字符串类型<br>
-char:定长字符串 255个<br>
-varchar：变长字符串 varchar(25) 最大65535字符<br>
-blob:二进制字符串–文件 图片等<br>
-text:非二进制字符串–长文本</p>
-<p>（3） 日期数据类型<br>
-datetime：2018-12-22 21:04:55<br>
-timestamp：时间戳 2019021600000 ms</p>
-<h4 id="5、MySQL外键、主键、唯一键">5、MySQL外键、主键、唯一键</h4>
-<p>（1）外键 Foreign Key<br>
-如果换教室 302-303教室 需要对所有的数据进行 更新。30个学生 然后就得跟新30次<br>
-（2） 主键 Primary Key 唯一不可重复 只能有一个主键，不能为null<br>
-（3）唯一键 一个表可以有多个 唯一键 unique</p>
-<h4 id="6、SQL语句–增删改查">6、SQL语句–增删改查</h4>
-<p>SQL：Structure Query Language。—HiveQL Spark SQL<br>
-查询：<br>
-select字段(*) from 表明 (limit count) (where);</p>
-<p>插入语句：<br>
-insert into 表名 [字段名] values(值列表);</p>
-<p>修改语句：<br>
-update 表名 set 字段=值 where 条件;</p>
-<p>删除语句：<br>
-delete from 表名 [where 条件];</p>
-<p>例如：<br>
-SELECT * FROM classroom;<br>
-insert into classroom VALUES(“001”,”9年级”,”11”,”CC”);<br>
-update classroom SET classroom.classroomid=”0003” where classroom.classroomid=”001”;<br>
-DELETE FROM classroom where classroom.classroomid=”0003”;<br>
-TRUNCATE student;</p>
+<h4 id="2、MySQL安装"><a href="#2、MySQL安装" class="headerlink" title="2、MySQL安装"></a>2、MySQL安装</h4><p>DBA–数据库管理员<br>黑框框+workbench<br>show databases;–展示所有库<br>show tables;–展示所有表;<br>describe city;–展示表里面的字段信息<br>select * from city limit 10;</p>
+<h4 id="3、Navicat安装与操作MySQL"><a href="#3、Navicat安装与操作MySQL" class="headerlink" title="3、Navicat安装与操作MySQL"></a>3、Navicat安装与操作MySQL</h4><p>Navicat Premium 是一套数据库开发工具，让你从单一应用程序中同时连接 MySQL、MariaDB、MongoDB、SQL Server、Oracle、PostgreSQL 和 SQLite 数据库。它与 Amazon RDS、Amazon Aurora、Amazon Redshift、Microsoft Azure、Oracle Cloud、MongoDB Atlas、<br>阿里云、腾讯云和华为云等云数据库兼容。可以快速轻松地创建、管理和维护数据库</p>
+<p>更新数据库的密码<br>ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘密码’;</p>
+<h4 id="4、MySQL数据类型"><a href="#4、MySQL数据类型" class="headerlink" title="4、MySQL数据类型"></a>4、MySQL数据类型</h4><p>（1）数值类型<br>a、整型<br>tinyint 1个字节<br>smallint 2个字节<br>mediumint 3个字节<br>int 4<br>bigint 8<br>b、浮点型（float double）<br>float(M,D) 小数位数部分会四舍五入。M=3 D=2 3.15<br>c、定点数<br>可变长度 decimal(M,D) M:表示总的有效位数，D表示小数的位数<br>3.14<br>3.145 </p>
+<p>（2）字符串类型<br>char:定长字符串 255个<br>varchar：变长字符串 varchar(25) 最大65535字符<br>blob:二进制字符串–文件 图片等<br>text:非二进制字符串–长文本</p>
+<p>（3） 日期数据类型<br>datetime：2018-12-22 21:04:55<br>timestamp：时间戳 2019021600000 ms</p>
+<h4 id="5、MySQL外键、主键、唯一键"><a href="#5、MySQL外键、主键、唯一键" class="headerlink" title="5、MySQL外键、主键、唯一键"></a>5、MySQL外键、主键、唯一键</h4><p>（1）外键 Foreign Key<br>如果换教室 302-303教室 需要对所有的数据进行 更新。30个学生 然后就得跟新30次<br>（2） 主键 Primary Key 唯一不可重复 只能有一个主键，不能为null<br>（3）唯一键 一个表可以有多个 唯一键 unique</p>
+<h4 id="6、SQL语句–增删改查"><a href="#6、SQL语句–增删改查" class="headerlink" title="6、SQL语句–增删改查"></a>6、SQL语句–增删改查</h4><p>SQL：Structure Query Language。—HiveQL Spark SQL<br>查询：<br>select字段(*) from 表明 (limit count) (where); </p>
+<p>插入语句：<br>insert into 表名 [字段名] values(值列表);</p>
+<p>修改语句：<br>update 表名 set 字段=值 where 条件; </p>
+<p>删除语句：<br>delete from 表名 [where 条件];</p>
+<p>例如：<br>SELECT * FROM classroom;<br>insert into classroom VALUES(“001”,”9年级”,”11”,”CC”);<br>update classroom SET classroom.classroomid=”0003” where classroom.classroomid=”001”;<br>DELETE FROM classroom where classroom.classroomid=”0003”;<br>TRUNCATE student;</p>
 
             </div>
             <hr/>
@@ -718,10 +664,7 @@ TRUNCATE student;</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Docker在Linux中的安装
-一、rpm离线安装docker17.12
-1.下载docker安装包
-在https://download.docker.com/linux/centos/7/x86_64/stable/Packages/下
+                            Docker在Linux中的安装一、rpm离线安装docker17.121.下载docker安装包在https://download.docker.com/linux/centos/7/x86_64/stable/Packages/下载do
                         
                     </div>
                     <div class="publish-info">
@@ -770,11 +713,7 @@ TRUNCATE student;</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、反射获取Class对象的三种方式
-反编译
-不是自己写的类，也不知道类里面有哪些方法 变量，让你能够使用程序上线了，修改程序但不终止程序的运行—-反射
-（1）Object类 getClass 方法
-getClass 返回此Object的运
+                            1、反射获取Class对象的三种方式反编译不是自己写的类，也不知道类里面有哪些方法 变量，让你能够使用程序上线了，修改程序但不终止程序的运行—-反射（1）Object类 getClass 方法getClass 返回此Object的运行时类g
                         
                     </div>
                     <div class="publish-info">
@@ -984,7 +923,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

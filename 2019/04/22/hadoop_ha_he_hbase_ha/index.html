@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -395,7 +395,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    6 分
                 </div>
                 
 
@@ -413,11 +413,9 @@
             <div id="articleContent">
                 <p><strong>Hadoop  HBase HA</strong></p>
 <p>保证所有的服务器时间都相同</p>
-<h3 id="一、Hadoop-HA">一、Hadoop HA</h3>
-<p><strong>HDFS HA</strong></p>
+<h3 id="一、Hadoop-HA"><a href="#一、Hadoop-HA" class="headerlink" title="一、Hadoop HA"></a>一、Hadoop HA</h3><p><strong>HDFS HA</strong></p>
 <p>/root/hd/hadoop-2.8.4/etc/hadoop 下是所有hadoop配置文件</p>
-<h4 id="1、core-site-xml">1、core-site.xml</h4>
-<pre><code class="highlight plaintext">&lt;configuration&gt;
+<h4 id="1、core-site-xml"><a href="#1、core-site-xml" class="headerlink" title="1、core-site.xml"></a>1、core-site.xml</h4><pre><code class="highlight plaintext">&lt;configuration&gt;
 	&lt;property&gt;
 		 &lt;name&gt;fs.defaultFS&lt;/name&gt;
 		 &lt;value&gt;hdfs://mycluster&lt;/value&gt;
@@ -431,8 +429,7 @@
 		 &lt;value&gt;/root/hd/hadoop-2.8.4/tmp&lt;/value&gt;:
 	&lt;/property&gt;
 &lt;/configuration&gt;</code></pre>
-<h4 id="2、hdfs-site-xml">2、hdfs-site.xml</h4>
-<pre><code class="highlight plaintext">&lt;configuration&gt;
+<h4 id="2、hdfs-site-xml"><a href="#2、hdfs-site-xml" class="headerlink" title="2、hdfs-site.xml"></a>2、hdfs-site.xml</h4><pre><code class="highlight plaintext">&lt;configuration&gt;
 	&lt;property&gt;
  		&lt;name&gt;dfs.nameservices&lt;/name&gt;
  		&lt;value&gt;mycluster&lt;/value&gt;
@@ -479,10 +476,8 @@
   		&lt;value&gt;true&lt;/value&gt;
 	&lt;/property&gt;
 &lt;/configuration&gt;</code></pre>
-<p>NameNode节点一般配置2台；<strong>qjournal</strong>------ journal节点一般配置3台<br>
-我这里开始只有四台，所以，journal节点我只分配了两台</p>
-<h4 id="3、yarn-site-xml">3、yarn-site.xml</h4>
-<pre><code class="highlight plaintext">&lt;configuration&gt;
+<p>NameNode节点一般配置2台；<strong>qjournal</strong>—— journal节点一般配置3台<br>我这里开始只有四台，所以，journal节点我只分配了两台</p>
+<h4 id="3、yarn-site-xml"><a href="#3、yarn-site-xml" class="headerlink" title="3、yarn-site.xml"></a>3、yarn-site.xml</h4><pre><code class="highlight plaintext">&lt;configuration&gt;
 	&lt;!-- Site specific YARN configuration properties --&gt;
 	&lt;!-- Site specific YARN configuration properties --&gt;
 	&lt;property&gt;
@@ -547,25 +542,17 @@
 		&lt;value&gt;/tmp/yarn-logs&lt;/value&gt;
 	&lt;/property&gt;
 &lt;/configuration&gt;</code></pre>
-<p>scp -r  hadoop/ hsiehchou122:/root/hd/hadoop-2.8.4/etc<br>
-scp -r  hadoop/ hsiehchou123:/root/hd/hadoop-2.8.4/etc<br>
-scp -r  hadoop/ hsiehchou124:/root/hd/hadoop-2.8.4/etc</p>
-<p>配置好后，分发到所有节点，启动ZooKeeper后<br>
-<a target="_blank" rel="noopener" href="http://start-all.sh">start-all.sh</a> 即可启动所有</p>
-<h3 id="二、HBase-HA">二、HBase HA</h3>
-<p>修改配置文件，分发到所有几点，启动即可<br>
-注意：要启动两个Master，其中一个需要手动启动</p>
+
+<p>scp -r  hadoop/ hsiehchou122:/root/hd/hadoop-2.8.4/etc<br>scp -r  hadoop/ hsiehchou123:/root/hd/hadoop-2.8.4/etc<br>scp -r  hadoop/ hsiehchou124:/root/hd/hadoop-2.8.4/etc</p>
+<p>配置好后，分发到所有节点，启动ZooKeeper后<br>start-all.sh 即可启动所有</p>
+<h3 id="二、HBase-HA"><a href="#二、HBase-HA" class="headerlink" title="二、HBase HA"></a>二、HBase HA</h3><p>修改配置文件，分发到所有几点，启动即可<br>注意：要启动两个Master，其中一个需要手动启动</p>
 <p>注意：Hbase安装时，需要对应Hadoop版本</p>
 <p>hbase hbase-2.1.4  对应 hadoop  2.8.4</p>
 <p>通常情况下，把Hadoop  core-site hdfs-site 拷贝到hbase conf下</p>
-<p>修改 <a target="_blank" rel="noopener" href="http://hbase-env.sh">hbase-env.sh</a><br>
-修改  hbase-site.xml</p>
-<h4 id="1、hbase-env-sh">1、<a target="_blank" rel="noopener" href="http://hbase-env.sh">hbase-env.sh</a></h4>
-<p>export JAVA_HOME=/root/hd/jdk1.8.0_192</p>
-<p>export HBASE_MANAGES_ZK=false<br>
-关闭hbase自带的zookeeper，使用集群zookeeper</p>
-<h4 id="2、hbase-site-xml">2、hbase-site.xml</h4>
-<pre><code class="highlight plaintext">&lt;configuration&gt;
+<p>修改 hbase-env.sh<br>修改  hbase-site.xml</p>
+<h4 id="1、hbase-env-sh"><a href="#1、hbase-env-sh" class="headerlink" title="1、hbase-env.sh"></a>1、hbase-env.sh</h4><p>export JAVA_HOME=/root/hd/jdk1.8.0_192</p>
+<p>export HBASE_MANAGES_ZK=false<br>关闭hbase自带的zookeeper，使用集群zookeeper</p>
+<h4 id="2、hbase-site-xml"><a href="#2、hbase-site-xml" class="headerlink" title="2、hbase-site.xml"></a>2、hbase-site.xml</h4><pre><code class="highlight plaintext">&lt;configuration&gt;
 &lt;property&gt;
 &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;
 &lt;value&gt;true&lt;/value&gt;
@@ -591,11 +578,10 @@ scp -r  hadoop/ hsiehchou124:/root/hd/hadoop-2.8.4/etc</p>
 &lt;value&gt;6000&lt;/value&gt;
  &lt;/property&gt;
 &lt;/configuration&gt;</code></pre>
-<p>启动HBase<br>
-需要从另一台服务器上单独启动Master<br>
-./hbase-daemon.sh start master</p>
-<p>通过以下网站可以看到信息<br>
-<a target="_blank" rel="noopener" href="http://192.168.116.122:16010/master-status">http://192.168.116.122:16010/master-status</a></p>
+
+<p>启动HBase<br>需要从另一台服务器上单独启动Master<br>./hbase-daemon.sh start master</p>
+<p>通过以下网站可以看到信息<br><a target="_blank" rel="noopener" href="http://192.168.116.122:16010/master-status">http://192.168.116.122:16010/master-status</a>
+	</p>
 
             </div>
             <hr/>
@@ -850,14 +836,9 @@ scp -r  hadoop/ hsiehchou124:/root/hd/hadoop-2.8.4/etc</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            git 版本控制系统
-git是一个版本控制系统
-一、什么是版本控制系统
-1、概念
-版本控制是一种 记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统
-（）记录文件的所有历史变化
-（）随时可恢复到任何一个历史状态
-（）多人协作开发
+                            git 版本控制系统git是一个版本控制系统
+一、什么是版本控制系统1、概念版本控制是一种 记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统
+（）记录文件的所有历史变化（）随时可恢复到任何一个历史状态（）多人协作开发或修改（）
                         
                     </div>
                     <div class="publish-info">
@@ -906,13 +887,10 @@ git是一个版本控制系统
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            内存数据库专题
-为什么要把数据存入内存？
-快
-常见的内存数据库：
-MemCached：看成Redis前身，严格来说，MemCached不能叫数据库，只能叫缓存
-不支持持久化。如果内存停电，数据丢失
-Redis：内存数据库，支持持久化，支持H
+                            内存数据库专题为什么要把数据存入内存？快
+常见的内存数据库：MemCached：看成Redis前身，严格来说，MemCached不能叫数据库，只能叫缓存不支持持久化。如果内存停电，数据丢失
+Redis：内存数据库，支持持久化，支持HA
+Or
                         
                     </div>
                     <div class="publish-info">
@@ -1134,7 +1112,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

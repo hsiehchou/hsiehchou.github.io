@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -396,7 +396,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    442
+                    440
                 </div>
                 
 
@@ -419,26 +419,26 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="SparkStreming-Kafka-Receiver模式理解">SparkStreming + Kafka Receiver模式理解</h3>
-<p><img src="/medias/kafka%E7%9A%84receiver%E6%A8%A1%E5%BC%8F.PNG" alt="Kafka的Receiver模式"></p>
-<h4 id="Receiver模式理解">Receiver模式理解</h4>
-<p>在SparkStreaming程序运行起来后，Executor中会有Receiver Tasks接收Kafka推送过来的数据。数据会被持久化，默认级别为MEMORY_AND_DISK_SER_2,这个级别也可以修改。Receiver Task对接收过来的数据进行存储和备份，这个过程会有节点之间的数据传输。备份完成后去ZooKeeper中更新消费偏移量，然后向Driver中的Receiver Tracker汇报数据的位置。最后Driver根据数据本地化将Task分发到不同节点上执行。</p>
-<h4 id="Receiver模式中存在的问题">Receiver模式中存在的问题</h4>
-<p>当Driver进程挂掉后，Driver下的Executor都会被杀掉，当更新完ZooKeeper消费偏移量的时候，Driver如果挂掉了，就会存在找不到数据的问题，相当于丢失数据。</p>
-<h4 id="如何解决这个问题？">如何解决这个问题？</h4>
-<p>开启WAL(write ahead log)预写日志机制,在接受过来数据备份到其他节点的时候，同时备份到HDFS上一份（我们需要将接收来的数据的持久化级别降级到MEMORY_AND_DISK），这样就能保证数据的安全性。不过，因为写HDFS比较消耗性能，要在备份完数据之后才能进行更新ZooKeeper以及汇报位置等，这样会增加job的执行时间，这样对于任务的执行提高了延迟度。</p>
-<h4 id="注意">注意</h4>
-<ol>
-<li>开启WAL之后，接受数据级别要降级，有效率问题</li>
+                <h3 id="SparkStreming-Kafka-Receiver模式理解"><a href="#SparkStreming-Kafka-Receiver模式理解" class="headerlink" title="SparkStreming + Kafka Receiver模式理解"></a>SparkStreming + Kafka Receiver模式理解</h3><p><img src="/medias/kafka%E7%9A%84receiver%E6%A8%A1%E5%BC%8F.PNG" alt="Kafka的Receiver模式"></p>
+<h4 id="Receiver模式理解"><a href="#Receiver模式理解" class="headerlink" title="Receiver模式理解"></a>Receiver模式理解</h4><p>在SparkStreaming程序运行起来后，Executor中会有Receiver Tasks接收Kafka推送过来的数据。数据会被持久化，默认级别为MEMORY_AND_DISK_SER_2,这个级别也可以修改。Receiver Task对接收过来的数据进行存储和备份，这个过程会有节点之间的数据传输。备份完成后去ZooKeeper中更新消费偏移量，然后向Driver中的Receiver Tracker汇报数据的位置。最后Driver根据数据本地化将Task分发到不同节点上执行。</p>
+<h4 id="Receiver模式中存在的问题"><a href="#Receiver模式中存在的问题" class="headerlink" title="Receiver模式中存在的问题"></a>Receiver模式中存在的问题</h4><p>当Driver进程挂掉后，Driver下的Executor都会被杀掉，当更新完ZooKeeper消费偏移量的时候，Driver如果挂掉了，就会存在找不到数据的问题，相当于丢失数据。</p>
+<h4 id="如何解决这个问题？"><a href="#如何解决这个问题？" class="headerlink" title="如何解决这个问题？"></a>如何解决这个问题？</h4><p>开启WAL(write ahead log)预写日志机制,在接受过来数据备份到其他节点的时候，同时备份到HDFS上一份（我们需要将接收来的数据的持久化级别降级到MEMORY_AND_DISK），这样就能保证数据的安全性。不过，因为写HDFS比较消耗性能，要在备份完数据之后才能进行更新ZooKeeper以及汇报位置等，这样会增加job的执行时间，这样对于任务的执行提高了延迟度。</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>   开启WAL之后，接受数据级别要降级，有效率问题</li>
 <li>开启WAL要checkpoint</li>
 <li>开启WAL(write ahead log),往HDFS中备份一份数据</li>
 </ol>
-<h3 id="SparkStreming-Kafka-Receiver模式理解-2">SparkStreming + Kafka Receiver模式理解</h3>
-<p><img src="/medias/kafka%E7%9A%84direct%E6%A8%A1%E5%BC%8F.PNG" alt="Kafka的Direct模式"></p>
+<h3 id="SparkStreming-Kafka-Receiver模式理解-1"><a href="#SparkStreming-Kafka-Receiver模式理解-1" class="headerlink" title="SparkStreming + Kafka Receiver模式理解"></a>SparkStreming + Kafka Receiver模式理解</h3><p><img src="/medias/kafka%E7%9A%84direct%E6%A8%A1%E5%BC%8F.PNG" alt="Kafka的Direct模式"></p>
 <ol>
-<li>简化数据处理流程</li>
-<li>自己定义offset存储，保证数据0丢失，但是会存在重复消费问题。（解决消费等幂问题）</li>
-<li>不用接收数据，自己去Kafka中拉取</li>
+<li><pre><code>简化数据处理流程
+</code></pre>
+</li>
+<li><pre><code>自己定义offset存储，保证数据0丢失，但是会存在重复消费问题。（解决消费等幂问题）
+</code></pre>
+</li>
+<li><pre><code>不用接收数据，自己去Kafka中拉取
+</code></pre>
+</li>
 </ol>
 
             </div>
@@ -703,11 +703,9 @@
                     <div class="summary block-with-text">
                         
                             CDH集群中的ZooKeeper
-启动ZooKeeper客户端
-zookeeper-client
+启动ZooKeeper客户端zookeeper-client
 清除消费者
-例如
-rmr /consumers/WarningStreamingTask/offsets
+例如rmr /consumers/WarningStreamingTask/offsets
 
                         
                     </div>
@@ -978,7 +976,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

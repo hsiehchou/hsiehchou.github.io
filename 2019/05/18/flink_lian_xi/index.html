@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -407,11 +407,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、Flink开发IDEA环境搭建与测试">一、Flink开发IDEA环境搭建与测试</h3>
-<h4 id="1、IDEA开发环境">1、IDEA开发环境</h4>
-<p>先虚拟机联网，然后执行yum -y install nc<br>
-nc是用来打开端口的工具<br>
-然后nc -l 9000</p>
+                <h3 id="一、Flink开发IDEA环境搭建与测试"><a href="#一、Flink开发IDEA环境搭建与测试" class="headerlink" title="一、Flink开发IDEA环境搭建与测试"></a>一、Flink开发IDEA环境搭建与测试</h3><h4 id="1、IDEA开发环境"><a href="#1、IDEA开发环境" class="headerlink" title="1、IDEA开发环境"></a>1、IDEA开发环境</h4><p>先虚拟机联网，然后执行yum -y install nc<br>nc是用来打开端口的工具<br>然后nc -l 9000  </p>
 <p><strong>1.pom文件设置</strong></p>
 <pre><code class="highlight plaintext">&lt;properties&gt;
         &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
@@ -548,29 +544,15 @@ nc是用来打开端口的工具<br>
             &lt;/plugin&gt;
         &lt;/plugins&gt;
     &lt;/build&gt;</code></pre>
-<h4 id="2、Flink开发流程">2、Flink开发流程</h4>
-<p>Flink具有特殊类DataSet并DataStream在程序中表示数据。您可以将它们视为可以包含重复项的不可变数据集合。在DataSet数据有限的情况下，对于一个DataStream元素的数量可以是无界的</p>
+
+<h4 id="2、Flink开发流程"><a href="#2、Flink开发流程" class="headerlink" title="2、Flink开发流程"></a>2、Flink开发流程</h4><p>Flink具有特殊类DataSet并DataStream在程序中表示数据。您可以将它们视为可以包含重复项的不可变数据集合。在DataSet数据有限的情况下，对于一个DataStream元素的数量可以是无界的</p>
 <p>这些集合在某些关键方面与常规Java集合不同。首先，它们是不可变的，这意味着一旦创建它们就无法添加或删除元素。你也不能简单地检查里面的元素</p>
 <p>集合最初通过在弗林克程序添加源创建和新的集合从这些通过将它们使用API方法如衍生map，filter等等</p>
-<p>Flink程序看起来像是转换数据集合的常规程序。每个程序包含相同的基本部分：<br>
-1）获取execution environment,<br>
-final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</p>
-<p>2）加载/创建初始化数据<br>
-DataStream<code>&lt;String&gt;</code> text = env.readTextFile(“file:///path/to/file”);</p>
-<p>3）指定此数据的转换<br>
-val mapped = input.map { x =&gt; x.toInt }</p>
-<p>4）指定放置计算结果的位置<br>
-writeAsText(String path)<br>
-print()</p>
-<p>5）触发程序执行<br>
-在local模式下执行程序<br>
-execute()<br>
-将程序达成jar运行在线上<br>
-./bin/flink run <br>
--m hsiehchou121:8081 <br>
-./examples/batch/WordCount.jar <br>
-–input  hdfs:///user/root/input/wc.txt <br>
-–output  hdfs:///user/root/output2  \</p>
+<p>Flink程序看起来像是转换数据集合的常规程序。每个程序包含相同的基本部分：<br>1）获取execution environment,<br>final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</p>
+<p>2）加载/创建初始化数据<br>DataStream<code>&lt;String&gt;</code> text = env.readTextFile(“file:///path/to/file”);</p>
+<p>3）指定此数据的转换<br>val mapped = input.map { x =&gt; x.toInt }</p>
+<p>4）指定放置计算结果的位置<br>writeAsText(String path)<br>print()</p>
+<p>5）触发程序执行<br>在local模式下执行程序<br>execute()<br>将程序达成jar运行在线上<br>./bin/flink run <br>-m hsiehchou121:8081 <br>./examples/batch/WordCount.jar <br>–input  hdfs:///user/root/input/wc.txt <br>–output  hdfs:///user/root/output2  \</p>
 <p>####3、WordCount案例</p>
 <p>1）<strong>Scala代码</strong></p>
 <pre><code class="highlight plaintext">import org.apache.flink.api.java.utils.ParameterTool
@@ -608,6 +590,7 @@ object SocketWindowWordCountScala {
     env.execute("Socket Window WordCount")
   }
 }</code></pre>
+
 <p>2）<strong>Java代码</strong></p>
 <pre><code class="highlight plaintext">import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
@@ -679,33 +662,16 @@ public class WordCount {
         }
     }
 }</code></pre>
+
 <p>3）<strong>运行测试</strong></p>
-<p>首先，使用nc命令启动一个本地监听，命令是：<br>
-[root@hsiehchou121 ~]$ nc -l 9000</p>
-<p>通过netstat命令观察9000端口。 netstat -anlp | grep 9000，启动监听如果报错：-bash: nc: command not found，请先安装nc，在线安装命令：yum -y install nc。<br>
-然后，IDEA上运行flink官方案例程序<br>
-hsiehchou121上输入<br>
-[root@hsiehchou121 ~] nc -l 9000<br>
-learn flink<br>
-hadoop storm flink<br>
-flink flink hsiehchou</p>
+<p>首先，使用nc命令启动一个本地监听，命令是：<br>[root@hsiehchou121 ~]$ nc -l 9000</p>
+<p>通过netstat命令观察9000端口。 netstat -anlp | grep 9000，启动监听如果报错：-bash: nc: command not found，请先安装nc，在线安装命令：yum -y install nc。<br>然后，IDEA上运行flink官方案例程序<br>hsiehchou121上输入<br>[root@hsiehchou121 ~] nc -l 9000<br>learn flink<br>hadoop storm flink<br>flink flink hsiehchou</p>
 <p>4）<strong>集群测试</strong></p>
-<p>这里单机测试官方案例<br>
-[root@hsiehchou121 flink-1.6.1]$ pwd<br>
-/opt/flink-1.6.1</p>
-<p>[root@hsiehchou121 flink-1.6.1]$ ./bin/start-cluster.sh<br>
-Starting cluster.<br>
-Starting standalonesession daemon on host hsiehchou121.<br>
-Starting taskexecutor daemon on host hsiehchou121.</p>
-<p>[root@hsiehchou121 flink-1.6.1]$ jps<br>
-StandaloneSessionClusterEntrypoint<br>
-TaskManagerRunner<br>
-Jps</p>
-<p>[root@hsiehchou121 flink-1.6.1]$ ./bin/flink run examples/streaming/SocketWindowWordCount.jar --port 9000<br>
-单词在5秒的时间窗口（处理时间，翻滚窗口）中计算并打印到stdout。监视TaskManager的输出文件并写入一些文本nc（输入在点击后逐行发送到Flink）：</p>
-<h4 id="4、使用IDEA开发离线程序">4、使用IDEA开发离线程序</h4>
-<p>Dataset是flink的常用程序，数据集通过source进行初始化，例如读取文件或者序列化集合，然后通过transformation（filtering、mapping、joining、grouping）将数据集转成，然后通过sink进行存储，既可以写入hdfs这种分布式文件系统，也可以打印控制台，flink可以有很多种运行方式，如local、flink集群、yarn等.<br>
-1）<strong>scala程序</strong></p>
+<p>这里单机测试官方案例<br>[root@hsiehchou121 flink-1.6.1]$ pwd<br>/opt/flink-1.6.1</p>
+<p>[root@hsiehchou121 flink-1.6.1]$ ./bin/start-cluster.sh<br>Starting cluster.<br>Starting standalonesession daemon on host hsiehchou121.<br>Starting taskexecutor daemon on host hsiehchou121.</p>
+<p>[root@hsiehchou121 flink-1.6.1]$ jps<br>StandaloneSessionClusterEntrypoint<br>TaskManagerRunner<br>Jps</p>
+<p>[root@hsiehchou121 flink-1.6.1]$ ./bin/flink run examples/streaming/SocketWindowWordCount.jar –port 9000<br>单词在5秒的时间窗口（处理时间，翻滚窗口）中计算并打印到stdout。监视TaskManager的输出文件并写入一些文本nc（输入在点击后逐行发送到Flink）：</p>
+<h4 id="4、使用IDEA开发离线程序"><a href="#4、使用IDEA开发离线程序" class="headerlink" title="4、使用IDEA开发离线程序"></a>4、使用IDEA开发离线程序</h4><p>Dataset是flink的常用程序，数据集通过source进行初始化，例如读取文件或者序列化集合，然后通过transformation（filtering、mapping、joining、grouping）将数据集转成，然后通过sink进行存储，既可以写入hdfs这种分布式文件系统，也可以打印控制台，flink可以有很多种运行方式，如local、flink集群、yarn等.<br>1）<strong>scala程序</strong></p>
 <pre><code class="highlight plaintext">import org.apache.flink.api.scala.ExecutionEnvironment
 import org.apache.flink.api.scala._
 
@@ -726,6 +692,7 @@ object WordCountScala{
     counts.print()
   }
 }</code></pre>
+
 <p>2） <strong>Java程序</strong></p>
 <pre><code class="highlight plaintext">import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.DataSet;
@@ -759,6 +726,7 @@ public class WordCountJava {
         }
     }
 }</code></pre>
+
 <p>3）<strong>运行</strong></p>
 
             </div>
@@ -1010,8 +978,7 @@ public class WordCountJava {
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、项目背景
-通信运营商每时每刻会产生大量的通信数据，例如通话记录，短信记录，彩信记录，第三方服务资费等等繁多信息。数据量如此巨大，除了要满足用户的实时查询和展示之外，还需要定时定期的对已有数据进行离线的分析处理。例如，当日话单，月度话单，
+                            一、项目背景通信运营商每时每刻会产生大量的通信数据，例如通话记录，短信记录，彩信记录，第三方服务资费等等繁多信息。数据量如此巨大，除了要满足用户的实时查询和展示之外，还需要定时定期的对已有数据进行离线的分析处理。例如，当日话单，月度话单，季
                         
                     </div>
                     <div class="publish-info">
@@ -1064,14 +1031,8 @@ public class WordCountJava {
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、Flink概述
-官网：http://flink.apache.org/
-MapReduce-&gt;MaxCompute
-HBase-&gt;部门
-QuickBI
-DataV
-Hive-&gt;高德地图
-Storm-&gt;JStorm
+                            一、Flink概述官网：http://flink.apache.org/MapReduce-&gt;MaxComputeHBase-&gt;部门QuickBIDataVHive-&gt;高德地图Storm-&gt;JStorm
+2019年1
                         
                     </div>
                     <div class="publish-info">
@@ -1285,7 +1246,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

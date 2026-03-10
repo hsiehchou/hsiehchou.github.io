@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -392,14 +392,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.8k
+                    5.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    27 分
+                    26 分
                 </div>
                 
 
@@ -415,63 +415,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>内存数据库专题</strong><br>
-为什么要把数据存入内存？<br>
-快</p>
-<p>常见的内存数据库：<br>
-MemCached：看成Redis前身，严格来说，MemCached不能叫数据库，只能叫缓存<br>
-不支持持久化。如果内存停电，数据丢失</p>
+                <p><strong>内存数据库专题</strong><br>为什么要把数据存入内存？<br>快</p>
+<p>常见的内存数据库：<br>MemCached：看成Redis前身，严格来说，MemCached不能叫数据库，只能叫缓存<br>不支持持久化。如果内存停电，数据丢失</p>
 <p>Redis：内存数据库，支持持久化，支持HA</p>
 <p>Oracle TimesTen</p>
 <p>session一致性</p>
 <p>MemCached + keepalive实现</p>
-<h3 id="一、Memcached">一、Memcached</h3>
-<h4 id="1、基本原理和体系架构">1、基本原理和体系架构</h4>
-<p>（<em>）在内存中，维护了一张巨大的Hash表<br>
-（</em>）通过路由算法来决定数据存储的位置。—&gt; 客户端路由<br>
-<img src="/medias/Memcached%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84.PNG" alt="Memcached基本原理和体系架构"></p>
+<h3 id="一、Memcached"><a href="#一、Memcached" class="headerlink" title="一、Memcached"></a>一、Memcached</h3><h4 id="1、基本原理和体系架构"><a href="#1、基本原理和体系架构" class="headerlink" title="1、基本原理和体系架构"></a>1、基本原理和体系架构</h4><p>（<em>）在内存中，维护了一张巨大的Hash表<br>（</em>）通过路由算法来决定数据存储的位置。—&gt; 客户端路由<br><img src="/medias/Memcached%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84.PNG" alt="Memcached基本原理和体系架构"></p>
 <p>注意：默认，官方版本MemCached实例彼此不会进行通信</p>
 <p>第三方版本可以实现通信</p>
-<h4 id="2、安装配置MemCached">2、安装配置MemCached</h4>
-<p>前提：<br>
-（1）gcc编译器<br>
-yum install gcc<br>
-gcc --version</p>
-<p>（2）libevent库<br>
-tar -zxvf libevent-2.0.21-stable.tar.gz<br>
-cd libevent-2.0.21-stable<br>
-./configure <code>--prefix</code>=/root/hd/libevent<br>
-make<br>
-make install</p>
-<p>tar -zxvf memcached-1.4.25.tar.gz<br>
-cd memcached-1.4.25</p>
-<p>./configure <code>--prefix</code>=/root/hd/memcached <code>--with-libevent</code>=/root/hd/libevent<br>
-make<br>
-make install<br>
-cd bin/<br>
-./memcached -u root -d -m 128 -p 11211<br>
-./memcached -u root -d -m 128 -p 11212<br>
-./memcached -u root -d -m 128 -p 11213<br>
-ps -ef | grep memcached</p>
-<p><strong>注意</strong>：<br>
--u：root用户需要注明（其他用户可以不写）<br>
--d：启动守护线程（在后天运行）<br>
--m：占用多少内存<br>
--p：运行在哪个端口</p>
-<h4 id="3、操作MemCached">3、操作MemCached</h4>
-<p>（*）命令行<br>
-telnet 192.168.116.121 11211</p>
-<p>保存数据：<br>
-set 如果key存在，替换原来的值<br>
-add 如果key存在，返回错误</p>
-<p>| set key1    |   0 |  0   | 4 |<br>
-| :-------- : |  :--------:| :------: | :------: |<br>
-| key名字 | 标识位 | 数据过期时间0表示不过期 | value的长度 |<br>
-abcd<br>
-get key1</p>
-<p>统计命令<br>
-stats items<br>
-stats</p>
+<h4 id="2、安装配置MemCached"><a href="#2、安装配置MemCached" class="headerlink" title="2、安装配置MemCached"></a>2、安装配置MemCached</h4><p>前提：<br>（1）gcc编译器<br>yum install gcc<br>gcc –version</p>
+<p>（2）libevent库<br>tar -zxvf libevent-2.0.21-stable.tar.gz<br>cd libevent-2.0.21-stable<br>./configure <code>--prefix</code>=/root/hd/libevent<br>make<br>make install</p>
+<p>tar -zxvf memcached-1.4.25.tar.gz<br>cd memcached-1.4.25</p>
+<p>./configure <code>--prefix</code>=/root/hd/memcached <code>--with-libevent</code>=/root/hd/libevent<br>make<br>make install<br>cd bin/<br>./memcached -u root -d -m 128 -p 11211<br>./memcached -u root -d -m 128 -p 11212<br>./memcached -u root -d -m 128 -p 11213<br>ps -ef | grep memcached</p>
+<p><strong>注意</strong>：<br>-u：root用户需要注明（其他用户可以不写）<br>-d：启动守护线程（在后天运行）<br>-m：占用多少内存<br>-p：运行在哪个端口	</p>
+<h4 id="3、操作MemCached"><a href="#3、操作MemCached" class="headerlink" title="3、操作MemCached"></a>3、操作MemCached</h4><p>（*）命令行<br>telnet 192.168.116.121 11211</p>
+<p>保存数据：<br>set 如果key存在，替换原来的值<br>add 如果key存在，返回错误</p>
+<p>| set key1    |   0 |  0   | 4 |<br>| :——– : |  :——–:| :——: | :——: |<br>| key名字 | 标识位 | 数据过期时间0表示不过期 | value的长度 |<br>abcd<br>get key1</p>
+<p>统计命令<br>stats items<br>stats</p>
 <pre><code class="highlight plaintext">package day1;
 
 import net.spy.memcached.MemcachedClient;
@@ -496,10 +457,7 @@ public class Demo1 {
 	    //setStudent();
         testSets() ;
     }</code></pre>
-<p>[root@hsiehchou121 memcached]# cd bin/<br>
-[root@hsiehchou121 bin]# ./memcached -u root -d -m 128 -p 11211<br>
-[root@hsiehchou121 bin]# ./memcached -u root -d -m 128 -p 11212<br>
-[root@hsiehchou121 bin]# ./memcached -u root -d -m 128 -p 11213</p>
+<p>[root@hsiehchou121 memcached]# cd bin/<br>[root@hsiehchou121 bin]# ./memcached -u root -d -m 128 -p 11211<br>[root@hsiehchou121 bin]# ./memcached -u root -d -m 128 -p 11212<br>[root@hsiehchou121 bin]# ./memcached -u root -d -m 128 -p 11213</p>
 <p><strong>插入数据</strong></p>
 <pre><code class="highlight plaintext">public static void hello() throws Exception {
        //连接到集群，set key
@@ -512,8 +470,7 @@ public class Demo1 {
            client.shutdown();
        }
    }</code></pre>
-<p>[root@hsiehchou121 ~]# telnet 192.168.116.121 11211<br>
-get key1</p>
+<p>[root@hsiehchou121 ~]# telnet 192.168.116.121 11211<br>get key1</p>
 <p><strong>查询数据</strong></p>
 <pre><code class="highlight plaintext">public static void testGet() throws Exception{
     //连接到集群，set key
@@ -539,8 +496,7 @@ get key1</p>
          client.shutdown();
      }
  }</code></pre>
-<p>[root@hsiehchou121 ~]# telnet 192.168.116.121 11211<br>
-get stu1</p>
+<p>[root@hsiehchou121 ~]# telnet 192.168.116.121 11211<br>get stu1</p>
 <p><strong>基于客户端的分布式插入数据</strong></p>
 <pre><code class="highlight plaintext">public static void testSets() throws Exception{
        //测试客户端路由算法
@@ -561,121 +517,52 @@ get stu1</p>
        }
        client.shutdown();
    }</code></pre>
-<p>[root@hsiehchou121 ~]# telnet 192.168.116.121 11211<br>
-get key1<br>
-VALUE key1 0 6<br>
-value1<br>
-[root@hsiehchou121 ~]# telnet 192.168.116.121 11212<br>
-get key2<br>
-VALUE key2 0 6<br>
-value2<br>
-[root@hsiehchou121 ~]# telnet 192.168.116.121 11213<br>
-get key3<br>
-VALUE key3 0 6<br>
-value3</p>
+<p>[root@hsiehchou121 ~]# telnet 192.168.116.121 11211<br>get key1<br>VALUE key1 0 6<br>value1<br>[root@hsiehchou121 ~]# telnet 192.168.116.121 11212<br>get key2<br>VALUE key2 0 6<br>value2<br>[root@hsiehchou121 ~]# telnet 192.168.116.121 11213<br>get key3<br>VALUE key3 0 6<br>value3</p>
 <pre><code class="highlight plaintext">}
 
 class Student implements Serializable{}</code></pre>
-<h4 id="4、MemCached路由算法">4、MemCached路由算法</h4>
-<p>1）<strong>求余数hash算法</strong><br>
-用key做hash运算得到一个整数，根据余数路由<br>
-例如：服务器端有三台MemCached服务器<br>
-根据key，做hash运算<br>
-7%3=1，那么就路由到第2台服务器<br>
-6%3=0，那么路由到第1台服务器<br>
-5%3=2，那么路由到第3台服务器</p>
-<p>优点：数据分布均衡在多台服务器中，适合大多数据需求<br>
-缺点：如果需要扩容或者有宕机的情况，会造成数据的丢失</p>
-<p>2）<strong>一致性hash算法</strong><br>
-<strong>基本原理</strong>：<br>
-key1  1-333 放在node1上<br>
-key2 334-666放在node2上<br>
-key3 667-1000放在hsiehchou121上</p>
-<p><strong>一致性hash算法下扩容</strong><br>
-key1  1-333 放在node1上<br>
-key2 334-666放在node2上<br>
-key3 667-831放在hsiehchou121上<br>
-<strong>key4 832-1000放在node4上</strong><br>
-如果扩容，增加一个新的节点，只影响扩容的节点，对其他节点不影响</p>
-<p><strong>一致性hash算法下DOWN机</strong><br>
-key1  1-333 放在node1上<br>
-key2 334-666放在node2上<br>
-key3 667-1000放在hsiehchou121上<br>
-如果宕机，对key1 和 key2不产生影响，只对key3产生影响</p>
-<h4 id="5、MemCached的主主复制和HA">5、MemCached的主主复制和HA</h4>
-<p>1）Memcached主主复制<br>
-<strong>架构图</strong></p>
+
+<h4 id="4、MemCached路由算法"><a href="#4、MemCached路由算法" class="headerlink" title="4、MemCached路由算法"></a>4、MemCached路由算法</h4><p>1）<strong>求余数hash算法</strong><br>用key做hash运算得到一个整数，根据余数路由<br>例如：服务器端有三台MemCached服务器<br>根据key，做hash运算<br>7%3=1，那么就路由到第2台服务器<br>6%3=0，那么路由到第1台服务器<br>5%3=2，那么路由到第3台服务器</p>
+<p>优点：数据分布均衡在多台服务器中，适合大多数据需求<br>缺点：如果需要扩容或者有宕机的情况，会造成数据的丢失</p>
+<p>2）<strong>一致性hash算法</strong><br><strong>基本原理</strong>：<br>key1  1-333 放在node1上<br>key2 334-666放在node2上<br>key3 667-1000放在hsiehchou121上</p>
+<p><strong>一致性hash算法下扩容</strong><br>key1  1-333 放在node1上<br>key2 334-666放在node2上<br>key3 667-831放在hsiehchou121上<br><strong>key4 832-1000放在node4上</strong><br>如果扩容，增加一个新的节点，只影响扩容的节点，对其他节点不影响</p>
+<p><strong>一致性hash算法下DOWN机</strong><br>key1  1-333 放在node1上<br>key2 334-666放在node2上<br>key3 667-1000放在hsiehchou121上<br>如果宕机，对key1 和 key2不产生影响，只对key3产生影响
+		</p>
+<h4 id="5、MemCached的主主复制和HA"><a href="#5、MemCached的主主复制和HA" class="headerlink" title="5、MemCached的主主复制和HA"></a>5、MemCached的主主复制和HA</h4><p>1）Memcached主主复制<br><strong>架构图</strong>   </p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">主服务器</th>
-<th style="text-align:center"></th>
-<th style="text-align:center">主服务器</th>
+<th align="center">主服务器</th>
+<th align="center"></th>
+<th align="center">主服务器</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">memcached</td>
-<td style="text-align:center">&lt;-------&gt;</td>
-<td style="text-align:center">memcached</td>
+<tbody><tr>
+<td align="center">memcached</td>
+<td align="center">&lt;——-&gt;</td>
+<td align="center">memcached</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ol>
-<li>安装具有复制功能的memcached版本<br>
-tar zxvf memcached-1.2.8-repcached-2.2.tar.gz<br>
-cd memcached-1.2.8-repcached-2.2<br>
-./configure <code>--prefix</code>=/root/hd/memcached_replication<br>
-<code>--with-libevent</code>=/root/hd/libevent/ <code>--enable-replication</code><br>
-make<br>
-make install</li>
+<li>安装具有复制功能的memcached版本<br>tar zxvf memcached-1.2.8-repcached-2.2.tar.gz<br>cd memcached-1.2.8-repcached-2.2<br>./configure <code>--prefix</code>=/root/hd/memcached_replication<br>      <code>--with-libevent</code>=/root/hd/libevent/ <code>--enable-replication</code></li>
 </ol>
+<p>make<br>make install</p>
 <p><strong>出现以下错误</strong></p>
 <pre><code class="highlight plaintext">memcached.c: 696: error: `IOV MAX` undeclared (first use in this function)
 memcached.c: 696: error: (Each undeclared identifier is reported only once
 memcached.c: 696: error: for each function it appears in.)</code></pre>
-<p><strong>解决办法</strong><br>
-<strong>编辑memcached.c文件如下</strong><br>
-55 /* FreeBSD 4.x doesn’t have IOV_MAX exposed. */<br>
-56 #ifndef IOV_MAX<br>
-57 #if defined(<strong>FreeBSD</strong>) || defined(<strong>APPLE</strong>)<br>
-58 # define IOV_MAX 1024<br>
-59 #endif<br>
-60 #endif</p>
-<p><strong>修改成如下形式</strong><br>
-55 /* FreeBSD 4.x doesn’t have IOV_MAX exposed. */<br>
-56 #ifndef IOV_MAX<br>
-57 //#if defined(<strong>FreeBSD</strong>) || defined(<strong>APPLE</strong>)<br>
-58 # define IOV_MAX 1024<br>
-59 //#endif<br>
-60 #endif</p>
-<p>启动第一台MemCached，使用-x指定对端服务器的地址<br>
-./memcached -u root -d  -m 128 -x 192.168.116.121</p>
-<p>启动第二台MemCached，使用-x指定对端服务器的地址<br>
-./memcached -u root -d  -m 128 -x 192.168.116.122</p>
-<p><strong>出现以下错误</strong><br>
-./memcached: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory</p>
-<p><strong>解决办法</strong><br>
-查找 libevent-2.0.so.5<br>
-whereis libevent-2.0.so.5</p>
-<p>使用ldd命令查看memcached命令，发现找不到<br>
-[root@hsiehchou121 bin]# ldd /root/hd/memcached-1.2.8-repcached-2.2/bin/memcached<br>
-linux-gate.so.1 =&gt; (0x00255000)<br>
-libevent-2.0.so.5 =&gt; not found<br>
-libc.so.6 =&gt; /lib/libc.so.6 (0x00110000)<br>
-/lib/ld-linux.so.2(0x003a4000)</p>
-<p><strong>建立软连接</strong><br>
-ln -s /root/hd/libevent/lib/libevent-2.0.so.5 /usr/lib/libevent-2.0.so.5</p>
-<p>2）Memcached的HA（High Availablity）<br>
-Keepalived是一个交换机制的软件。Keepalived的作用是检测服务器的状态，如果有一台web服务器死机，或工作出现故障，Keepalived将检测到，并将有故障的服务器从系统中剔除，同时使用其他服务器代替该服务器的工作，当服务器工作正常后Keepalived自动将服务器加入到服务器群中，这些工作全部自动完成，不需要人工干涉，需要人工做的只是修复故障的服务器</p>
-<p>利用Keepalived实现MemCached的主主复制高可用架构<br>
-	Keepalived在memcached主服务器产生一个虚拟IP（VIP）<br>
-	Keepalived可以通过不断的检测memcached主服务器的11211端口是否正常工作，<br>
-	如果发现memcached Down机，虚拟IP就从主服务器移到从服务器</p>
-<p>配置Keepalived（每台机器都要配置）<br>
-	rpm -ivh keepalived-1.2.13-4.el6.i686.rpm</p>
-<p>	配置：主从节点都要配置，配置文件<br>
-	/etc/keepalived/keepalived.conf</p>
+<p><strong>解决办法</strong><br><strong>编辑memcached.c文件如下</strong><br>55 /* FreeBSD 4.x doesn’t have IOV_MAX exposed. */<br>56 #ifndef IOV_MAX<br>57 #if defined(<strong>FreeBSD</strong>) || defined(<strong>APPLE</strong>)<br>58 # define IOV_MAX 1024<br>59 #endif<br>60 #endif</p>
+<p><strong>修改成如下形式</strong><br>55 /* FreeBSD 4.x doesn’t have IOV_MAX exposed. */<br>56 #ifndef IOV_MAX<br>57 //#if defined(<strong>FreeBSD</strong>) || defined(<strong>APPLE</strong>)<br>58 # define IOV_MAX 1024<br>59 //#endif<br>60 #endif</p>
+<p>启动第一台MemCached，使用-x指定对端服务器的地址<br>./memcached -u root -d  -m 128 -x 192.168.116.121</p>
+<p>启动第二台MemCached，使用-x指定对端服务器的地址<br>./memcached -u root -d  -m 128 -x 192.168.116.122</p>
+<p><strong>出现以下错误</strong><br>./memcached: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory</p>
+<p><strong>解决办法</strong><br>查找 libevent-2.0.so.5<br>whereis libevent-2.0.so.5</p>
+<p>使用ldd命令查看memcached命令，发现找不到<br>[root@hsiehchou121 bin]# ldd /root/hd/memcached-1.2.8-repcached-2.2/bin/memcached<br>linux-gate.so.1 =&gt; (0x00255000)<br>libevent-2.0.so.5 =&gt; not found<br>libc.so.6 =&gt; /lib/libc.so.6 (0x00110000)<br>/lib/ld-linux.so.2(0x003a4000)</p>
+<p><strong>建立软连接</strong><br>ln -s /root/hd/libevent/lib/libevent-2.0.so.5 /usr/lib/libevent-2.0.so.5</p>
+<p>2）Memcached的HA（High Availablity）<br>Keepalived是一个交换机制的软件。Keepalived的作用是检测服务器的状态，如果有一台web服务器死机，或工作出现故障，Keepalived将检测到，并将有故障的服务器从系统中剔除，同时使用其他服务器代替该服务器的工作，当服务器工作正常后Keepalived自动将服务器加入到服务器群中，这些工作全部自动完成，不需要人工干涉，需要人工做的只是修复故障的服务器</p>
+<p>利用Keepalived实现MemCached的主主复制高可用架构<br>	Keepalived在memcached主服务器产生一个虚拟IP（VIP）<br>	Keepalived可以通过不断的检测memcached主服务器的11211端口是否正常工作，<br>	如果发现memcached Down机，虚拟IP就从主服务器移到从服务器</p>
+<p>配置Keepalived（每台机器都要配置）<br>	rpm -ivh keepalived-1.2.13-4.el6.i686.rpm</p>
+<p>	配置：主从节点都要配置，配置文件<br>	/etc/keepalived/keepalived.conf</p>
 <p><strong>主节点配置信息</strong></p>
 <pre><code class="highlight plaintext">! Configuration File for keepalived
 
@@ -730,100 +617,36 @@ vrrp_instance VI_1 {
       192.168.116.88
     }
 }</code></pre>
-<p>验证Keepalived: 使用命令 <code>ip ad sh</code> 查看虚拟ip地址<br>
-inet 192.168.116.88/32 scope global eth0</p>
-<h3 id="二、Redis">二、Redis</h3>
-<h4 id="1、Redis简介">1、Redis简介</h4>
-<p>（1）Redis的前身：Memcached<br>
-（2）和Memcached区别“<br>
-（<em>）支持持久化：RDB快照、AOF日志<br>
-（</em>）支持丰富的数据类型</p>
-<h4 id="2、安装Redis">2、安装Redis</h4>
-<p>833  tar -zxvf redis-3.0.5.tar.gz<br>
-839  cd redis-3.0.5/<br>
-841  make<br>
-842  make PREFIX=/root/hd/redis install</p>
-<p>redis-benchmark ：    	Redis提供的压力测试工具。模拟产生客户端的压力<br>
-redis-check-aof：			检查aof日志文件<br>
-redis-check-dump：		检查rdb文件<br>
-redis-cli：				Redis客户端脚本<br>
-redis-sentinel：			哨兵<br>
-redis-server：			Redis服务器脚本</p>
-<p>核心配置文件:redis.conf<br>
-[root@hsiehchou121 redis-3.0.5]# cp redis.conf /root/hd/redis/<br>
-[root@hsiehchou121 redis]# mkdir conf<br>
-[root@hsiehchou121 redis]# mv redis.conf conf/<br>
-[root@hsiehchou121 conf]# vi redis.conf</p>
-<p>42 <strong>daemonize</strong> yes  //后台方式运行<br>
-50 port 6379</p>
-<p>启动redis ./bin/redis-server conf/redis.conf<br>
-检测是否启动好<br>
-[root@hsiehchou121 redis]# ./bin/redis-server conf/redis.conf</p>
-<h4 id="3、操作Redis">3、操作Redis</h4>
-<p>1）命令行<br>
-redis-cli	<br>
-./bin/redis-cli</p>
-<p>127.0.0.1:6379&gt; set key1 value1<br>
-OK<br>
-127.0.0.1:6379&gt; get key1<br>
-“value1”<br>
-127.0.0.1:6379&gt; keys *</p>
+<p>验证Keepalived: 使用命令 <code>ip ad sh</code> 查看虚拟ip地址<br>inet 192.168.116.88/32 scope global eth0</p>
+<h3 id="二、Redis"><a href="#二、Redis" class="headerlink" title="二、Redis"></a>二、Redis</h3><h4 id="1、Redis简介"><a href="#1、Redis简介" class="headerlink" title="1、Redis简介"></a>1、Redis简介</h4><p>（1）Redis的前身：Memcached<br>（2）和Memcached区别“<br>（<em>）支持持久化：RDB快照、AOF日志<br>（</em>）支持丰富的数据类型</p>
+<h4 id="2、安装Redis"><a href="#2、安装Redis" class="headerlink" title="2、安装Redis"></a>2、安装Redis</h4><p>833  tar -zxvf redis-3.0.5.tar.gz<br>839  cd redis-3.0.5/<br>841  make<br>842  make PREFIX=/root/hd/redis install</p>
+<p>redis-benchmark ：    	Redis提供的压力测试工具。模拟产生客户端的压力<br>redis-check-aof：			检查aof日志文件<br>redis-check-dump：		检查rdb文件<br>redis-cli：				Redis客户端脚本<br>redis-sentinel：			哨兵<br>redis-server：			Redis服务器脚本</p>
+<p>核心配置文件:redis.conf<br>[root@hsiehchou121 redis-3.0.5]# cp redis.conf /root/hd/redis/<br>[root@hsiehchou121 redis]# mkdir conf<br>[root@hsiehchou121 redis]# mv redis.conf conf/<br>[root@hsiehchou121 conf]# vi redis.conf </p>
+<p>42 <strong>daemonize</strong> yes  //后台方式运行<br>50 port 6379</p>
+<p>启动redis ./bin/redis-server conf/redis.conf<br>检测是否启动好<br>[root@hsiehchou121 redis]# ./bin/redis-server conf/redis.conf </p>
+<h4 id="3、操作Redis"><a href="#3、操作Redis" class="headerlink" title="3、操作Redis"></a>3、操作Redis</h4><p>1）命令行<br>redis-cli	<br>./bin/redis-cli</p>
+<p>127.0.0.1:6379&gt; set key1 value1<br>OK<br>127.0.0.1:6379&gt; get key1<br>“value1”<br>127.0.0.1:6379&gt; keys *</p>
 <ol>
 <li>“key1”</li>
 </ol>
-<p>对数据的操作：<br>
-127.0.0.1:6379&gt; set money 100<br>
-OK<br>
-127.0.0.1:6379&gt; incr money<br>
-(integer) 101<br>
-127.0.0.1:6379&gt; get money<br>
-“101”<br>
-127.0.0.1:6379&gt; incrby money 10000<br>
-(integer) 10101</p>
-<p>2）数据类型<br>
-①　字符串<br>
-127.0.0.1:6379&gt; set key1 “hello”<br>
-OK<br>
-127.0.0.1:6379&gt; get key1<br>
-“hello”<br>
-127.0.0.1:6379&gt;<br>
-127.0.0.1:6379&gt; append key1 “<code>*******</code>”<br>
-(integer) 12<br>
-127.0.0.1:6379&gt; get key1<br>
-“hello<code>*******</code>”</p>
-<p>②　链表<br>
-127.0.0.1:6379&gt;<br>
-127.0.0.1:6379&gt; lpush list 11 22 33 44 55<br>
-(integer) 5<br>
-127.0.0.1:6379&gt; lrange list 0 2</p>
+<p>对数据的操作：<br>127.0.0.1:6379&gt; set money 100<br>OK<br>127.0.0.1:6379&gt; incr money<br>(integer) 101<br>127.0.0.1:6379&gt; get money<br>“101”<br>127.0.0.1:6379&gt; incrby money 10000<br>(integer) 10101</p>
+<p>2）数据类型<br>①　字符串<br>127.0.0.1:6379&gt; set key1 “hello”<br>OK<br>127.0.0.1:6379&gt; get key1<br>“hello”<br>127.0.0.1:6379&gt;<br>127.0.0.1:6379&gt; append key1 “<code>*******</code>“<br>(integer) 12<br>127.0.0.1:6379&gt; get key1<br>“hello<code>*******</code>“</p>
+<p>②　链表<br>127.0.0.1:6379&gt;<br>127.0.0.1:6379&gt; lpush list 11 22 33 44 55<br>(integer) 5<br>127.0.0.1:6379&gt; lrange list 0 2</p>
 <ol>
 <li>“55”</li>
 <li>“44”</li>
-<li>“33”<br>
-127.0.0.1:6379&gt; lrange list 0 -1</li>
+<li>“33”<br>127.0.0.1:6379&gt; lrange list 0 -1</li>
 <li>“55”</li>
 <li>“44”</li>
 <li>“33”</li>
 <li>“22”</li>
-<li>“11”<br>
-127.0.0.1:6379&gt; lpop list<br>
-“55”</li>
+<li>“11”<br>127.0.0.1:6379&gt; lpop list<br>“55”</li>
 </ol>
-<p>③　Hash<br>
-127.0.0.1:6379&gt; hset hashkey1 name ls<br>
-(integer) 1<br>
-127.0.0.1:6379&gt; hset hashkey2 age 23<br>
-(integer) 1<br>
-127.0.0.1:6379&gt; hmset user001 name ls age 23 gender mals<br>
-OK<br>
-127.0.0.1:6379&gt; hmset user002 name xz age 24 gender mals<br>
-OK<br>
-127.0.0.1:6379&gt; hmget user001 name age gender</p>
+<p>③　Hash<br>127.0.0.1:6379&gt; hset hashkey1 name ls<br>(integer) 1<br>127.0.0.1:6379&gt; hset hashkey2 age 23<br>(integer) 1<br>127.0.0.1:6379&gt; hmset user001 name ls age 23 gender mals<br>OK<br>127.0.0.1:6379&gt; hmset user002 name xz age 24 gender mals<br>OK<br>127.0.0.1:6379&gt; hmget user001 name age gender</p>
 <ol>
 <li>“ls”</li>
 <li>“23”</li>
-<li>“mals”<br>
-127.0.0.1:6379&gt; hgetall user001</li>
+<li>“mals”<br>127.0.0.1:6379&gt; hgetall user001</li>
 <li>“name”</li>
 <li>“ls”</li>
 <li>“age”</li>
@@ -831,13 +654,7 @@ OK<br>
 <li>“gender”</li>
 <li>“mals”</li>
 </ol>
-<p>④　无序集合<br>
-无序，不可重复的集合<br>
-127.0.0.1:6379&gt; sadd setkey1 11 22 33 44 55<br>
-(integer) 5<br>
-127.0.0.1:6379&gt; sadd setkey2 33 44 55 66 77 88<br>
-(integer) 6<br>
-127.0.0.1:6379&gt; smembers setkey1</p>
+<p>④　无序集合<br>无序，不可重复的集合<br>127.0.0.1:6379&gt; sadd setkey1 11 22 33 44 55<br>(integer) 5<br>127.0.0.1:6379&gt; sadd setkey2 33 44 55 66 77 88<br>(integer) 6<br>127.0.0.1:6379&gt; smembers setkey1</p>
 <ol>
 <li>“11”</li>
 <li>“22”</li>
@@ -845,19 +662,12 @@ OK<br>
 <li>“44”</li>
 <li>“55”</li>
 </ol>
-<p>sdiif： 差集<br>
-sinter： 交集<br>
-suntion：并集</p>
-<p>⑤　有序集合<br>
-有序可以重复的集合，根据一个score来进行排序<br>
-127.0.0.1:6379&gt; zadd chinese 90 Tom 92 Nary 83 Nike<br>
-(integer) 3<br>
-127.0.0.1:6379&gt; zrange chinese 0 100</p>
+<p>sdiif： 差集<br>sinter： 交集<br>suntion：并集</p>
+<p>⑤　有序集合<br>有序可以重复的集合，根据一个score来进行排序<br>127.0.0.1:6379&gt; zadd chinese 90 Tom 92 Nary 83 Nike<br>(integer) 3<br>127.0.0.1:6379&gt; zrange chinese 0 100</p>
 <ol>
 <li>“Nike”</li>
 <li>“Tom”</li>
-<li>“Nary”<br>
-127.0.0.1:6379&gt; zrange chinese 0 100 withscores</li>
+<li>“Nary”<br>127.0.0.1:6379&gt; zrange chinese 0 100 withscores</li>
 <li>“Nike”</li>
 <li>“83”</li>
 <li>“Tom”</li>
@@ -865,18 +675,10 @@ suntion：并集</p>
 <li>“Nary”</li>
 <li>“92”</li>
 </ol>
-<p>⑥　Redis数据类型案例分析：网站统计用户登录的次数<br>
-a.	1亿个用户，有经常登录的，也有不经常登录的<br>
-b.	如何来记录用户的登录信息<br>
-c.	如何查询活跃用户：比如：一周内，登录3次的</p>
-<p>	解决方案一：采用关系型数据库<br>
-建立表：记录一周内，每天登录的情况</p>
+<p>⑥　Redis数据类型案例分析：网站统计用户登录的次数<br>a.	1亿个用户，有经常登录的，也有不经常登录的<br>b.	如何来记录用户的登录信息<br>c.	如何查询活跃用户：比如：一周内，登录3次的</p>
+<p>	解决方案一：采用关系型数据库<br>建立表：记录一周内，每天登录的情况</p>
 <p>采用关系型数据库保存登录信息存在的问题，每天产生一亿条数据，一周就是7亿条数据</p>
-<p>	解决方案二：采用Redis存储登录信息<br>
-可以使用Redis的setbit，登录与否：有1和0就可以表示<br>
-一亿个用户，每天是否登录，用1或者0表示即可，每天产生约12M的数据<br>
-一亿个用户一周的登录信息：<br>
-12M*7=84M</p>
+<p>	解决方案二：采用Redis存储登录信息<br>可以使用Redis的setbit，登录与否：有1和0就可以表示<br>一亿个用户，每天是否登录，用1或者0表示即可，每天产生约12M的数据<br>一亿个用户一周的登录信息：<br>12M*7=84M</p>
 <pre><code class="highlight plaintext">3）Java Api
 ①　基本操作
     @Test
@@ -933,130 +735,65 @@ c.	如何查询活跃用户：比如：一周内，登录3次的</p>
             jedisPool.returnResource(jedis);
     }
 }</code></pre>
-<p>③　使用Redis实现分布式锁<br>
-使用Maven搭建工程：</p>
+<p>③　使用Redis实现分布式锁<br>使用Maven搭建工程：</p>
 <pre><code class="highlight plaintext">&lt;dependency&gt;
     &lt;groupId&gt;redis.clients&lt;/groupId&gt;
     &lt;artifactId&gt;jedis&lt;/artifactId&gt;
     &lt;version&gt;2.9.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<h4 id="4、Redis的事务：不是真正的事务，是一种模拟">4、Redis的事务：不是真正的事务，是一种模拟</h4>
-<p>1）复习：事务（关系型数据库）<br>
-（*）什么是事务？<br>
-事务有一组DML(Data Manipulation Language)语句组成。DML 插入更新删除操作</p>
-<p>（*）事务的特点<br>
-要么都成功，要么都失败</p>
+
+<h4 id="4、Redis的事务：不是真正的事务，是一种模拟"><a href="#4、Redis的事务：不是真正的事务，是一种模拟" class="headerlink" title="4、Redis的事务：不是真正的事务，是一种模拟"></a>4、Redis的事务：不是真正的事务，是一种模拟</h4><p>1）复习：事务（关系型数据库）<br>（*）什么是事务？<br>事务有一组DML(Data Manipulation Language)语句组成。DML 插入更新删除操作</p>
+<p>（*）事务的特点<br>要么都成功，要么都失败</p>
 <p>（*）Oracle中事务的本质：将事务的DML操作写入日志。日志写入成功，则事务执行成功</p>
 <p>2）Redis事务的本质：将一组操作放入队列中，一次执行（批处理）</p>
 <p>3）对比Oracle和Redis事务的区别</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">操作</th>
-<th style="text-align:center">Oracle</th>
-<th style="text-align:center">Redis</th>
+<th align="center">操作</th>
+<th align="center">Oracle</th>
+<th align="center">Redis</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">开启事务</td>
-<td style="text-align:center">自动开启</td>
-<td style="text-align:center">命令：multi</td>
+<tbody><tr>
+<td align="center">开启事务</td>
+<td align="center">自动开启</td>
+<td align="center">命令：multi</td>
 </tr>
 <tr>
-<td style="text-align:center">执行语句</td>
-<td style="text-align:center">DML</td>
-<td style="text-align:center">Redis命令</td>
+<td align="center">执行语句</td>
+<td align="center">DML</td>
+<td align="center">Redis命令</td>
 </tr>
 <tr>
-<td style="text-align:center">提交事务</td>
-<td style="text-align:center">显式提交：commit；隐式提交:DDL语句（create table）</td>
-<td style="text-align:center">命令：exec 执行放在multi里面的操作</td>
+<td align="center">提交事务</td>
+<td align="center">显式提交：commit；隐式提交:DDL语句（create table）</td>
+<td align="center">命令：exec 执行放在multi里面的操作</td>
 </tr>
 <tr>
-<td style="text-align:center">回滚事务</td>
-<td style="text-align:center">显式回滚：rollback；隐式回滚：系统掉电，客户端退出</td>
-<td style="text-align:center">命令：discard 把队列中的操作废弃掉</td>
+<td align="center">回滚事务</td>
+<td align="center">显式回滚：rollback；隐式回滚：系统掉电，客户端退出</td>
+<td align="center">命令：discard 把队列中的操作废弃掉</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>注意</strong>：不是真正的事务，只是一种模拟</p>
-<p>4）举例：模拟银行转账<br>
-set tom 1000<br>
-set mike 1000<br>
-tom --&gt; mike 转账操作必须在事务中，要么都成功，要么都不成功<br>
-multi<br>
-decrby tom 100<br>
-incrby mike 100<br>
-exec</p>
-<p>127.0.0.1:6379&gt; set tom 1000<br>
-OK<br>
-127.0.0.1:6379&gt; set mike 1000<br>
-OK<br>
-127.0.0.1:6379&gt; multi<br>
-OK<br>
-127.0.0.1:6379&gt; decrby tom 100<br>
-QUEUED<br>
-127.0.0.1:6379&gt; incrby mike 100<br>
-QUEUED<br>
-127.0.0.1:6379&gt; exec</p>
+<p>4）举例：模拟银行转账<br>set tom 1000<br>set mike 1000<br>tom –&gt; mike 转账操作必须在事务中，要么都成功，要么都不成功<br>multi<br>decrby tom 100<br>incrby mike 100<br>exec</p>
+<p>127.0.0.1:6379&gt; set tom 1000<br>OK<br>127.0.0.1:6379&gt; set mike 1000<br>OK<br>127.0.0.1:6379&gt; multi<br>OK<br>127.0.0.1:6379&gt; decrby tom 100<br>QUEUED<br>127.0.0.1:6379&gt; incrby mike 100<br>QUEUED<br>127.0.0.1:6379&gt; exec</p>
 <ol>
 <li>(integer) 900</li>
 <li>(integer) 1100</li>
 </ol>
-<p>5）举例：买票<br>
-set tom 1000<br>
-set ticket 1<br>
-multi<br>
-decrby tom 500<br>
-decr ticket<br>
-exec</p>
-<p>在exec前，从另一个窗口，decr ticket<br>
-127.0.0.1:6379&gt; set tom 1000<br>
-OK<br>
-127.0.0.1:6379&gt; set ticket 1<br>
-OK<br>
-127.0.0.1:6379&gt; multi<br>
-OK<br>
-127.0.0.1:6379&gt; decrby tom 500<br>
-QUEUED<br>
-127.0.0.1:6379&gt; decr ticket<br>
-QUEUED<br>
-127.0.0.1:6379&gt; exec</p>
+<p>5）举例：买票<br>set tom 1000<br>set ticket 1<br>multi<br>decrby tom 500<br>decr ticket<br>exec</p>
+<p>在exec前，从另一个窗口，decr ticket<br>127.0.0.1:6379&gt; set tom 1000<br>OK<br>127.0.0.1:6379&gt; set ticket 1<br>OK<br>127.0.0.1:6379&gt; multi<br>OK<br>127.0.0.1:6379&gt; decrby tom 500<br>QUEUED<br>127.0.0.1:6379&gt; decr ticket<br>QUEUED<br>127.0.0.1:6379&gt; exec</p>
 <ol>
 <li>(integer) 500</li>
 <li>(integer) -1</li>
 </ol>
-<h4 id="5、Redis锁机制">5、Redis锁机制</h4>
-<p>执行事务操作的时候，如果监视的值发生了变化，则提交失败<br>
-命令：<strong>watch</strong></p>
-<p>举例：<strong>买票</strong><br>
-set tom 1000<br>
-set ticket 1<br>
-watch ticket -----&gt; 相当于给ticket加了锁。认为在下面执行事务的时候，值不会变<br>
-multi<br>
-decrby tom 500<br>
-decr ticket<br>
-exec</p>
-<p>127.0.0.1:6379&gt; set tom 1000<br>
-OK<br>
-127.0.0.1:6379&gt; set ticket 1<br>
-OK<br>
-127.0.0.1:6379&gt; watch ticket<br>
-OK<br>
-127.0.0.1:6379&gt; multi<br>
-OK<br>
-127.0.0.1:6379&gt; decrby tom 500<br>
-QUEUED<br>
-127.0.0.1:6379&gt; decr ticket<br>
-QUEUED<br>
-127.0.0.1:6379&gt; exec<br>
-(nil)<br>
-127.0.0.1:6379&gt; get tom<br>
-“1000”</p>
+<h4 id="5、Redis锁机制"><a href="#5、Redis锁机制" class="headerlink" title="5、Redis锁机制"></a>5、Redis锁机制</h4><p>执行事务操作的时候，如果监视的值发生了变化，则提交失败<br>命令：<strong>watch</strong></p>
+<p>举例：<strong>买票</strong><br>set tom 1000<br>set ticket 1<br>watch ticket —–&gt; 相当于给ticket加了锁。认为在下面执行事务的时候，值不会变<br>multi<br>decrby tom 500<br>decr ticket<br>exec</p>
+<p>127.0.0.1:6379&gt; set tom 1000<br>OK<br>127.0.0.1:6379&gt; set ticket 1<br>OK<br>127.0.0.1:6379&gt; watch ticket<br>OK<br>127.0.0.1:6379&gt; multi<br>OK<br>127.0.0.1:6379&gt; decrby tom 500<br>QUEUED<br>127.0.0.1:6379&gt; decr ticket<br>QUEUED<br>127.0.0.1:6379&gt; exec<br>(nil)<br>127.0.0.1:6379&gt; get tom<br>“1000”</p>
 <p><code>nil</code> 代表操作没有执行或者执行失败</p>
-<p><strong>Java应用程序中的事务和锁</strong><br>
-①　事务</p>
+<p><strong>Java应用程序中的事务和锁</strong><br>①　事务</p>
 <pre><code class="highlight plaintext">@Test
 public void testTransaction(){
     Jedis jedis = new Jedis("192.168.116.121",6379);
@@ -1102,30 +839,15 @@ public void testTransaction(){
        }
        jedis.disconnect();
    }</code></pre>
-<h4 id="6、Redis的消息机制：消息系统">6、Redis的消息机制：消息系统</h4>
-<p>1）消息的类型<br>
-（<em>）Queue消息：队列，点对点<br>
-（</em>）Topic消息：主题，群发：发布消息，订阅消息</p>
-<p>2）Redis消息机制<br>
-只支持Topic消息</p>
+
+<h4 id="6、Redis的消息机制：消息系统"><a href="#6、Redis的消息机制：消息系统" class="headerlink" title="6、Redis的消息机制：消息系统"></a>6、Redis的消息机制：消息系统</h4><p>1）消息的类型<br>（<em>）Queue消息：队列，点对点<br>（</em>）Topic消息：主题，群发：发布消息，订阅消息</p>
+<p>2）Redis消息机制<br>只支持Topic消息</p>
 <p>命令：发布消息 publish 	格式：publish channel名称 “消息内容”</p>
 <p>订阅：subscribe 	格式：subscribe channel名称</p>
-<p>psubscribe 订阅消息  ------ 可以用通配符来订阅消息<br>
-	格式：psubscribe channel*名称</p>
-<p>3）常用的消息系统：<br>
-Redis 只支持 Topic<br>
-Kafka 只支持Topic 需要Zookeeper支持<br>
-JMS Java Messging Service java消息服务标准。支持Queue Topic<br>
-产品：Weblogic</p>
-<p>例子：<br>
-窗口1（发）：<br>
-127.0.0.1:6379&gt; PUBLISH c1 hello<br>
-(integer) 2<br>
-127.0.0.1:6379&gt; PUBLISH c1 test<br>
-(integer) 2</p>
-<p>窗口2（订）：<br>
-127.0.0.1:6379&gt; SUBSCRIBE c1<br>
-Reading messages… (press Ctrl-C to quit)</p>
+<p>psubscribe 订阅消息  —— 可以用通配符来订阅消息<br>	格式：psubscribe channel*名称</p>
+<p>3）常用的消息系统：<br>Redis 只支持 Topic<br>Kafka 只支持Topic 需要Zookeeper支持<br>JMS Java Messging Service java消息服务标准。支持Queue Topic<br>产品：Weblogic</p>
+<p>例子：<br>窗口1（发）：<br>127.0.0.1:6379&gt; PUBLISH c1 hello<br>(integer) 2<br>127.0.0.1:6379&gt; PUBLISH c1 test<br>(integer) 2</p>
+<p>窗口2（订）：<br>127.0.0.1:6379&gt; SUBSCRIBE c1<br>Reading messages… (press Ctrl-C to quit)</p>
 <ol>
 <li>“subscribe”</li>
 <li>“c1”</li>
@@ -1137,9 +859,7 @@ Reading messages… (press Ctrl-C to quit)</p>
 <li>“c1”</li>
 <li>“test”</li>
 </ol>
-<p>窗口3（订）：<br>
-127.0.0.1:6379&gt; SUBSCRIBE c1<br>
-Reading messages… (press Ctrl-C to quit)</p>
+<p>窗口3（订）：<br>127.0.0.1:6379&gt; SUBSCRIBE c1<br>Reading messages… (press Ctrl-C to quit)</p>
 <ol>
 <li>“subscribe”</li>
 <li>“c1”</li>
@@ -1151,18 +871,9 @@ Reading messages… (press Ctrl-C to quit)</p>
 <li>“c1”</li>
 <li>“test”</li>
 </ol>
-<p><strong>通过通配符订阅</strong><br>
-窗口1（发）：<br>
-127.0.0.1:6379&gt; PUBLISH c2 hello<br>
-(integer) 1<br>
-127.0.0.1:6379&gt; PUBLISH c4 hello<br>
-(integer) 1</p>
-<p>窗口2（发）：<br>
-127.0.0.1:6379&gt; PUBLISH c1 dfg<br>
-(integer) 1</p>
-<p>窗口3（订）：<br>
-127.0.0.1:6379&gt; PSUBSCRIBE c*<br>
-Reading messages… (press Ctrl-C to quit)</p>
+<p><strong>通过通配符订阅</strong><br>窗口1（发）：<br>127.0.0.1:6379&gt; PUBLISH c2 hello<br>(integer) 1<br>127.0.0.1:6379&gt; PUBLISH c4 hello<br>(integer) 1</p>
+<p>窗口2（发）：<br>127.0.0.1:6379&gt; PUBLISH c1 dfg<br>(integer) 1</p>
+<p>窗口3（订）：<br>127.0.0.1:6379&gt; PSUBSCRIBE c*<br>Reading messages… (press Ctrl-C to quit)</p>
 <ol>
 <li>“psubscribe”</li>
 <li>“c*”</li>
@@ -1180,8 +891,7 @@ Reading messages… (press Ctrl-C to quit)</p>
 <li>“c1”</li>
 <li>“dfg”</li>
 </ol>
-<p><strong>使用Java程序实现消息的发布与订阅</strong><br>
-需要继承JedisPubSub类</p>
+<p><strong>使用Java程序实现消息的发布与订阅</strong><br>需要继承JedisPubSub类</p>
 <pre><code class="highlight plaintext">@Test
     public void testMessage(){
         Jedis jedis = new Jedis("192.168.116.121", 6379);
@@ -1204,112 +914,38 @@ Reading messages… (press Ctrl-C to quit)</p>
         public void onSubscribe(String arg0, int arg1){}
         public void onUnsubscribe(String arg0, int arg1){}
     }</code></pre>
-<h4 id="7、Redis持久化">7、Redis持久化</h4>
-<p>本质：<strong>备份和恢复</strong><br>
-1）<strong>RDB快照</strong>：默认<br>
-（*）看成一种快照，备份。每隔段时间，将内存汇总的数据保存到硬盘上。产生RDB文件</p>
-<p>（*）<strong>RDB 生成策略</strong><br>
-<strong>redis.conf中</strong><br>
-147 save 900 1       900秒内，有1个key发生变化，执行RDB<br>
-148 save 300 10      300内，如果有10个key发生变化，执行RDB<br>
-149 save 60 10000    60秒内，如果有10000个key发生变化，执行RDB</p>
-<p>save ---- 时间 ----- 发生变化的key的个数</p>
-<p>（*）其他参数<br>
-164 stop-writes-on-bgsave-error yes  当后台写进程出错时，禁止写入新的数据</p>
-<p>170 rdbcompression yes      是否压缩。如果看重性能，设置成no<br>
-压缩会节省空间，但会影响备份和恢复性能</p>
-<p>182 dbfilename dump.rdb  RDB的文件名字<br>
-192 dir ./  RDB的文件地址</p>
-<p>（*）RDB的优点和缺点<br>
-优点：快，恢复速度快<br>
-缺点：在两次RDB之间，可能会造成数据的丢失<br>
-解决：AOF</p>
-<p>2）<strong>AOF日志</strong><br>
-客户端在操作Redis时，把操作记录到文件中，如果发生崩溃，读取日志，把操作完全执行一遍</p>
-<p>（*）默认是禁用<br>
-509 appendonly no  参数修改成yes</p>
-<p>（*）AOF记录策略<br>
-538 # appendfsync always       	每条操作都记录日志：优点安全 缺点：慢<br>
-539 appendfsync everysec    每秒写入一次<br>
-540 # appendfsync no			由操作系统来决定记录日志的方式。不会用的到。</p>
-<p>（*）AOF日志重写：overwrite<br>
-举例：<br>
-set money 0<br>
-incr money<br>
-…100次</p>
+
+<h4 id="7、Redis持久化"><a href="#7、Redis持久化" class="headerlink" title="7、Redis持久化"></a>7、Redis持久化</h4><p>本质：<strong>备份和恢复</strong><br>1）<strong>RDB快照</strong>：默认<br>（*）看成一种快照，备份。每隔段时间，将内存汇总的数据保存到硬盘上。产生RDB文件</p>
+<p>（*）<strong>RDB 生成策略</strong><br><strong>redis.conf中</strong><br>147 save 900 1       900秒内，有1个key发生变化，执行RDB<br>148 save 300 10      300内，如果有10个key发生变化，执行RDB<br>149 save 60 10000    60秒内，如果有10000个key发生变化，执行RDB</p>
+<p>save —- 时间 —– 发生变化的key的个数</p>
+<p>（*）其他参数<br>164 stop-writes-on-bgsave-error yes  当后台写进程出错时，禁止写入新的数据</p>
+<p>170 rdbcompression yes      是否压缩。如果看重性能，设置成no<br>	压缩会节省空间，但会影响备份和恢复性能<br>	<br>182 dbfilename dump.rdb  RDB的文件名字<br>192 dir ./  RDB的文件地址</p>
+<p>（*）RDB的优点和缺点<br>优点：快，恢复速度快<br>缺点：在两次RDB之间，可能会造成数据的丢失<br>解决：AOF</p>
+<p>2）<strong>AOF日志</strong><br>客户端在操作Redis时，把操作记录到文件中，如果发生崩溃，读取日志，把操作完全执行一遍</p>
+<p>（*）默认是禁用<br>509 appendonly no  参数修改成yes</p>
+<p>（*）AOF记录策略<br>538 # appendfsync always       	每条操作都记录日志：优点安全 缺点：慢<br>539 appendfsync everysec    每秒写入一次<br>540 # appendfsync no			由操作系统来决定记录日志的方式。不会用的到。</p>
+<p>（*）AOF日志重写：overwrite<br>举例：<br>set money 0<br>incr money<br>..100次</p>
 <p>set money 100</p>
-<p>./redis-benchmark -n 100000<br>
-模拟客户端100000次请求</p>
-<p>（*）参数设置<br>
-561 no-appendfsync-on-rewrite <strong>no</strong>   执行重写的时候，不写入新的aof日志<br>
-//561 no-appendfsync-on-rewrite yes  生成rdb的时候，是否不写入aof<br>
-580 auto-aof-rewrite-percentage 100 aof文件比上次重写时，超过的百分比<br>
-581 auto-aof-rewrite-min-size 64mb  执行重写的文件大小。到64M触发重写</p>
-<p>3）当两个同时存在时，优先执行哪个？<br>
-504 # If the AOF is enabled on startup Redis will load the AOF, that is the file<br>
-505 # with the better durability guarantees.</p>
+<p> ./redis-benchmark -n 100000<br> 模拟客户端100000次请求</p>
+<p>（*）参数设置<br>561 no-appendfsync-on-rewrite <strong>no</strong>   执行重写的时候，不写入新的aof日志<br>//561 no-appendfsync-on-rewrite yes  生成rdb的时候，是否不写入aof<br>580 auto-aof-rewrite-percentage 100 aof文件比上次重写时，超过的百分比<br>581 auto-aof-rewrite-min-size 64mb  执行重写的文件大小。到64M触发重写</p>
+<p>3）当两个同时存在时，优先执行哪个？<br>504 # If the AOF is enabled on startup Redis will load the AOF, that is the file<br>505 # with the better durability guarantees.</p>
 <p><strong>AOF开启时，优先使用AOF</strong></p>
-<h4 id="8、Redis的主从复制">8、Redis的主从复制</h4>
-<p>1）<strong>Redis主从复制集群</strong><br>
-作用：<br>
-主从复制，主从备份，防止主节点down机<br>
-任务分离：分摊主节点压力。读写分离</p>
-<p>Memcacached：主主复制<br>
-Redis：主从复制</p>
-<p>Redis集群两种部署方式<br>
-<strong>星型模型</strong>：<br>
-优点：效率高，两个slave地位一样，可以直接从主节点取出信息<br>
-缺点：HA比较麻烦</p>
-<p><strong>线性模型</strong>：<br>
-优点：HA简单，master宕机后，可以直接切换到slave1<br>
-缺点：效率不如星型模型</p>
-<p>cp redis.conf redis6379.conf<br>
-cp redis.conf redis6380.conf<br>
-cp redis.conf redis6381.conf</p>
-<p><strong>主节点</strong>（redis6379.conf ）：关闭rdb aof<br>
-509 appendonly no<br>
-147 #save 900 1<br>
-148 #save 300 10<br>
-149 #save 60 10000</p>
-<p><strong>从节点</strong>（redis6380.conf redis6381.conf）<br>
-不同机器有的可以不改<br>
-改端口号<br>
-50 port 6380<br>
-改aof rdb文件名：<br>
-182 dbfilename dump6380.rdb<br>
-211 slaveof 192.168.116.121 6379<br>
-513 appendfilename “appendonly6380.aof”</p>
-<p><strong>改端口号</strong><br>
-50 port 6381<br>
-改aof rdb文件名：<br>
-182 dbfilename dump6381.rdb<br>
-211 slaveof 192.168.116.121 6379<br>
-513 appendfilename “appendonly6381.aof”</p>
-<p>[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6379.conf<br>
-[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6380.conf<br>
-[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6381.conf</p>
-<p>[root@hsiehchou121 redis]# ps -ef | grep redis<br>
-root       6371      1  1 16:31 ?        00:00:00 ./bin/redis-server *:6379<br>
-root       6375      1  4 16:31 ?        00:00:01 ./bin/redis-server *:6380<br>
-root       6381      1  0 16:31 ?        00:00:00 ./bin/redis-server *:6381<br>
-root       6395   5432  0 16:31 pts/0    00:00:00 grep --color=auto redis</p>
-<p>[root@hsiehchou121 redis]# ./bin/redis-cli -p 6379<br>
-127.0.0.1:6379&gt; set tom 10000<br>
-OK<br>
-127.0.0.1:6379&gt; quit<br>
-[root@hsiehchou121 redis]# ./bin/redis-cli -p 6380<br>
-127.0.0.1:6380&gt; get tom<br>
-“10000”</p>
+<h4 id="8、Redis的主从复制"><a href="#8、Redis的主从复制" class="headerlink" title="8、Redis的主从复制"></a>8、Redis的主从复制</h4><p>1）<strong>Redis主从复制集群</strong><br>作用：<br>主从复制，主从备份，防止主节点down机<br>任务分离：分摊主节点压力。读写分离</p>
+<p>Memcacached：主主复制<br>Redis：主从复制</p>
+<p>Redis集群两种部署方式<br><strong>星型模型</strong>：<br>优点：效率高，两个slave地位一样，可以直接从主节点取出信息<br>缺点：HA比较麻烦</p>
+<p><strong>线性模型</strong>：<br>优点：HA简单，master宕机后，可以直接切换到slave1<br>缺点：效率不如星型模型</p>
+<p>cp redis.conf redis6379.conf<br>cp redis.conf redis6380.conf<br>cp redis.conf redis6381.conf </p>
+<p><strong>主节点</strong>（redis6379.conf ）：关闭rdb aof<br>509 appendonly no<br>147 #save 900 1<br>148 #save 300 10<br>149 #save 60 10000</p>
+<p><strong>从节点</strong>（redis6380.conf redis6381.conf）<br>不同机器有的可以不改<br>改端口号<br>50 port 6380<br>改aof rdb文件名：<br>182 dbfilename dump6380.rdb<br>211 slaveof 192.168.116.121 6379<br>513 appendfilename “appendonly6380.aof”</p>
+<p><strong>改端口号</strong><br>50 port 6381<br>改aof rdb文件名：<br>182 dbfilename dump6381.rdb<br>211 slaveof 192.168.116.121 6379<br>513 appendfilename “appendonly6381.aof”</p>
+<p>[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6379.conf<br>[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6380.conf<br>[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6381.conf </p>
+<p>[root@hsiehchou121 redis]# ps -ef | grep redis<br>root       6371      1  1 16:31 ?        00:00:00 ./bin/redis-server *:6379<br>root       6375      1  4 16:31 ?        00:00:01 ./bin/redis-server *:6380<br>root       6381      1  0 16:31 ?        00:00:00 ./bin/redis-server *:6381<br>root       6395   5432  0 16:31 pts/0    00:00:00 grep –color=auto redis</p>
+<p>[root@hsiehchou121 redis]# ./bin/redis-cli -p 6379<br>127.0.0.1:6379&gt; set tom 10000<br>OK<br>127.0.0.1:6379&gt; quit<br>[root@hsiehchou121 redis]# ./bin/redis-cli -p 6380<br>127.0.0.1:6380&gt; get tom<br>“10000”</p>
 <p>默认情况下，从节点只读，不可以写入数据</p>
 <p>注意：一次性启动从节点不要太多</p>
-<p><img src="/medias/Redis%20%E4%B8%BB%E4%BB%8E%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86.PNG" alt="Redis 主从服务的通信原理"></p>
-<p>2）<strong>Redis的分片</strong><br>
-多个从节点分摊读的压力</p>
+<p><img src="/medias/Redis%20%E4%B8%BB%E4%BB%8E%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86.PNG" alt="Redis 主从服务的通信原理">			<br>			<br>2）<strong>Redis的分片</strong><br>多个从节点分摊读的压力</p>
 <p>客户端代理分片工具：Twemproxy</p>
-<p><strong>解压</strong><br>
-[root@hsiehchou121 nutcracker-0.3.0]# ./configure <code>--prefix</code>=/root/hd/nutcracker<br>
-[root@hsiehchou121 nutcracker-0.3.0]# make<br>
-[root@hsiehchou121 nutcracker-0.3.0]# make install</p>
+<p><strong>解压</strong><br>[root@hsiehchou121 nutcracker-0.3.0]# ./configure <code>--prefix</code>=/root/hd/nutcracker<br>[root@hsiehchou121 nutcracker-0.3.0]# make<br>[root@hsiehchou121 nutcracker-0.3.0]# make install</p>
 <p>cp /root/hd/nutcracker-0.3.0/conf/nutcracker.yml ./conf/</p>
 <p><strong>修改server信息</strong></p>
 <pre><code class="highlight plaintext">alpha:
@@ -1323,44 +959,26 @@ OK<br>
   servers:
    - 192.168.116.121:6380:1
    - 192.168.116.121:6381:1</code></pre>
-<p><strong>启动redis</strong><br>
-[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6379.conf<br>
-[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6380.conf<br>
-[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6381.conf</p>
-<p><strong>检查配置文件是否正确</strong><br>
-[root@hsiehchou121 nutcracker]# ./sbin/nutcracker -t conf/nutcracker.yml</p>
-<p><strong>启动代理分片</strong><br>
-[root@hsiehchou121 nutcracker]# ./sbin/nutcracker -d -c conf/nutcracker.yml</p>
+
+<p><strong>启动redis</strong><br>[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6379.conf<br>[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6380.conf<br>[root@hsiehchou121 redis]# ./bin/redis-server ./conf/redis6381.conf </p>
+<p><strong>检查配置文件是否正确</strong><br>[root@hsiehchou121 nutcracker]# ./sbin/nutcracker -t conf/nutcracker.yml</p>
+<p><strong>启动代理分片</strong><br>[root@hsiehchou121 nutcracker]# ./sbin/nutcracker -d -c conf/nutcracker.yml</p>
 <p>[root@hsiehchou121 redis]# ./bin/redis-cli -p 22121 访问</p>
-<h4 id="9、Redis的HA（哨兵机制）">9、Redis的HA（哨兵机制）</h4>
-<p><strong>主从结构，存在单点故障问题</strong></p>
+<h4 id="9、Redis的HA（哨兵机制）"><a href="#9、Redis的HA（哨兵机制）" class="headerlink" title="9、Redis的HA（哨兵机制）"></a>9、Redis的HA（哨兵机制）</h4><p><strong>主从结构，存在单点故障问题</strong></p>
 <p>redis2.4版本之后有</p>
 <p>redis-sentinel 就是哨兵</p>
-<p>vi redis6380.conf<br>
-211 slaveof 192.168.116.121 6379</p>
-<p>vi redis6381.conf<br>
-211 slaveof 192.168.116.121 6379</p>
-<p><strong>配置</strong>：<br>
-cp /root/hd/redis-3.0.5/sentinel.conf  ./conf/</p>
-<p>vim sentinel.conf</p>
+<p>vi redis6380.conf<br>211 slaveof 192.168.116.121 6379</p>
+<p>vi redis6381.conf<br>211 slaveof 192.168.116.121 6379</p>
+<p><strong>配置</strong>：<br>cp /root/hd/redis-3.0.5/sentinel.conf  ./conf/</p>
+<p>vim sentinel.conf </p>
 <p>53 sentinel monitor mymaster 192.168.116.121 6379 1</p>
 <p>[root@hsiehchou121 redis]# ./bin/redis-sentinel conf/sentinel.conf</p>
-<p>看日志：<br>
-3085:X 23 Apr 17:04:17.522 # +monitor master mymaster 192.168.116.121 6379 quorum 1<br>
-3085:X 23 Apr 17:04:18.524 * +slave slave 192.168.116.121:6380 192.168.116.121 6380 @ mymaster 192.168.116.121 6379<br>
-3085:X 23 Apr 17:04:18.526 * +slave slave 192.168.116.121:6381 192.168.116.121 6381 @ mymaster 192.168.116.121 6379</p>
-<p>kill master 检测到<br>
-看日志：<br>
-try-failover master mymaster 192.168.109.134 6379<br>
-检测到6379挂了</p>
-<p>3085:X 23 Apr 17:05:14.647 # +selected-slave slave 192.168.116.121:6381 192.168.116.121 6381 @ mymaster 192.168.116.121 6379<br>
-select slave 选举新的主节点</p>
-<p>3085:X 23 Apr 17:05:16.830 * +slave slave 192.168.116.121:6380 192.168.116.121 6380 @ mymaster 192.168.116.121 6381<br>
-把其他的从节点连接到主节点上</p>
+<p>看日志：<br>3085:X 23 Apr 17:04:17.522 # +monitor master mymaster 192.168.116.121 6379 quorum 1<br>3085:X 23 Apr 17:04:18.524 * +slave slave 192.168.116.121:6380 192.168.116.121 6380 @ mymaster 192.168.116.121 6379<br>3085:X 23 Apr 17:04:18.526 * +slave slave 192.168.116.121:6381 192.168.116.121 6381 @ mymaster 192.168.116.121 6379</p>
+<p>kill master 检测到<br>看日志：<br>try-failover master mymaster 192.168.109.134 6379<br>检测到6379挂了</p>
+<p>3085:X 23 Apr 17:05:14.647 # +selected-slave slave 192.168.116.121:6381 192.168.116.121 6381 @ mymaster 192.168.116.121 6379<br>select slave 选举新的主节点</p>
+<p>3085:X 23 Apr 17:05:16.830 * +slave slave 192.168.116.121:6380 192.168.116.121 6380 @ mymaster 192.168.116.121 6381<br>把其他的从节点连接到主节点上</p>
 <p><strong>注意</strong>:一定要按步骤来，一步一步配置</p>
-<p><strong>亲测排坑</strong><br>
-<strong>划重点</strong><br>
-此处的Redis的HA高可用的redis主节点和从节点的变化会导致<strong>sentinel monitor mymaster</strong>（sentinel.conf的第53行）和<strong>slaveof</strong>一起变化（从节点的第211行）。而且这个过程是不可逆的，就是更新了变只有自己手动去修改下。</p>
+<p><strong>亲测排坑</strong><br><strong>划重点</strong><br>此处的Redis的HA高可用的redis主节点和从节点的变化会导致<strong>sentinel monitor mymaster</strong>（sentinel.conf的第53行）和<strong>slaveof</strong>一起变化（从节点的第211行）。而且这个过程是不可逆的，就是更新了变只有自己手动去修改下。</p>
 <p>所以，如果停止重新运行，便会报错，需要自己自行修改这些内容。</p>
 
             </div>
@@ -1622,11 +1240,9 @@ select slave 选举新的主节点</p>
                         
                             Hadoop  HBase HA
 保证所有的服务器时间都相同
-一、Hadoop HA
-HDFS HA
+一、Hadoop HAHDFS HA
 /root/hd/hadoop-2.8.4/etc/hadoop 下是所有hadoop配置文件
-1、core-site.xml
-&lt;c
+1、core-site.xml&lt;con
                         
                     </div>
                     <div class="publish-info">
@@ -1686,8 +1302,7 @@ HDFS HA
                             Spark MLlib
 MLlib 是 Spark 可以扩展的机器学习库
 MLlib is Apache Spark’s scalable machine learning library.
-一、MLlib概述
-MLlib 是 Spark 
+一、MLlib概述MLlib 是 Spark 可
                         
                     </div>
                     <div class="publish-info">
@@ -1901,7 +1516,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

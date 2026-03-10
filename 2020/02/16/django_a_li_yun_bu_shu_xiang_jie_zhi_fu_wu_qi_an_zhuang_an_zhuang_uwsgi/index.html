@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    316
+                    311
                 </div>
                 
 
@@ -403,31 +403,22 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Django阿里云部署详解之服务器安装安装uwsgi">Django阿里云部署详解之服务器安装安装uwsgi</h3>
-<h4 id="（本系统就是阿里云部署的）">（本系统就是阿里云部署的）</h4>
-<h4 id="大家照做就行，这我试了很多次才总结出来的">大家照做就行，这我试了很多次才总结出来的</h4>
-<h4 id="1、安装uwsgi">1、安装uwsgi</h4>
-<p>注意：<br>
-1）在系统环境安装，非虚拟环境<br>
-2）使用对应python版本安装<br>
-3）要先安装python开发包<br>
-<strong>pip install uwsgi</strong></p>
-<h4 id="2、测试-uwsgi-是否正常">2、测试 uwsgi 是否正常</h4>
-<p>vim <a target="_blank" rel="noopener" href="http://test.py">test.py</a><br>
-新建 <a target="_blank" rel="noopener" href="http://test.py">test.py</a> 文件，内容如下：</p>
+                <h3 id="Django阿里云部署详解之服务器安装安装uwsgi"><a href="#Django阿里云部署详解之服务器安装安装uwsgi" class="headerlink" title="Django阿里云部署详解之服务器安装安装uwsgi"></a>Django阿里云部署详解之服务器安装安装uwsgi</h3><h4 id="（本系统就是阿里云部署的）"><a href="#（本系统就是阿里云部署的）" class="headerlink" title="（本系统就是阿里云部署的）"></a>（本系统就是阿里云部署的）</h4><h4 id="大家照做就行，这我试了很多次才总结出来的"><a href="#大家照做就行，这我试了很多次才总结出来的" class="headerlink" title="大家照做就行，这我试了很多次才总结出来的"></a>大家照做就行，这我试了很多次才总结出来的</h4><h4 id="1、安装uwsgi"><a href="#1、安装uwsgi" class="headerlink" title="1、安装uwsgi"></a>1、安装uwsgi</h4><p>注意：<br>	1）在系统环境安装，非虚拟环境<br>	2）使用对应python版本安装<br>	3）要先安装python开发包<br><strong>pip install uwsgi</strong></p>
+<h4 id="2、测试-uwsgi-是否正常"><a href="#2、测试-uwsgi-是否正常" class="headerlink" title="2、测试 uwsgi 是否正常"></a>2、测试 uwsgi 是否正常</h4><p>vim test.py<br>新建 test.py 文件，内容如下：</p>
 <pre><code class="highlight plaintext">def application(env, start_response):
     start_response('200 OK', [('Content-Type','text/html')])
     return "Hello World"</code></pre>
+
 <p>然后在终端运行：</p>
 <pre><code class="highlight plaintext">uwsgi --wsgi-file test.py  --http :8001</code></pre>
-<p>注意：需要开启端口才可以正常访问<br>
-<strong>杀死uwsgi</strong></p>
+
+<p>注意：需要开启端口才可以正常访问<br><strong>杀死uwsgi</strong></p>
 <pre><code class="highlight plaintext">ps -aux | grep uwsgi + awk '{print $2}' | xargs kill -9</code></pre>
-<h4 id="3、可以用uwsgi的http协议访问django写的网站">3、可以用uwsgi的http协议访问django写的网站</h4>
-<p>执行如下命令可以测试自己的项目</p>
+
+<h4 id="3、可以用uwsgi的http协议访问django写的网站"><a href="#3、可以用uwsgi的http协议访问django写的网站" class="headerlink" title="3、可以用uwsgi的http协议访问django写的网站"></a>3、可以用uwsgi的http协议访问django写的网站</h4><p>执行如下命令可以测试自己的项目</p>
 <pre><code class="highlight plaintext">uwsgi --http :8001 --chdir /home/tests --home /home/test_env --module tests.wsgi:application</code></pre>
-<p><strong>mkdir tests_uwsgi</strong><br>
-<strong>tests.ini</strong></p>
+
+<p><strong>mkdir tests_uwsgi</strong><br><strong>tests.ini</strong></p>
 <pre><code class="highlight plaintext">[uwsgi]
 chdir=/home/tests    #项目地质
 home=/home/test_env  #环境地质
@@ -445,12 +436,10 @@ gid=nginx
 pidfile=/home/tests_uwsgi/master.pid
 daemonize=/home/tests_uwsgi/tests.log
 vacuum=True   #清理</code></pre>
-<p><strong>初始化ini</strong><br>
-uwsgi --ini /home/tests_uwsgi/tests.ini</p>
-<p><strong>重新运行uwsgi</strong><br>
-uwsgi --reload /home/tests_uwsgi/master.pid</p>
-<p><strong>查看uwsgi是否运行</strong><br>
-ps aux | grep uwsgi</p>
+
+<p><strong>初始化ini</strong><br>uwsgi –ini /home/tests_uwsgi/tests.ini</p>
+<p><strong>重新运行uwsgi</strong><br>uwsgi –reload /home/tests_uwsgi/master.pid</p>
+<p><strong>查看uwsgi是否运行</strong><br>ps aux | grep uwsgi</p>
 
             </div>
             <hr/>
@@ -697,11 +686,8 @@ ps aux | grep uwsgi</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            github ssh 连接失败
-$ ssh -T git@github.com
-ssh: connect to host github.com port 22: Connection timed out
-解决方法
-在.ssh下面新加conf
+                            github ssh 连接失败$ ssh -T git@github.comssh: connect to host github.com port 22: Connection timed out
+解决方法在.ssh下面新加config文
                         
                     </div>
                     <div class="publish-info">
@@ -750,10 +736,7 @@ ssh: connect to host github.com port 22: Connection timed out
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Django阿里云部署详解之服务器安装MySQL8.0系列的版本（服务器是Linux的系统）
-（本系统就是阿里云部署的）
-大家照做就行，这我试了很多次才总结出来的
-wget https://dev.mysql.com/get/mysql80
+                            Django阿里云部署详解之服务器安装MySQL8.0系列的版本（服务器是Linux的系统）（本系统就是阿里云部署的）大家照做就行，这我试了很多次才总结出来的wget https://dev.mysql.com/get/mysql80-co
                         
                     </div>
                     <div class="publish-info">
@@ -963,7 +946,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

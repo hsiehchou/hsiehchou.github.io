@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,7 +384,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    883
+                    882
                 </div>
                 
 
@@ -408,21 +408,11 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Storm练习</strong></p>
-<h3 id="一、需求">一、需求</h3>
-<p>需求：统计网站访问量(实时统计)</p>
+<h3 id="一、需求"><a href="#一、需求" class="headerlink" title="一、需求"></a>一、需求</h3><p>需求：统计网站访问量(实时统计)</p>
 <p>技术选型：特点（数据量大、做计算、实时）</p>
-<p>实时计算框架：storm<br>
-1）spout<br>
-数据源，接入数据<br>
-本地文件</p>
-<p>2）bolt<br>
-业务逻辑处理<br>
-切分数据<br>
-查到网址</p>
-<p>3）bolt<br>
-累加次数求和</p>
-<h3 id="二、代码编写">二、代码编写</h3>
-<ol>
+<p>实时计算框架：storm<br>1）spout<br>	数据源，接入数据<br>	本地文件<br>	<br>2）bolt<br>	业务逻辑处理<br>	切分数据<br>	查到网址<br>	<br>3）bolt<br>	累加次数求和
+	</p>
+<h3 id="二、代码编写"><a href="#二、代码编写" class="headerlink" title="二、代码编写"></a>二、代码编写</h3><ol>
 <li>PvCountSpout.java</li>
 </ol>
 <pre><code class="highlight plaintext">package com.hsiehchou.pvcount;
@@ -513,6 +503,7 @@ public class PvCountSpout implements IRichSpout {
 		return null;
 	}
 }</code></pre>
+
 <ol start="2">
 <li>PvCountSplitBolt.java</li>
 </ol>
@@ -576,6 +567,7 @@ public class PvCountSplitBolt implements IRichBolt {
 		return null;
 	}
 }</code></pre>
+
 <ol start="3">
 <li>PvCountBolt.java</li>
 </ol>
@@ -635,6 +627,7 @@ public class PvCountBolt implements IRichBolt {
 		return null;
 	}
 }</code></pre>
+
 <ol start="4">
 <li>PvCountDriver.java</li>
 </ol>
@@ -918,14 +911,8 @@ public class PvCountDriver {
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、Flink概述
-官网：http://flink.apache.org/
-MapReduce-&gt;MaxCompute
-HBase-&gt;部门
-QuickBI
-DataV
-Hive-&gt;高德地图
-Storm-&gt;JStorm
+                            一、Flink概述官网：http://flink.apache.org/MapReduce-&gt;MaxComputeHBase-&gt;部门QuickBIDataVHive-&gt;高德地图Storm-&gt;JStorm
+2019年1
                         
                     </div>
                     <div class="publish-info">
@@ -979,19 +966,11 @@ Storm-&gt;JStorm
                     <div class="summary block-with-text">
                         
                             一、Storm集群任务提交流程
-
 二、Storm内部通信机制
 
-
-三、集成Storm
-1、与JDBC集成
-
-
-将Storm Bolt处理的结果插入MySQL数据库中
-
-
-需要依赖的jar包
-	$STORM_HOME\external\sq
+三、集成Storm1、与JDBC集成
+   将Storm Bolt处理的结果插入MySQL数据库中
+   需要依赖的jar包	$STORM_HOME\external\sql\
                         
                     </div>
                     <div class="publish-info">
@@ -1205,7 +1184,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

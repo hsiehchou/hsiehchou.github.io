@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -411,15 +411,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、自定义分区">1、自定义分区</h4>
-<p>需求：统计结果进行分区，根据手机号前三位来进行分区<br>
-总结：<br>
-1）自定义类继承partitioner&lt;key,value&gt;<br>
-2）重写方法getPartition()<br>
-3）业务逻辑<br>
-4）在driver类中加入<br>
-setPartitionerClass<br>
-5）注意：需要指定setNumReduceTasks(个数=分区数+1)</p>
+                <h4 id="1、自定义分区"><a href="#1、自定义分区" class="headerlink" title="1、自定义分区"></a>1、自定义分区</h4><p>需求：统计结果进行分区，根据手机号前三位来进行分区<br>总结：<br>1）自定义类继承partitioner&lt;key,value&gt;<br>2）重写方法getPartition()<br>3）业务逻辑<br>4）在driver类中加入<br>setPartitionerClass<br>5）注意：需要指定setNumReduceTasks(个数=分区数+1) </p>
 <p><strong>新增PhonenumPartitioner类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.logs1;
 import org.apache.hadoop.io.Text;
@@ -447,6 +439,7 @@ public class PhonenumPartitioner extends Partitioner&lt;Text, FlowBean&gt; {
         return partitioner;
     }
 }</code></pre>
+
 <p><strong>FlowCountDriver类</strong>中增加</p>
 <pre><code class="highlight plaintext">//加入自定义分区
 job.setPartitionerClass(PhonenumPartitioner.class);
@@ -456,13 +449,10 @@ job.setNumReduceTasks(5);
 FileInputFormat.setInputPaths(job, new Path("E:/test/flow/in"));
 //8.设置数据输出的路径
 FileOutputFormat.setOutputPath(job, new Path("E:/test/flow/out2"));</code></pre>
-<h4 id="2、排序">2、排序</h4>
-<p>需求：每个分区内进行排序？<br>
-总结：<br>
-1）实现WritableComparable接口<br>
-2）重写compareTo方法</p>
+
+<h4 id="2、排序"><a href="#2、排序" class="headerlink" title="2、排序"></a>2、排序</h4><p>需求：每个分区内进行排序？<br>总结：<br>1）实现WritableComparable接口<br>2）重写compareTo方法</p>
 <p>combineTextInputFormat设置切片的大小 maptask</p>
-<p>实现</p>
+<p>实现 </p>
 <p><strong>FlowBean类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.logs2;
 import org.apache.hadoop.io.WritableComparable;
@@ -519,6 +509,7 @@ public class FlowBean implements WritableComparable&lt;FlowBean&gt; {
         return this.flowsum &gt; o.getFlowsum() ? -1:1;
     }
 }</code></pre>
+
 <p><strong>FlowSortMapper类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.logs2;
 import org.apache.hadoop.io.LongWritable;
@@ -540,6 +531,7 @@ public class FlowSortMapper extends Mapper&lt;LongWritable,Text,FlowBean,Text&gt
         context.write(new FlowBean(upFlow,dfFlow),new Text(phoneNr));
     }
 }</code></pre>
+
 <p><strong>FlowSortReducer类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.logs2;
 import org.apache.hadoop.io.Text;
@@ -552,6 +544,7 @@ public class FlowSortReducer extends Reducer&lt;FlowBean, Text, Text, FlowBean&g
         context.write(values.iterator().next(),key);
     }
 }</code></pre>
+
 <p><strong>FlowSortPartitioner类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.logs2;
 import org.apache.hadoop.io.Text;
@@ -575,6 +568,7 @@ public class FlowSortPartitioner extends Partitioner&lt;FlowBean, Text&gt; {
         return partitioner;
     }
 }</code></pre>
+
 <p><strong>FlowSortDriver类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.logs2;
 import org.apache.hadoop.conf.Configuration;
@@ -614,107 +608,87 @@ public class FlowSortDriver {
         System.exit(rs? 0:1);
     }
 }</code></pre>
-<h4 id="3、combiner-合并">3、combiner 合并</h4>
-<p>1）combiner是一个组件<br>
-注意：是Mapper和Reducer之外的一种组件<br>
-但是这个组件的父类是Reduer</p>
+
+<h4 id="3、combiner-合并"><a href="#3、combiner-合并" class="headerlink" title="3、combiner 合并"></a>3、combiner 合并</h4><p>1）combiner是一个组件<br>注意：是Mapper和Reducer之外的一种组件<br>但是这个组件的父类是Reduer</p>
 <p>2）如果想使用combiner继承Reduer即可</p>
-<p>3）通过编写combiner发现与Reducer代码相同<br>
-只需在Driver端指定<br>
-setCombinerClass(WordCountReduer.class)<br>
-注意：前提是不能影响业务逻辑&lt;a,1&gt;&lt;c,1&gt; &lt;a,2&gt;&lt;a,1&gt; = &lt;a,3&gt;<br>
-数学运算：<br>
-(3 + 5 + 7)/3 = 5<br>
-(2 + 6)/2 = 4<br>
-不进行局部累加：（3 + 5 + 7 + 2 + 6）/5 = 23/5<br>
-进行了局部累加：（5+4）/2 = 9/2=4.5 不等于 23/5=4.6</p>
-<h4 id="4、数据压缩">4、数据压缩</h4>
-<p>为什么对数据进行压缩？<br>
-MapReduce操作需要对大量数据进行传输<br>
-压缩技术有效的减少底层存储系统读写字节数，HDFS<br>
-压缩提高网络带宽和磁盘空间效率<br>
-数据压缩节省资源，减少网络I/O</p>
+<p>3）通过编写combiner发现与Reducer代码相同<br>只需在Driver端指定<br>setCombinerClass(WordCountReduer.class)<br>注意：前提是不能影响业务逻辑&lt;a,1&gt;&lt;c,1&gt; &lt;a,2&gt;&lt;a,1&gt; = &lt;a,3&gt;<br>数学运算：<br>(3 + 5 + 7)/3 = 5<br>(2 + 6)/2 = 4<br>不进行局部累加：（3 + 5 + 7 + 2 + 6）/5 = 23/5<br>进行了局部累加：（5+4）/2 = 9/2=4.5 不等于 23/5=4.6</p>
+<h4 id="4、数据压缩"><a href="#4、数据压缩" class="headerlink" title="4、数据压缩"></a>4、数据压缩</h4><p>为什么对数据进行压缩？<br>MapReduce操作需要对大量数据进行传输<br>压缩技术有效的减少底层存储系统读写字节数，HDFS<br>压缩提高网络带宽和磁盘空间效率<br>数据压缩节省资源，减少网络I/O</p>
 <p>通过压缩可以影响到MapReduce性能。(小文件优化，combiner)代码角度进行优化</p>
-<p>注意：利用好压缩提高性能，运用不好会降低性能<br>
-压缩 -》 解压缩</p>
+<p>注意：利用好压缩提高性能，运用不好会降低性能<br>压缩 -》 解压缩 </p>
 <p><strong>mapreduce常用的压缩编码</strong></p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">压缩格式</th>
-<th style="text-align:center">是否需要安装</th>
-<th style="text-align:center">文件拓展名</th>
-<th style="text-align:center">是否可以切分</th>
+<th align="center">压缩格式</th>
+<th align="center">是否需要安装</th>
+<th align="center">文件拓展名</th>
+<th align="center">是否可以切分</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">DEFAULT</td>
-<td style="text-align:center">直接使用</td>
-<td style="text-align:center">.deflate</td>
-<td style="text-align:center">否</td>
+<tbody><tr>
+<td align="center">DEFAULT</td>
+<td align="center">直接使用</td>
+<td align="center">.deflate</td>
+<td align="center">否</td>
 </tr>
 <tr>
-<td style="text-align:center">bzip2</td>
-<td style="text-align:center">直接使用</td>
-<td style="text-align:center">.bz2</td>
-<td style="text-align:center">是</td>
+<td align="center">bzip2</td>
+<td align="center">直接使用</td>
+<td align="center">.bz2</td>
+<td align="center">是</td>
 </tr>
 <tr>
-<td style="text-align:center">Gzip</td>
-<td style="text-align:center">直接使用</td>
-<td style="text-align:center">.gz</td>
-<td style="text-align:center">否</td>
+<td align="center">Gzip</td>
+<td align="center">直接使用</td>
+<td align="center">.gz</td>
+<td align="center">否</td>
 </tr>
 <tr>
-<td style="text-align:center">LZO</td>
-<td style="text-align:center">需要安装</td>
-<td style="text-align:center">.lzo</td>
-<td style="text-align:center">是</td>
+<td align="center">LZO</td>
+<td align="center">需要安装</td>
+<td align="center">.lzo</td>
+<td align="center">是</td>
 </tr>
 <tr>
-<td style="text-align:center">Snappy</td>
-<td style="text-align:center">需要安装</td>
-<td style="text-align:center">.snappy</td>
-<td style="text-align:center">否</td>
+<td align="center">Snappy</td>
+<td align="center">需要安装</td>
+<td align="center">.snappy</td>
+<td align="center">否</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>性能测试</strong></p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">压缩格式</th>
-<th style="text-align:center">原文件大小</th>
-<th style="text-align:center">压缩后大小</th>
-<th style="text-align:center">压缩速度</th>
-<th style="text-align:center">解压速度</th>
+<th align="center">压缩格式</th>
+<th align="center">原文件大小</th>
+<th align="center">压缩后大小</th>
+<th align="center">压缩速度</th>
+<th align="center">解压速度</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">gzip</td>
-<td style="text-align:center">8.3GB</td>
-<td style="text-align:center">1.8GB</td>
-<td style="text-align:center">20MB/s</td>
-<td style="text-align:center">60MB/s</td>
+<tbody><tr>
+<td align="center">gzip</td>
+<td align="center">8.3GB</td>
+<td align="center">1.8GB</td>
+<td align="center">20MB/s</td>
+<td align="center">60MB/s</td>
 </tr>
 <tr>
-<td style="text-align:center">LZO</td>
-<td style="text-align:center">8.3GB</td>
-<td style="text-align:center">3GB</td>
-<td style="text-align:center">50MB/s</td>
-<td style="text-align:center">70MB/s</td>
+<td align="center">LZO</td>
+<td align="center">8.3GB</td>
+<td align="center">3GB</td>
+<td align="center">50MB/s</td>
+<td align="center">70MB/s</td>
 </tr>
 <tr>
-<td style="text-align:center">bzip2</td>
-<td style="text-align:center">8.3GB</td>
-<td style="text-align:center">1.1GB</td>
-<td style="text-align:center">3MB/s</td>
-<td style="text-align:center">10MB/s</td>
+<td align="center">bzip2</td>
+<td align="center">8.3GB</td>
+<td align="center">1.1GB</td>
+<td align="center">3MB/s</td>
+<td align="center">10MB/s</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 
             </div>
             <hr/>
@@ -972,11 +946,9 @@ MapReduce操作需要对大量数据进行传输<br>
                             1、数据压缩发生阶段
 
 
-
 端
 操作
 Col3
-
 
 
 
@@ -1006,6 +978,8 @@ reduce端输出压缩
 
 
 结果数据
+
+
 
                         
                     </div>
@@ -1059,10 +1033,8 @@ reduce端输出压缩
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            手写wordcount的程序
-1、pom.xml
-&lt;dependencies&gt;
-  &lt;!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs
+                            手写wordcount的程序1、pom.xml&lt;dependencies&gt;
+  &lt;!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs-c
                         
                     </div>
                     <div class="publish-info">
@@ -1280,7 +1252,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

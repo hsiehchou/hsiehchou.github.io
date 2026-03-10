@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    895
+                    894
                 </div>
                 
 
@@ -403,51 +403,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、位运算符">1、位运算符</h4>
-<p>主要针对二进制数。 只有 0 1 两种形态。加快运行速度<br>
-&amp;：位与 两个数同时为1 则为1 否则为0<br>
-|：位或 两个数中有一个为1 则为1 否则为0<br>
-^: 异或 相同为0 不同为1</p>
-<p>: 右移运算符 代表位数向右移动<br>
-&lt;&lt;:左移运算符 代表位数向左移动</p>
-<p>: 无符号右移<br>
-移动位数很多时，其实按数据的实际有效位数例如 32位，移动位数100%最大位数32 肯定是在32位之内</p>
-<h4 id="2、三元运算符">2、三元运算符</h4>
-<p>布尔表达式？结果1：结果2<br>
-如果布尔表达式的结果为 true ，进行结果1<br>
-如果布尔表达式的结果为 false ，进行结果2</p>
-<h4 id="3、转义运算符">3、转义运算符</h4>
-<p>字符并不是你看起来的那个样子，转义了<br>
-a、八进制转义<br>
-+用1-3位的8进制数字，范围‘000’-‘377’<br>
-例如： \0;<br>
-b、unicode 转义字符<br>
-\u+ 4位十六进制数字：0-65535<br>
-\u0000<br>
-c、特殊字符<br>
-\”：表示双引号<br>
-\’:单引号<br>
-:反斜线<br>
-d、控制字符<br>
-\r :回车<br>
-\n: 换行<br>
-\t: tab<br>
-\b:退格</p>
+                <h4 id="1、位运算符"><a href="#1、位运算符" class="headerlink" title="1、位运算符"></a>1、位运算符</h4><p>主要针对二进制数。 只有 0 1 两种形态。加快运行速度<br>&amp;：位与 两个数同时为1 则为1 否则为0<br>|：位或 两个数中有一个为1 则为1 否则为0<br>^: 异或 相同为0 不同为1</p>
+<p>: 右移运算符 代表位数向右移动<br>&lt;&lt;:左移运算符 代表位数向左移动</p>
+<p>: 无符号右移<br>移动位数很多时，其实按数据的实际有效位数例如 32位，移动位数100%最大位数32 肯定是在32位之内</p>
+<h4 id="2、三元运算符"><a href="#2、三元运算符" class="headerlink" title="2、三元运算符"></a>2、三元运算符</h4><p>布尔表达式？结果1：结果2<br>如果布尔表达式的结果为 true ，进行结果1<br>如果布尔表达式的结果为 false ，进行结果2</p>
+<h4 id="3、转义运算符"><a href="#3、转义运算符" class="headerlink" title="3、转义运算符"></a>3、转义运算符</h4><p>字符并不是你看起来的那个样子，转义了<br>a、八进制转义<br>+用1-3位的8进制数字，范围‘000’-‘377’<br>例如： \0;<br>b、unicode 转义字符<br>\u+ 4位十六进制数字：0-65535<br>\u0000<br>c、特殊字符<br>\”：表示双引号<br>\’:单引号<br>:反斜线<br>d、控制字符<br>\r :回车<br>\n: 换行<br>\t: tab<br>\b:退格</p>
 <p>程序控制语句（顺序 条件 循环）</p>
-<h4 id="4、-if-条件语句">4、 if 条件语句</h4>
-<p>只要满足某种条件就处理，不完全是 顺序结构，可以跳着执行<br>
-（1） if （条件语句）{<br>
-—建议将{ 起始位置写在 if条件之后 便于知道 if语句的范围<br>
-执行语句；<br>
-}<br>
-if else 如果满足条件，我将如何做，否则我该如何做<br>
-（2） if(条件语句){</p>
+<h4 id="4、-if-条件语句"><a href="#4、-if-条件语句" class="headerlink" title="4、 if 条件语句"></a>4、 if 条件语句</h4><p>只要满足某种条件就处理，不完全是 顺序结构，可以跳着执行<br>（1） if （条件语句）{<br>—建议将{ 起始位置写在 if条件之后 便于知道 if语句的范围<br>执行语句；<br>}<br>if else 如果满足条件，我将如何做，否则我该如何做<br>（2） if(条件语句){ </p>
 <pre><code class="highlight plaintext">if(条件语句){ 
 	执行语句1； 
 }else{ 
 	执行语句2； 
 }</code></pre>
-<p>（3） if…else if（多个）… else</p>
+
+<p>（3） if..else if（多个）.. else </p>
 <pre><code class="highlight plaintext">if(1){ 
 	学习； 
 }else if(2){ 
@@ -457,8 +426,8 @@ if else 如果满足条件，我将如何做，否则我该如何做<br>
 }else{ 
 	睡觉
 }</code></pre>
-<h4 id="5、-switch-条件语句">5、 switch 条件语句</h4>
-<p>形式如下：与 if else if else 很类似</p>
+
+<h4 id="5、-switch-条件语句"><a href="#5、-switch-条件语句" class="headerlink" title="5、 switch 条件语句"></a>5、 switch 条件语句</h4><p>形式如下：与 if else if else 很类似 </p>
 <pre><code class="highlight plaintext">switch （条件表达式）{ 
 	case 值1： 
 	语句1； 
@@ -471,44 +440,20 @@ if else 如果满足条件，我将如何做，否则我该如何做<br>
 	语句n； 
 	break ； 
 }</code></pre>
-<h4 id="6、-for-循环语句—使用非常广泛">6、 for 循环语句—使用非常广泛</h4>
-<p>（1）单层 for 循环语句<br>
-for(表达式1；表达式2；表达式3){<br>
-循环体。//就是表示此部分语句需要执行多次。 回旋 跑圈<br>
-}<br>
-表达式1：主要是赋一个初始化值， 循环变量的最开始值；<br>
-表达式2：用来判断 循环变量的值 是否达到 临界值<br>
-表达式3：主要用来实现 循环变量的增加或减少<br>
-执行顺序：表达式1 表达式2 循环体 表达式3 表达式2 循环体 表达式3 表达式2 循环体<br>
-{}–注意 循环体的花括号 可以省略 但是是针对循环体内只有一条语句的情况。<br>
-(2)嵌套for循环–》在for循环体里面又至少写了一层for循环</p>
+
+<h4 id="6、-for-循环语句—使用非常广泛"><a href="#6、-for-循环语句—使用非常广泛" class="headerlink" title="6、 for 循环语句—使用非常广泛"></a>6、 for 循环语句—使用非常广泛</h4><p>（1）单层 for 循环语句<br>for(表达式1；表达式2；表达式3){<br>循环体。//就是表示此部分语句需要执行多次。 回旋 跑圈<br>}<br>表达式1：主要是赋一个初始化值， 循环变量的最开始值；<br>表达式2：用来判断 循环变量的值 是否达到 临界值<br>表达式3：主要用来实现 循环变量的增加或减少<br>执行顺序：表达式1 表达式2 循环体 表达式3 表达式2 循环体 表达式3 表达式2 循环体<br>{}–注意 循环体的花括号 可以省略 但是是针对循环体内只有一条语句的情况。<br>(2)嵌套for循环–》在for循环体里面又至少写了一层for循环 </p>
 <pre><code class="highlight plaintext">for(;;){ 
 	for(;;){ 
 	…. 
 	} 
 }</code></pre>
-<h4 id="7、-while-循环语句">7、 while 循环语句</h4>
-<p>while(条件表达式){<br>
-循环体；<br>
-}<br>
-注意 ：条件表达式 一定要注意终止和结束 出现死循环</p>
-<h4 id="8、-do-while-循环语句">8、 do while 循环语句</h4>
-<p>do{</p>
-<p>}while(条件表达式)<br>
-区别： do while 是先执行后判断，至少执行一次<br>
-while 循环 是先判断后执行</p>
-<h4 id="9、-break-中止语句">9、 break 中止语句</h4>
-<p>应用：循环体 + 条件语句 switch case<br>
-（1）针对单层循环结构，表示退出循环<br>
-（2）针对嵌套循环，表示退出当前的循环<br>
-（3）switch 条件语句 表示中止 条件语句</p>
-<h4 id="10、-continue-语句">10、 continue 语句</h4>
-<p>继续。循环语句里面 使用 continue，并不是中止循环体</p>
-<h4 id="11、-return-语句">11、 return 语句</h4>
-<p>return 的作用主要是<br>
-（1）用来返回方法的指定类型值<br>
-（2）结束方法的执行<br>
-都能中止方法的运行</p>
+
+<h4 id="7、-while-循环语句"><a href="#7、-while-循环语句" class="headerlink" title="7、 while 循环语句"></a>7、 while 循环语句</h4><p>while(条件表达式){<br>    循环体；<br>}<br>注意 ：条件表达式 一定要注意终止和结束 出现死循环 </p>
+<h4 id="8、-do-while-循环语句"><a href="#8、-do-while-循环语句" class="headerlink" title="8、 do while 循环语句"></a>8、 do while 循环语句</h4><p>do{</p>
+<p>}while(条件表达式)<br>区别： do while 是先执行后判断，至少执行一次<br>while 循环 是先判断后执行</p>
+<h4 id="9、-break-中止语句"><a href="#9、-break-中止语句" class="headerlink" title="9、 break 中止语句"></a>9、 break 中止语句</h4><p>应用：循环体 + 条件语句 switch case<br>（1）针对单层循环结构，表示退出循环<br>（2）针对嵌套循环，表示退出当前的循环<br>（3）switch 条件语句 表示中止 条件语句</p>
+<h4 id="10、-continue-语句"><a href="#10、-continue-语句" class="headerlink" title="10、 continue 语句"></a>10、 continue 语句</h4><p>继续。循环语句里面 使用 continue，并不是中止循环体</p>
+<h4 id="11、-return-语句"><a href="#11、-return-语句" class="headerlink" title="11、 return 语句"></a>11、 return 语句</h4><p>return 的作用主要是<br>（1）用来返回方法的指定类型值<br>（2）结束方法的执行<br>都能中止方法的运行</p>
 
             </div>
             <hr/>
@@ -755,13 +700,7 @@ while 循环 是先判断后执行</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、数组概述
-数组是相同数据类型的一组数据集合。 4类8种基本数据类型
-数组有索引–代表不同的数值
-football[7]–&gt;C罗
-Basketball[23]–&gt;乔丹
-不同的球队 可以看成不同的数组
-同一个球队里面 每个球员的
+                            1、数组概述数组是相同数据类型的一组数据集合。 4类8种基本数据类型数组有索引–代表不同的数值football[7]–&gt;C罗Basketball[23]–&gt;乔丹不同的球队 可以看成不同的数组同一个球队里面 每个球员的编号 唯一数
                         
                     </div>
                     <div class="publish-info">
@@ -810,12 +749,7 @@ Basketball[23]–&gt;乔丹
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、数据类型的转换
-主要是指的 不同的数据类型之间进行转换
-（1）自动类型转换
-范围小的数据类型值，转换为范围大的数据类型的值
-例如 byte int 自动 byte 转换为 int
-byte-&gt;short-&gt;int-&gt;l
+                            1、数据类型的转换主要是指的 不同的数据类型之间进行转换（1）自动类型转换范围小的数据类型值，转换为范围大的数据类型的值例如 byte int 自动 byte 转换为 intbyte-&gt;short-&gt;int-&gt;long-&
                         
                     </div>
                     <div class="publish-info">
@@ -1025,7 +959,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

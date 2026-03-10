@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,7 +384,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.7k
+                    8.6k
                 </div>
                 
 
@@ -407,214 +407,86 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>离线部分</strong><br>
-Hadoop-&gt;离线计算(hdfs / mapreduce) yarn<br>
-zookeeper-&gt;分布式协调（动物管理员）<br>
-hive-&gt;数据仓库（离线计算 / sql）easy coding<br>
-flume-&gt;数据采集<br>
-sqoop-&gt;数据迁移mysql-&gt;hdfs/hive hdfs/hive-&gt;mysql<br>
-Azkaban-&gt;任务调度工具<br>
-hbase-&gt;数据库（nosql）列式存储 读写速度</p>
-<p><strong>实时</strong><br>
-kafka<br>
-storm</p>
-<h3 id="一、Kafka是什么">一、Kafka是什么</h3>
-<p>kafka一般用来缓存数据</p>
-<h4 id="1、开源消息系统">1、开源消息系统</h4>
-<h4 id="2、最初是LinkedIn公司开发，2011年开源">2、最初是LinkedIn公司开发，2011年开源</h4>
-<p>2012年10月从Apache Incubator毕业</p>
+                <p><strong>离线部分</strong><br>Hadoop-&gt;离线计算(hdfs / mapreduce) yarn<br>zookeeper-&gt;分布式协调（动物管理员）<br>hive-&gt;数据仓库（离线计算 / sql）easy coding<br>flume-&gt;数据采集<br>sqoop-&gt;数据迁移mysql-&gt;hdfs/hive hdfs/hive-&gt;mysql<br>Azkaban-&gt;任务调度工具<br>hbase-&gt;数据库（nosql）列式存储 读写速度</p>
+<p><strong>实时</strong><br>kafka<br>storm</p>
+<h3 id="一、Kafka是什么"><a href="#一、Kafka是什么" class="headerlink" title="一、Kafka是什么"></a>一、Kafka是什么</h3><p>kafka一般用来缓存数据</p>
+<h4 id="1、开源消息系统"><a href="#1、开源消息系统" class="headerlink" title="1、开源消息系统"></a>1、开源消息系统</h4><h4 id="2、最初是LinkedIn公司开发，2011年开源"><a href="#2、最初是LinkedIn公司开发，2011年开源" class="headerlink" title="2、最初是LinkedIn公司开发，2011年开源"></a>2、最初是LinkedIn公司开发，2011年开源</h4><p>2012年10月从Apache Incubator毕业</p>
 <p>项目目标是为处理实时数据，提供一个统一、高通量、低等待的平台</p>
-<h4 id="3、Kafka是一个分布式消息队列">3、Kafka是一个分布式消息队列</h4>
-<p>消息根据Topic来归类，发送消息 Producer，接收 Consumer</p>
+<h4 id="3、Kafka是一个分布式消息队列"><a href="#3、Kafka是一个分布式消息队列" class="headerlink" title="3、Kafka是一个分布式消息队列"></a>3、Kafka是一个分布式消息队列</h4><p>消息根据Topic来归类，发送消息 Producer，接收 Consumer</p>
 <p>kafka集群有多个kafka实例组成，每个实例成为broker</p>
-<h4 id="4、依赖于-Zookeeper-集群">4、依赖于 Zookeeper 集群</h4>
-<p>无论是kafka集群，还是 Producer、Consumer 都依赖于 Zookeeper 集群保存元信息，来保证系统可用性</p>
+<h4 id="4、依赖于-Zookeeper-集群"><a href="#4、依赖于-Zookeeper-集群" class="headerlink" title="4、依赖于 Zookeeper 集群"></a>4、依赖于 Zookeeper 集群</h4><p>无论是kafka集群，还是 Producer、Consumer 都依赖于 Zookeeper 集群保存元信息，来保证系统可用性</p>
 <p><img src="/medias/kafka%E4%BB%8B%E7%BB%8D.PNG" alt="kafka介绍"></p>
-<p><strong>官网</strong><br>
-<a target="_blank" rel="noopener" href="http://kafka.apache.org/">http://kafka.apache.org/</a><br>
-ApacheKafka?是一个分布式流媒体平台<br>
-流媒体平台有三个关键功能：</p>
+<p><strong>官网</strong><br><a target="_blank" rel="noopener" href="http://kafka.apache.org/">http://kafka.apache.org/</a><br>ApacheKafka?是一个分布式流媒体平台<br>流媒体平台有三个关键功能：</p>
 <ol>
 <li>发布和订阅记录流，类似于消息队列或企业消息传递系统</li>
 <li>以容错的持久方式存储记录流</li>
 <li>记录发生时处理流</li>
 </ol>
-<p>Kafka通常用于两大类应用：<br>
-构建可在系统或应用程序之间可靠获取数据的实时流数据管道<br>
-构建转换或响应数据流的实时流应用程序</p>
+<p>Kafka通常用于两大类应用：<br>构建可在系统或应用程序之间可靠获取数据的实时流数据管道<br>构建转换或响应数据流的实时流应用程序</p>
 <p>kafka在流计算中，kafka主要功能是用来缓存数据，storm可以通过消费kafka中的数据进行流计算，是一套开源的消息系统，由scala写成，支持javaAPI。</p>
 <p>kafka最初由LinkedIn公司开发，2011年开源，2012年从Apache毕业，是一个分布式消息队列，kafka读消息保存采用Topic进行归类</p>
-<h3 id="二、消息队列">二、消息队列</h3>
-<p>点对点<br>
-发布、订阅模式</p>
-<p><strong>角色</strong><br>
-发送消息：Producer(生产者)<br>
-接收消息：Consumer(消费者)</p>
-<h3 id="三、为什么需要消息队列">三、为什么需要消息队列</h3>
-<h4 id="1、解耦">1、解耦</h4>
-<p>为了避免出现问题</p>
-<h4 id="2、冗余">2、冗余</h4>
-<p>消息队列把数据进行持久化，直到他们已经被完全处理</p>
-<h4 id="3、扩展性（拓展性）">3、扩展性（拓展性）</h4>
-<p>可增加处理过程</p>
-<h4 id="4、灵活性">4、灵活性</h4>
-<p>面对访问量剧增，不会因为超负荷请求而完全瘫痪</p>
-<h4 id="5、可恢复性">5、可恢复性</h4>
-<p>一部分组件失效，不会影响整个系统。可以进行恢复</p>
-<h4 id="6、顺序保证（相对）">6、顺序保证（相对）</h4>
-<p>kafka保证一个Partition内部的消息有序，对消息进行有序处理</p>
-<h4 id="7、缓冲">7、缓冲</h4>
-<p>控制数据流经过系统的速度</p>
-<h4 id="8、异步通信">8、异步通信</h4>
-<p>akka，消息队列提供了异步处理的机制</p>
+<h3 id="二、消息队列"><a href="#二、消息队列" class="headerlink" title="二、消息队列"></a>二、消息队列</h3><p>点对点<br>发布、订阅模式</p>
+<p><strong>角色</strong><br>发送消息：Producer(生产者)<br>接收消息：Consumer(消费者)</p>
+<h3 id="三、为什么需要消息队列"><a href="#三、为什么需要消息队列" class="headerlink" title="三、为什么需要消息队列"></a>三、为什么需要消息队列</h3><h4 id="1、解耦"><a href="#1、解耦" class="headerlink" title="1、解耦"></a>1、解耦</h4><p>为了避免出现问题</p>
+<h4 id="2、冗余"><a href="#2、冗余" class="headerlink" title="2、冗余"></a>2、冗余</h4><p>消息队列把数据进行持久化，直到他们已经被完全处理</p>
+<h4 id="3、扩展性（拓展性）"><a href="#3、扩展性（拓展性）" class="headerlink" title="3、扩展性（拓展性）"></a>3、扩展性（拓展性）</h4><p>可增加处理过程</p>
+<h4 id="4、灵活性"><a href="#4、灵活性" class="headerlink" title="4、灵活性"></a>4、灵活性</h4><p>面对访问量剧增，不会因为超负荷请求而完全瘫痪</p>
+<h4 id="5、可恢复性"><a href="#5、可恢复性" class="headerlink" title="5、可恢复性"></a>5、可恢复性</h4><p>一部分组件失效，不会影响整个系统。可以进行恢复</p>
+<h4 id="6、顺序保证（相对）"><a href="#6、顺序保证（相对）" class="headerlink" title="6、顺序保证（相对）"></a>6、顺序保证（相对）</h4><p>kafka保证一个Partition内部的消息有序，对消息进行有序处理</p>
+<h4 id="7、缓冲"><a href="#7、缓冲" class="headerlink" title="7、缓冲"></a>7、缓冲</h4><p>控制数据流经过系统的速度</p>
+<h4 id="8、异步通信"><a href="#8、异步通信" class="headerlink" title="8、异步通信"></a>8、异步通信</h4><p>akka，消息队列提供了异步处理的机制</p>
 <p>很多时候，用户不想也不需要立即处理消息，消息队列提供异步处理机制，允许用户把消息放入队列，但不立即处理</p>
-<h3 id="四、Kafka架构">四、Kafka架构</h3>
-<p><img src="/medias/kafka%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.PNG" alt="kafka系统架构"></p>
-<h4 id="1、Producer：消息生产者">1、Producer：消息生产者</h4>
-<p>就是往kafka中发消息的客户端</p>
-<h4 id="2、Consumer：消息消费者">2、Consumer：消息消费者</h4>
-<p>向kafka broker中取消息的客户端</p>
-<h4 id="3、Topic-理解为队列">3、Topic 理解为队列</h4>
-<h4 id="4、Consumer-Group-消费者组">4、Consumer Group 消费者组</h4>
-<p>组内有多个消费者实例，共享一个公共的ID，即groupID<br>
-组内所有消费者协调在一起，消费Topic<br>
-每个分区，只能有同一个消费组内的一个Consumer消费</p>
-<h4 id="5、broker">5、broker</h4>
-<p>一台kafka服务器就是一个broker</p>
-<h4 id="6、partition：一个topic分为多个partition">6、partition：一个topic分为多个partition</h4>
-<p>每个partition是一个有序队列<br>
-kafka保证按一个partition中的顺序将消息发送个consumer<br>
-不能保证topic整体有序</p>
-<h4 id="7、offset：Kafka存储文件按照offset-kafka命名">7、offset：Kafka存储文件按照offset.kafka命名</h4>
-<p><img src="/medias/kafka%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B%E5%9B%BE.PNG" alt="kafka读写流程图"></p>
-<h3 id="五、Kafka部署">五、Kafka部署</h3>
-<p>前提：Zookeeper</p>
-<p>官网下载安装包<br>
-<a target="_blank" rel="noopener" href="http://kafka.apache.org/downloads">http://kafka.apache.org/downloads</a></p>
+<h3 id="四、Kafka架构"><a href="#四、Kafka架构" class="headerlink" title="四、Kafka架构"></a>四、Kafka架构</h3><p><img src="/medias/kafka%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.PNG" alt="kafka系统架构"></p>
+<h4 id="1、Producer：消息生产者"><a href="#1、Producer：消息生产者" class="headerlink" title="1、Producer：消息生产者"></a>1、Producer：消息生产者</h4><p>就是往kafka中发消息的客户端</p>
+<h4 id="2、Consumer：消息消费者"><a href="#2、Consumer：消息消费者" class="headerlink" title="2、Consumer：消息消费者"></a>2、Consumer：消息消费者</h4><p>向kafka broker中取消息的客户端</p>
+<h4 id="3、Topic-理解为队列"><a href="#3、Topic-理解为队列" class="headerlink" title="3、Topic 理解为队列"></a>3、Topic 理解为队列</h4><h4 id="4、Consumer-Group-消费者组"><a href="#4、Consumer-Group-消费者组" class="headerlink" title="4、Consumer Group 消费者组"></a>4、Consumer Group 消费者组</h4><p>组内有多个消费者实例，共享一个公共的ID，即groupID<br>组内所有消费者协调在一起，消费Topic<br>每个分区，只能有同一个消费组内的一个Consumer消费</p>
+<h4 id="5、broker"><a href="#5、broker" class="headerlink" title="5、broker"></a>5、broker</h4><p>一台kafka服务器就是一个broker</p>
+<h4 id="6、partition：一个topic分为多个partition"><a href="#6、partition：一个topic分为多个partition" class="headerlink" title="6、partition：一个topic分为多个partition"></a>6、partition：一个topic分为多个partition</h4><p>每个partition是一个有序队列<br>kafka保证按一个partition中的顺序将消息发送个consumer<br>不能保证topic整体有序</p>
+<h4 id="7、offset：Kafka存储文件按照offset-kafka命名"><a href="#7、offset：Kafka存储文件按照offset-kafka命名" class="headerlink" title="7、offset：Kafka存储文件按照offset.kafka命名"></a>7、offset：Kafka存储文件按照offset.kafka命名</h4><p><img src="/medias/kafka%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B%E5%9B%BE.PNG" alt="kafka读写流程图"></p>
+<h3 id="五、Kafka部署"><a href="#五、Kafka部署" class="headerlink" title="五、Kafka部署"></a>五、Kafka部署</h3><p>前提：Zookeeper</p>
+<p>官网下载安装包<br><a target="_blank" rel="noopener" href="http://kafka.apache.org/downloads">http://kafka.apache.org/downloads</a></p>
 <p>上传tar</p>
-<p>解压<br>
-[root@hsiehchou121 hd]# tar -zxvf kafka_2.11-2.1.1.tgz</p>
+<p>解压<br>[root@hsiehchou121 hd]# tar -zxvf kafka_2.11-2.1.1.tgz </p>
 <p>[root@hsiehchou121 hd]# mv kafka_2.11-2.1.1 kafka</p>
-<p>在kafka目录中，创建一个logs文件夹<br>
-[root@hsiehchou121 kafka]# mkdir logs</p>
+<p>在kafka目录中，创建一个logs文件夹<br>[root@hsiehchou121 kafka]# mkdir logs</p>
 <p>如果不创建，默认放在 /tmp 目录下</p>
-<p><strong>修改文件</strong><br>
-<strong>config/server.properties</strong><br>
-21 broker.id=0<br>
-broker 的 全局唯一编号，不能重复</p>
-<p>新增<br>
-22 delete.topic.enable=true<br>
-允许删除topic</p>
-<p><code>#</code>The number of threads that the server uses for receiving requests from the network and sending responses to the network<br>
-42 num.network.threads=3<br>
-处理网络请求的线程数量</p>
-<p><code>#</code>The number of threads that the server uses for processing requests, which may include disk I/O<br>
-46 num.io.threads=8<br>
-用来处理磁盘IO的线程数量</p>
-<p><code>#</code>A comma separated list of directories under which to store log files<br>
-62 log.dirs=/root/hd/kafka/logs<br>
-kafka运行日志存放的路径</p>
-<p><code>#</code> The default number of log partitions per topic. More partitions allow greater<br>
-<code>#</code>parallelism for consumption, but this will also result in more files across<br>
-<code>#</code> the brokers.<br>
-67 num.partitions=1<br>
-当前主题在broker上的分区个数</p>
-<p><code>#</code>· The number of threads per data directory to be used for log recovery at start        up and flushing at shutdown.<br>
-<code>#</code> This value is recommended to be increased for installations with data dirs lo        cated in RAID array.<br>
-71 num.recovery.threads.per.data.dir=1<br>
-恢复和清理data下的线程数量</p>
-<p>125 zookeeper.connect=hsiehchou121:2181,hsiehchou122:2181,hsiehchou123:2181<br>
-zookeeper相关信息</p>
-<p><code>#</code> Timeout in ms for connecting to zookeeper<br>
-128 zookeeper.connection.timeout.ms=6000<br>
-zookeeper连接超时的时间</p>
-<p>添加全局环境变量，以便于在任何地方都可以启动<br>
-[root@hsiehchou121 config]# vi /etc/profile<br>
-<code>#</code>kafka_home<br>
-export KAFKA_HOME=/root/hd/kafka<br>
-export PATH=<code>$KAFKA_HOME/bin:$PATH</code></p>
+<p><strong>修改文件</strong><br><strong>config/server.properties</strong><br>21 broker.id=0<br>broker 的 全局唯一编号，不能重复</p>
+<p>新增<br>22 delete.topic.enable=true<br>允许删除topic</p>
+<p><code>#</code>The number of threads that the server uses for receiving requests from the network and sending responses to the network<br>42 num.network.threads=3<br>处理网络请求的线程数量</p>
+<p><code>#</code>The number of threads that the server uses for processing requests, which may include disk I/O<br>46 num.io.threads=8<br>用来处理磁盘IO的线程数量</p>
+<p><code>#</code>A comma separated list of directories under which to store log files<br>62 log.dirs=/root/hd/kafka/logs<br>kafka运行日志存放的路径</p>
+<p><code>#</code> The default number of log partitions per topic. More partitions allow greater<br><code>#</code>parallelism for consumption, but this will also result in more files across<br><code>#</code> the brokers.<br>67 num.partitions=1<br>当前主题在broker上的分区个数</p>
+<p><code>#</code>· The number of threads per data directory to be used for log recovery at start        up and flushing at shutdown.<br><code>#</code> This value is recommended to be increased for installations with data dirs lo        cated in RAID array.<br> 71 num.recovery.threads.per.data.dir=1<br>恢复和清理data下的线程数量</p>
+<p>125 zookeeper.connect=hsiehchou121:2181,hsiehchou122:2181,hsiehchou123:2181<br>zookeeper相关信息</p>
+<p><code>#</code> Timeout in ms for connecting to zookeeper<br>128 zookeeper.connection.timeout.ms=6000<br>zookeeper连接超时的时间</p>
+<p>添加全局环境变量，以便于在任何地方都可以启动<br>[root@hsiehchou121 config]# vi /etc/profile<br><code>#</code>kafka_home<br>export KAFKA_HOME=/root/hd/kafka<br>export PATH=<code>$KAFKA_HOME/bin:$PATH</code></p>
 <p>[root@hsiehchou121 config]# source /etc/profile</p>
-<p>分发安装包<br>
-注意：要修改配置文件中 borker.id的值<br>
-broker id 不得重复<br>
-21 broker.id=0 ---- hsiehchou121<br>
-21 broker.id=1 ---- hsiehchou122<br>
-21 broker.id=2 ---- hsiehchou123</p>
-<p><strong>启动kafka集群</strong><br>
-首先需要先启动zookeeper<br>
-<a target="_blank" rel="noopener" href="http://zkServer.sh">zkServer.sh</a> start<br>
-[root@hsiehchou121 kafka]# <a target="_blank" rel="noopener" href="http://zkServer.sh">zkServer.sh</a> start<br>
-[root@hsiehchou122 kafka]# <a target="_blank" rel="noopener" href="http://zkServer.sh">zkServer.sh</a> start<br>
-[root@hsiehchou123 kafka]# <a target="_blank" rel="noopener" href="http://zkServer.sh">zkServer.sh</a> start</p>
-<p>（<strong>必须先启动！！！！！！！！！</strong>）<br>
-./bin/kafka-server-start.sh config/server.properties &amp;<br>
-<strong>&amp;====后台运行</strong><br>
-[root@hsiehchou121 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;<br>
-[root@hsiehchou122 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;<br>
-[root@hsiehchou123 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;</p>
-<p>jps命令可以看Kafka进程<br>
-[root@hsiehchou121 kafka]# jps<br>
-7104 Jps<br>
-6742 Kafka<br>
-6715 QuorumPeerMain</p>
-<p>关闭命令：<br>
-./bin/kafka-server-stop.sh stop<br>
-或者./bin/kafka-server-stop.sh</p>
-<h3 id="六、Kafka命令行操作">六、Kafka命令行操作</h3>
-<h4 id="1、查看当前服务器中所有的topic">1、查看当前服务器中所有的topic</h4>
-<p>[root@hsiehchou121 kafka]# ./bin/kafka-topics.sh <code>--zookeeper</code> hsiehchou121:2181 <code>--list</code></p>
-<h4 id="2、创建topic">2、创建topic</h4>
-<p>[root@hsiehchou121 kafka]# ./bin/kafka-topics.sh <code>--zookeeper</code> hsiehchou121:2181 <code>--create</code> <code>--replication-factor</code> 3 <code>--partitions</code> 1 <code>--topic</code> second</p>
+<p>分发安装包<br>注意：要修改配置文件中 borker.id的值<br>broker id 不得重复<br>21 broker.id=0 —- hsiehchou121<br>21 broker.id=1 —- hsiehchou122<br>21 broker.id=2 —- hsiehchou123</p>
+<p><strong>启动kafka集群</strong><br>首先需要先启动zookeeper<br>zkServer.sh start<br>[root@hsiehchou121 kafka]# zkServer.sh start<br>[root@hsiehchou122 kafka]# zkServer.sh start<br>[root@hsiehchou123 kafka]# zkServer.sh start</p>
+<p>（<strong>必须先启动！！！！！！！！！</strong>）<br>./bin/kafka-server-start.sh config/server.properties &amp;<br><strong>&amp;====后台运行</strong><br>[root@hsiehchou121 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;<br>[root@hsiehchou122 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;<br>[root@hsiehchou123 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;</p>
+<p>jps命令可以看Kafka进程<br>[root@hsiehchou121 kafka]# jps<br>7104 Jps<br>6742 Kafka<br>6715 QuorumPeerMain</p>
+<p>关闭命令：<br>./bin/kafka-server-stop.sh stop<br>或者./bin/kafka-server-stop.sh </p>
+<h3 id="六、Kafka命令行操作"><a href="#六、Kafka命令行操作" class="headerlink" title="六、Kafka命令行操作"></a>六、Kafka命令行操作</h3><h4 id="1、查看当前服务器中所有的topic"><a href="#1、查看当前服务器中所有的topic" class="headerlink" title="1、查看当前服务器中所有的topic"></a>1、查看当前服务器中所有的topic</h4><p>[root@hsiehchou121 kafka]# ./bin/kafka-topics.sh <code>--zookeeper</code> hsiehchou121:2181 <code>--list</code></p>
+<h4 id="2、创建topic"><a href="#2、创建topic" class="headerlink" title="2、创建topic"></a>2、创建topic</h4><p>[root@hsiehchou121 kafka]# ./bin/kafka-topics.sh <code>--zookeeper</code> hsiehchou121:2181 <code>--create</code> <code>--replication-factor</code> 3 <code>--partitions</code> 1 <code>--topic</code> second</p>
 <p>[root@hsiehchou121 kafka]# ./bin/kafka-topics.sh <code>--zookeeper</code> hsiehchou121:2181 <code>--create</code> <code>--replication-factor</code> 3 <code>--partitions</code> 1 <code>--topic</code> xz</p>
-<p><code>--zookeeper</code> ：连接zk集群<br>
-<code>--create</code> ：创建<br>
-<code>--replication-factor</code>： 副本<br>
-<code>--partitions</code> ：分区<br>
-<code>--topic</code> ：主题名</p>
-<h4 id="3、删除topic">3、删除topic</h4>
-<p>[root@hsiehchou121 kafka]# ./bin/kafka-topics.sh <code>--zookeeper</code> hsiehchou121:2181 <code>--delete</code> <code>--topic</code> xz</p>
-<h4 id="4、发送消息">4、发送消息</h4>
-<p>[root@hsiehchou121 kafka]# ./bin/kafka-console-producer.sh <code>--broker-list</code> hsiehchou121:9092 <code>--topic</code> second<br>
-<code>&gt;</code> 输入消息</p>
-<h4 id="5、消费消息">5、消费消息</h4>
-<p>[root@hsiehchou122 kafka]# ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--from-beginning</code> <code>--topic</code> second<br>
-接收消息</p>
+<p><code>--zookeeper</code> ：连接zk集群<br><code>--create</code> ：创建<br><code>--replication-factor</code>： 副本<br><code>--partitions</code> ：分区<br><code>--topic</code> ：主题名</p>
+<h4 id="3、删除topic"><a href="#3、删除topic" class="headerlink" title="3、删除topic"></a>3、删除topic</h4><p>[root@hsiehchou121 kafka]# ./bin/kafka-topics.sh <code>--zookeeper</code> hsiehchou121:2181 <code>--delete</code> <code>--topic</code> xz</p>
+<h4 id="4、发送消息"><a href="#4、发送消息" class="headerlink" title="4、发送消息"></a>4、发送消息</h4><p>[root@hsiehchou121 kafka]# ./bin/kafka-console-producer.sh <code>--broker-list</code> hsiehchou121:9092 <code>--topic</code> second<br><code>&gt;</code> 输入消息</p>
+<h4 id="5、消费消息"><a href="#5、消费消息" class="headerlink" title="5、消费消息"></a>5、消费消息</h4><p>[root@hsiehchou122 kafka]# ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--from-beginning</code> <code>--topic</code> second<br>接收消息</p>
 <p>**注意：**这里的<code>--from-beginning</code>  是从头开始消费，不加则是消费当前正在发送到该topic的消息</p>
-<h4 id="6、查看主题描述信息">6、查看主题描述信息</h4>
-<p>[root@hsiehchou121 kafka]# ./bin/kafka-topics.sh --zookeeper hsiehchou121:2181 --describe --topic second<br>
-Topic:second	PartitionCount:1	ReplicationFactor:3	Configs:<br>
-Topic: second	Partition: 0	Leader: 2	Replicas: 2,1,0	Isr: 2,1,0</p>
-<h4 id="7、消费者组消费">7、消费者组消费</h4>
-<p>修改 consumer.properties 配置文件<br>
-consumer group id<br>
-group.id=xz</p>
-<h4 id="8、启动生产者">8、启动生产者</h4>
-<p>[root@hsiehchou121 kafka]# ./bin/kafka-console-producer.sh <code>--broker-list</code> hsiehchou121:9092 <code>--topic</code> second</p>
-<h4 id="9、启动消费者">9、启动消费者</h4>
-<p>[root@hsiehchou122 kafka]# ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> second <code>--consumer.config</code> config/consumer.properties</p>
-<h3 id="七、Kafka工作流程分析">七、Kafka工作流程分析</h3>
-<h4 id="1、Kafka生产过程分析">1、Kafka生产过程分析</h4>
-<p>1）<strong>写入方式</strong><br>
-producer采用推（push）模式将消息发布到broker，每条消息都被追加（append）到分区（patition）中，属于顺序写磁盘（顺序写磁盘效率比随机写内存要高，保障kafka吞吐率）</p>
-<p>2） <strong>分区</strong>（Partition）<br>
-Kafka集群有多个消息代理服务器（broker-server）组成，发布到Kafka集群的每条消息都有一个类别，用主题（topic）来表示。通常，不同应用产生不同类型的数据，可以设置不同的主题。一个主题一般会有多个消息的订阅者，当生产者发布消息到某个主题时，订阅了这个主题的消费者都可以接收到生成者写入的新消息</p>
-<p>Kafka集群为每个主题维护了分布式的分区（partition）日志文件，物理意义上可以把主题（topic）看作进行了分区的日志文件（partition log）。主题的每个分区都是一个有序的、不可变的记录序列，新的消息会不断追加到日志中。分区中的每条消息都会按照时间顺序分配到一个单调递增的顺序编号，叫做偏移量（offset），这个偏移量能够唯一地定位当前分区中的每一条消息</p>
-<p>消息发送时都被发送到一个topic，其本质就是一个目录，而topic是由一些Partition Logs(分区日志)组成，其组织结构如下图所示：<br>
-下图中的topic有3个分区，每个分区的偏移量都从0开始，不同分区之间的偏移量都是独立的，不会相互影响</p>
+<h4 id="6、查看主题描述信息"><a href="#6、查看主题描述信息" class="headerlink" title="6、查看主题描述信息"></a>6、查看主题描述信息</h4><p>[root@hsiehchou121 kafka]# ./bin/kafka-topics.sh –zookeeper hsiehchou121:2181 –describe –topic second<br>Topic:second	PartitionCount:1	ReplicationFactor:3	Configs:<br>	Topic: second	Partition: 0	Leader: 2	Replicas: 2,1,0	Isr: 2,1,0</p>
+<h4 id="7、消费者组消费"><a href="#7、消费者组消费" class="headerlink" title="7、消费者组消费"></a>7、消费者组消费</h4><p>修改 consumer.properties 配置文件<br>consumer group id<br>group.id=xz</p>
+<h4 id="8、启动生产者"><a href="#8、启动生产者" class="headerlink" title="8、启动生产者"></a>8、启动生产者</h4><p>[root@hsiehchou121 kafka]# ./bin/kafka-console-producer.sh <code>--broker-list</code> hsiehchou121:9092 <code>--topic</code> second</p>
+<h4 id="9、启动消费者"><a href="#9、启动消费者" class="headerlink" title="9、启动消费者"></a>9、启动消费者</h4><p>[root@hsiehchou122 kafka]# ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> second <code>--consumer.config</code> config/consumer.properties</p>
+<h3 id="七、Kafka工作流程分析"><a href="#七、Kafka工作流程分析" class="headerlink" title="七、Kafka工作流程分析"></a>七、Kafka工作流程分析</h3><h4 id="1、Kafka生产过程分析"><a href="#1、Kafka生产过程分析" class="headerlink" title="1、Kafka生产过程分析"></a>1、Kafka生产过程分析</h4><p>1）<strong>写入方式</strong><br>producer采用推（push）模式将消息发布到broker，每条消息都被追加（append）到分区（patition）中，属于顺序写磁盘（顺序写磁盘效率比随机写内存要高，保障kafka吞吐率）</p>
+<p>2） <strong>分区</strong>（Partition）<br>	Kafka集群有多个消息代理服务器（broker-server）组成，发布到Kafka集群的每条消息都有一个类别，用主题（topic）来表示。通常，不同应用产生不同类型的数据，可以设置不同的主题。一个主题一般会有多个消息的订阅者，当生产者发布消息到某个主题时，订阅了这个主题的消费者都可以接收到生成者写入的新消息<br>	<br>Kafka集群为每个主题维护了分布式的分区（partition）日志文件，物理意义上可以把主题（topic）看作进行了分区的日志文件（partition log）。主题的每个分区都是一个有序的、不可变的记录序列，新的消息会不断追加到日志中。分区中的每条消息都会按照时间顺序分配到一个单调递增的顺序编号，叫做偏移量（offset），这个偏移量能够唯一地定位当前分区中的每一条消息</p>
+<p>消息发送时都被发送到一个topic，其本质就是一个目录，而topic是由一些Partition Logs(分区日志)组成，其组织结构如下图所示：<br>下图中的topic有3个分区，每个分区的偏移量都从0开始，不同分区之间的偏移量都是独立的，不会相互影响</p>
 <p><img src="/medias/partitions.PNG" alt="partitions"></p>
 <p>我们可以看到，每个Partition中的消息都是有序的，生产的消息被不断追加到Partition log上，其中的每一个消息都被赋予了一个唯一的offset值</p>
 <p>发布到Kafka主题的每条消息包括键值和时间戳。消息到达服务器端的指定分区后，都会分配到一个自增的偏移量。原始的消息内容和分配的偏移量以及其他一些元数据信息最后都会存储到分区日志文件中。消息的键也可以不用设置，这种情况下消息会均衡地分布到不同的分区</p>
 <ol>
-<li>分区的原因<br>
-（1）方便在集群中扩展，每个Partition可以通过调整以适应它所在的机器，而一个topic又可以有多个Partition组成，因此整个集群就可以适应任意大小的数据了。<br>
-（2）可以提高并发，因为可以以Partition为单位读写了。<br>
-传统消息系统在服务端保持消息的顺序，如果有多个消费者消费同一个消息队列，服务端会以消费存储的顺序依次发送给消费者。但由于消息是异步发送给消费者的，消息到达消费者的顺序可能是无序的，这就意味着在并行消费时，传统消息系统无法很好地保证消息被顺序处理。虽然我们可以设置一个专用的消费者只消费一个队列，以此来解决消息顺序的问题，但是这就使得消费处理无法真正执行。<br>
-Kafka比传统消息系统有更强的顺序性保证，它使用主题的分区作为消息处理的并行单元。Kafka以分区作为最小的粒度，将每个分区分配给消费者组中不同的而且是唯一的消费者，并确保一个分区只属于一个消费者，即这个消费者就是这个分区的唯一读取线程。那么，只要分区的消息是有序的，消费者处理的消息顺序就有保证。每个主题有多个分区，不同的消费者处理不同的分区，所以Kafka不仅保证了消息的有序性，也做到了消费者的负载均衡。</li>
-<li>分区的原则<br>
-（1）指定了patition，则直接使用；<br>
-（2）未指定patition但指定key，通过对key的value进行hash出一个patition<br>
-（3）patition和key都未指定，使用轮询选出一个patition。<br>
-<strong>DefaultPartitioner类</strong></li>
+<li>分区的原因<br>（1）方便在集群中扩展，每个Partition可以通过调整以适应它所在的机器，而一个topic又可以有多个Partition组成，因此整个集群就可以适应任意大小的数据了。<br>（2）可以提高并发，因为可以以Partition为单位读写了。<br>传统消息系统在服务端保持消息的顺序，如果有多个消费者消费同一个消息队列，服务端会以消费存储的顺序依次发送给消费者。但由于消息是异步发送给消费者的，消息到达消费者的顺序可能是无序的，这就意味着在并行消费时，传统消息系统无法很好地保证消息被顺序处理。虽然我们可以设置一个专用的消费者只消费一个队列，以此来解决消息顺序的问题，但是这就使得消费处理无法真正执行。<br>Kafka比传统消息系统有更强的顺序性保证，它使用主题的分区作为消息处理的并行单元。Kafka以分区作为最小的粒度，将每个分区分配给消费者组中不同的而且是唯一的消费者，并确保一个分区只属于一个消费者，即这个消费者就是这个分区的唯一读取线程。那么，只要分区的消息是有序的，消费者处理的消息顺序就有保证。每个主题有多个分区，不同的消费者处理不同的分区，所以Kafka不仅保证了消息的有序性，也做到了消费者的负载均衡。</li>
+<li>分区的原则<br>（1）指定了patition，则直接使用；<br>（2）未指定patition但指定key，通过对key的value进行hash出一个patition<br>（3）patition和key都未指定，使用轮询选出一个patition。<br><strong>DefaultPartitioner类</strong></li>
 </ol>
 <pre><code class="highlight plaintext">public int partition(String topic, Object key, byte[] keyBytes, Object value, byte[] valueBytes, Cluster cluster) {
         List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);
@@ -634,20 +506,17 @@ Kafka比传统消息系统有更强的顺序性保证，它使用主题的分区
             return Utils.toPositive(Utils.murmur2(keyBytes)) % numPartitions;
         }
     }</code></pre>
-<p>3）副本（Replication）<br>
-同一个partition可能会有多个replication（对应 server.properties 配置中的 default.replication.factor=N）。没有replication的情况下，一旦broker 宕机，其上所有 patition 的数据都不可被消费，同时producer也不能再将数据存于其上的patition。引入replication之后，同一个partition可能会有多个replication，而这时需要在这些replication之间选出一个leader，producer和consumer只与这个leader交互，其它replication作为follower从leader 中复制数据</p>
-<p>4） 写入流程<br>
-producer写入消息流程如下：</p>
+
+<p>3）副本（Replication）<br>同一个partition可能会有多个replication（对应 server.properties 配置中的 default.replication.factor=N）。没有replication的情况下，一旦broker 宕机，其上所有 patition 的数据都不可被消费，同时producer也不能再将数据存于其上的patition。引入replication之后，同一个partition可能会有多个replication，而这时需要在这些replication之间选出一个leader，producer和consumer只与这个leader交互，其它replication作为follower从leader 中复制数据</p>
+<p>4） 写入流程<br> producer写入消息流程如下：</p>
 <ol>
-<li>producer先从zookeeper的 "/brokers/…/state"节点找到该partition的leader</li>
+<li>producer先从zookeeper的 “/brokers/…/state”节点找到该partition的leader</li>
 <li>producer将消息发送给该leader</li>
 <li>leader将消息写入本地log</li>
 <li>followers从leader pull消息，写入本地log后向leader发送ACK</li>
 <li>leader收到所有ISR中的replication的ACK后，增加HW（high watermark，最后commit 的offset）并向producer发送ACK</li>
 </ol>
-<h4 id="2、Broker-保存消息">2、Broker 保存消息</h4>
-<p>1）存储方式<br>
-物理上把topic分成一个或多个patition（对应 server.properties 中的num.partitions=3配置），每个patition物理上对应一个文件夹（该文件夹存储该patition的所有消息和索引文件），如下：</p>
+<h4 id="2、Broker-保存消息"><a href="#2、Broker-保存消息" class="headerlink" title="2、Broker 保存消息"></a>2、Broker 保存消息</h4><p>1）存储方式<br>物理上把topic分成一个或多个patition（对应 server.properties 中的num.partitions=3配置），每个patition物理上对应一个文件夹（该文件夹存储该patition的所有消息和索引文件），如下：</p>
 <pre><code class="highlight plaintext">[root @hsiehchou121 logs]$ ll
 drwxrwxr-x. 2 root root 4096 4月   6 14:37 first-0
 drwxrwxr-x. 2 root root 4096 4月   6 14:35 first-1
@@ -658,80 +527,49 @@ drwxrwxr-x. 2 root root 4096 4月   6 14:37 first-2
 -rw-rw-r--. 1 root root     219 4月   6 15:07 00000000000000000000.log
 -rw-rw-r--. 1 root root 10485756 4月   6 14:33 00000000000000000000.timeindex
 -rw-rw-r--. 1 root root       8 4月   6 14:37 leader-epoch-checkpoint</code></pre>
-<p>2）存储策略<br>
-无论消息是否被消费，kafka都会保留所有消息。有两种策略可以删除旧数据：</p>
+
+<p>2）存储策略<br>无论消息是否被消费，kafka都会保留所有消息。有两种策略可以删除旧数据：</p>
 <ol>
 <li>基于时间：log.retention.hours=168</li>
-<li>基于大小：log.retention.bytes=1073741824<br>
-需要注意的是，因为Kafka读取特定消息的时间复杂度为O(1)，即与文件大小无关，所以这里删除过期文件与提高 Kafka 性能无关。</li>
+<li>基于大小：log.retention.bytes=1073741824<br>需要注意的是，因为Kafka读取特定消息的时间复杂度为O(1)，即与文件大小无关，所以这里删除过期文件与提高 Kafka 性能无关。</li>
 </ol>
-<p>3）Zookeeper存储结构<br>
-<img src="/medias/kafka%20zookeeper%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.PNG" alt="kafka zookeeper的存储结构"><br>
-注意：producer不在zk中注册，消费者在zk中注册</p>
-<h4 id="3、Kafka消费过程分析">3、Kafka消费过程分析</h4>
-<p>kafka提供了两套consumer API：高级Consumer API和低级API<br>
-1）消费模型<br>
-消息由生产者发布到Kafka集群后，会被消费者消费。消息的消费模型有两种：推送模型（push）和拉取模型（pull）</p>
-<p>基于推送模型（push）的消息系统，由消息代理记录消费者的消费状态。消息代理在将消息推送到消费者后，标记这条消息为已消费，但这种方式无法很好地保证消息被处理。比如，消息代理把消息发送出去后，当消费进程挂掉或者由于网络原因没有收到这条消息时，就有可能造成消息丢失（因为消息代理已经把这条消息标记为已消费了，但实际上这条消息并没有被实际处理）。如果要保证消息被处理，消息代理发送完消息后，要设置状态为“已发送”，只有收到消费者的确认请求后才更新为“已消费”，这就需要消息代理中记录所有的消费状态，这种做法显然是不可取的</p>
+<p>3）Zookeeper存储结构<br><img src="/medias/kafka%20zookeeper%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.PNG" alt="kafka zookeeper的存储结构"><br>注意：producer不在zk中注册，消费者在zk中注册</p>
+<h4 id="3、Kafka消费过程分析"><a href="#3、Kafka消费过程分析" class="headerlink" title="3、Kafka消费过程分析"></a>3、Kafka消费过程分析</h4><p>kafka提供了两套consumer API：高级Consumer API和低级API<br>1）消费模型<br>	消息由生产者发布到Kafka集群后，会被消费者消费。消息的消费模型有两种：推送模型（push）和拉取模型（pull）<br>	<br>基于推送模型（push）的消息系统，由消息代理记录消费者的消费状态。消息代理在将消息推送到消费者后，标记这条消息为已消费，但这种方式无法很好地保证消息被处理。比如，消息代理把消息发送出去后，当消费进程挂掉或者由于网络原因没有收到这条消息时，就有可能造成消息丢失（因为消息代理已经把这条消息标记为已消费了，但实际上这条消息并没有被实际处理）。如果要保证消息被处理，消息代理发送完消息后，要设置状态为“已发送”，只有收到消费者的确认请求后才更新为“已消费”，这就需要消息代理中记录所有的消费状态，这种做法显然是不可取的</p>
 <p>Kafka采用拉取模型，由消费者自己记录消费状态，每个消费者互相独立地顺序读取每个分区的消息。如下图所示，有两个消费者（不同消费者组）拉取同一个主题的消息，消费者A的消费进度是3，消费者B的消费进度是6。消费者拉取的最大上限通过最高水位（watermark）控制，生产者最新写入的消息如果还没有达到备份数量，对消费者是不可见的。这种由消费者控制偏移量的优点是：消费者可以按照任意的顺序消费消息。比如，消费者可以重置到旧的偏移量，重新处理之前已经消费过的消息；或者直接跳到最近的位置，从当前的时刻开始消费</p>
 <p>在一些消息系统中，消息代理会在消息被消费之后立即删除消息。如果有不同类型的消费者订阅同一个主题，消息代理可能需要冗余地存储同一消息；或者等所有消费者都消费完才删除，这就需要消息代理跟踪每个消费者的消费状态，这种设计很大程度上限制了消息系统的整体吞吐量和处理延迟。Kafka的做法是生产者发布的所有消息会一致保存在Kafka集群中，不管消息有没有被消费。用户可以通过设置保留时间来清理过期的数据，比如，设置保留策略为两天。那么，在消息发布之后，它可以被不同的消费者消费，在两天之后，过期的消息就会自动清理掉</p>
 <p>2）高级API</p>
 <ol>
-<li>高级API优点<br>
-高级API 写起来简单<br>
-不需要自行去管理offset，系统通过zookeeper自行管理。<br>
-不需要管理分区，副本等情况，.系统自动管理。<br>
-消费者断线会自动根据上一次记录在zookeeper中的offset去接着获取数据（默认设置1分钟更新一下zookeeper中存的offset）<br>
-可以使用group来区分对同一个topic 的不同程序访问分离开来（不同的group记录不同的offset，这样不同程序读取同一个topic才不会因为offset互相影响）</li>
-<li>高级API缺点<br>
-不能自行控制offset（对于某些特殊需求来说）<br>
-不能细化控制如分区、副本、zk等</li>
+<li>高级API优点<br>高级API 写起来简单<br>不需要自行去管理offset，系统通过zookeeper自行管理。<br>不需要管理分区，副本等情况，.系统自动管理。<br>消费者断线会自动根据上一次记录在zookeeper中的offset去接着获取数据（默认设置1分钟更新一下zookeeper中存的offset）<br>可以使用group来区分对同一个topic 的不同程序访问分离开来（不同的group记录不同的offset，这样不同程序读取同一个topic才不会因为offset互相影响）</li>
+<li>高级API缺点<br>不能自行控制offset（对于某些特殊需求来说）<br>不能细化控制如分区、副本、zk等</li>
 </ol>
 <p>3）低级API</p>
 <ol>
-<li>低级 API 优点<br>
-能够让开发者自己控制offset，想从哪里读取就从哪里读取。<br>
-自行控制连接分区，对分区自定义进行负载均衡<br>
-对zookeeper的依赖性降低（如：offset不一定非要靠zk存储，自行存储offset即可，比如存在文件或者内存中）</li>
-<li>低级API缺点<br>
-太过复杂，需要自行控制offset，连接哪个分区，找到分区leader 等。</li>
+<li>低级 API 优点<br>能够让开发者自己控制offset，想从哪里读取就从哪里读取。<br>自行控制连接分区，对分区自定义进行负载均衡<br>对zookeeper的依赖性降低（如：offset不一定非要靠zk存储，自行存储offset即可，比如存在文件或者内存中）</li>
+<li>低级API缺点<br>太过复杂，需要自行控制offset，连接哪个分区，找到分区leader 等。</li>
 </ol>
-<p>4）消费者组<br>
-消费者是以consumer group消费者组的方式工作，由一个或者多个消费者组成一个组，共同消费一个topic。每个分区在同一时间只能由group中的一个消费者读取，但是多个group可以同时消费这个partition。在图中，有一个由三个消费者组成的group，有一个消费者读取主题中的两个分区，另外两个分别读取一个分区。某个消费者读取某个分区，也可以叫做某个消费者是某个分区的拥有者</p>
+<p>4）消费者组<br>消费者是以consumer group消费者组的方式工作，由一个或者多个消费者组成一个组，共同消费一个topic。每个分区在同一时间只能由group中的一个消费者读取，但是多个group可以同时消费这个partition。在图中，有一个由三个消费者组成的group，有一个消费者读取主题中的两个分区，另外两个分别读取一个分区。某个消费者读取某个分区，也可以叫做某个消费者是某个分区的拥有者</p>
 <p>在这种情况下，消费者可以通过水平扩展的方式同时读取大量的消息。另外，如果一个消费者失败了，那么其他的group成员会自动负载均衡读取之前失败的消费者读取的分区</p>
-<p>5）消费方式<br>
-consumer采用pull（拉）模式从broker中读取数据</p>
+<p>5）消费方式<br>consumer采用pull（拉）模式从broker中读取数据</p>
 <p>push（推）模式很难适应消费速率不同的消费者，因为消息发送速率是由broker决定的。它的目标是尽可能以最快速度传递消息，但是这样很容易造成consumer来不及处理消息，典型的表现就是拒绝服务以及网络拥塞。而pull模式则可以根据consumer的消费能力以适当的速率消费消息</p>
 <p>对于Kafka而言，pull模式更合适，它可简化broker的设计，consumer可自主控制消费消息的速率，同时consumer可以自己控制消费方式——即可批量消费也可逐条消费，同时还能选择不同的提交方式从而实现不同的传输语义</p>
 <p>pull模式不足之处是，如果kafka没有数据，消费者可能会陷入循环中，一直等待数据到达。为了避免这种情况，我们在我们的拉请求中有参数，允许消费者请求在等待数据到达的“长轮询”中进行阻塞（并且可选地等待到给定的字节数，以确保大的传输大小）</p>
 <p>6） 消费者组案例</p>
 <ol>
 <li>需求：测试同一个消费者组中的消费者，同一时刻只能有一个消费者消费</li>
-<li>案例实操<br>
-（1）在hsiehchou121、hsiehchou122上修改/root/hd/kafka/config/consumer.properties配置文件中的group.id属性为任意组名</li>
+<li>案例实操<br> （1）在hsiehchou121、hsiehchou122上修改/root/hd/kafka/config/consumer.properties配置文件中的group.id属性为任意组名</li>
 </ol>
-<p>[root@hsiehchou122 config]$ vi consumer.properties<br>
-group.id=root</p>
-<p>规划：hsiehchou121生产者，hsiehchou122消费者，hsiehchou123消费者<br>
-（2）在hsiehchou122、hsiehchou123上分别启动消费者</p>
+<p>[root@hsiehchou122 config]$ vi consumer.properties<br>	group.id=root</p>
+<p>规划：hsiehchou121生产者，hsiehchou122消费者，hsiehchou123消费者<br>（2）在hsiehchou122、hsiehchou123上分别启动消费者</p>
 <pre><code class="highlight plaintext">[root@hsiehchou122 kafka]$ ./bin/kafka-console-consumer.sh --bootstrap-server hsiehchou121:9092 --topic second --consumer.config config/consumer.properties
 
 [root@hsiehchou123 kafka]$ ./bin/kafka-console-consumer.sh --bootstrap-server hsiehchou121:9092 --topic second --consumer.config config/consumer.properties</code></pre>
 <p>（3）在hsiehchou121上启动生产者</p>
 <pre><code class="highlight plaintext">[root@hsiehchou121 kafka]$ bin/kafka-console-producer.sh --broker-list hsiehchou121:9092 --topic first
 &gt;hello world</code></pre>
-<p>（4）查看hsiehchou122和hsiehchou123的接收者<br>
-同一时刻只有一个消费者接收到消息</p>
-<h3 id="八、-Kafka-API实战">八、 Kafka API实战</h3>
-<h4 id="1、-环境准备">1、 环境准备</h4>
-<p>1）在eclipse中创建一个java工程<br>
-2）在工程的根目录创建一个lib文件夹<br>
-3）解压kafka安装包，将安装包libs目录下的jar包拷贝到工程的lib目录下，并build path<br>
-4）启动zk和kafka集群，在kafka集群中打开一个消费者</p>
+<p>（4）查看hsiehchou122和hsiehchou123的接收者<br>		同一时刻只有一个消费者接收到消息</p>
+<h3 id="八、-Kafka-API实战"><a href="#八、-Kafka-API实战" class="headerlink" title="八、 Kafka API实战"></a>八、 Kafka API实战</h3><h4 id="1、-环境准备"><a href="#1、-环境准备" class="headerlink" title="1、 环境准备"></a>1、 环境准备</h4><p>1）在eclipse中创建一个java工程<br>2）在工程的根目录创建一个lib文件夹<br>3）解压kafka安装包，将安装包libs目录下的jar包拷贝到工程的lib目录下，并build path<br>4）启动zk和kafka集群，在kafka集群中打开一个消费者</p>
 <pre><code class="highlight plaintext">[root@hsiehchou121 kafka]$ bin/kafka-console-consumer.sh --zookeeper hsiehchou121:2181 --topic first</code></pre>
-<h4 id="2、Kafka生产者Java-API">2、Kafka生产者Java API</h4>
-<p>1）<strong>创建生产者</strong><br>
-<strong>Producer1 类</strong></p>
+<h4 id="2、Kafka生产者Java-API"><a href="#2、Kafka生产者Java-API" class="headerlink" title="2、Kafka生产者Java API"></a>2、Kafka生产者Java API</h4><p>1）<strong>创建生产者</strong><br><strong>Producer1 类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.kafka.kafka_producer;
 
 import java.util.Properties;
@@ -778,15 +616,8 @@ public class Producer1 {
 		producer.close();	
 	}
 }</code></pre>
-<p>[root@hsiehchou122 kafka]# ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> first <code>--consumer.config</code> config/consumer.properties<br>
-hello world-0<br>
-hello world-1<br>
-hello world-2<br>
-hello world-3<br>
-<code>......</code><br>
-hello world-49</p>
-<p>2）创建生产者带回调函数<br>
-<strong>Producer2类</strong></p>
+<p>[root@hsiehchou122 kafka]# ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> first <code>--consumer.config</code> config/consumer.properties<br>hello world-0<br>hello world-1<br>hello world-2<br>hello world-3<br><code>......</code><br>hello world-49</p>
+<p>2）创建生产者带回调函数<br><strong>Producer2类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.kafka.kafka_producer;
 
 import java.util.Properties;
@@ -840,16 +671,8 @@ public class Producer2 {
 	}
 }</code></pre>
 <p>[root@hsiehchou122 kafka]# ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> three <code>--consumer.config</code> config/consumer.properties</p>
-<p>控制台输出：<br>
-first<code>----</code>00<code>----</code>0<br>
-first<code>----</code>01<code>----</code>0<br>
-first<code>----</code>02<code>----</code>0<br>
-first<code>----</code>03<code>----</code>0<br>
-<code>......</code><br>
-first<code>----</code>48<code>----</code>0<br>
-first<code>----</code>49<code>----</code>0</p>
-<p>3）自定义分区生产者<br>
-<strong>Partition1 类</strong></p>
+<p>控制台输出：<br>first<code>----</code>00<code>----</code>0<br>first<code>----</code>01<code>----</code>0<br>first<code>----</code>02<code>----</code>0<br>first<code>----</code>03<code>----</code>0<br><code>......</code><br>first<code>----</code>48<code>----</code>0<br>first<code>----</code>49<code>----</code>0</p>
+<p>3）自定义分区生产者<br><strong>Partition1 类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.kafka.kafka_producer;
 
 import java.util.Map;
@@ -880,15 +703,8 @@ public class Partition1 implements Partitioner{
 }</code></pre>
 <p><strong>Producer2类中新增</strong></p>
 <pre><code class="highlight plaintext">prop.put("partitioner.class", "com.hsiehchou.kafka.kafka_producer.Partition1");</code></pre>
-<p>[root@hsiehchou122 kafka]# ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> three <code>--consumer.config</code> config/consumer.properties<br>
-first-----1----2<br>
-first-----1----2<br>
-first-----1----2<br>
-<code>......</code><br>
-first-----1----2<br>
-first-----1----2</p>
-<h4 id="3、Kafka消费者Java-API">3、Kafka消费者Java API</h4>
-<p><strong>Consumer1 类</strong></p>
+<p>[root@hsiehchou122 kafka]# ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> three <code>--consumer.config</code> config/consumer.properties<br>first—–1—-2<br>first—–1—-2<br>first—–1—-2<br><code>......</code><br>first—–1—-2<br>first—–1—-2</p>
+<h4 id="3、Kafka消费者Java-API"><a href="#3、Kafka消费者Java-API" class="headerlink" title="3、Kafka消费者Java API"></a>3、Kafka消费者Java API</h4><p><strong>Consumer1 类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.kafka.kafka_consumer;
 
 import java.util.Arrays;
@@ -945,40 +761,15 @@ public class Consumer1 {
 		}
 	}
 }</code></pre>
-<p><strong>Producer1 类</strong><br>
-跟之前的一样，此处省略</p>
-<p><strong>strong text</strong>启动kafka集群<br>
-[root@hsiehchou121 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;<br>
-[root@hsiehchou122 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;<br>
-[root@hsiehchou123 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;<br>
-分别对Consumer1类和Producer1类依次进行Run  as  Java Application</p>
-<p><strong>控制台输出</strong><br>
-first--------1556248624834-hello world-0<br>
-first--------1556248625017-hello world-1<br>
-first--------1556248625017-hello world-2<br>
-first--------1556248625017-hello world-3<br>
-<code>......</code><br>
-first--------1556248625021-hello world-48<br>
-first--------1556248625021-hello world-49</p>
-<h3 id="九、Kafka-producer拦截器-interceptor">九、Kafka producer拦截器(interceptor)</h3>
-<h4 id="1、拦截器原理">1、拦截器原理</h4>
-<p>Producer拦截器(interceptor)是在Kafka 0.10版本被引入的，主要用于实现clients端的定制化控制逻辑</p>
-<p>对于producer而言，interceptor使得用户在消息发送前以及producer回调逻辑前有机会对消息做一些定制化需求，比如<strong>修改消息</strong>等。同时，producer允许用户指定多个interceptor按序作用于同一条消息从而形成一个拦截链(interceptor chain)。Intercetpor的实现接口是<strong>org.apache.kafka.clients.producer.ProducerInterceptor</strong>，其定义的方法包括：<br>
-1）<strong>configure(configs)</strong><br>
-获取配置信息和初始化数据时调用</p>
-<p>2）<strong>onSend(ProducerRecord)</strong><br>
-该方法封装进KafkaProducer.send方法中，即它运行在用户主线程中。Producer确保在消息被序列化以及计算分区前调用该方法。<strong>用户可以在该方法中对消息做任何操作，但最好保证不要修改消息所属的topic和分区</strong>，否则会影响目标分区的计算</p>
-<p>3）<strong>onAcknowledgement(RecordMetadata, Exception)</strong><br>
-<strong>该方法会在消息被应答或消息发送失败时调用</strong>，并且通常都是在producer回调逻辑触发之前。onAcknowledgement运行在producer的IO线程中，因此不要在该方法中放入很重的逻辑，否则会拖慢producer的消息发送效率</p>
-<p>4）<strong>close</strong><br>
-<strong>关闭interceptor，主要用于执行一些资源清理工作</strong><br>
-如前所述，interceptor可能被运行在多个线程中，因此在具体实现时用户需要自行确保线程安全。另外<strong>倘若指定了多个interceptor，则producer将按照指定顺序调用它们</strong>，并仅仅是捕获每个interceptor可能抛出的异常记录到错误日志中而非在向上传递。这在使用过程中要特别留意</p>
-<h4 id="2、拦截器案例">2、拦截器案例</h4>
-<p>1）需求：<br>
-实现一个简单的双interceptor组成的拦截链。第一个interceptor会在消息发送前将时间戳信息加到消息value的最前部；第二个interceptor会在消息发送后更新成功发送消息数或失败发送消息数。<br>
-2）案例实操<br>
-（1）增加时间戳拦截器<br>
-<strong>TimeInterceptor 类</strong></p>
+<p><strong>Producer1 类</strong><br>跟之前的一样，此处省略</p>
+<p><strong>strong text</strong>启动kafka集群<br>[root@hsiehchou121 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;<br>[root@hsiehchou122 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;<br>[root@hsiehchou123 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;<br>分别对Consumer1类和Producer1类依次进行Run  as  Java Application</p>
+<p><strong>控制台输出</strong><br>first——–1556248624834-hello world-0<br>first——–1556248625017-hello world-1<br>first——–1556248625017-hello world-2<br>first——–1556248625017-hello world-3<br><code>......</code><br>first——–1556248625021-hello world-48<br>first——–1556248625021-hello world-49</p>
+<h3 id="九、Kafka-producer拦截器-interceptor"><a href="#九、Kafka-producer拦截器-interceptor" class="headerlink" title="九、Kafka producer拦截器(interceptor)"></a>九、Kafka producer拦截器(interceptor)</h3><h4 id="1、拦截器原理"><a href="#1、拦截器原理" class="headerlink" title="1、拦截器原理"></a>1、拦截器原理</h4><p>Producer拦截器(interceptor)是在Kafka 0.10版本被引入的，主要用于实现clients端的定制化控制逻辑</p>
+<p>对于producer而言，interceptor使得用户在消息发送前以及producer回调逻辑前有机会对消息做一些定制化需求，比如<strong>修改消息</strong>等。同时，producer允许用户指定多个interceptor按序作用于同一条消息从而形成一个拦截链(interceptor chain)。Intercetpor的实现接口是<strong>org.apache.kafka.clients.producer.ProducerInterceptor</strong>，其定义的方法包括：<br>1）<strong>configure(configs)</strong><br>获取配置信息和初始化数据时调用</p>
+<p>2）<strong>onSend(ProducerRecord)</strong><br>该方法封装进KafkaProducer.send方法中，即它运行在用户主线程中。Producer确保在消息被序列化以及计算分区前调用该方法。<strong>用户可以在该方法中对消息做任何操作，但最好保证不要修改消息所属的topic和分区</strong>，否则会影响目标分区的计算</p>
+<p>3）<strong>onAcknowledgement(RecordMetadata, Exception)</strong><br><strong>该方法会在消息被应答或消息发送失败时调用</strong>，并且通常都是在producer回调逻辑触发之前。onAcknowledgement运行在producer的IO线程中，因此不要在该方法中放入很重的逻辑，否则会拖慢producer的消息发送效率</p>
+<p>4）<strong>close</strong><br><strong>关闭interceptor，主要用于执行一些资源清理工作</strong><br>如前所述，interceptor可能被运行在多个线程中，因此在具体实现时用户需要自行确保线程安全。另外<strong>倘若指定了多个interceptor，则producer将按照指定顺序调用它们</strong>，并仅仅是捕获每个interceptor可能抛出的异常记录到错误日志中而非在向上传递。这在使用过程中要特别留意</p>
+<h4 id="2、拦截器案例"><a href="#2、拦截器案例" class="headerlink" title="2、拦截器案例"></a>2、拦截器案例</h4><p>1）需求：<br>实现一个简单的双interceptor组成的拦截链。第一个interceptor会在消息发送前将时间戳信息加到消息value的最前部；第二个interceptor会在消息发送后更新成功发送消息数或失败发送消息数。<br>2）案例实操<br>（1）增加时间戳拦截器<br><strong>TimeInterceptor 类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.kafka.interceptor;
 
 import java.util.Map;
@@ -1012,8 +803,7 @@ public class TimeInterceptor implements ProducerInterceptor&lt;String, String&gt
 		
 	}
 }</code></pre>
-<p>（2）统计发送消息成功和发送失败消息数，并在producer关闭时打印这两个计数器<br>
-<strong>CounterInterceptor 类</strong></p>
+<p>（2）统计发送消息成功和发送失败消息数，并在producer关闭时打印这两个计数器<br><strong>CounterInterceptor 类</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.kafka.interceptor;
 
 import java.util.Map;
@@ -1050,74 +840,38 @@ public class CounterInterceptor implements ProducerInterceptor&lt;String, String
 		System.out.println("Failed sent:" + errorCounter);
 	}
 }</code></pre>
+
 <p><strong>在Producer1类中增加</strong></p>
 <pre><code class="highlight plaintext">//拦截器
 		ArrayList&lt;String&gt; inList = new ArrayList&lt;String&gt;(); 
 		inList.add("com.hsiehchou.kafka.interceptor.TimeInterceptor");
 		inList.add("com.hsiehchou.kafka.interceptor.CounterInterceptor");
 		prop.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, inList);</code></pre>
-<p>测试一：<br>
-[root@hsiehchou122 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;</p>
-<p><code>--from beginning</code> 是从头开始消费，不加则是消费当前正在发送到该topic的消息<br>
-[root@hsiehchou123 kafka]#./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> first <code>--from-beginning</code></p>
-<p>测试二：<br>
-[root@hsiehchou122 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;</p>
-<p>[root@hsiehchou122 kafka]#  ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> first <code>--consumer.config</code> config/consumer.properties<br>
-结果：<br>
-1556253447912-hello world-0<br>
-1556253448100-hello world-1<br>
-1556253448100-hello world-2<br>
-1556253448100-hello world-3<br>
-1556253448100-hello world-4<br>
-<code>......</code><br>
-1556253448100-hello world-12<br>
-1556253448100-hello world-13<br>
-1556253448104-hello world-14<br>
-1556253448104-hello world-15<br>
-1556253448104-hello world-16<br>
-<code>......</code><br>
-1556253448104-hello world-48<br>
-1556253448104-hello world-49</p>
-<p>Successful sent:50<br>
-Failed sent:0</p>
-<h3 id="十、Kafka-Streams">十、Kafka Streams</h3>
-<h4 id="1、概述">1、概述</h4>
-<p>1）Kafka Streams<br>
-Kafka Streams。Apache Kafka开源项目的一个组成部分。是一个功能强大，易于使用的库。用于在Kafka上构建高可分布式、拓展性，容错的应用程序</p>
+
+<p>测试一：<br>[root@hsiehchou122 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;</p>
+<p><code>--from beginning</code> 是从头开始消费，不加则是消费当前正在发送到该topic的消息<br>[root@hsiehchou123 kafka]#./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> first <code>--from-beginning</code></p>
+<p>测试二：<br>[root@hsiehchou122 kafka]# ./bin/kafka-server-start.sh config/server.properties &amp;</p>
+<p>[root@hsiehchou122 kafka]#  ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou121:9092 <code>--topic</code> first <code>--consumer.config</code> config/consumer.properties<br>结果：<br>1556253447912-hello world-0<br>1556253448100-hello world-1<br>1556253448100-hello world-2<br>1556253448100-hello world-3<br>1556253448100-hello world-4<br><code>......</code><br>1556253448100-hello world-12<br>1556253448100-hello world-13<br>1556253448104-hello world-14<br>1556253448104-hello world-15<br>1556253448104-hello world-16<br><code>......</code><br>1556253448104-hello world-48<br>1556253448104-hello world-49</p>
+<p>Successful sent:50<br>Failed sent:0</p>
+<h3 id="十、Kafka-Streams"><a href="#十、Kafka-Streams" class="headerlink" title="十、Kafka Streams"></a>十、Kafka Streams</h3><h4 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h4><p>1）Kafka Streams<br>Kafka Streams。Apache Kafka开源项目的一个组成部分。是一个功能强大，易于使用的库。用于在Kafka上构建高可分布式、拓展性，容错的应用程序</p>
 <p>2）Kafka Streams特点</p>
 <ol>
-<li>功能强大<br>
-高扩展性，弹性，容错</li>
-<li>轻量级<br>
-无需专门的集群<br>
-一个库，而不是框架</li>
-<li>完全集成<br>
-100%的Kafka 0.10.0版本兼容<br>
-易于集成到现有的应用程序</li>
-<li>实时性<br>
-毫秒级延迟<br>
-并非微批处理<br>
-窗口允许乱序数据<br>
-允许迟到数据</li>
+<li>功能强大<br>高扩展性，弹性，容错 </li>
+<li>轻量级<br>无需专门的集群<br>一个库，而不是框架</li>
+<li>完全集成<br>100%的Kafka 0.10.0版本兼容<br>易于集成到现有的应用程序 </li>
+<li>实时性<br>毫秒级延迟<br>并非微批处理<br>窗口允许乱序数据<br>允许迟到数据</li>
 </ol>
-<p>3）为什么要有Kafka Stream<br>
-当前已经有非常多的流式处理系统，最知名且应用最多的开源流式处理系统有Spark Streaming和Apache Storm。Apache Storm发展多年，应用广泛，提供记录级别的处理能力，当前也支持SQL on Stream。而Spark Streaming基于Apache Spark，可以非常方便与图计算，SQL处理等集成，功能强大，对于熟悉其它Spark应用开发的用户而言使用门槛低。另外，目前主流的Hadoop发行版，如Cloudera和Hortonworks，都集成了Apache Storm和Apache Spark，使得部署更容易</p>
-<p>既然Apache Spark与Apache Storm拥用如此多的优势，那为何还需要Kafka Stream呢？主要有如下原因<br>
-第一，Spark和Storm都是流式处理框架，而Kafka Stream提供的是一个基于Kafka的流式处理类库。框架要求开发者按照特定的方式去开发逻辑部分，供框架调用。开发者很难了解框架的具体运行方式，从而使得调试成本高，并且使用受限。而Kafka Stream作为流式处理类库，直接提供具体的类给开发者调用，整个应用的运行方式主要由开发者控制，方便使用和调试</p>
+<p>3）为什么要有Kafka Stream<br>当前已经有非常多的流式处理系统，最知名且应用最多的开源流式处理系统有Spark Streaming和Apache Storm。Apache Storm发展多年，应用广泛，提供记录级别的处理能力，当前也支持SQL on Stream。而Spark Streaming基于Apache Spark，可以非常方便与图计算，SQL处理等集成，功能强大，对于熟悉其它Spark应用开发的用户而言使用门槛低。另外，目前主流的Hadoop发行版，如Cloudera和Hortonworks，都集成了Apache Storm和Apache Spark，使得部署更容易</p>
+<p>既然Apache Spark与Apache Storm拥用如此多的优势，那为何还需要Kafka Stream呢？主要有如下原因<br>第一，Spark和Storm都是流式处理框架，而Kafka Stream提供的是一个基于Kafka的流式处理类库。框架要求开发者按照特定的方式去开发逻辑部分，供框架调用。开发者很难了解框架的具体运行方式，从而使得调试成本高，并且使用受限。而Kafka Stream作为流式处理类库，直接提供具体的类给开发者调用，整个应用的运行方式主要由开发者控制，方便使用和调试</p>
 <p>第二，虽然Cloudera与Hortonworks方便了Storm和Spark的部署，但是这些框架的部署仍然相对复杂。而Kafka Stream作为类库，可以非常方便的嵌入应用程序中，它对应用的打包和部署基本没有任何要求</p>
 <p>第三，就流式处理系统而言，基本都支持Kafka作为数据源。例如Storm具有专门的kafka-spout，而Spark也提供专门的spark-streaming-kafka模块。事实上，Kafka基本上是主流的流式处理系统的标准数据源。换言之，大部分流式系统中都已部署了Kafka，此时使用Kafka Stream的成本非常低</p>
 <p>第四，使用Storm或Spark Streaming时，需要为框架本身的进程预留资源，如Storm的supervisor和Spark on YARN的node manager。即使对于应用实例而言，框架本身也会占用部分资源，如Spark Streaming需要为shuffle和storage预留内存。但是Kafka作为类库不占用系统资源</p>
 <p>第五，由于Kafka本身提供数据持久化，因此Kafka Stream提供滚动部署和滚动升级以及重新计算的能力</p>
 <p>第六，由于Kafka Consumer Rebalance机制，Kafka Stream可以在线动态调整并行度</p>
-<h4 id="2、Kafka-Stream数据清洗案例">2、Kafka Stream数据清洗案例</h4>
-<p>1）需求：<br>
-实时处理单词带有”&gt;&gt;&gt;”前缀的内容。例如输入”itstar&gt;&gt;&gt;ximenqing”，最终处理成“ximenqing”<br>
-2）需求分析：<br>
-3）案例实操</p>
+<h4 id="2、Kafka-Stream数据清洗案例"><a href="#2、Kafka-Stream数据清洗案例" class="headerlink" title="2、Kafka Stream数据清洗案例"></a>2、Kafka Stream数据清洗案例</h4><p>1）需求：<br>	实时处理单词带有”&gt;&gt;&gt;”前缀的内容。例如输入”itstar&gt;&gt;&gt;ximenqing”，最终处理成“ximenqing”<br>2）需求分析：<br>3）案例实操</p>
 <ol>
 <li>创建一个工程，并添加jar包</li>
-<li>创建主类<br>
-<strong>Application类</strong></li>
+<li>创建主类<br><strong>Application类</strong></li>
 </ol>
 <pre><code class="highlight plaintext">package com.hsiehchou.kafka.kafka_stream;
 
@@ -1201,11 +955,11 @@ public class LogProcesser implements Processor&lt;byte[], byte[]&gt;{
 		
 	}
 }</code></pre>
+
 <p>[root@hsiehchou121 kafka]#./bin/kafka-topics.sh <code>--zookeeper</code> hsiehchou121:2181 <code>--create</code> <code>--replication-factor</code> 3 <code>--partitions</code> 1 <code>--topic</code> t1</p>
 <p>[root@hsiehchou122 kafka]# ./bin/kafka-console-consumer.sh <code>--bootstrap-server</code> hsiehchou122:9092 <code>--topic</code> t2 <code>--from-beginning</code> -<code>-consumer.config</code> config/consumer.properties</p>
 <p>[root@hsiehchou121 kafka]# ./bin/kafka-console-producer.sh <code>--broker-list</code> hsiehchou121:9092 <code>--topic</code> t1</p>
-<h3 id="十一、CDH搭建：">十一、CDH搭建：</h3>
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5a55814e518825734859d69a">https://juejin.im/post/5a55814e518825734859d69a</a></p>
+<h3 id="十一、CDH搭建："><a href="#十一、CDH搭建：" class="headerlink" title="十一、CDH搭建："></a>十一、CDH搭建：</h3><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5a55814e518825734859d69a">https://juejin.im/post/5a55814e518825734859d69a</a></p>
 
             </div>
             <hr/>
@@ -1457,8 +1211,7 @@ public class LogProcesser implements Processor&lt;byte[], byte[]&gt;{
                     <div class="summary block-with-text">
                         
                             Hadoop的HA高可用（可行）
-一、集群的规划
-ZooKeeper集群
+一、集群的规划ZooKeeper集群
 
 
 
@@ -1468,10 +1221,9 @@ ZooKeeper集群
 
 
 
-
 hsiehchou121
 hsiehchou122
-hs
+hsie
                         
                     </div>
                     <div class="publish-info">
@@ -1524,15 +1276,12 @@ hs
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            docker
-2013年发布
-一、环境配置难题
-开发环境运行没有问题，生产不能用，因为生产缺乏某些组件
+                            docker2013年发布
+一、环境配置难题开发环境运行没有问题，生产不能用，因为生产缺乏某些组件
 换一台机器，需要重新配置一遍
 能不能从根本上解决问题：安装的时候，把原始环境，一模一样地安装一遍
-二、虚拟机
-带环境安装的一种解决方案
-
+二、虚拟机带环境安装的一种解决方案
+缺点：
                         
                     </div>
                     <div class="publish-info">
@@ -1742,7 +1491,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

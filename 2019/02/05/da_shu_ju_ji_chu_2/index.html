@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,14 +380,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    7 分
                 </div>
                 
 
@@ -403,102 +403,34 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、什么是大数据？">1、什么是大数据？</h4>
-<p>2002 大数据提出 美国引入。—麦肯锡报告<br>
-维克托·迈尔-舍恩伯格—大数据之父<br>
-4V特征：<br>
-即<br>
-Volume（数据量大）：PB级<br>
-Variety（数据多样性）：文本、图像、视频、音频等<br>
-Velocity（输入和处理速度快）：流式数据<br>
-Value（价值密度低）： 积累很多的数据才能发掘大数据隐含的意义</p>
-<p>只要能发挥和挖掘数据隐藏的价值，不用纠结与数据量大小<br>
-大数据核心问题存储、计算和分析—-通过组件（计算框架）解决了</p>
-<h4 id="2、数据仓库和大数据">2、数据仓库和大数据</h4>
-<p>（1）传统方式：DW（Data Warehouse），基于传统的关系数据库（Oracle、MySQL等），一般只做 查询分析，TD（Teradata 天睿）–数据仓库一体机</p>
-<p>（2）大数据的方式–分布式<br>
-GP：greenplum</p>
-<h4 id="3、OLTP和OLAP">3、OLTP和OLAP</h4>
-<p>（1）OLTP：Online Transaction Processing 联机事务处理：（insert update、delete）<br>
-ACID：所有的数据可追溯。——-传统关系型数据库（Oracle Mysql Postgresql等）</p>
-<p>（2）OLAP：Online Analytic Processing 联机分析处理<br>
-真正生产中是二者的结合：OLTP（后台操作 前台展示 数据设计等）+OLAP（Hive Hbase Spark等）</p>
-<h4 id="4、Google的基本思想：三篇论文重点">4、Google的基本思想：三篇论文重点</h4>
-<p>（1）GFS: Google File System—-HDFS —解决存储<br>
-a、数据库太贵。主要是为了解决 google搜索内容的存储问题。–造价低 易扩展</p>
-<p>b、倒排索引（Reverted Index）：<br>
-int arry[ ] = {1,2,3,4}<br>
-索引不一定提高查询速度。—key value</p>
-<p>c、没有公布源码，—-Hadoop之父 Doug Cutting<br>
-HDFS 默认文件块大小 128M（Hadoop 2.X） 64M（Hadoop 1.x），<br>
-默认3副本</p>
-<p>（2）MapReduce:分布计算模型<br>
-PageRank</p>
-<p>（3）BigTable：大表<br>
-对HDFS进行封装和二次开发，提高查询效率。把所有数据存入一张表中，通过牺牲空间，换取时间</p>
-<h4 id="5、Hadoop的简介">5、Hadoop的简介</h4>
-<p><a target="_blank" rel="noopener" href="http://hadoop.apache.org/">http://hadoop.apache.org/</a><br>
-Hadoop YARN: A framework for job scheduling and cluster resource management.<br>
-Apache：HDFS+MapReduce+<br>
-Yarn<br>
-<a target="_blank" rel="noopener" href="https://hbase.apache.org/">https://hbase.apache.org/</a></p>
-<h4 id="6、HDFS的体系架构">6、HDFS的体系架构</h4>
-<p>HDFS 副本数可以再 hdfs-site.xml中修改。不超过机器个数 建议不超过3<br>
-/opt/module/hadoop-2.7.3/etc/hadoop<br>
-HDFS=NameNode（主节点 名称节点）+SecondaryNameNode（第二名称节点）+DataNode（数据节点）</p>
-<h4 id="7、MR编程模型">7、MR编程模型</h4>
-<p>包含两个阶段 key value 的设计是关键</p>
-<h4 id="8、大数据典型应用场景">8、大数据典型应用场景</h4>
-<p>（1）商品推荐–协同过滤<br>
-（2）画像<br>
-（3）套牌车</p>
-<h4 id="9、Hadoop的安装准备工作">9、Hadoop的安装准备工作</h4>
-<p>Hadoop名字来源–Doug Cutting<br>
-（1）安装好linux操作系统（IP配置）<br>
-（2）关闭防火墙<br>
-systemctl stop（disable） firewalld.service<br>
-（3）安装Jdk–winscp 上传 opt/software 解压到 opt/module<br>
-（4）Hadoop安装包—虚拟机的克隆 scp（拷贝）</p>
-<p>a、提前准备好 mkdir /opt/module<br>
-tar -zxvf hadoop-2.7.3.tar.gz -C /opt/module/</p>
+                <h4 id="1、什么是大数据？"><a href="#1、什么是大数据？" class="headerlink" title="1、什么是大数据？"></a>1、什么是大数据？</h4><p>2002 大数据提出 美国引入。—麦肯锡报告<br>维克托·迈尔-舍恩伯格—大数据之父<br>4V特征：<br>即<br>Volume（数据量大）：PB级<br>Variety（数据多样性）：文本、图像、视频、音频等<br>Velocity（输入和处理速度快）：流式数据<br>Value（价值密度低）： 积累很多的数据才能发掘大数据隐含的意义</p>
+<p>只要能发挥和挖掘数据隐藏的价值，不用纠结与数据量大小<br>大数据核心问题存储、计算和分析—-通过组件（计算框架）解决了</p>
+<h4 id="2、数据仓库和大数据"><a href="#2、数据仓库和大数据" class="headerlink" title="2、数据仓库和大数据"></a>2、数据仓库和大数据</h4><p>（1）传统方式：DW（Data Warehouse），基于传统的关系数据库（Oracle、MySQL等），一般只做 查询分析，TD（Teradata 天睿）–数据仓库一体机</p>
+<p>（2）大数据的方式–分布式<br>GP：greenplum</p>
+<h4 id="3、OLTP和OLAP"><a href="#3、OLTP和OLAP" class="headerlink" title="3、OLTP和OLAP"></a>3、OLTP和OLAP</h4><p>（1）OLTP：Online Transaction Processing 联机事务处理：（insert update、delete）<br>ACID：所有的数据可追溯。——-传统关系型数据库（Oracle Mysql Postgresql等） </p>
+<p>（2）OLAP：Online Analytic Processing 联机分析处理<br>真正生产中是二者的结合：OLTP（后台操作 前台展示 数据设计等）+OLAP（Hive Hbase Spark等）</p>
+<h4 id="4、Google的基本思想：三篇论文重点"><a href="#4、Google的基本思想：三篇论文重点" class="headerlink" title="4、Google的基本思想：三篇论文重点"></a>4、Google的基本思想：三篇论文重点</h4><p>（1）GFS: Google File System—-HDFS —解决存储<br>a、数据库太贵。主要是为了解决 google搜索内容的存储问题。–造价低 易扩展</p>
+<p>b、倒排索引（Reverted Index）：<br>int arry[ ] = {1,2,3,4}<br>索引不一定提高查询速度。—key value </p>
+<p>c、没有公布源码，—-Hadoop之父 Doug Cutting<br>HDFS 默认文件块大小 128M（Hadoop 2.X） 64M（Hadoop 1.x），<br>默认3副本</p>
+<p>（2）MapReduce:分布计算模型<br>PageRank </p>
+<p>（3）BigTable：大表<br>对HDFS进行封装和二次开发，提高查询效率。把所有数据存入一张表中，通过牺牲空间，换取时间</p>
+<h4 id="5、Hadoop的简介"><a href="#5、Hadoop的简介" class="headerlink" title="5、Hadoop的简介"></a>5、Hadoop的简介</h4><p><a target="_blank" rel="noopener" href="http://hadoop.apache.org/">http://hadoop.apache.org/</a><br>Hadoop YARN: A framework for job scheduling and cluster resource management.<br>Apache：HDFS+MapReduce+<br>Yarn<br><a target="_blank" rel="noopener" href="https://hbase.apache.org/">https://hbase.apache.org/</a></p>
+<h4 id="6、HDFS的体系架构"><a href="#6、HDFS的体系架构" class="headerlink" title="6、HDFS的体系架构"></a>6、HDFS的体系架构</h4><p>HDFS 副本数可以再 hdfs-site.xml中修改。不超过机器个数 建议不超过3<br>/opt/module/hadoop-2.7.3/etc/hadoop<br>HDFS=NameNode（主节点 名称节点）+SecondaryNameNode（第二名称节点）+DataNode（数据节点）</p>
+<h4 id="7、MR编程模型"><a href="#7、MR编程模型" class="headerlink" title="7、MR编程模型"></a>7、MR编程模型</h4><p>包含两个阶段 key value 的设计是关键</p>
+<h4 id="8、大数据典型应用场景"><a href="#8、大数据典型应用场景" class="headerlink" title="8、大数据典型应用场景"></a>8、大数据典型应用场景</h4><p>（1）商品推荐–协同过滤<br>（2）画像<br>（3）套牌车</p>
+<h4 id="9、Hadoop的安装准备工作"><a href="#9、Hadoop的安装准备工作" class="headerlink" title="9、Hadoop的安装准备工作"></a>9、Hadoop的安装准备工作</h4><p>Hadoop名字来源–Doug Cutting<br>（1）安装好linux操作系统（IP配置）<br>（2）关闭防火墙<br>systemctl stop（disable） firewalld.service<br>（3）安装Jdk–winscp 上传 opt/software 解压到 opt/module<br>（4）Hadoop安装包—虚拟机的克隆 scp（拷贝）</p>
+<p>a、提前准备好 mkdir /opt/module<br>tar -zxvf hadoop-2.7.3.tar.gz -C /opt/module/ </p>
 <p>b、vi ~/.bash_profile （用于当前用户）或者/etc/profile（所有用户都可以用）增加下面内</p>
-<p>export JAVA_HOME=<code>/opt/module/jdk1.8.0_192</code><br>
-export PATH=<code>$JAVA_HOME/bin:$PATH</code></p>
-<p>HADOOP_HOME=<code>/opt/module/hadoop-2.7.3</code><br>
-export HADOOP_HOME</p>
-<p>PATH=<code>$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH</code><br>
-export PATH</p>
-<p>c、 环境变量生效<br>
-source ~/.bash_profile<br>
-通过 输入 start 按两下tab 看是否有内容</p>
-<p>虚拟机克隆<br>
-（1）保证虚拟机处于关闭状态<br>
-（2）右键-&gt;管理-&gt;克隆 当前状态 完整克隆–&gt;<br>
-（3）hostname–修改<br>
-ip修改 – reboot</p>
+<p>export JAVA_HOME=<code>/opt/module/jdk1.8.0_192</code><br>export PATH=<code>$JAVA_HOME/bin:$PATH</code></p>
+<p>HADOOP_HOME=<code>/opt/module/hadoop-2.7.3</code><br>export HADOOP_HOME</p>
+<p>PATH=<code>$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH</code><br>export PATH</p>
+<p>c、 环境变量生效<br>source ~/.bash_profile<br>通过 输入 start 按两下tab 看是否有内容</p>
+<p>虚拟机克隆<br>（1）保证虚拟机处于关闭状态<br>（2）右键-&gt;管理-&gt;克隆 当前状态 完整克隆–&gt;<br>（3）hostname–修改<br>ip修改 – reboot</p>
 <p>Hadoop（HDFS+Yarn） 本地 伪分布 全分布</p>
-<h4 id="10、Hadoop安装—本地安装">10、Hadoop安装—本地安装</h4>
-<p>（1）特点：没有HDFS和Yarn 只能够测试MR程序是否成功， 作为一个普通的java程序。<br>
-（2）修改文件：<br>
-vi <a target="_blank" rel="noopener" href="http://hadoop-env.sh">hadoop-env.sh</a><br>
-set number<br>
-修改25行（行数不一 hadoop版本不一致）</p>
-<p>JAVA_HOME=/opt/module/jdk1.8.0_181<br>
-cd /root/<br>
-mkdir temp<br>
-touch a.txt<br>
-vi a.txt<br>
-mapred-site.xml 默认没有，我克隆的文件里面有 这个文件没有被覆盖指定了yarn资源</p>
-<h4 id="11、Hadoop安装—本地安装伪分布模式">11、Hadoop安装—本地安装伪分布模式</h4>
-<p>（1）特点：在一台机器上模拟一个分布式环境具备hadoop的所有功能。<br>
-HDFS：NameNode+DataNode+SecondaryNameNode<br>
-Yarn：ResourceManager+NodeManager</p>
-<p>（2）修改的文件：<br>
-step1:hadoop-env.sh<br>
-vi ----- :set number  修改25行<br>
-JAVA_HOME=<code>/opt/module/jdk1.8.0_192</code><br>
-<code>&lt;!--测试hadoop是否成功--&gt;</code><br>
-hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount ~/temp/a.txt ~/temp/output/wc0107</p>
+<h4 id="10、Hadoop安装—本地安装"><a href="#10、Hadoop安装—本地安装" class="headerlink" title="10、Hadoop安装—本地安装"></a>10、Hadoop安装—本地安装</h4><p>（1）特点：没有HDFS和Yarn 只能够测试MR程序是否成功， 作为一个普通的java程序。<br>（2）修改文件：<br>vi hadoop-env.sh<br>set number<br>修改25行（行数不一 hadoop版本不一致）</p>
+<p>JAVA_HOME=/opt/module/jdk1.8.0_181<br>cd /root/<br>mkdir temp<br>touch a.txt<br>vi a.txt<br>mapred-site.xml 默认没有，我克隆的文件里面有 这个文件没有被覆盖指定了yarn资源</p>
+<h4 id="11、Hadoop安装—本地安装伪分布模式"><a href="#11、Hadoop安装—本地安装伪分布模式" class="headerlink" title="11、Hadoop安装—本地安装伪分布模式"></a>11、Hadoop安装—本地安装伪分布模式</h4><p>（1）特点：在一台机器上模拟一个分布式环境具备hadoop的所有功能。<br>HDFS：NameNode+DataNode+SecondaryNameNode<br>Yarn：ResourceManager+NodeManager </p>
+<p>（2）修改的文件：<br>step1:hadoop-env.sh<br>vi —– :set number  修改25行<br>JAVA_HOME=<code>/opt/module/jdk1.8.0_192</code><br><code>&lt;!--测试hadoop是否成功--&gt;</code><br>hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount ~/temp/a.txt ~/temp/output/wc0107</p>
 <p>step2:hdfs-site.xml</p>
 <pre><code class="highlight plaintext">&lt;!--注释配置数据块的冗余度，默认是3--&gt;
  &lt;property&gt;
@@ -512,6 +444,7 @@ hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount ~/temp/a.txt ~/temp/out
     &lt;value&gt;false&lt;/value&gt;
  &lt;/property&gt;
  --&gt;</code></pre>
+
 <p>step3:core-site.xml</p>
 <pre><code class="highlight plaintext">&lt;!--配置HDFS主节点，namenode的地址,9000是RPC通信端口--&gt;
   &lt;property&gt;
@@ -523,6 +456,7 @@ hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount ~/temp/a.txt ~/temp/out
      &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
      &lt;value&gt;/opt/moudle/hadoop-2.7.3/tmp&lt;/value&gt;
   &lt;/property&gt;</code></pre>
+
 <p>step4：mapred-site.xml(默认没有)</p>
 <pre><code class="highlight plaintext">cp mapred-site.xml.template  mapred-site.xml
 &lt;!--配置MR程序运行的框架--&gt;
@@ -530,6 +464,7 @@ hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount ~/temp/a.txt ~/temp/out
     &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
     &lt;value&gt;yarn&lt;/value&gt;
 &lt;/property&gt;</code></pre>
+
 <p>step5：yarn-site.xml</p>
 <pre><code class="highlight plaintext">&lt;!--配置Yarn的节点--&gt;
 &lt;property&gt;  
@@ -541,58 +476,17 @@ hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount ~/temp/a.txt ~/temp/out
    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
 &lt;/property&gt;</code></pre>
-<p>step 6：通过HDFS namenode 格式化<br>
-在第4步中，hadoop.tmp.dir–格式化<br>
-cd /opt/module/hadoop-2.7.3/tmp/<br>
-[root@hsiehchou121 hadoop]# cd /opt/module/hadoop-2.7.3/tmp/<br>
-[root@hsiehchou121 tmp]# hdfs namenode -format</p>
+
+<p>step 6：通过HDFS namenode 格式化<br>在第4步中，hadoop.tmp.dir–格式化<br> cd /opt/module/hadoop-2.7.3/tmp/<br> [root@hsiehchou121 hadoop]# cd /opt/module/hadoop-2.7.3/tmp/<br> [root@hsiehchou121 tmp]# hdfs namenode -format </p>
 <p>重复格式化:hadoop.tmp.dir   先停止集群，需要删除原来的tmp文件。 rm -rf 重新格式化 启动集群</p>
-<p>命令：hdfs namenode -format<br>
-验证：是否格式化成功：<br>
-Storage directory /opt/moudle/hadoop-2.7.3/tmp/dfs/name has been successfully formatted.</p>
-<p>最后启动，通过start-all.sh启动<br>
-验证：<br>
-[root@hsiehchou121 tmp]# jps<br>
-2336 NameNode<br>
-2867 NodeManager<br>
-3972 Jps<br>
-2629 SecondaryNameNode<br>
-2774 ResourceManager<br>
-2441 DataNode<br>
-web访问:<br>
-<a target="_blank" rel="noopener" href="http://192.168.116.121:8088">http://192.168.116.121:8088</a> yarn<br>
-<a target="_blank" rel="noopener" href="http://192.168.116.121:50070">http://192.168.116.121:50070</a> HDFS</p>
-<h4 id="12、免密码登录的原理和配置">12、免密码登录的原理和配置</h4>
-<p>SSH无密码登录<br>
-1）配置ssh<br>
-（1）基本语法<br>
-ssh 另一台电脑的ip地址<br>
-（2）ssh连接时出现Host key verification failed的解决方法<br>
-[root@hsiehchou121 opt]# ssh 192.168.116.103<br>
-The authenticity of host ‘192.168.116.103 (192.168.116.103)’ can’t be established.<br>
-RSA key fingerprint is cf:1e:de:d7:d0:4c:2d:98:60:b4:fd:ae:b1:2d:ad:06.<br>
-Are you sure you want to continue connecting (yes/no)?<br>
-Host key verification failed.<br>
-（3）解决方案如下：直接输入yes</p>
-<p>2）无密钥配置<br>
-（1）进入到我的home目录<br>
-[root@hsiehchou121 opt]$ cd ~/.ssh</p>
-<p>（2）生成公钥和私钥：<br>
-[root@hsiehchou121 .ssh]$ ssh-keygen -t rsa<br>
-然后敲（三个回车），就会生成两个文件id_rsa（私钥）、id_rsa.pub（公钥）</p>
-<p>（3）将公钥拷贝到要免密登录的目标机器上<br>
-[root@hsiehchou121 .ssh]$ <code>ssh-copy-id hsiehchou121</code><br>
-[root@hsiehchou121 .ssh]$ <code>ssh-copy-id hsiehchou122</code><br>
-[root@hsiehchou121 .ssh]$ <code>ssh-copy-id hsiehchou123</code><br>
-[root@hsiehchou121 .ssh]$ <code>ssh-copy-id hsiehchou124</code></p>
+<p>命令：hdfs namenode -format<br>验证：是否格式化成功：<br>Storage directory /opt/moudle/hadoop-2.7.3/tmp/dfs/name has been successfully formatted. </p>
+<p>最后启动，通过start-all.sh启动<br>验证：<br>[root@hsiehchou121 tmp]# jps<br>        2336 NameNode<br>        2867 NodeManager<br>        3972 Jps<br>        2629 SecondaryNameNode<br>        2774 ResourceManager<br>        2441 DataNode<br>web访问:<br><a target="_blank" rel="noopener" href="http://192.168.116.121:8088/">http://192.168.116.121:8088</a> yarn<br><a target="_blank" rel="noopener" href="http://192.168.116.121:50070/">http://192.168.116.121:50070</a> HDFS</p>
+<h4 id="12、免密码登录的原理和配置"><a href="#12、免密码登录的原理和配置" class="headerlink" title="12、免密码登录的原理和配置"></a>12、免密码登录的原理和配置</h4><p>SSH无密码登录<br>1）配置ssh<br>（1）基本语法<br>ssh 另一台电脑的ip地址<br>（2）ssh连接时出现Host key verification failed的解决方法<br>[root@hsiehchou121 opt]# ssh 192.168.116.103<br>The authenticity of host ‘192.168.116.103 (192.168.116.103)’ can’t be established.<br>RSA key fingerprint is cf:1e:de:d7:d0:4c:2d:98:60:b4:fd:ae:b1:2d:ad:06.<br>Are you sure you want to continue connecting (yes/no)?<br>Host key verification failed.<br>（3）解决方案如下：直接输入yes </p>
+<p>2）无密钥配置<br>（1）进入到我的home目录<br>[root@hsiehchou121 opt]$ cd ~/.ssh</p>
+<p>（2）生成公钥和私钥：<br>[root@hsiehchou121 .ssh]$ ssh-keygen -t rsa<br>然后敲（三个回车），就会生成两个文件id_rsa（私钥）、id_rsa.pub（公钥） </p>
+<p>（3）将公钥拷贝到要免密登录的目标机器上<br>[root@hsiehchou121 .ssh]$ <code>ssh-copy-id hsiehchou121</code><br>[root@hsiehchou121 .ssh]$ <code>ssh-copy-id hsiehchou122</code><br>[root@hsiehchou121 .ssh]$ <code>ssh-copy-id hsiehchou123</code><br>[root@hsiehchou121 .ssh]$ <code>ssh-copy-id hsiehchou124</code></p>
 <p>（4）在hsiehchou122、hsiehchou123、hsiehchou124上分别执行所有操作</p>
-<h4 id="13、Hadoop安装—全分布模式">13、Hadoop安装—全分布模式</h4>
-<p>作业：准备3台机器。完成1 的准备工作<br>
-加入到 etc/hosts<br>
-192.168.116.121 hsiehchou121<br>
-192.168.116.122 hsiehchou122<br>
-192.168.116.123 hsiehchou123<br>
-192.168.116.124 hsiehchou124</p>
+<h4 id="13、Hadoop安装—全分布模式"><a href="#13、Hadoop安装—全分布模式" class="headerlink" title="13、Hadoop安装—全分布模式"></a>13、Hadoop安装—全分布模式</h4><p>作业：准备3台机器。完成1 的准备工作<br>加入到 etc/hosts<br>192.168.116.121 hsiehchou121<br>192.168.116.122 hsiehchou122<br>192.168.116.123 hsiehchou123<br>192.168.116.124 hsiehchou124</p>
 
             </div>
             <hr/>
@@ -839,11 +733,7 @@ Host key verification failed.<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、免密码登录的原理和配置
-ssh不对称加密算法（加密和解密是两个文件）（对称加密： 加密和解密文件是同一个）
-（1）公钥–锁：给出去 给其他机器
-（2）私钥–钥匙：自己留着，解密
-step1:ssh-keygen -t rsa(3次回车)
+                            1、免密码登录的原理和配置ssh不对称加密算法（加密和解密是两个文件）（对称加密： 加密和解密文件是同一个）（1）公钥–锁：给出去 给其他机器（2）私钥–钥匙：自己留着，解密step1:ssh-keygen -t rsa(3次回车)step
                         
                     </div>
                     <div class="publish-info">
@@ -896,9 +786,7 @@ step1:ssh-keygen -t rsa(3次回车)
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、Linux 平台上安装
-Git 的工作需要调用 curl，zlib，openssl，expat，libiconv 等库的代码，所以需要先安装这些依赖工具
-在有 yum 的系统上（比如 Fedora）或者有 apt-get 的系统上（比如
+                            一、Linux 平台上安装Git 的工作需要调用 curl，zlib，openssl，expat，libiconv 等库的代码，所以需要先安装这些依赖工具在有 yum 的系统上（比如 Fedora）或者有 apt-get 的系统上（比如 D
                         
                     </div>
                     <div class="publish-info">
@@ -1108,7 +996,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

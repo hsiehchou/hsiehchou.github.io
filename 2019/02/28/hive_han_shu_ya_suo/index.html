@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,7 +384,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    758
+                    746
                 </div>
                 
 
@@ -407,35 +407,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、排序">1、排序</h4>
-<p>Order By:全局排序<br>
-1）按照员工表的奖金金额进行正序排序<br>
-select * from emptable order by emptable.comm asc;<br>
-可以省略asc</p>
-<p>2）按照员工表的奖金金额进行倒序排序<br>
-select * from emptable order by emptable.comm desc;</p>
-<p>3）按照部门和奖金进行升序排序<br>
-select * from emptable order by deptno,comm;</p>
-<p>Sort By: <strong>内部排序（区内有序，全局无序）</strong><br>
-设置reduce个数的属性：set mapreduce.job.reduces = 3;<br>
-select * from dept_partitions sort by deptno desc;</p>
-<p>Distribute By: <strong>分区排序</strong><br>
-1）先按照部门编号进行排序再按照地域编号进行降序排序。<br>
-select * from dept_partitions distribute by deptno sort by loc desc;</p>
-<p>Cluster By: <strong>分桶排序</strong><br>
-1）按照部门编号进行排序<br>
-select * from dept_partitions cluster by deptno;</p>
+                <h4 id="1、排序"><a href="#1、排序" class="headerlink" title="1、排序"></a>1、排序</h4><p>Order By:全局排序<br>1）按照员工表的奖金金额进行正序排序<br>select * from emptable order by emptable.comm asc;<br>可以省略asc</p>
+<p>2）按照员工表的奖金金额进行倒序排序<br>select * from emptable order by emptable.comm desc;</p>
+<p>3）按照部门和奖金进行升序排序<br>select * from emptable order by deptno,comm;</p>
+<p>Sort By: <strong>内部排序（区内有序，全局无序）</strong><br>设置reduce个数的属性：set mapreduce.job.reduces = 3;<br>select * from dept_partitions sort by deptno desc;</p>
+<p>Distribute By: <strong>分区排序</strong><br>1）先按照部门编号进行排序再按照地域编号进行降序排序。<br>select * from dept_partitions distribute by deptno sort by loc desc;</p>
+<p>Cluster By: <strong>分桶排序</strong><br>1）按照部门编号进行排序<br>select * from dept_partitions cluster by deptno;</p>
 <p><strong>注意</strong>：如果Distrbute和Sort by 是相同字段时，可以用cluster by代替</p>
-<h4 id="2、分桶">2、分桶</h4>
-<p>分桶分的是文件<br>
-1）创建分桶表<br>
-clustered by(id) into 4 buckets</p>
+<h4 id="2、分桶"><a href="#2、分桶" class="headerlink" title="2、分桶"></a>2、分桶</h4><p>分桶分的是文件<br>1）创建分桶表<br>clustered by(id) into 4 buckets</p>
 <pre><code class="highlight plaintext">hive&gt; set mapreduce.job.reduces=4;
 hive&gt; create table emptable_buck(id int, name string)
     &gt; clustered by(id) into 4 buckets
     &gt; row format
     &gt; delimited fields
     &gt; terminated by '\t';</code></pre>
+
 <p><strong>查看表的描述信息</strong></p>
 <p>hive&gt; desc formatted emptable_buck;</p>
 <p><strong>加载数据</strong></p>
@@ -444,29 +430,24 @@ hive&gt; create table emptable_b(id int, name string)
     &gt; row format
     &gt; delimited fields
     &gt; terminated by '\t';</code></pre>
+
 <p><strong>清空表</strong></p>
 <pre><code class="highlight plaintext">hive&gt; truncate table emptable_buck;</code></pre>
+
 <p><strong>加载数据（桶）</strong></p>
 <pre><code class="highlight plaintext">hive&gt; load data local inpath '/root/hsiehchou.txt' into table emptable_b;</code></pre>
+
 <p><strong>设置桶的环境变量(插入数据时分桶，不开启默认在一个桶里面)</strong></p>
 <pre><code class="highlight plaintext">hive&gt; set hive.enforce.bucketing=true;
 hive&gt; truncate table emptable_buck;</code></pre>
-<p>用户需要统计一个具有代表性的结果时，并不是全部结果！抽样！<br>
-(bucket 1 out of 2 on id）<br>
-1：第一桶数据<br>
-2：代表拿两桶</p>
+
+<p>用户需要统计一个具有代表性的结果时，并不是全部结果！抽样！<br>(bucket 1 out of 2 on id）<br>1：第一桶数据<br>2：代表拿两桶</p>
 <pre><code class="highlight plaintext">hive&gt; select * from emptable_buck  tablesample(bucket 1 out of 2 on id);</code></pre>
-<h4 id="3、UDF自定义函数">3、UDF自定义函数</h4>
-<p><strong>查看内置函数</strong><br>
-show functions;</p>
-<p><strong>查看函数的详细内容</strong><br>
-desc function extended upper;</p>
-<p>UDF:一进一出<br>
-UDAF:聚合函数 多进一出 count /max/avg<br>
-UDTF:一进多出</p>
-<p><strong>java</strong><br>
-导入Hive的lib下的所有jar包<br>
-编程java代码</p>
+
+<h4 id="3、UDF自定义函数"><a href="#3、UDF自定义函数" class="headerlink" title="3、UDF自定义函数"></a>3、UDF自定义函数</h4><p><strong>查看内置函数</strong><br>show functions; </p>
+<p><strong>查看函数的详细内容</strong><br>desc function extended upper;</p>
+<p>UDF:一进一出<br>UDAF:聚合函数 多进一出 count /max/avg<br>UDTF:一进多出</p>
+<p><strong>java</strong><br>导入Hive的lib下的所有jar包<br>编程java代码</p>
 <pre><code class="highlight plaintext">package com.hsiehchou;
 import org.apache.hadoop.hive.ql.exec.UDF;
 public class MyConcat extends UDF {
@@ -475,38 +456,24 @@ public class MyConcat extends UDF {
         return a + "******" + String.valueOf(b);
     }   
 }</code></pre>
+
 <p>export此文件，打包jar，放入hsiehchou121中</p>
-<p>添加临时：<br>
-add jar /root/Myconcat.jar;<br>
-create temporary function my_cat as “com.hsiehchou.MyConcat”;</p>
+<p>添加临时：<br>add jar /root/Myconcat.jar;<br>create temporary function my_cat as “com.hsiehchou.MyConcat”;</p>
 <pre><code class="highlight plaintext">&lt;!-- 注册永久：hive-site.xml --&gt;
 &lt;property&gt;
 &lt;name&gt;hive.aux.jars.path&lt;/name&gt;
 &lt;value&gt;file:///root/hd/hive/lib/hive.jar&lt;/value&gt;
 &lt;/property&gt;</code></pre>
-<h4 id="4、Hive压缩">4、Hive压缩</h4>
-<p>存储：hdfs<br>
-计算：mapreduce</p>
-<p><strong>Map输出阶段压缩方式</strong><br>
-开启hive中间传输数据压缩功能<br>
-set hive.exec.compress.intermediate=true;</p>
-<p><strong>开启map输出压缩</strong><br>
-set mapreduce.map.output.compress=true;</p>
-<p><strong>设置snappy压缩方式</strong><br>
-set <a target="_blank" rel="noopener" href="http://mapreduce.map.output.compress.codec=org.apache.hadoop.io.com">mapreduce.map.output.compress.codec=org.apache.hadoop.io.com</a><br>
-press.SnappyCodec;</p>
-<p><strong>Reduce输出阶段压缩方式</strong><br>
-设置hive输出数据压缩功能<br>
-set hive.exec.compress.output=true;</p>
-<p><strong>设置mr输出数据压缩</strong><br>
-set mapreduce.output.fileoutputformat.compress=true;</p>
-<p><strong>指定压缩编码</strong><br>
-set mapreduce.output.fileoutputformat.compress.codec=org.apache.<br>
-hadoop.io.compress.SnappyCodec;</p>
-<p><strong>指定压缩类型块压缩</strong><br>
-set mapreduce.output.fileoutputformat.compress.type=BLOCK;</p>
-<p><strong>测试结果</strong><br>
-insert overwrite local directory ‘/root/datas/rs’ select * from emptable order by sal desc;</p>
+
+<h4 id="4、Hive压缩"><a href="#4、Hive压缩" class="headerlink" title="4、Hive压缩"></a>4、Hive压缩</h4><p>存储：hdfs<br>计算：mapreduce</p>
+<p><strong>Map输出阶段压缩方式</strong><br>开启hive中间传输数据压缩功能<br>set hive.exec.compress.intermediate=true;</p>
+<p><strong>开启map输出压缩</strong><br>set mapreduce.map.output.compress=true;</p>
+<p><strong>设置snappy压缩方式</strong><br>set mapreduce.map.output.compress.codec=org.apache.hadoop.io.com<br>press.SnappyCodec;</p>
+<p><strong>Reduce输出阶段压缩方式</strong><br>设置hive输出数据压缩功能<br>set hive.exec.compress.output=true;</p>
+<p><strong>设置mr输出数据压缩</strong><br>set mapreduce.output.fileoutputformat.compress=true;</p>
+<p><strong>指定压缩编码</strong><br>set mapreduce.output.fileoutputformat.compress.codec=org.apache.<br>hadoop.io.compress.SnappyCodec;</p>
+<p><strong>指定压缩类型块压缩</strong><br>set mapreduce.output.fileoutputformat.compress.type=BLOCK;</p>
+<p><strong>测试结果</strong><br>insert overwrite local directory ‘/root/datas/rs’ select * from emptable order by sal desc;</p>
 
             </div>
             <hr/>
@@ -757,9 +724,7 @@ insert overwrite local directory ‘/root/datas/rs’ select * from emptable ord
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、Flume
-概述：
-Flume是一种分布式，可靠且可用的服务，用于有效地收集，聚合和移动大量日志数据。它具有基于流数据流的简单灵活的架构。它具有可靠的可靠性机制和许多故障转移和恢复机制，具有强大的容错性。它使用简单的可扩展数据模型，允许
+                            1、Flume概述：Flume是一种分布式，可靠且可用的服务，用于有效地收集，聚合和移动大量日志数据。它具有基于流数据流的简单灵活的架构。它具有可靠的可靠性机制和许多故障转移和恢复机制，具有强大的容错性。它使用简单的可扩展数据模型，允许在线
                         
                     </div>
                     <div class="publish-info">
@@ -812,12 +777,10 @@ Flume是一种分布式，可靠且可用的服务，用于有效地收集，聚
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、分区表
-1）创建分区表
-hive&gt; create table dept_partitions()
+                            1、分区表1）创建分区表hive&gt; create table dept_partitions()
       &gt; partition by()
       &gt; row format
-      &gt; delimit
+      &gt; delimited
                         
                     </div>
                     <div class="publish-info">
@@ -1031,7 +994,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

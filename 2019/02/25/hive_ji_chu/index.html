@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -407,52 +407,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Hive">Hive</h3>
-<p>官网：<a target="_blank" rel="noopener" href="http://hive.apache.org/">http://hive.apache.org/</a><br>
-Apache Hive?数据仓库软件有助于使用SQL读取，编写和管理驻留在分布式存储中的大型数据集。可以将结构投影到已存储的数据中。提供了命令行工具和JDBC驱动程序以将用户连接到Hive</p>
+                <h3 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h3><p>官网：<a target="_blank" rel="noopener" href="http://hive.apache.org/">http://hive.apache.org/</a><br>Apache Hive?数据仓库软件有助于使用SQL读取，编写和管理驻留在分布式存储中的大型数据集。可以将结构投影到已存储的数据中。提供了命令行工具和JDBC驱动程序以将用户连接到Hive</p>
 <p>Hive提供了SQL查询功能 hdfs分布式存储</p>
-<p>Hive本质HQL转化为MapReduce程序<br>
-环境前提：<br>
-1）启动hdfs集群<br>
-2）启动yarn集群<br>
-如果想用hive的话，需要提前安装部署好hadoop集群</p>
-<h3 id="为什么要学习Hive">为什么要学习Hive</h3>
-<p>简化开发<br>
-easycoding!<br>
-高德地图使用Hive</p>
-<p><strong>优势</strong>：<br>
-1）操作接口采用类sql语法，select * from stu;<br>
-简单、上手快！<br>
-2）hive可以替代mr程序，sqoop<br>
-3）hive可以处理海量数据<br>
-4）hive支持UDF，自定义函数</p>
-<p><strong>劣势</strong>：<br>
-1）处理数据延迟高，慢<br>
-引擎：1.2.2以前版本都是用的mr引擎<br>
-2.x之后用的是Spark引擎</p>
-<p>2）HQL的表达能力有限<br>
-一些sql无法解决的场景，依然需要我们写MapReduce</p>
-<h3 id="hive架构原理解析">hive架构原理解析</h3>
-<p>sql-&gt;转换-&gt;MapReduce-&gt;job</p>
-<h3 id="hive安装部署">hive安装部署</h3>
-<h4 id="1）下载">1）下载</h4>
-<h4 id="2）上传到Linux">2）上传到Linux</h4>
-<h4 id="3）解压">3）解压</h4>
-<p>tar -zxvf apache-hive-1.2.2-bin.tar.gz -C hd/</p>
-<h4 id="4）重命名">4）重命名</h4>
-<p>mv apache-hive-1.2.2-bin/ hive</p>
-<h4 id="5）修改配置文件">5）修改配置文件</h4>
-<p>mv hive-env.sh.template <a target="_blank" rel="noopener" href="http://hive-env.sh">hive-env.sh</a><br>
-vi <a target="_blank" rel="noopener" href="http://hive-env.sh">hive-env.sh</a><br>
-HADOOP_HOME=/root/hd/hadoop-2.8.4<br>
-export HIVE_CONF_DIR=/root/hd/hive/conf</p>
-<h4 id="6）启动">6）启动</h4>
-<p>bin/hive</p>
-<h3 id="配置mysql元数据库">配置mysql元数据库</h3>
-<h4 id="1）拷贝mysql驱动到hive-lib">1）拷贝mysql驱动到hive/lib</h4>
-<p>cp/mv hive/lib</p>
-<h4 id="2）添加hive-site-xml">2）添加hive-site.xml</h4>
-<pre><code class="highlight plaintext">&lt;?xml version="1.0"?&gt;
+<p>Hive本质HQL转化为MapReduce程序<br>环境前提：<br>1）启动hdfs集群<br>2）启动yarn集群<br>如果想用hive的话，需要提前安装部署好hadoop集群</p>
+<h3 id="为什么要学习Hive"><a href="#为什么要学习Hive" class="headerlink" title="为什么要学习Hive"></a>为什么要学习Hive</h3><p>简化开发<br>easycoding!<br>高德地图使用Hive</p>
+<p><strong>优势</strong>：<br>1）操作接口采用类sql语法，select * from stu;<br>简单、上手快！<br>2）hive可以替代mr程序，sqoop<br>3）hive可以处理海量数据<br>4）hive支持UDF，自定义函数</p>
+<p><strong>劣势</strong>：<br>1）处理数据延迟高，慢<br>引擎：1.2.2以前版本都是用的mr引擎<br>2.x之后用的是Spark引擎 </p>
+<p>2）HQL的表达能力有限<br>一些sql无法解决的场景，依然需要我们写MapReduce</p>
+<h3 id="hive架构原理解析"><a href="#hive架构原理解析" class="headerlink" title="hive架构原理解析"></a>hive架构原理解析</h3><p>sql-&gt;转换-&gt;MapReduce-&gt;job</p>
+<h3 id="hive安装部署"><a href="#hive安装部署" class="headerlink" title="hive安装部署"></a>hive安装部署</h3><h4 id="1）下载"><a href="#1）下载" class="headerlink" title="1）下载"></a>1）下载</h4><h4 id="2）上传到Linux"><a href="#2）上传到Linux" class="headerlink" title="2）上传到Linux"></a>2）上传到Linux</h4><h4 id="3）解压"><a href="#3）解压" class="headerlink" title="3）解压"></a>3）解压</h4><p>tar -zxvf apache-hive-1.2.2-bin.tar.gz -C hd/ </p>
+<h4 id="4）重命名"><a href="#4）重命名" class="headerlink" title="4）重命名"></a>4）重命名</h4><p>mv apache-hive-1.2.2-bin/ hive</p>
+<h4 id="5）修改配置文件"><a href="#5）修改配置文件" class="headerlink" title="5）修改配置文件"></a>5）修改配置文件</h4><p>mv hive-env.sh.template hive-env.sh<br>vi hive-env.sh<br>HADOOP_HOME=/root/hd/hadoop-2.8.4<br>export HIVE_CONF_DIR=/root/hd/hive/conf</p>
+<h4 id="6）启动"><a href="#6）启动" class="headerlink" title="6）启动"></a>6）启动</h4><p>bin/hive </p>
+<h3 id="配置mysql元数据库"><a href="#配置mysql元数据库" class="headerlink" title="配置mysql元数据库"></a>配置mysql元数据库</h3><h4 id="1）拷贝mysql驱动到hive-lib"><a href="#1）拷贝mysql驱动到hive-lib" class="headerlink" title="1）拷贝mysql驱动到hive/lib"></a>1）拷贝mysql驱动到hive/lib</h4><p>cp/mv hive/lib </p>
+<h4 id="2）添加hive-site-xml"><a href="#2）添加hive-site-xml" class="headerlink" title="2）添加hive-site.xml"></a>2）添加hive-site.xml</h4><pre><code class="highlight plaintext">&lt;?xml version="1.0"?&gt;
 &lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;
 &lt;configuration&gt;
 &lt;property&gt;
@@ -480,178 +448,106 @@ escription&gt;
 &lt;description&gt;password to use against metastore database&lt;/d
 escription&gt;
 &lt;/property&gt;</code></pre>
-<h4 id="3）注意：重启hadoop集群">3）注意：重启hadoop集群</h4>
-<h4 id="4）启动hive">4）启动hive</h4>
-<p>bin/hive<br>
-此时mysql中创建metastore元数据库<br>
-hive&gt; create table hsiehchou(id int, name string)</p>
-<p>row format<br>
-delimited fields<br>
-terminated by ‘\t’;<br>
-OK<br>
-hive&gt; load data local inpath ‘/root/hsiehchou.txt’ into table hsiehchou;<br>
-OK<br>
-hive&gt; select * from hsiehchou;<br>
-OK<br>
-1 re<br>
-2 mi<br>
-3 zk<br>
-4 sf<br>
-5 ls</p>
-<h3 id="杀死hive进程">杀死hive进程</h3>
-<p>[root@hsiehchou121 hive]# ps -aux|grep hive<br>
-root 3649 3.7 16.9 2027072 239240 pts/0 Tl 21:37 0:31<br>
-root 4285 0.0 0.0 112648 948 pts/0<br>
-[root@hsiehchou121 hive]# kill -9 3649</p>
-<h3 id="安装mysql5-6">安装mysql5.6</h3>
-<p>yum search libaio # 检索相关信息<br>
-yum install libaio # 安装依赖包<br>
-wget <a target="_blank" rel="noopener" href="http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm">http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm</a></p>
-<p>添加 MySQL Yum Repository 到linux系统 repository 列表中，输入<br>
-yum localinstall mysql-community-release-el7-5.noarch.rpm</p>
-<p>验证是否添加成功<br>
-yum repolist enabled | grep “mysql.-community.”</p>
-<p>查看 MySQL 版本，输入<br>
-yum repolist all | grep mysql</p>
-<p>可以看到 5.5， 5.7 版本是默认禁用的，因为现在最新的稳定版是 5.6<br>
-yum repolist enabled | grep mysql</p>
-<p>通过 Yum 来安装 MySQL，输入<br>
-yum install mysql-community-server</p>
+<h4 id="3）注意：重启hadoop集群"><a href="#3）注意：重启hadoop集群" class="headerlink" title="3）注意：重启hadoop集群"></a>3）注意：重启hadoop集群</h4><h4 id="4）启动hive"><a href="#4）启动hive" class="headerlink" title="4）启动hive"></a>4）启动hive</h4><p>bin/hive<br>此时mysql中创建metastore元数据库<br>hive&gt; create table hsiehchou(id int, name string)</p>
+<p>row format<br>delimited fields<br>terminated by ‘\t’;<br>OK<br>hive&gt; load data local inpath ‘/root/hsiehchou.txt’ into table hsiehchou;<br>OK<br>hive&gt; select * from hsiehchou;<br>OK<br>1 re<br>2 mi<br>3 zk<br>4 sf<br>5 ls</p>
+<h3 id="杀死hive进程"><a href="#杀死hive进程" class="headerlink" title="杀死hive进程"></a>杀死hive进程</h3><p>[root@hsiehchou121 hive]# ps -aux|grep hive<br>root 3649 3.7 16.9 2027072 239240 pts/0 Tl 21:37 0:31<br>root 4285 0.0 0.0 112648 948 pts/0<br>[root@hsiehchou121 hive]# kill -9 3649</p>
+<h3 id="安装mysql5-6"><a href="#安装mysql5-6" class="headerlink" title="安装mysql5.6"></a>安装mysql5.6</h3><p>yum search libaio # 检索相关信息<br>yum install libaio # 安装依赖包<br>wget <a target="_blank" rel="noopener" href="http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm">http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm</a></p>
+<p>添加 MySQL Yum Repository 到linux系统 repository 列表中，输入<br>yum localinstall mysql-community-release-el7-5.noarch.rpm</p>
+<p>验证是否添加成功<br>yum repolist enabled | grep “mysql.-community.”</p>
+<p>查看 MySQL 版本，输入<br>yum repolist all | grep mysql</p>
+<p>可以看到 5.5， 5.7 版本是默认禁用的，因为现在最新的稳定版是 5.6<br>yum repolist enabled | grep mysql</p>
+<p>通过 Yum 来安装 MySQL，输入<br>yum install mysql-community-server</p>
 <p>rpm -qi mysql-community-server.x86_64 0:5.6.24-3.el7</p>
-<p>查看 MySQL 的安装目录<br>
-whereis mysql</p>
-<p>启动 MySQL Server<br>
-systemctl start mysqld</p>
-<p>查看 MySQL Server 状态<br>
-systemctl status mysqld</p>
-<p>关闭 MySQL Server<br>
-systemctl stop mysqld</p>
-<p>测试是否安装成功<br>
-mysql</p>
-<p>修改mysql密码<br>
-use mysql;<br>
-update user set password=password(‘root’) where user=’root’;<br>
-flush privileges;</p>
-<h3 id="数据导入操作">数据导入操作</h3>
-<p>load data []local] inpath ‘/root/hsiehchou.txt’ into table hsiehchou;</p>
-<p>load data:加载数据</p>
+<p>查看 MySQL 的安装目录<br>whereis mysql</p>
+<p>启动 MySQL Server<br>systemctl start mysqld</p>
+<p>查看 MySQL Server 状态<br>systemctl status mysqld</p>
+<p>关闭 MySQL Server<br>systemctl stop mysqld</p>
+<p>测试是否安装成功<br>mysql</p>
+<p>修改mysql密码<br>use mysql;<br>update user set password=password(‘root’) where user=’root’;<br>flush privileges;</p>
+<h3 id="数据导入操作"><a href="#数据导入操作" class="headerlink" title="数据导入操作"></a>数据导入操作</h3><p>load data []local] inpath ‘/root/hsiehchou.txt’ into table hsiehchou; </p>
+<p>load data:加载数据 </p>
 <p>local:可选操作，如果加上local导入是本地linux中的数据，如果去掉local 那么 导入的是hdfs中数据</p>
-<p>inpath:表示的是加载数据的路径</p>
+<p>inpath:表示的是加载数据的路径 </p>
 <p>into table:表示要加载的对应的表</p>
-<h3 id="hive数据类型">hive数据类型</h3>
-<table>
+<h3 id="hive数据类型"><a href="#hive数据类型" class="headerlink" title="hive数据类型"></a>hive数据类型</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">Java数据类型</th>
-<th style="text-align:center">Hive数据类型</th>
-<th style="text-align:center">长度</th>
+<th align="center">Java数据类型</th>
+<th align="center">Hive数据类型</th>
+<th align="center">长度</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">byte</td>
-<td style="text-align:center">TINYINT</td>
-<td style="text-align:center">1byte有符号整数</td>
+<tbody><tr>
+<td align="center">byte</td>
+<td align="center">TINYINT</td>
+<td align="center">1byte有符号整数</td>
 </tr>
 <tr>
-<td style="text-align:center">short</td>
-<td style="text-align:center">SMALLINT</td>
-<td style="text-align:center">2byte有符号整数</td>
+<td align="center">short</td>
+<td align="center">SMALLINT</td>
+<td align="center">2byte有符号整数</td>
 </tr>
 <tr>
-<td style="text-align:center">int</td>
-<td style="text-align:center">INT</td>
-<td style="text-align:center">4byte有符号整数</td>
+<td align="center">int</td>
+<td align="center">INT</td>
+<td align="center">4byte有符号整数</td>
 </tr>
 <tr>
-<td style="text-align:center">long</td>
-<td style="text-align:center">GINT</td>
-<td style="text-align:center">8byte有符号整数</td>
+<td align="center">long</td>
+<td align="center">GINT</td>
+<td align="center">8byte有符号整数</td>
 </tr>
 <tr>
-<td style="text-align:center">boolean</td>
-<td style="text-align:center">BOOLEAN</td>
-<td style="text-align:center">false/true</td>
+<td align="center">boolean</td>
+<td align="center">BOOLEAN</td>
+<td align="center">false/true</td>
 </tr>
 <tr>
-<td style="text-align:center">float</td>
-<td style="text-align:center">FLOAT</td>
-<td style="text-align:center">单精度浮点</td>
+<td align="center">float</td>
+<td align="center">FLOAT</td>
+<td align="center">单精度浮点</td>
 </tr>
 <tr>
-<td style="text-align:center">double</td>
-<td style="text-align:center">DOUBLE</td>
-<td style="text-align:center">双精度浮点</td>
+<td align="center">double</td>
+<td align="center">DOUBLE</td>
+<td align="center">双精度浮点</td>
 </tr>
 <tr>
-<td style="text-align:center">string</td>
-<td style="text-align:center">STRING</td>
-<td style="text-align:center">字符</td>
+<td align="center">string</td>
+<td align="center">STRING</td>
+<td align="center">字符</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">BINARY</td>
-<td style="text-align:center">字节数组</td>
+<td align="center"></td>
+<td align="center">BINARY</td>
+<td align="center">字节数组</td>
 </tr>
-</tbody>
-</table>
-<h3 id="DDL数据定义">DDL数据定义</h3>
-<h4 id="1）查看数据库">1）查看数据库</h4>
-<p>show databases;</p>
-<h4 id="2）创建库">2）创建库</h4>
-<p>create database hive_db;</p>
-<h4 id="3）创建库-标准写法">3）创建库 标准写法</h4>
-<p>create database if not exists hive_db;</p>
-<h4 id="4）创建库指定hdfs路径">4）创建库指定hdfs路径</h4>
-<p>create database hive_db location ‘/hive_db’;</p>
-<h4 id="5）创建表">5）创建表</h4>
-<p>如果指定了hdfs路径<br>
-创建的表存在于这个路径</p>
-<h4 id="6）查看数据库结构">6）查看数据库结构</h4>
-<p>desc database hive_db;</p>
-<h4 id="7）添加额外的描述信息">7）添加额外的描述信息</h4>
-<p>alter database hive_db set dbproperties(‘created’=’hsiehchou’);<br>
-注意：查询需要使用desc database extended hive_db;</p>
-<h4 id="8）查看指定的通配库-过滤">8）查看指定的通配库:过滤</h4>
-<p>show databases like ‘h*’;</p>
-<h4 id="9）删除空库">9）删除空库</h4>
-<p>drop database hive_db;</p>
-<h4 id="10）删除非空库">10）删除非空库</h4>
-<p>drop database hive_db2 cascade;</p>
-<h4 id="11-删除非空库标准写法">11) 删除非空库标准写法</h4>
-<p>drop database if exists hive_db cascade;</p>
-<h3 id="创建表">创建表</h3>
-<p>create <code>[external]</code> table <code>[if not exists]</code> table_name(字段信息) <code>[partitioned by(字段信息)][clustered by(字段信息)]</code> [sorted by(字段信息)]row format delimited fields terminated by ‘切割符’;</p>
-<h3 id="管理表">管理表</h3>
-<p>默认不加external创建的就是管理表，也称为内部表。<br>
-MANAGED_TABLE管理表<br>
-Table Type:MANAGED_TABLE</p>
-<p>查看表类型：<br>
-desc formatted hsiehchou2;</p>
-<h3 id="外部表">外部表</h3>
-<p>EXTERNAL_TABLE外部表<br>
-创建方式：<br>
-create external table student(id int,name string)</p>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="DDL数据定义"><a href="#DDL数据定义" class="headerlink" title="DDL数据定义"></a>DDL数据定义</h3><h4 id="1）查看数据库"><a href="#1）查看数据库" class="headerlink" title="1）查看数据库"></a>1）查看数据库</h4><p>show databases;</p>
+<h4 id="2）创建库"><a href="#2）创建库" class="headerlink" title="2）创建库"></a>2）创建库</h4><p>create database hive_db;</p>
+<h4 id="3）创建库-标准写法"><a href="#3）创建库-标准写法" class="headerlink" title="3）创建库 标准写法"></a>3）创建库 标准写法</h4><p>create database if not exists hive_db;</p>
+<h4 id="4）创建库指定hdfs路径"><a href="#4）创建库指定hdfs路径" class="headerlink" title="4）创建库指定hdfs路径"></a>4）创建库指定hdfs路径</h4><p>create database hive_db location ‘/hive_db’;</p>
+<h4 id="5）创建表"><a href="#5）创建表" class="headerlink" title="5）创建表"></a>5）创建表</h4><p>如果指定了hdfs路径<br>创建的表存在于这个路径</p>
+<h4 id="6）查看数据库结构"><a href="#6）查看数据库结构" class="headerlink" title="6）查看数据库结构"></a>6）查看数据库结构</h4><p>desc database hive_db;</p>
+<h4 id="7）添加额外的描述信息"><a href="#7）添加额外的描述信息" class="headerlink" title="7）添加额外的描述信息"></a>7）添加额外的描述信息</h4><p>alter database hive_db set dbproperties(‘created’=’hsiehchou’);<br>注意：查询需要使用desc database extended hive_db;</p>
+<h4 id="8）查看指定的通配库-过滤"><a href="#8）查看指定的通配库-过滤" class="headerlink" title="8）查看指定的通配库:过滤"></a>8）查看指定的通配库:过滤</h4><p>show databases like ‘h*’;</p>
+<h4 id="9）删除空库"><a href="#9）删除空库" class="headerlink" title="9）删除空库"></a>9）删除空库</h4><p>drop database hive_db;</p>
+<h4 id="10）删除非空库"><a href="#10）删除非空库" class="headerlink" title="10）删除非空库"></a>10）删除非空库</h4><p>drop database hive_db2 cascade;</p>
+<h4 id="11-删除非空库标准写法"><a href="#11-删除非空库标准写法" class="headerlink" title="11) 删除非空库标准写法"></a>11) 删除非空库标准写法</h4><p>drop database if exists hive_db cascade;</p>
+<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><p>create <code>[external]</code> table <code>[if not exists]</code> table_name(字段信息) <code>[partitioned by(字段信息)][clustered by(字段信息)]</code> [sorted by(字段信息)]row format delimited fields terminated by ‘切割符’;</p>
+<h3 id="管理表"><a href="#管理表" class="headerlink" title="管理表"></a>管理表</h3><p>默认不加external创建的就是管理表，也称为内部表。<br>MANAGED_TABLE管理表<br>Table Type:MANAGED_TABLE </p>
+<p>查看表类型：<br>desc formatted hsiehchou2;</p>
+<h3 id="外部表"><a href="#外部表" class="headerlink" title="外部表"></a>外部表</h3><p>EXTERNAL_TABLE外部表<br>创建方式：<br>create external table student(id int,name string) </p>
 <p>区别：如果是管理表删除hdfs中数据删除，如果是外部表删除hdfs数据不删除！</p>
-<h3 id="hive命令">hive命令</h3>
-<h4 id="1）不登录hive客户端直接输入命令操作Hive">1）不登录hive客户端直接输入命令操作Hive</h4>
-<p>[root@hsiehchou121 hive]# bin/hive -e “select * from hsiehchou;”<br>
-19/02/28 03:09:23 WARN conf.HiveConf: HiveConf of name hive.cli,print.current.db does not exist<br>
-Logging initialized using configuration in jar:file:/root/hd/hive/lib/hive-common-1.2.2.jar!/hive-log4j.properties<br>
-OK<br>
-<a target="_blank" rel="noopener" href="http://hsiehchou.id">hsiehchou.id</a> <a target="_blank" rel="noopener" href="http://hsiehchou.name">hsiehchou.name</a><br>
-1 re<br>
-2 mi<br>
-3 zk<br>
-4 sf<br>
-5 ls</p>
-<h4 id="2）直接把sql写入到文件中">2）直接把sql写入到文件中</h4>
-<p>bin/hive -f /root/hived.sql</p>
-<h4 id="3）查看hdfs文件">3）查看hdfs文件</h4>
-<p>dfs -ls /;<br>
-dfs -cat /wc/in/words.txt;</p>
-<h4 id="4）查看历史操作">4）查看历史操作</h4>
-<p>[root@hsiehchou121 hive]# cat ~/.hivehistory</p>
+<h3 id="hive命令"><a href="#hive命令" class="headerlink" title="hive命令"></a>hive命令</h3><h4 id="1）不登录hive客户端直接输入命令操作Hive"><a href="#1）不登录hive客户端直接输入命令操作Hive" class="headerlink" title="1）不登录hive客户端直接输入命令操作Hive"></a>1）不登录hive客户端直接输入命令操作Hive</h4><p>[root@hsiehchou121 hive]# bin/hive -e “select * from hsiehchou;”<br>19/02/28 03:09:23 WARN conf.HiveConf: HiveConf of name hive.cli,print.current.db does not exist<br>Logging initialized using configuration in jar:file:/root/hd/hive/lib/hive-common-1.2.2.jar!/hive-log4j.properties<br>OK<br>hsiehchou.id hsiehchou.name<br>1 re<br>2 mi<br>3 zk<br>4 sf<br>5 ls</p>
+<h4 id="2）直接把sql写入到文件中"><a href="#2）直接把sql写入到文件中" class="headerlink" title="2）直接把sql写入到文件中"></a>2）直接把sql写入到文件中</h4><p>bin/hive -f /root/hived.sql</p>
+<h4 id="3）查看hdfs文件"><a href="#3）查看hdfs文件" class="headerlink" title="3）查看hdfs文件"></a>3）查看hdfs文件</h4><p>dfs -ls /;<br>dfs -cat /wc/in/words.txt;</p>
+<h4 id="4）查看历史操作"><a href="#4）查看历史操作" class="headerlink" title="4）查看历史操作"></a>4）查看历史操作</h4><p>[root@hsiehchou121 hive]# cat ~/.hivehistory</p>
 <p>在hive/conf/hive-site.xml中增加</p>
 <pre><code class="highlight plaintext">&lt;!--是否显示当前表头--&gt;
 &lt;property&gt;
@@ -663,15 +559,8 @@ dfs -cat /wc/in/words.txt;</p>
         &lt;name&gt;hive.cli.print.current.db&lt;/name&gt;
         &lt;value&gt;true&lt;/value&gt;
 &lt;/property</code></pre>
-<p><strong>显示效果</strong><br>
-hive&gt; select * from hsiehchou;<br>
-OK<br>
-<a target="_blank" rel="noopener" href="http://hsiehchou.id">hsiehchou.id</a> <a target="_blank" rel="noopener" href="http://hsiehchou.name">hsiehchou.name</a><br>
-1 re<br>
-2 mi<br>
-3 zk<br>
-4 sf<br>
-5 ls</p>
+
+<p><strong>显示效果</strong><br>hive&gt; select * from hsiehchou;<br>OK<br>hsiehchou.id hsiehchou.name<br>1 re<br>2 mi<br>3 zk<br>4 sf<br>5 ls</p>
 
             </div>
             <hr/>
@@ -922,12 +811,10 @@ OK<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、分区表
-1）创建分区表
-hive&gt; create table dept_partitions()
+                            1、分区表1）创建分区表hive&gt; create table dept_partitions()
       &gt; partition by()
       &gt; row format
-      &gt; delimit
+      &gt; delimited
                         
                     </div>
                     <div class="publish-info">
@@ -980,11 +867,8 @@ hive&gt; create table dept_partitions()
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            命令行操作
-配置环境变量：vi /etc/profile
-export ZOOKEEPER_HOME=/root/hd/zookeeper-3.4.10
-export PATH=$ZOOKEEPER_HOME/bin:$PATH
-声明环境变
+                            命令行操作配置环境变量：vi /etc/profileexport ZOOKEEPER_HOME=/root/hd/zookeeper-3.4.10export PATH=$ZOOKEEPER_HOME/bin:$PATH
+声明环境变量：s
                         
                     </div>
                     <div class="publish-info">
@@ -1198,7 +1082,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

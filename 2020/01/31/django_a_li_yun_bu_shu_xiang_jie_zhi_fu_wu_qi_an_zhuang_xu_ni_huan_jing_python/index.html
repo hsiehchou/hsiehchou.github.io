@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,14 +380,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    403
+                    401
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -403,10 +403,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Django阿里云部署详解之服务器安装虚拟环境、Python">Django阿里云部署详解之服务器安装虚拟环境、Python</h3>
-<h4 id="（本系统就是阿里云部署的）">（本系统就是阿里云部署的）</h4>
-<h4 id="大家照做就行，这我试了很多次才总结出来的">大家照做就行，这我试了很多次才总结出来的</h4>
-<pre><code class="highlight plaintext">yum update -y
+                <h3 id="Django阿里云部署详解之服务器安装虚拟环境、Python"><a href="#Django阿里云部署详解之服务器安装虚拟环境、Python" class="headerlink" title="Django阿里云部署详解之服务器安装虚拟环境、Python"></a>Django阿里云部署详解之服务器安装虚拟环境、Python</h3><h4 id="（本系统就是阿里云部署的）"><a href="#（本系统就是阿里云部署的）" class="headerlink" title="（本系统就是阿里云部署的）"></a>（本系统就是阿里云部署的）</h4><h4 id="大家照做就行，这我试了很多次才总结出来的"><a href="#大家照做就行，这我试了很多次才总结出来的" class="headerlink" title="大家照做就行，这我试了很多次才总结出来的"></a>大家照做就行，这我试了很多次才总结出来的</h4><pre><code class="highlight plaintext">yum update -y
 yum -y install gcc gcc-c++
 yum -y groupinstall "Development tools"
 yum -y install zlib zlib-devel openssl openssl-devel ncurses-devel sqlite sqlite-devel bzip2-deve readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
@@ -415,44 +412,50 @@ yum install epel-release
 yum -y install nginx
 
 yum install libffi-devel -y</code></pre>
+
 <pre><code class="highlight plaintext">wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz</code></pre>
+
 <pre><code class="highlight plaintext">mkdir -p /usr/local/python3
 tar -zxvf Python-3.8.1.tgz</code></pre>
+
 <pre><code class="highlight plaintext">cd Python-3.8.1
 ./configure --prefix=/usr/local/python3
 make &amp;&amp; make install</code></pre>
+
 <pre><code class="highlight plaintext">ln -s /usr/local/python3/bin/python3 /usr/bin/python3</code></pre>
-<p>原来的pip自己备份下：<br>
-mv /usr/bin/pip /usr/bin/pip.bak<br>
-这里使用新的pip</p>
+
+<p>原来的pip自己备份下：<br>mv /usr/bin/pip /usr/bin/pip.bak<br>这里使用新的pip</p>
 <pre><code class="highlight plaintext">ln -s /usr/local/python3/bin/pip3 /usr/bin/pip
 pip install --upgrade pip</code></pre>
-<h4 id="修改系统默认的python为自己装的版本">修改系统默认的python为自己装的版本</h4>
-<p>先找到新版本python安装位置，<br>
-然后</p>
+
+<h4 id="修改系统默认的python为自己装的版本"><a href="#修改系统默认的python为自己装的版本" class="headerlink" title="修改系统默认的python为自己装的版本"></a>修改系统默认的python为自己装的版本</h4><p>先找到新版本python安装位置，<br>然后</p>
 <pre><code class="highlight plaintext">vi /etc/profile.d/python.sh</code></pre>
+
 <p>创建新文件，然后输入</p>
 <pre><code class="highlight plaintext">alias python='/usr/bin/python3'  # 此处的路径为新版本python的路径，通过我上一篇文章来</code></pre>
-<p>查找此路径<br>
-重启会话使配置生效</p>
+
+<p>查找此路径<br>重启会话使配置生效</p>
 <pre><code class="highlight plaintext">source /etc/profile.d/python.sh</code></pre>
+
 <pre><code class="highlight plaintext">pip install --upgrade pip
 pip install --upgrade setuptools
 pip install virtualenv</code></pre>
+
 <pre><code class="highlight plaintext">ln -s /usr/local/python3/bin/virtualenv /usr/bin/virtualenv
 cd /home/
 virtualenv --python=/usr/bin/python test_env
 virtualenv test_env(也一样是python3，之前已经修改了默认Python版本)
 source test_env/bin/activate</code></pre>
-<h4 id="进入虚拟环境安装各个软件">进入虚拟环境安装各个软件</h4>
-<pre><code class="highlight plaintext">pip install Django==3.0.2 
+
+<h4 id="进入虚拟环境安装各个软件"><a href="#进入虚拟环境安装各个软件" class="headerlink" title="进入虚拟环境安装各个软件"></a>进入虚拟环境安装各个软件</h4><pre><code class="highlight plaintext">pip install Django==3.0.2 
 pip install uwsgi
 ln -s /usr/local/python3/bin/uwsgi /usr/bin/uwsgi
 pip install pillow
 pip install django-mdeditor
 pip install Markdown</code></pre>
-<h4 id="特别的，安装mysqlclient需要系统安装过mysql-devel，不然报错">特别的，安装mysqlclient需要系统安装过mysql-devel，不然报错</h4>
-<pre><code class="highlight plaintext">yum -y install mysql-devel</code></pre>
+
+<h4 id="特别的，安装mysqlclient需要系统安装过mysql-devel，不然报错"><a href="#特别的，安装mysqlclient需要系统安装过mysql-devel，不然报错" class="headerlink" title="特别的，安装mysqlclient需要系统安装过mysql-devel，不然报错"></a>特别的，安装mysqlclient需要系统安装过mysql-devel，不然报错</h4><pre><code class="highlight plaintext">yum -y install mysql-devel</code></pre>
+
 <pre><code class="highlight plaintext">pip install mysqlclient</code></pre>
             </div>
             <hr/>
@@ -699,10 +702,7 @@ pip install Markdown</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Django阿里云部署详解之服务器安装MySQL8.0系列的版本（服务器是Linux的系统）
-（本系统就是阿里云部署的）
-大家照做就行，这我试了很多次才总结出来的
-wget https://dev.mysql.com/get/mysql80
+                            Django阿里云部署详解之服务器安装MySQL8.0系列的版本（服务器是Linux的系统）（本系统就是阿里云部署的）大家照做就行，这我试了很多次才总结出来的wget https://dev.mysql.com/get/mysql80-co
                         
                     </div>
                     <div class="publish-info">
@@ -751,12 +751,10 @@ wget https://dev.mysql.com/get/mysql80
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Django开启虚拟环境（Windows中）
-开启本地虚拟环境
-1)避免多个项目之间python库的冲突
-2)完整便捷导出python库的列表
+                            Django开启虚拟环境（Windows中）开启本地虚拟环境1)避免多个项目之间python库的冲突2)完整便捷导出python库的列表
 pip install virtualenv
-创建：virtualenv &lt;虚拟环境名称&
+
+创建：virtualenv &lt;虚拟环境名称&gt
                         
                     </div>
                     <div class="publish-info">
@@ -966,7 +964,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

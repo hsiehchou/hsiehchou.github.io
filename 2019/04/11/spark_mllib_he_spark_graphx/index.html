@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -410,52 +410,32 @@
                 <p><strong>Spark MLlib</strong></p>
 <p>MLlib 是 Spark 可以扩展的机器学习库</p>
 <p>MLlib is Apache Spark’s scalable machine learning library.</p>
-<h3 id="一、MLlib概述">一、MLlib概述</h3>
-<p>MLlib 是 Spark 可以扩展的机器学习库</p>
+<h3 id="一、MLlib概述"><a href="#一、MLlib概述" class="headerlink" title="一、MLlib概述"></a>一、MLlib概述</h3><p>MLlib 是 Spark 可以扩展的机器学习库</p>
 <p>Spark在机器学习方面具有得天独厚的有事，有以下几个原因：</p>
-<h4 id="1、机器学习算法">1、机器学习算法</h4>
-<p>一般都有多个步骤迭代计算，需要在多次迭代后，获得足够小的误差或者收敛才会停止</p>
+<h4 id="1、机器学习算法"><a href="#1、机器学习算法" class="headerlink" title="1、机器学习算法"></a>1、机器学习算法</h4><p>一般都有多个步骤迭代计算，需要在多次迭代后，获得足够小的误差或者收敛才会停止</p>
 <pre><code class="highlight plaintext">double wucha = 1.0
 while(wucha&gt;=0.00001){
 	建模  wucha -= 某个值
 }</code></pre>
+
 <p>模型计算完毕</p>
 <p>当迭代使用Hadoop的MapReduce计算框架时，每次都要读写硬盘以及任务启动工作，导致很大的IO开销</p>
 <p>而Spark基于内存的计算模型天生擅长迭代计算。只有在必要时，才会读写硬盘</p>
 <p>所以Spark是机器学习比较理想的平台</p>
-<h4 id="2、通信">2、通信</h4>
-<p>Hadoop的MapReduce计算框架，通过heartbeat方式来进行通信和传递数据，执行速度慢</p>
+<h4 id="2、通信"><a href="#2、通信" class="headerlink" title="2、通信"></a>2、通信</h4><p>Hadoop的MapReduce计算框架，通过heartbeat方式来进行通信和传递数据，执行速度慢</p>
 <p>spark 有高效的 Akka 和 Netty 的通信系统，通行效率高</p>
 <p>Spark MLlib 是Spark 对常用的机器学习算法的实现库，同时包括相关测试和数据生成器</p>
-<h3 id="二、什么是机器学习">二、什么是机器学习</h3>
-<h4 id="1、机器学习的定义">1、机器学习的定义</h4>
-<p>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P,<br>
-if its performance at tasks in T, as measured by P, improves with experience E</p>
+<h3 id="二、什么是机器学习"><a href="#二、什么是机器学习" class="headerlink" title="二、什么是机器学习"></a>二、什么是机器学习</h3><h4 id="1、机器学习的定义"><a href="#1、机器学习的定义" class="headerlink" title="1、机器学习的定义"></a>1、机器学习的定义</h4><p>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P,<br>if its performance at tasks in T, as measured by P, improves with experience E</p>
 <p>三个关键词：算法、经验、模型评价</p>
-<p>在数据的基础上，通过算法构建出模型，并进行评价<br>
-如果达到要求，则用该模型测试其他数据<br>
-如果不达到要求，要调整算法来重新建立模型，再次进行评估<br>
-循环往复，知道获得满意的经验</p>
+<p>在数据的基础上，通过算法构建出模型，并进行评价<br>如果达到要求，则用该模型测试其他数据<br>如果不达到要求，要调整算法来重新建立模型，再次进行评估<br>循环往复，知道获得满意的经验</p>
 <p>应用：金融反欺诈、语音识别、自然语言处理、翻译、模式识别、智能控制等等</p>
-<h4 id="2、基于大数据的机器学习">2、基于大数据的机器学习</h4>
-<p>传统的机器学习算法，由于技术和单机存储的现值，只能在少量数据上使用<br>
-即，依赖于数据抽样<br>
-问题：很难做好随机，导致学习的模型不准确</p>
+<h4 id="2、基于大数据的机器学习"><a href="#2、基于大数据的机器学习" class="headerlink" title="2、基于大数据的机器学习"></a>2、基于大数据的机器学习</h4><p>传统的机器学习算法，由于技术和单机存储的现值，只能在少量数据上使用<br>即，依赖于数据抽样<br>问题：很难做好随机，导致学习的模型不准确</p>
 <p>在大数据上进行机器学习，直接处理全量数据并进行大量迭代计算</p>
 <p>Spark本身计算优势，适合机器学习</p>
 <p>另外 spark-shell pyspark 都可以提供及时查询工具</p>
-<h4 id="3、MLlib">3、MLlib</h4>
-<p>MLlib是Spark机器学习库，简化机器学习的工程实践工作，方便扩展到更大规模<br>
-集成了通用的学习算法：分类、回归、聚类、协同过滤、降维等等</p>
+<h4 id="3、MLlib"><a href="#3、MLlib" class="headerlink" title="3、MLlib"></a>3、MLlib</h4><p>MLlib是Spark机器学习库，简化机器学习的工程实践工作，方便扩展到更大规模<br>集成了通用的学习算法：分类、回归、聚类、协同过滤、降维等等</p>
 <p>另外，MLlib本身在Spark中，数据清洗、SQL、建模放在一起</p>
-<p><strong>sample_linear_regression_data.txt</strong><br>
-1 1:1.9<br>
-2 1:3.1<br>
-3 1:4<br>
-3.5 1:4.45<br>
-4 1:5.02<br>
-9 1:9.97<br>
--2 1:-0.98</p>
+<p><strong>sample_linear_regression_data.txt</strong><br>1 1:1.9<br>2 1:3.1<br>3 1:4<br>3.5 1:4.45<br>4 1:5.02<br>9 1:9.97<br>-2 1:-0.98</p>
 <pre><code class="highlight plaintext">package day7
 
 import org.apache.spark.sql.SparkSession
@@ -492,25 +472,14 @@ object Demo1 {
     spark.stop()
   }
 }</code></pre>
-<h2 id="Spark-Graphx">Spark Graphx</h2>
-<h3 id="一、Spark-Graphx-是什么？">一、Spark Graphx 是什么？</h3>
-<p>1、是Spark 的一个模块，主要用于进行以图为核心的计算，还有分布式图计算</p>
-<p>2、Graphx 底层基于RDD计算，和RDD共用一种存储形态。在展示形态上，可以用数据集来表示，也可以用图来表示</p>
-<h3 id="二、Spark-GraphX-有哪些抽象？">二、Spark GraphX 有哪些抽象？</h3>
-<h4 id="1、顶点">1、顶点</h4>
-<p>RDD[(VertexId,VD)]表示<br>
-VertexId 代表了顶点的ID，是Long类型<br>
-VD 是顶点的属性，可以是任何类型</p>
-<h4 id="2、边">2、边</h4>
-<p>RDD[Edge[ED]]表示<br>
-Edge表示一个边<br>
-包含一个ED类型参数来设定属性<br>
-另外，边还包含了源顶点ID和目标顶点ID</p>
-<h4 id="3、三元组">3、三元组</h4>
-<p>三元组结构用RDD[EdgeTriplet[VD,ED]]表示<br>
-三元组包含一个边、边的属性、源顶点ID、源顶点属性、目标顶点ID、目标顶点属性</p>
-<h4 id="4、图">4、图</h4>
-<p>Graph表示，通过顶点和边来构建</p>
+
+<h2 id="Spark-Graphx"><a href="#Spark-Graphx" class="headerlink" title="Spark Graphx"></a>Spark Graphx</h2><h3 id="一、Spark-Graphx-是什么？"><a href="#一、Spark-Graphx-是什么？" class="headerlink" title="一、Spark Graphx 是什么？"></a>一、Spark Graphx 是什么？</h3><p>1、是Spark 的一个模块，主要用于进行以图为核心的计算，还有分布式图计算</p>
+<p>2、Graphx 底层基于RDD计算，和RDD共用一种存储形态。在展示形态上，可以用数据集来表示，也可以用图来表示
+	</p>
+<h3 id="二、Spark-GraphX-有哪些抽象？"><a href="#二、Spark-GraphX-有哪些抽象？" class="headerlink" title="二、Spark GraphX 有哪些抽象？"></a>二、Spark GraphX 有哪些抽象？</h3><h4 id="1、顶点"><a href="#1、顶点" class="headerlink" title="1、顶点"></a>1、顶点</h4><p>RDD[(VertexId,VD)]表示<br>VertexId 代表了顶点的ID，是Long类型<br>VD 是顶点的属性，可以是任何类型</p>
+<h4 id="2、边"><a href="#2、边" class="headerlink" title="2、边"></a>2、边</h4><p>RDD[Edge[ED]]表示<br>Edge表示一个边<br>包含一个ED类型参数来设定属性<br>另外，边还包含了源顶点ID和目标顶点ID</p>
+<h4 id="3、三元组"><a href="#3、三元组" class="headerlink" title="3、三元组"></a>3、三元组</h4><p>三元组结构用RDD[EdgeTriplet[VD,ED]]表示<br>三元组包含一个边、边的属性、源顶点ID、源顶点属性、目标顶点ID、目标顶点属性</p>
+<h4 id="4、图"><a href="#4、图" class="headerlink" title="4、图"></a>4、图</h4><p>Graph表示，通过顶点和边来构建</p>
 <pre><code class="highlight plaintext">package day7
 
 import org.apache.spark.SparkConf
@@ -794,13 +763,10 @@ object Demo2 {
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            内存数据库专题
-为什么要把数据存入内存？
-快
-常见的内存数据库：
-MemCached：看成Redis前身，严格来说，MemCached不能叫数据库，只能叫缓存
-不支持持久化。如果内存停电，数据丢失
-Redis：内存数据库，支持持久化，支持H
+                            内存数据库专题为什么要把数据存入内存？快
+常见的内存数据库：MemCached：看成Redis前身，严格来说，MemCached不能叫数据库，只能叫缓存不支持持久化。如果内存停电，数据丢失
+Redis：内存数据库，支持持久化，支持HA
+Or
                         
                     </div>
                     <div class="publish-info">
@@ -861,12 +827,9 @@ Redis：内存数据库，支持持久化，支持H
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spark 调优
-问题：只要会用就可以，为什么还要精通内核源码与调优？
-Spark 性能优化概览：
-Spark的计算本质是，分布式计算
-所以，Spark程序的性能可能因为集群中的任何因素出现瓶颈：CPU、网络带宽、或者内存
-CPU、网络带宽
+                            Spark 调优	
+问题：只要会用就可以，为什么还要精通内核源码与调优？Spark 性能优化概览：Spark的计算本质是，分布式计算所以，Spark程序的性能可能因为集群中的任何因素出现瓶颈：CPU、网络带宽、或者内存
+CPU、网络带宽，是
                         
                     </div>
                     <div class="publish-info">
@@ -1080,7 +1043,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

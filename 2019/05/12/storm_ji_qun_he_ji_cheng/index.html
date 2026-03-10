@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -407,31 +407,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、Storm集群任务提交流程">一、Storm集群任务提交流程</h3>
-<p><img src="/medias/Storm%E9%9B%86%E7%BE%A4%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B.PNG" alt="Storm集群任务提交流程"></p>
-<h3 id="二、Storm内部通信机制">二、Storm内部通信机制</h3>
-<p><img src="/medias/Worker%E8%BF%9B%E7%A8%8B1.PNG" alt="Worker进程"></p>
+                <h3 id="一、Storm集群任务提交流程"><a href="#一、Storm集群任务提交流程" class="headerlink" title="一、Storm集群任务提交流程"></a>一、Storm集群任务提交流程</h3><p><img src="/medias/Storm%E9%9B%86%E7%BE%A4%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B.PNG" alt="Storm集群任务提交流程"></p>
+<h3 id="二、Storm内部通信机制"><a href="#二、Storm内部通信机制" class="headerlink" title="二、Storm内部通信机制"></a>二、Storm内部通信机制</h3><p><img src="/medias/Worker%E8%BF%9B%E7%A8%8B1.PNG" alt="Worker进程"></p>
 <p><img src="/medias/Worker.PNG" alt="Worker"></p>
-<h3 id="三、集成Storm">三、集成Storm</h3>
-<h4 id="1、与JDBC集成">1、与JDBC集成</h4>
+<h3 id="三、集成Storm"><a href="#三、集成Storm" class="headerlink" title="三、集成Storm"></a>三、集成Storm</h3><h4 id="1、与JDBC集成"><a href="#1、与JDBC集成" class="headerlink" title="1、与JDBC集成"></a>1、与JDBC集成</h4><ul>
+<li>   将Storm Bolt处理的结果插入MySQL数据库中</li>
+<li>   需要依赖的jar包<br>	<code>$STORM_HOME</code>\external\sql\storm-sql-core*.jar</li>
+</ul>
+<p>	<code>$STORM_HOME</code>\external\storm-jdbc\storm-jdbc-1.0.3.jar<br>	mysql的驱动<br>	commons-lang3-3.1.jar</p>
 <ul>
-<li>
-<p>将Storm Bolt处理的结果插入MySQL数据库中</p>
-</li>
-<li>
-<p>需要依赖的jar包<br>
-	<code>$STORM_HOME</code>\external\sql\storm-sql-core*.jar<br>
-	<code>$STORM_HOME</code>\external\storm-jdbc\storm-jdbc-1.0.3.jar<br>
-	mysql的驱动<br>
-	commons-lang3-3.1.jar</p>
-</li>
-<li>
-<p>与JDBC集成的代码实现<br>
-	修改主程序WordCountTopology，增加如下代码：</p>
-</li>
+<li>   与JDBC集成的代码实现<br>	修改主程序WordCountTopology，增加如下代码：</li>
 </ul>
 <pre><code class="highlight plaintext">//创建一个JDBCBolt将结果插入数据库中
 builder.setBolt("wordcount_jdbcBolt", createJDBCBolt()).shuffleGrouping("wordcount_count");</code></pre>
+
 <p>增加一个新方法创建JDBCBolt组件</p>
 <pre><code class="highlight plaintext">//创建JDBC Insert Bolt组件
 //需要事先在MySQL数据库中创建对应的表，result
@@ -441,6 +430,7 @@ private static IRichBolt createJDBCBolt(){
 	
 	return new JdbcInsertBolt(connectionProvider, simpleJdbcMapper).withTableName("result").withQueryTimeoutSecs(30);
 }</code></pre>
+
 <p>	实现ConnectionProvider接口</p>
 <pre><code class="highlight plaintext">class MyConnectionProvider implements ConnectionProvider{
 	private static String driver = "com.mysql.cj.jdbc.Driver";
@@ -469,6 +459,7 @@ private static IRichBolt createJDBCBolt(){
 	public void cleanup(){}
 	public void prepare(){}
 }</code></pre>
+
 <p>	修改WordCountSplitBolt组件，将统计后的结果发送给下一个组件写入MySQL</p>
 <pre><code class="highlight plaintext">public class WordCountSplitBolt extends BaseRichBolt {
 	private Map&lt;String, Integer&gt; result = new HashMap&lt;String, Integer&gt;();
@@ -500,8 +491,8 @@ private static IRichBolt createJDBCBolt(){
 		declare.declarer(new Fields("word", "sum"));
 	}
 }</code></pre>
-<h4 id="2、与Redis集成">2、与Redis集成</h4>
-<p>Redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set --有序集合)和hash（哈希类型）。与Memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步</p>
+
+<h4 id="2、与Redis集成"><a href="#2、与Redis集成" class="headerlink" title="2、与Redis集成"></a>2、与Redis集成</h4><p>Redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型）。与Memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步</p>
 <p>Redis 是一个高性能的key-value数据库。Redis的出现，很大程度补偿了memcached这类key/value存储的不足，在部分场合可以对关系数据库起到很好的补充作用。它提供了Java，C/C++，C#，PHP，JavaScript，Perl，Object-C，Python，Ruby，Erlang等客户端，使用很方便。</p>
 <p>Redis支持主从同步。数据可以从主服务器向任意数量的从服务器上同步，从服务器可以是关联其他从服务器的主服务器</p>
 <p>	修改代码：WordCountTopology.java</p>
@@ -532,16 +523,13 @@ private staticIRichBolt createRedisBolt(){
 		}
 	})
 }</code></pre>
-<h4 id="3、与HDFS集成">3、与HDFS集成</h4>
+
+<h4 id="3、与HDFS集成"><a href="#3、与HDFS集成" class="headerlink" title="3、与HDFS集成"></a>3、与HDFS集成</h4><ul>
+<li>   需要的jar包：<br>	<code>$STORM_HOME</code>\external\storm-hdfs\storm-hdfs-1.0.3.jar</li>
+</ul>
+<p>	HDFS相关的jar包</p>
 <ul>
-<li>
-<p>需要的jar包：<br>
-	<code>$STORM_HOME</code>\external\storm-hdfs\storm-hdfs-1.0.3.jar<br>
-	HDFS相关的jar包</p>
-</li>
-<li>
-<p>开发新的bolt组件</p>
-</li>
+<li>   开发新的bolt组件</li>
 </ul>
 <pre><code class="highlight plaintext">//创建一个新的HDFS Bolt组件，把前一个bolt组件处理的结果存入HDFS
 private static IRichBolt createHDFSBolt(){
@@ -562,10 +550,10 @@ private static IRichBolt createHDFSBolt(){
 	
 	return bolt;
 }</code></pre>
-<h4 id="4、与HBase集成">4、与HBase集成</h4>
-<ul>
-<li>需要的jar包：HBase的相关包</li>
-<li>开发新的bolt组件（WordCountBoltHBase.java）</li>
+
+<h4 id="4、与HBase集成"><a href="#4、与HBase集成" class="headerlink" title="4、与HBase集成"></a>4、与HBase集成</h4><ul>
+<li>   需要的jar包：HBase的相关包</li>
+<li>   开发新的bolt组件（WordCountBoltHBase.java）</li>
 </ul>
 <pre><code class="highlight plaintext">/**
  * 在HBase中创建表，保存数据
@@ -605,9 +593,9 @@ private static IRichBolt createHDFSBolt(){
 		}
 	}
  }</code></pre>
-<h4 id="5、与Apache-Kafka集成">5、与Apache Kafka集成</h4>
-<ul>
-<li>注意：需要把slf4j-log4j12-1.6.4.jar包去掉，有冲突（有两个）</li>
+
+<h4 id="5、与Apache-Kafka集成"><a href="#5、与Apache-Kafka集成" class="headerlink" title="5、与Apache Kafka集成"></a>5、与Apache Kafka集成</h4><ul>
+<li>   注意：需要把slf4j-log4j12-1.6.4.jar包去掉，有冲突（有两个）</li>
 </ul>
 <pre><code class="highlight plaintext">private static IRichSpout creatKafkaSpout(){
 	//定义ZK地址
@@ -637,9 +625,9 @@ private static IRichBolt createHDFSBolt(){
 	});
 	return new KafkaSpout(spoutConf);
 }</code></pre>
-<h4 id="6、与Hive集成">6、与Hive集成</h4>
-<ul>
-<li>由于集成Storm和Hive依赖的jar较多，并且冲突的jar包很多，强烈建议使用Maven来搭建新的工程</li>
+
+<h4 id="6、与Hive集成"><a href="#6、与Hive集成" class="headerlink" title="6、与Hive集成"></a>6、与Hive集成</h4><ul>
+<li>   由于集成Storm和Hive依赖的jar较多，并且冲突的jar包很多，强烈建议使用Maven来搭建新的工程</li>
 </ul>
 <pre><code class="highlight plaintext">&lt;dependencies&gt;
 	&lt;dependency&gt;
@@ -655,6 +643,7 @@ private static IRichBolt createHDFSBolt(){
 		&lt;type&gt;jar&lt;/type&gt;
 	&lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
+
 <ul>
 <li>需要对Hive做一定的配置（在hive-site.xml文件中）：</li>
 </ul>
@@ -662,16 +651,18 @@ private static IRichBolt createHDFSBolt(){
 &lt;name&gt;hive.in.test&lt;/name&gt;  
 &lt;value&gt;true&lt;/value&gt;  
 &lt;/property&gt;</code></pre>
+
 <ul>
-<li>需要使用下面的语句在hive中创建表：</li>
+<li>   需要使用下面的语句在hive中创建表：</li>
 </ul>
 <pre><code class="highlight plaintext">create table wordcount
 (word string,total int)
 clustered by (word) into 10 buckets
 stored as orc TBLPROPERTIES('transactional'='true');</code></pre>
+
 <ul>
-<li>启动metastore服务：hive --service metastore</li>
-<li>开发新的bolt组件，用于将前一个bolt处理的结果写入Hive</li>
+<li>   启动metastore服务：hive –service metastore</li>
+<li>   开发新的bolt组件，用于将前一个bolt处理的结果写入Hive</li>
 </ul>
 <pre><code class="highlight plaintext">private static IRichBolt createHiveBolt(){
 	//设置环境变量，能找到winutils.exe
@@ -692,13 +683,12 @@ stored as orc TBLPROPERTIES('transactional'='true');</code></pre>
 	HiveBolt bolt = new HiveBolt(options);
 	return bolt;
 }</code></pre>
+
 <ul>
-<li>为了测试的方便，我们依然采用之前随机产生字符串的Spout组件产生数据</li>
+<li>   为了测试的方便，我们依然采用之前随机产生字符串的Spout组件产生数据</li>
 </ul>
-<h4 id="7、与JMS集成">7、与JMS集成</h4>
-<p>JMS即Java消息服务（Java Message Service）应用程序接口，是一个Java平台中关于面向消息中间件（MOM）的API，用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。Java消息服务是一个与具体平台无关的API，绝大多数MOM提供商都对JMS提供支持</p>
-<p>JMS的两种消息类型：Queue和Topic<br>
-基于Weblogic的JMS架构 ：</p>
+<h4 id="7、与JMS集成"><a href="#7、与JMS集成" class="headerlink" title="7、与JMS集成"></a>7、与JMS集成</h4><p>JMS即Java消息服务（Java Message Service）应用程序接口，是一个Java平台中关于面向消息中间件（MOM）的API，用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。Java消息服务是一个与具体平台无关的API，绝大多数MOM提供商都对JMS提供支持</p>
+<p>JMS的两种消息类型：Queue和Topic<br>基于Weblogic的JMS架构 ：</p>
 <p><img src="/medias/%E5%9F%BA%E4%BA%8EWeblogic%E7%9A%84JMS%E6%9E%B6%E6%9E%84.PNG" alt="基于Weblogic的JMS架构"></p>
 <pre><code class="highlight plaintext">private static IRichBolt createJMSBolt(){
 	//创建一个JMS Bolt，将前一个bolt发送过来的数据 写入JMS
@@ -720,13 +710,13 @@ stored as orc TBLPROPERTIES('transactional'='true');</code></pre>
 	});
 	return bolt;
 }</code></pre>
+
 <ul>
-<li>需要的weblogic的jar包</li>
+<li>   需要的weblogic的jar包</li>
 </ul>
-<p>wljmsclient.jar<br>
-wlclient.jar</p>
+<p>wljmsclient.jar<br>wlclient.jar</p>
 <ul>
-<li>permission javax.management.MBeanTrustPermission “register”;</li>
+<li>   permission javax.management.MBeanTrustPermission “register”;</li>
 </ul>
 
             </div>
@@ -979,19 +969,9 @@ wlclient.jar</p>
                     <div class="summary block-with-text">
                         
                             Storm练习
-一、需求
-需求：统计网站访问量(实时统计)
+一、需求需求：统计网站访问量(实时统计)
 技术选型：特点（数据量大、做计算、实时）
-实时计算框架：storm
-1）spout
-数据源，接入数据
-本地文件
-2）bolt
-业务逻辑处理
-切分数据
-查到网址
-3）bolt
-累加次
+实时计算框架：storm1）spout	数据源，接入数据	本地文件	2）bolt	业务逻辑处理	切分数据	查到网址	3）bolt	累加次数求
                         
                     </div>
                     <div class="publish-info">
@@ -1044,9 +1024,8 @@ wlclient.jar</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、私有网络软件仓库
-在集群安装的过程中，要求每个节点都必须挂载光驱， 而对于每台节点都手动的去挂载光驱太麻烦，也不方便。这里使用每个节点都指向同一个私有网络镜像来解决这个问题
-我们的集群采用的是全离线安装，也不可能逐个节点的安装，同样是也
+                            一、私有网络软件仓库在集群安装的过程中，要求每个节点都必须挂载光驱， 而对于每台节点都手动的去挂载光驱太麻烦，也不方便。这里使用每个节点都指向同一个私有网络镜像来解决这个问题
+我们的集群采用的是全离线安装，也不可能逐个节点的安装，同样是也使
                         
                     </div>
                     <div class="publish-info">
@@ -1264,7 +1243,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

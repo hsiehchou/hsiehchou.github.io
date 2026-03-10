@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -407,38 +407,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、Flume">1、Flume</h4>
-<p><strong>概述</strong>：<br>
-Flume是一种分布式，可靠且可用的服务，用于有效地收集，聚合和移动大量日志数据。它具有基于流数据流的简单灵活的架构。它具有可靠的可靠性机制和许多故障转移和恢复机制，具有强大的容错性。它使用简单的可扩展数据模型，允许在线分析应用程序<br>
-1）数据采集（爬虫\日志数据\Flume）<br>
-2）数据存储（HDFS/Hive/HBase(NoSQL)）<br>
-3）数据计算（MapReduce/Hive/SparkSQL/SparkStreaming/Flink）<br>
-4）数据可视化</p>
-<h4 id="2、Flume角色">2、Flume角色</h4>
-<p>1）Source<br>
-数据源，用户采集数据，Source产生数据流，同时会把产生的数据流传输到Channel</p>
-<p>2）Channel<br>
-传输通道，用于桥接Source和Sink</p>
-<p>3）Sink<br>
-下沉，用于收集Channel传输的数据，将数据源传递到目标源</p>
-<p>4）Agent<br>
-在Flume中使用事件作为传输的基本单元</p>
-<h4 id="3、Flume使用">3、Flume使用</h4>
-<p>简单易用，只需要写配置文件即可</p>
-<h4 id="4、Flume安装配置">4、Flume安装配置</h4>
-<p>1）下载Flume<br>
-2）上传到Linux<br>
-3）解压<br>
-tar -zxvf apache-flume-1.6.0-bin.tar.gz -C /root/hd</p>
-<p>4）重命名<br>
-mv apache-flume-1.6.0-bin/ flume<br>
-cp flume-env.sh.template <a target="_blank" rel="noopener" href="http://flume-env.sh">flume-env.sh</a></p>
-<p>5）修改配置<br>
-vi <a target="_blank" rel="noopener" href="http://flume-env.sh">flume-env.sh</a><br>
-export JAVA_HOME=/root/hd/jdk1.8.0_192</p>
-<h4 id="5、Flume监听端口">5、Flume监听端口</h4>
-<p>启动命令：<br>
-bin/flume-ng agent <code>--conf</code> conf/log4j.properties <code>--name</code> a1 <code>--conf-file</code> conf/flumejob_telnet.conf</p>
+                <h4 id="1、Flume"><a href="#1、Flume" class="headerlink" title="1、Flume"></a>1、Flume</h4><p><strong>概述</strong>：<br>Flume是一种分布式，可靠且可用的服务，用于有效地收集，聚合和移动大量日志数据。它具有基于流数据流的简单灵活的架构。它具有可靠的可靠性机制和许多故障转移和恢复机制，具有强大的容错性。它使用简单的可扩展数据模型，允许在线分析应用程序<br>1）数据采集（爬虫\日志数据\Flume）<br>2）数据存储（HDFS/Hive/HBase(NoSQL)）<br>3）数据计算（MapReduce/Hive/SparkSQL/SparkStreaming/Flink）<br>4）数据可视化</p>
+<h4 id="2、Flume角色"><a href="#2、Flume角色" class="headerlink" title="2、Flume角色"></a>2、Flume角色</h4><p>1）Source<br>数据源，用户采集数据，Source产生数据流，同时会把产生的数据流传输到Channel</p>
+<p>2）Channel<br>传输通道，用于桥接Source和Sink</p>
+<p>3）Sink<br>下沉，用于收集Channel传输的数据，将数据源传递到目标源</p>
+<p>4）Agent<br>在Flume中使用事件作为传输的基本单元</p>
+<h4 id="3、Flume使用"><a href="#3、Flume使用" class="headerlink" title="3、Flume使用"></a>3、Flume使用</h4><p>简单易用，只需要写配置文件即可</p>
+<h4 id="4、Flume安装配置"><a href="#4、Flume安装配置" class="headerlink" title="4、Flume安装配置"></a>4、Flume安装配置</h4><p>1）下载Flume<br>2）上传到Linux<br>3）解压<br>tar -zxvf apache-flume-1.6.0-bin.tar.gz -C /root/hd </p>
+<p>4）重命名<br>mv apache-flume-1.6.0-bin/ flume<br>cp flume-env.sh.template flume-env.sh </p>
+<p>5）修改配置<br>vi flume-env.sh<br>export JAVA_HOME=/root/hd/jdk1.8.0_192</p>
+<h4 id="5、Flume监听端口"><a href="#5、Flume监听端口" class="headerlink" title="5、Flume监听端口"></a>5、Flume监听端口</h4><p>启动命令：<br>bin/flume-ng agent <code>--conf</code> conf/log4j.properties <code>--name</code> a1 <code>--conf-file</code> conf/flumejob_telnet.conf</p>
 <p><strong>我已经排坑了，这里我建议–conf 后面指定的路径建议是全路径，指定到log4j.properties或，我当时老师讲的是直接conf/，我实际操作是有问题的，不能实时的反馈</strong></p>
 <pre><code class="highlight plaintext">
 bin/flume-ng agent 使用ng启动agent
@@ -447,6 +425,7 @@ bin/flume-ng agent 使用ng启动agent
 --conf-file conf/flumejob_telnet.conf 文件
 -Dflume.root.logger=INFO,console 日志级别
 的反馈**</code></pre>
+
 <p><strong>flumejob_telnet.conf</strong></p>
 <pre><code class="highlight plaintext">#smple.conf: A single-node 
 Flume configuration
@@ -473,16 +452,16 @@ a1.channels.c1.transactionCapacity = 100
 # 一个sinks可以只能绑定一个channel  使用的是图二的模型
 a1.sources.r1.channels = c1
 a1.sinks.k1.channel = c1</code></pre>
+
 <pre><code class="highlight plaintext">[root@hsiehchou121 flume]# bin/flume-ng agent \
 &gt; --conf conf/ \
 &gt; --name a1 \
 &gt; --conf-file conf/flumejob_telnet.conf \
 &gt; -Dflume.root.logger=INFO.console</code></pre>
-<p><strong>yum search telnet</strong></p>
+
+<p><strong>yum search telnet</strong> </p>
 <p><strong>yum install telnet.x86_64</strong></p>
-<h4 id="6、flume监听本地linux文件采集到hdfs">6、flume监听本地linux文件采集到hdfs</h4>
-<p>启动命令：<br>
-bin/flume-ng agent <code>--conf</code> conf/log4j.properties <code>--name</code> a1 <code>--conf-file</code> conf/flumejob_hdfs.conf</p>
+<h4 id="6、flume监听本地linux文件采集到hdfs"><a href="#6、flume监听本地linux文件采集到hdfs" class="headerlink" title="6、flume监听本地linux文件采集到hdfs"></a>6、flume监听本地linux文件采集到hdfs</h4><p>启动命令：<br>bin/flume-ng agent <code>--conf</code> conf/log4j.properties <code>--name</code> a1 <code>--conf-file</code> conf/flumejob_hdfs.conf</p>
 <p><strong>flumejob_hdfs.conf</strong></p>
 <pre><code class="highlight plaintext"># Name the components on this agent agent别名设置
 a1.sources = r1
@@ -537,8 +516,8 @@ a1.sinks.k1.channel = c1</code></pre>
 &gt; --conf conf/log4j.properties \
 &gt; --name a1 \
 &gt; --conf-file conf/flumejob_hdfs.conf</code></pre>
-<h4 id="7、监听文件夹">7、监听文件夹</h4>
-<p><strong>flumejob_dir.conf</strong></p>
+
+<h4 id="7、监听文件夹"><a href="#7、监听文件夹" class="headerlink" title="7、监听文件夹"></a>7、监听文件夹</h4><p><strong>flumejob_dir.conf</strong></p>
 <pre><code class="highlight plaintext"># 定义别名
 a1.sources = r1
 a1.sinks = k1
@@ -590,13 +569,14 @@ a1.channels.c1.transactionCapacity = 100
 # Bind the source and sink to the channel
 a1.sources.r1.channels = c1 
 a1.sinks.k1.channel = c1</code></pre>
+
 <p>[root@hsiehchou121 conf]# bin/flume-ng agent <code>--conf</code> conf/log4j.properties <code>--name</code> a1 <code>--conf-file</code> conf/flumejob_dir.conf</p>
 <pre><code class="highlight plaintext">[root@hsiehchou121 flume]# bin/flume-ng agent \
 &gt; --conf conf/log4j.properties \
 &gt; --name a1 \
 &gt; --conf-file conf/flumejob_dir.conf</code></pre>
-<h4 id="8、多个channel-sink">8、多个channel/sink</h4>
-<p>需求：监控hive.log文件，用同时产生两个channel，一个channel对应的sink存储到hdfs中，另外一个channel对应的sink存储到本地</p>
+
+<h4 id="8、多个channel-sink"><a href="#8、多个channel-sink" class="headerlink" title="8、多个channel/sink"></a>8、多个channel/sink</h4><p>需求：监控hive.log文件，用同时产生两个channel，一个channel对应的sink存储到hdfs中，另外一个channel对应的sink存储到本地 </p>
 <p><strong>flumejob_1.conf</strong></p>
 <pre><code class="highlight plaintext"># name the components on this agent 别名设置
 a1.sources = r1
@@ -634,6 +614,7 @@ a1.channels.c2.transactionCapacity = 100
 a1.sources.r1.channels = c1 c2 
 a1.sinks.k1.channel = c1
 a1.sinks.k2.channel = c2</code></pre>
+
 <p>[root@hsiehchou121 flume]# bin/flume-ng agent <code>--conf</code> conf/log4j.properties <code>--name</code> a1 <code>--conf-file</code> conf/flumejob_1.conf</p>
 <p><strong>flumejob_2.conf</strong></p>
 <pre><code class="highlight plaintext"># Name the components on this agent 
@@ -683,6 +664,7 @@ a2.channels.c1.transactionCapacity = 100
 # Bind the source and sink to the channel 
 a2.sources.r1.channels = c1
 a2.sinks.k1.channel = c1</code></pre>
+
 <p>[root@hsiehchou121 flume]# bin/flume-ng agent <code>--conf</code> conf/log4j.properties <code>--name</code> a2 <code>--conf-file</code> conf/flumejob_1.conf</p>
 <p><strong>flumejob_3.conf</strong></p>
 <pre><code class="highlight plaintext"># Name the components on this agent 
@@ -708,6 +690,7 @@ a3.channels.c1.transactionCapacity = 100
 # Bind the source and sink to the channel 
 a3.sources.r1.channels = c1
 a3.sinks.k1.channel = c1</code></pre>
+
 <p>[root@hsiehchou121 flume]# bin/flume-ng agent <code>--conf</code> conf/log4j.properties <code>--name</code> a3 <code>--conf-file</code> conf/flumejob_1.conf</p>
 
             </div>
@@ -959,11 +942,8 @@ a3.sinks.k1.channel = c1</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、Sqoop
-Flume数据采集 采集日志数据
-Sqoop数据迁移 HDFS-&gt;MySQL
-Azkaban任务调度 Flume-&gt;HDFS-&gt;Shell-&gt;Hive-&gt;SQL-&gt;BI
-Sqoop数据迁移
+                            1、SqoopFlume数据采集 采集日志数据Sqoop数据迁移 HDFS-&gt;MySQLAzkaban任务调度 Flume-&gt;HDFS-&gt;Shell-&gt;Hive-&gt;SQL-&gt;BI
+Sqoop数据迁移=Ma
                         
                     </div>
                     <div class="publish-info">
@@ -1016,13 +996,8 @@ Sqoop数据迁移
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、排序
-Order By:全局排序
-1）按照员工表的奖金金额进行正序排序
-select * from emptable order by emptable.comm asc;
-可以省略asc
-2）按照员工表的奖金金额进行倒序排序
-sele
+                            1、排序Order By:全局排序1）按照员工表的奖金金额进行正序排序select * from emptable order by emptable.comm asc;可以省略asc
+2）按照员工表的奖金金额进行倒序排序select * 
                         
                     </div>
                     <div class="publish-info">
@@ -1236,7 +1211,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

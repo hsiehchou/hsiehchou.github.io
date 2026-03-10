@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -388,7 +388,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    866
+                    857
                 </div>
                 
 
@@ -411,79 +411,39 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、私有网络软件仓库">一、私有网络软件仓库</h3>
-<p>在集群安装的过程中，要求每个节点都必须挂载光驱， 而对于每台节点都手动的去挂载光驱太麻烦，也不方便。这里使用每个节点都指向同一个私有网络镜像来解决这个问题</p>
+                <h3 id="一、私有网络软件仓库"><a href="#一、私有网络软件仓库" class="headerlink" title="一、私有网络软件仓库"></a>一、私有网络软件仓库</h3><p>在集群安装的过程中，要求每个节点都必须挂载光驱， 而对于每台节点都手动的去挂载光驱太麻烦，也不方便。这里使用每个节点都指向同一个私有网络镜像来解决这个问题</p>
 <p>我们的集群采用的是全离线安装，也不可能逐个节点的安装，同样是也使用指向同一个私有的网络软件包来解决</p>
 <p>因此选择在hadoop-4上搭建一个私有的网络软件仓库，以下是搭建的全过程</p>
-<h4 id="1、上传镜像">1、上传镜像</h4>
-<p>搭建私有网络镜像使用的镜像文件最好就使用安装系统的镜像，这里是选择了CentOS6.7x64的镜像，将其上传到hadoop1的/disk下（需新建/disk目录）<br>
-mkdir disk<br>
-上传CentOS-6.7-x86_64-bin-DVD1.iso</p>
-<h4 id="2、挂载镜像">2、挂载镜像</h4>
-<p>首先创建文件夹 /media/CentOS ：<br>
-mkdir -p /media/CentOS</p>
-<p>挂载镜像 ：<br>
-mount -o loop /disk/CentOS-6.7-x86_64-bin-DVD1.iso /media/CentOS/</p>
-<p>进入目录/etc/yum.repos.d ：<br>
-cd /etc/yum.repos.d</p>
-<p>修改CentOS-Base.repo的名称 ：<br>
-mv CentOS-Base.repo CentOS-Base.repo.bak</p>
-<p>修改CentOS-Media.repo文件 ：<br>
-vim CentOS-Media.repo</p>
-<p>修改如下 ：<br>
-将enable=0改成enable=1</p>
-<p>清除yum的缓存 ：<br>
-yum clean metadata<br>
-yum clean dbcache</p>
-<p>查看是否挂载成功 ：<br>
-yum list | wc -l</p>
+<h4 id="1、上传镜像"><a href="#1、上传镜像" class="headerlink" title="1、上传镜像"></a>1、上传镜像</h4><p>搭建私有网络镜像使用的镜像文件最好就使用安装系统的镜像，这里是选择了CentOS6.7x64的镜像，将其上传到hadoop1的/disk下（需新建/disk目录）<br>mkdir disk<br>上传CentOS-6.7-x86_64-bin-DVD1.iso</p>
+<h4 id="2、挂载镜像"><a href="#2、挂载镜像" class="headerlink" title="2、挂载镜像"></a>2、挂载镜像</h4><p>首先创建文件夹 /media/CentOS ：<br>mkdir -p /media/CentOS</p>
+<p>挂载镜像 ：<br>mount -o loop /disk/CentOS-6.7-x86_64-bin-DVD1.iso /media/CentOS/</p>
+<p>进入目录/etc/yum.repos.d ：<br>cd /etc/yum.repos.d</p>
+<p>修改CentOS-Base.repo的名称 ：<br>mv CentOS-Base.repo CentOS-Base.repo.bak</p>
+<p>修改CentOS-Media.repo文件 ：<br>vim CentOS-Media.repo</p>
+<p>修改如下 ：<br>将enable=0改成enable=1</p>
+<p>清除yum的缓存 ：<br>yum clean metadata<br>yum clean dbcache</p>
+<p>查看是否挂载成功 ：<br>yum list | wc -l </p>
 <p>这是统计镜像中有多少个软件包的命令，CentOS6.7x64位的系统的软件包个数一般在3000以上</p>
-<h4 id="3、安装http-如果已经安装可以省略，但是需要启动，一b般最小化安装不会安装此服务">3、安装http(如果已经安装可以省略，但是需要启动，一b般最小化安装不会安装此服务)</h4>
-<p>检查是否安装<br>
-service httpd status</p>
-<p>网络镜像需要通过http请求访问，因此需要安装http:<br>
-yum –y install http</p>
-<p>启动http服务，并让其开机自启 ：<br>
-service httpd start<br>
-chkconfig httpd on</p>
-<p>由于http的默认端口为80，通过浏览器访问 ：<br>
-192.168.116.201:80</p>
-<p>创建网络软件仓库目录 ：<br>
-mkdir –p /var/www/html</p>
+<h4 id="3、安装http-如果已经安装可以省略，但是需要启动，一b般最小化安装不会安装此服务"><a href="#3、安装http-如果已经安装可以省略，但是需要启动，一b般最小化安装不会安装此服务" class="headerlink" title="3、安装http(如果已经安装可以省略，但是需要启动，一b般最小化安装不会安装此服务)"></a>3、安装http(如果已经安装可以省略，但是需要启动，一b般最小化安装不会安装此服务)</h4><p>检查是否安装<br>service httpd status</p>
+<p>网络镜像需要通过http请求访问，因此需要安装http:<br>yum –y install http</p>
+<p>启动http服务，并让其开机自启 ：<br>service httpd start<br>chkconfig httpd on</p>
+<p>由于http的默认端口为80，通过浏览器访问 ：<br>192.168.116.201:80</p>
+<p>创建网络软件仓库目录 ：<br>mkdir –p /var/www/html</p>
 <p>http默认将上面的目录作为软件仓库的目录</p>
-<h4 id="4、安装createrepo-如果已经安装省略">4、安装createrepo(如果已经安装省略)</h4>
-<p>该软件使用来生成http镜像的网络识别路径的：<br>
-yum -y install createrepo</p>
+<h4 id="4、安装createrepo-如果已经安装省略"><a href="#4、安装createrepo-如果已经安装省略" class="headerlink" title="4、安装createrepo(如果已经安装省略)"></a>4、安装createrepo(如果已经安装省略)</h4><p>该软件使用来生成http镜像的网络识别路径的：<br>yum -y install createrepo</p>
 <p>到此 私有的网络软件仓库搭建完成</p>
-<h3 id="二、挂载网络系统镜像">二、挂载网络系统镜像</h3>
-<h4 id="1、创建网络系统镜像">1、创建网络系统镜像</h4>
-<p>将从镜像中挂载的文件拷贝到软件仓库的目录中<br>
-cp -r /media/CentOS /var/www/html/</p>
-<p>删除目录repodata<br>
-cd /var/www/html/CentOS<br>
-rm -rf ./repodata</p>
-<p>生成新的软件路径目录repodata<br>
-createrepo .</p>
+<h3 id="二、挂载网络系统镜像"><a href="#二、挂载网络系统镜像" class="headerlink" title="二、挂载网络系统镜像"></a>二、挂载网络系统镜像</h3><h4 id="1、创建网络系统镜像"><a href="#1、创建网络系统镜像" class="headerlink" title="1、创建网络系统镜像"></a>1、创建网络系统镜像</h4><p>将从镜像中挂载的文件拷贝到软件仓库的目录中<br>cp -r /media/CentOS /var/www/html/</p>
+<p>删除目录repodata<br>cd /var/www/html/CentOS<br>rm -rf ./repodata</p>
+<p>生成新的软件路径目录repodata<br>createrepo .</p>
 <p>也可以通过网络访问查看（192.168.116.201/CentOS/）：</p>
 <p>到此网络镜像创建成功</p>
-<h4 id="2、使用网络系统镜像">2、使用网络系统镜像</h4>
-<p>解除对镜像文件的挂载 ：<br>
-umount /media/CentOS</p>
-<p>如下， 目录下无文件则说明解除挂载成功<br>
-[root@hadoop1 yum.repos.d]# ll  /media/CentOS</p>
-<p>如果出现如下说明有进程在占用挂载点<br>
-[root@hadoop1 yum.repos.d]# fuser -m /media/CentOS/<br>
-/media/CentOS 3157</p>
-<p>出现这种情况，表示还有进程在使用/medis/CentOS挂载点，那么此时可以借助fuser命令找出占用目录/medis/CentOS的所有进程，然后kill掉，此时就可以umount 了<br>
-fuser -m /media/CentOS/</p>
-<p>修改文件CentOS-Media.repo让其指向刚才创建的网络镜像<br>
-vim /etc/yum.repos.d/CentOS-Media.repo</p>
-<p>修改如下：（修改前的配置参考3.1.2）<br>
-baseurl=<a target="_blank" rel="noopener" href="https://192.168.116.201/CentOS/">https://192.168.116.201/CentOS/</a></p>
-<p>清楚yum的缓存， 并查看软件包个数<br>
-yum clean metadata<br>
-yum clean dbcache<br>
-yum list | wc -l</p>
+<h4 id="2、使用网络系统镜像"><a href="#2、使用网络系统镜像" class="headerlink" title="2、使用网络系统镜像"></a>2、使用网络系统镜像</h4><p>解除对镜像文件的挂载 ：<br>umount /media/CentOS</p>
+<p>如下， 目录下无文件则说明解除挂载成功<br>  [root@hadoop1 yum.repos.d]# ll  /media/CentOS</p>
+<p>如果出现如下说明有进程在占用挂载点<br> [root@hadoop1 yum.repos.d]# fuser -m /media/CentOS/<br> /media/CentOS 3157</p>
+<p>出现这种情况，表示还有进程在使用/medis/CentOS挂载点，那么此时可以借助fuser命令找出占用目录/medis/CentOS的所有进程，然后kill掉，此时就可以umount 了<br>fuser -m /media/CentOS/</p>
+<p>修改文件CentOS-Media.repo让其指向刚才创建的网络镜像<br>vim /etc/yum.repos.d/CentOS-Media.repo</p>
+<p>修改如下：（修改前的配置参考3.1.2）<br> baseurl=<a target="_blank" rel="noopener" href="https://192.168.116.201/CentOS/">https://192.168.116.201/CentOS/</a></p>
+<p>清楚yum的缓存， 并查看软件包个数<br>yum clean metadata<br>yum clean dbcache<br>yum list | wc -l </p>
 
             </div>
             <hr/>
@@ -739,19 +699,11 @@ yum list | wc -l</p>
                     <div class="summary block-with-text">
                         
                             一、Storm集群任务提交流程
-
 二、Storm内部通信机制
 
-
-三、集成Storm
-1、与JDBC集成
-
-
-将Storm Bolt处理的结果插入MySQL数据库中
-
-
-需要依赖的jar包
-	$STORM_HOME\external\sq
+三、集成Storm1、与JDBC集成
+   将Storm Bolt处理的结果插入MySQL数据库中
+   需要依赖的jar包	$STORM_HOME\external\sql\
                         
                     </div>
                     <div class="publish-info">
@@ -804,22 +756,14 @@ yum list | wc -l</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、大数据课程概述与大数据背景知识
-（1）数据仓库与大数据
-
+                            1、大数据课程概述与大数据背景知识（1）数据仓库与大数据
 （2）PageRank
-
 （3）MR基本原理
-
 （4）HDFS原理
-
 （5）bigtable与Habase
-
-2、搭建Hadoop的环境
-（1）1.PNG
-
+2、搭建Hadoop的环境（1）1.PNG
 （2）2.PNG
-
+（3）3.PNG
 
                         
                     </div>
@@ -1034,7 +978,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

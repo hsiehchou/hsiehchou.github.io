@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -275,6 +275,59 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2019/05/04/storm_ji_chu/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/medias/featureimages/17.jpg" class="responsive-img" alt="Storm基础">
+                            
+                            <span class="card-title">Storm基础</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                流式计算专题批量计算、实时计算、离线计算、流式计算
+共同点：数据源  –&gt;   采集数据   –&gt;   task worker –&gt;   task worker  –&gt;  sink 输出
+批量计算和流式计算区别：处理
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-05-04
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-category">
+                                    大数据
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                            <span class="chip bg-color">大数据</span>
+                        </a>
+                        
+                        <a href="/tags/Storm/">
+                            <span class="chip bg-color">Storm</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2019/04/29/hadoop_de_ha_gao_ke_yong_ke_xing/">
                         <div class="card-image">
                             
@@ -289,8 +342,7 @@
                         <div class="summary block-with-text">
                             
                                 Hadoop的HA高可用（可行）
-一、集群的规划
-ZooKeeper集群
+一、集群的规划ZooKeeper集群
 
 
 
@@ -300,10 +352,9 @@ ZooKeeper集群
 
 
 
-
 hsiehchou121
 hsiehchou122
-hs
+hsie
                             
                         </div>
                         <div class="publish-info">
@@ -354,11 +405,7 @@ hs
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                离线部分
-Hadoop-&gt;离线计算(hdfs / mapreduce) yarn
-zookeeper-&gt;分布式协调（动物管理员）
-hive-&gt;数据仓库（离线计算 / sql）easy coding
-flume-&gt;数据
+                                离线部分Hadoop-&gt;离线计算(hdfs / mapreduce) yarnzookeeper-&gt;分布式协调（动物管理员）hive-&gt;数据仓库（离线计算 / sql）easy codingflume-&gt;数据采集sq
                             
                         </div>
                         <div class="publish-info">
@@ -409,15 +456,12 @@ flume-&gt;数据
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                docker
-2013年发布
-一、环境配置难题
-开发环境运行没有问题，生产不能用，因为生产缺乏某些组件
+                                docker2013年发布
+一、环境配置难题开发环境运行没有问题，生产不能用，因为生产缺乏某些组件
 换一台机器，需要重新配置一遍
 能不能从根本上解决问题：安装的时候，把原始环境，一模一样地安装一遍
-二、虚拟机
-带环境安装的一种解决方案
-
+二、虚拟机带环境安装的一种解决方案
+缺点：
                             
                         </div>
                         <div class="publish-info">
@@ -464,14 +508,9 @@ flume-&gt;数据
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                git 版本控制系统
-git是一个版本控制系统
-一、什么是版本控制系统
-1、概念
-版本控制是一种 记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统
-（）记录文件的所有历史变化
-（）随时可恢复到任何一个历史状态
-（）多人协作开发
+                                git 版本控制系统git是一个版本控制系统
+一、什么是版本控制系统1、概念版本控制是一种 记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统
+（）记录文件的所有历史变化（）随时可恢复到任何一个历史状态（）多人协作开发或修改（）
                             
                         </div>
                         <div class="publish-info">
@@ -520,11 +559,9 @@ git是一个版本控制系统
                             
                                 Hadoop  HBase HA
 保证所有的服务器时间都相同
-一、Hadoop HA
-HDFS HA
+一、Hadoop HAHDFS HA
 /root/hd/hadoop-2.8.4/etc/hadoop 下是所有hadoop配置文件
-1、core-site.xml
-&lt;c
+1、core-site.xml&lt;con
                             
                         </div>
                         <div class="publish-info">
@@ -557,71 +594,6 @@ HDFS HA
                         
                         <a href="/tags/HBase-HA/">
                             <span class="chip bg-color">HBase HA</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/04/18/nei_cun_shu_ju_ku_zhuan_ti_memcached_he_redis/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/medias/featureimages/12.jpg" class="responsive-img" alt="内存数据库专题（MemCached和Redis）">
-                            
-                            <span class="card-title">内存数据库专题（MemCached和Redis）</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                内存数据库专题
-为什么要把数据存入内存？
-快
-常见的内存数据库：
-MemCached：看成Redis前身，严格来说，MemCached不能叫数据库，只能叫缓存
-不支持持久化。如果内存停电，数据丢失
-Redis：内存数据库，支持持久化，支持H
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-category">
-                                    大数据
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
-                            <span class="chip bg-color">大数据</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                            <span class="chip bg-color">内存数据库</span>
-                        </a>
-                        
-                        <a href="/tags/MemCached/">
-                            <span class="chip bg-color">MemCached</span>
-                        </a>
-                        
-                        <a href="/tags/Redis/">
-                            <span class="chip bg-color">Redis</span>
                         </a>
                         
                     </div>
@@ -672,7 +644,7 @@ Redis：内存数据库，支持持久化，支持H
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

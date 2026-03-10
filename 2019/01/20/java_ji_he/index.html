@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -403,125 +403,40 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、集合概念">1、集合概念</h4>
-<p>回忆数组–数组有固定的长度<br>
-int[] arry=new int[10];</p>
-<p>针对数据长度可变的情况—》集合<br>
-Java集合 应对动态增长数据（在编译的时候无法知道具体的数据量）<br>
-集合类–&gt;可变容器类</p>
-<h4 id="2、集合和数组的区别">2、集合和数组的区别</h4>
-<p>都是容器<br>
-（1）数组是固定长度，集合的长度是可变的<br>
-（2）数组放的数据都是基本类型数据（四类8种），但是集合放的数据都是引用数据类型<br>
-（String、自定义的对象、Integer–int、Long）<br>
-（3）集合中对于基本数据会转换为引用数据类型再存储</p>
-<h4 id="3、集合包含内容">3、集合包含内容</h4>
-<p>（1）Collection–接口 Interface</p>
+                <h4 id="1、集合概念"><a href="#1、集合概念" class="headerlink" title="1、集合概念"></a>1、集合概念</h4><p>回忆数组–数组有固定的长度<br>int[] arry=new int[10];</p>
+<p>针对数据长度可变的情况—》集合<br>Java集合 应对动态增长数据（在编译的时候无法知道具体的数据量）<br>集合类–&gt;可变容器类</p>
+<h4 id="2、集合和数组的区别"><a href="#2、集合和数组的区别" class="headerlink" title="2、集合和数组的区别"></a>2、集合和数组的区别</h4><p>都是容器<br>（1）数组是固定长度，集合的长度是可变的<br>（2）数组放的数据都是基本类型数据（四类8种），但是集合放的数据都是引用数据类型<br>（String、自定义的对象、Integer–int、Long）<br>（3）集合中对于基本数据会转换为引用数据类型再存储</p>
+<h4 id="3、集合包含内容"><a href="#3、集合包含内容" class="headerlink" title="3、集合包含内容"></a>3、集合包含内容</h4><p>（1）Collection–接口 Interface</p>
 <pre><code class="highlight plaintext">Interface Collection&lt;E&gt;---add 方法
 public abstract class AbstractCollection&lt;E&gt; extends Object implements Collection&lt;E&gt;
 
 public abstract class AbstractList&lt;E&gt; extends AbstractCollection&lt;E&gt; implements List&lt;E&gt;</code></pre>
 <p>a、List（接口）集合—特定顺序的元素</p>
 <pre><code class="highlight plaintext">public interface List&lt;E&gt; extends Collection&lt;E&gt;</code></pre>
-<p>add(int index, E element) —指定索引处增加元素的位置<br>
-iterator() 以正确的顺序返回该列表中的元素的迭代器</p>
+<p>add(int index, E element) —指定索引处增加元素的位置<br>iterator() 以正确的顺序返回该列表中的元素的迭代器</p>
 <p>b、Set（接口）集合–不能够有重复的元素</p>
-<p>（2）Map–类似于数据库<br>
-主要存储”键值对” key-value MapReduce</p>
-<p>（3）Iterable 集合的访问迭代 返回此集合中的元素的迭代器<br>
-没有关于元素返回顺序的保证（除非这个集合是提供保证的某个类的实例）</p>
-<h4 id="4、集合框架-集合的继承关系图">4、集合框架-&gt;集合的继承关系图</h4>
-<p>Collection接口 Map<br>
-Collection 、Map 、List 、Set 等都是 Interface<br>
-AbstractCollection、 Abstractlist等 抽象类 实现了 Interface的部分方法<br>
-ArrayList 、LinkedList等 具体实现类 实现了 所有方法</p>
-<h4 id="5、List集合介绍">5、List集合介绍</h4>
-<p>List集合是一个有序（索引有序）、可重复的集合，集合中每个元素都有对应的顺序索引<br>
-List允许加入重复元素是因为可以通过索引来访问指定位置的元素<br>
-List集合默认按照元素的添加顺序增加元素的索引</p>
-<h4 id="6、List集合-ArrayList">6、List集合-&gt;ArrayList</h4>
-<p>（1）ArrayList简介<br>
-ArrayList 是基于数组实现的List类。实现所有可选列表操作，并允许所有元素，包括null</p>
+<p>（2）Map–类似于数据库<br>主要存储”键值对” key-value MapReduce</p>
+<p>（3）Iterable 集合的访问迭代 返回此集合中的元素的迭代器<br>没有关于元素返回顺序的保证（除非这个集合是提供保证的某个类的实例）</p>
+<h4 id="4、集合框架-集合的继承关系图"><a href="#4、集合框架-集合的继承关系图" class="headerlink" title="4、集合框架->集合的继承关系图"></a>4、集合框架-&gt;集合的继承关系图</h4><p>Collection接口 Map<br>Collection 、Map 、List 、Set 等都是 Interface<br>AbstractCollection、 Abstractlist等 抽象类 实现了 Interface的部分方法<br>ArrayList 、LinkedList等 具体实现类 实现了 所有方法</p>
+<h4 id="5、List集合介绍"><a href="#5、List集合介绍" class="headerlink" title="5、List集合介绍"></a>5、List集合介绍</h4><p>List集合是一个有序（索引有序）、可重复的集合，集合中每个元素都有对应的顺序索引<br>List允许加入重复元素是因为可以通过索引来访问指定位置的元素<br>List集合默认按照元素的添加顺序增加元素的索引</p>
+<h4 id="6、List集合-ArrayList"><a href="#6、List集合-ArrayList" class="headerlink" title="6、List集合->ArrayList"></a>6、List集合-&gt;ArrayList</h4><p>（1）ArrayList简介<br>ArrayList 是基于数组实现的List类。实现所有可选列表操作，并允许所有元素，包括null </p>
 <p>（2）初始化 ArrayList</p>
 <pre><code class="highlight plaintext">ArrayList&lt;E&gt; arrayList=new ArrayList&lt;E&gt;（）；---初始数据类型为E，容量大小为10的List</code></pre>
-<p>（3）主要方法<br>
-boolean add(E e) 将指定的元素追加到此列表的末尾<br>
-void add(int index, E element) 在此列表中的指定位置插入指定的元素<br>
-boolean addAll(Collection&lt;? extends E&gt; c) 按指定集合的Iterator返回的顺序将指定集合中的所有元素追加到此列表的末尾<br>
-boolean addAll(int index, Collection&lt;? extends E&gt; c) 将指定集合中的所有元素插入到此列表中，从指定的位置开始<br>
-boolean contains(Object o) 如果此列表包含指定的元素，则返回 true<br>
-E get(int index) 返回此列表中指定位置的元素<br>
-E remove(int index) 删除该列表中指定位置的元素<br>
-E set(int index, E element) 用指定的元素替换此列表中指定位置的元素<br>
-Object[] toArray() 以正确的顺序（从第一个到最后一个元素）返回一个包含此列表中所有元素的数组</p>
-<p>（4）List集合遍历的四种方法<br>
-a、通过 List.size<br>
-b、通过Iterator<br>
-boolean hasNext() 如果迭代具有更多元素，则返回 true<br>
-E next() 返回迭代中的下一个元素</p>
-<h4 id="7、List集合-LinkedList">7、List集合-&gt;LinkedList</h4>
-<p>LinkedList 指的是链表类数据结构<br>
-与ArrayList的不同<br>
-（1）链表中的元素可以任意的增加和删除，效率很高，但是 查询效率不如ArrayList（有索引）<br>
-a-&gt;b-&gt;c….<br>
-（2）将对象存放在独立的空间中，而且每个空间保存了下一个连接的索引<br>
-（3）初始化<br>
-LinkedList linkedlist=new LinkedList();<br>
-（4）主要的方法<br>
-void addFirst(E e) 在该列表开头插入指定的元素<br>
-void addLast(E e) 将指定的元素追加到此列表的末尾<br>
-E peekFirst() 检索但不删除此列表的第一个元素，如果此列表为空，则返回 null<br>
-peekLast() 检索但不删除此列表的最后一个元素，如果此列表为空，则返回 null<br>
-pop() 从此列表表示的堆栈中弹出一个元素</p>
-<h4 id="8、Set接口的介绍">8、Set接口的介绍</h4>
-<p>set集合存放无序不可重复的元素<br>
-list集合 存放有序可重复的元素。—索引<br>
-set集合不按照特定方式进行排序，只是放元素放在集合<br>
-set主要是由 HashSet和TreeSet具体实现类实现</p>
-<h4 id="9、Set集合-HashSet">9、Set集合-&gt;HashSet</h4>
-<p>Hash（哈希算法）—-哈希函数定义的好坏<br>
-HashCode—哈希值<br>
-（1）equals（）方法判断两个元素的HashCode值是否相同</p>
-<p>（2）如果Hashcode值相同，继续与集合的元素作比较，<br>
-如果还相同则视为同一个对象，不保存在HashSet中<br>
-如果对象不相同，理论上要存储（比价麻烦）–避免发生</p>
-<p>（3）如果HashCode值不相同，直接把元素存放在该元素的Hashcode位置<br>
-public class HashSet extends AbstractSet implements Set, Cloneable, Serializable</p>
-<p>（4）构造函数<br>
-HashSet hashSet=new HashSet();<br>
-boolean add(E e) 将指定的元素添加到此集合（如果尚未存在）<br>
-boolean contains(Object o) 如果此集合包含指定的元素，则返回 true</p>
-<h4 id="10、Set集合-TreeSet">10、Set集合-&gt;TreeSet</h4>
-<p>TreeSet 是一个有序集合，默认将元素按照升序排列，Comparable接口<br>
-equals方法 判断元素是否重复<br>
-比较器 比较一下大小顺序</p>
-<h4 id="11、Map-集合">11、Map 集合</h4>
-<p>Set 与list 都属于 Collection<br>
-Map每个元素的值都包含两个对象：key-value 键值对<br>
-key不能够重复；唯一的key 可以对应多个value<br>
-map中不存在索引，有key<br>
-循环访问的方式</p>
-<h4 id="12、Map集合-HashMap">12、Map集合-&gt;HashMap</h4>
-<p>Hash算法<br>
-public class HashMap&lt;K,V&gt;extends AbstractMap&lt;K,V&gt; implements Map&lt;K,V&gt;, Cloneable, Serializable<br>
-允许null的值和null键<br>
-（1）初始化<br>
-HashMap&lt;key,value&gt; hashMap=new HashMap&lt;key,value&gt; ();</p>
-<p>（2）主要的方法<br>
-put(K key, V value) 将指定的值与此映射中的指定键相关联<br>
-get(Object key) 返回到指定键所映射的值，或 null如果此映射包含该键的映射<br>
-Set keySet() 返回此地图中包含的键的Set视图<br>
-boolean containsKey(Object key) 如果此映射包含指定键的映射，则返回 true<br>
-boolean containsValue(Object value) 如果此地图将一个或多个键映射到指定值，则返回 true</p>
-<h4 id="13、Map集合-HashTable">13、Map集合-&gt;HashTable</h4>
-<p>不接受 Null<br>
-为了成功的在hashtable中存储和获取对象，用作键的对象必须实现 hashcode和equals方法</p>
-<h4 id="14、总结">14、总结</h4>
-<p>集合动态可扩展<br>
-Set代表无序集合不重复，（TreeSet 有序）<br>
-List集合有序可重复<br>
-Map 集合存储键值对- key value<br>
-自定义对象 要重写 方法（HashCode Comparator equals等）</p>
+
+<p>（3）主要方法<br>boolean add(E e) 将指定的元素追加到此列表的末尾<br>void add(int index, E element) 在此列表中的指定位置插入指定的元素<br>boolean addAll(Collection&lt;? extends E&gt; c) 按指定集合的Iterator返回的顺序将指定集合中的所有元素追加到此列表的末尾<br>boolean addAll(int index, Collection&lt;? extends E&gt; c) 将指定集合中的所有元素插入到此列表中，从指定的位置开始<br>boolean contains(Object o) 如果此列表包含指定的元素，则返回 true<br>E get(int index) 返回此列表中指定位置的元素<br>E remove(int index) 删除该列表中指定位置的元素<br>E set(int index, E element) 用指定的元素替换此列表中指定位置的元素<br>Object[] toArray() 以正确的顺序（从第一个到最后一个元素）返回一个包含此列表中所有元素的数组</p>
+<p>（4）List集合遍历的四种方法<br>a、通过 List.size<br>b、通过Iterator<br>boolean hasNext() 如果迭代具有更多元素，则返回 true<br>E next() 返回迭代中的下一个元素</p>
+<h4 id="7、List集合-LinkedList"><a href="#7、List集合-LinkedList" class="headerlink" title="7、List集合->LinkedList"></a>7、List集合-&gt;LinkedList</h4><p>LinkedList 指的是链表类数据结构<br>与ArrayList的不同<br>（1）链表中的元素可以任意的增加和删除，效率很高，但是 查询效率不如ArrayList（有索引）<br>a-&gt;b-&gt;c….<br>（2）将对象存放在独立的空间中，而且每个空间保存了下一个连接的索引<br>（3）初始化<br>LinkedList linkedlist=new LinkedList();<br>（4）主要的方法<br>void addFirst(E e) 在该列表开头插入指定的元素<br>void addLast(E e) 将指定的元素追加到此列表的末尾<br>E peekFirst() 检索但不删除此列表的第一个元素，如果此列表为空，则返回 null<br>peekLast() 检索但不删除此列表的最后一个元素，如果此列表为空，则返回 null<br>pop() 从此列表表示的堆栈中弹出一个元素</p>
+<h4 id="8、Set接口的介绍"><a href="#8、Set接口的介绍" class="headerlink" title="8、Set接口的介绍"></a>8、Set接口的介绍</h4><p>set集合存放无序不可重复的元素<br>list集合 存放有序可重复的元素。—索引<br>set集合不按照特定方式进行排序，只是放元素放在集合<br>set主要是由 HashSet和TreeSet具体实现类实现</p>
+<h4 id="9、Set集合-HashSet"><a href="#9、Set集合-HashSet" class="headerlink" title="9、Set集合->HashSet"></a>9、Set集合-&gt;HashSet</h4><p>Hash（哈希算法）—-哈希函数定义的好坏<br>HashCode—哈希值<br>（1）equals（）方法判断两个元素的HashCode值是否相同 </p>
+<p>（2）如果Hashcode值相同，继续与集合的元素作比较，<br>如果还相同则视为同一个对象，不保存在HashSet中<br>如果对象不相同，理论上要存储（比价麻烦）–避免发生 </p>
+<p>（3）如果HashCode值不相同，直接把元素存放在该元素的Hashcode位置<br>public class HashSet extends AbstractSet implements Set, Cloneable, Serializable </p>
+<p>（4）构造函数<br>HashSet hashSet=new HashSet();<br>boolean add(E e) 将指定的元素添加到此集合（如果尚未存在）<br>boolean contains(Object o) 如果此集合包含指定的元素，则返回 true</p>
+<h4 id="10、Set集合-TreeSet"><a href="#10、Set集合-TreeSet" class="headerlink" title="10、Set集合->TreeSet"></a>10、Set集合-&gt;TreeSet</h4><p>TreeSet 是一个有序集合，默认将元素按照升序排列，Comparable接口<br>equals方法 判断元素是否重复<br>比较器 比较一下大小顺序</p>
+<h4 id="11、Map-集合"><a href="#11、Map-集合" class="headerlink" title="11、Map 集合"></a>11、Map 集合</h4><p>Set 与list 都属于 Collection<br>Map每个元素的值都包含两个对象：key-value 键值对<br>key不能够重复；唯一的key 可以对应多个value<br>map中不存在索引，有key<br>循环访问的方式</p>
+<h4 id="12、Map集合-HashMap"><a href="#12、Map集合-HashMap" class="headerlink" title="12、Map集合->HashMap"></a>12、Map集合-&gt;HashMap</h4><p>Hash算法<br>public class HashMap&lt;K,V&gt;extends AbstractMap&lt;K,V&gt; implements Map&lt;K,V&gt;, Cloneable, Serializable<br>允许null的值和null键<br>（1）初始化<br>HashMap&lt;key,value&gt; hashMap=new HashMap&lt;key,value&gt; ();</p>
+<p>（2）主要的方法<br>put(K key, V value) 将指定的值与此映射中的指定键相关联<br>get(Object key) 返回到指定键所映射的值，或 null如果此映射包含该键的映射<br>Set keySet() 返回此地图中包含的键的Set视图<br>boolean containsKey(Object key) 如果此映射包含指定键的映射，则返回 true<br>boolean containsValue(Object value) 如果此地图将一个或多个键映射到指定值，则返回 true</p>
+<h4 id="13、Map集合-HashTable"><a href="#13、Map集合-HashTable" class="headerlink" title="13、Map集合->HashTable"></a>13、Map集合-&gt;HashTable</h4><p>不接受 Null<br>为了成功的在hashtable中存储和获取对象，用作键的对象必须实现 hashcode和equals方法</p>
+<h4 id="14、总结"><a href="#14、总结" class="headerlink" title="14、总结"></a>14、总结</h4><p>集合动态可扩展<br>Set代表无序集合不重复，（TreeSet 有序）<br>List集合有序可重复<br>Map 集合存储键值对- key value<br>自定义对象 要重写 方法（HashCode Comparator equals等）</p>
 
             </div>
             <hr/>
@@ -769,13 +684,7 @@ Map 集合存储键值对- key value<br>
                     <div class="summary block-with-text">
                         
                             Java异常
-1、异常概述
-（1）异常分为：编译时异常 运行时异常
-（2）编译时异常：Javac IDE（，‘’），一般是指的 语法错误，比较容易修正
-（3）运行时的异常：运行错误和逻辑错误
-1/0;
-（4）不正常的事件
-异常的类，创建对象
+1、异常概述（1）异常分为：编译时异常 运行时异常（2）编译时异常：Javac IDE（，‘’），一般是指的 语法错误，比较容易修正（3）运行时的异常：运行错误和逻辑错误1/0;（4）不正常的事件异常的类，创建对象NullPo
                         
                     </div>
                     <div class="publish-info">
@@ -824,9 +733,7 @@ Map 集合存储键值对- key value<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、Java API概述
-Java写好的包 类 方法的使用—API
-Application Programing Interface：应用程序编程接口。Java提供的一些预定义的函数目的：基于API实现程序的快速编写。只需了解实现的作用，无
+                            1、Java API概述Java写好的包 类 方法的使用—APIApplication Programing Interface：应用程序编程接口。Java提供的一些预定义的函数目的：基于API实现程序的快速编写。只需了解实现的作用，无需关
                         
                     </div>
                     <div class="publish-info">
@@ -1036,7 +943,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

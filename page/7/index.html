@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -275,6 +275,60 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2019/05/18/flink_lian_xi/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/medias/featureimages/5.jpg" class="responsive-img" alt="Flink练习">
+                            
+                            <span class="card-title">Flink练习</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一、Flink开发IDEA环境搭建与测试1、IDEA开发环境先虚拟机联网，然后执行yum -y install ncnc是用来打开端口的工具然后nc -l 9000  
+1.pom文件设置
+&lt;properties&gt;
+      
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-05-18
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-category">
+                                    大数据
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                            <span class="chip bg-color">大数据</span>
+                        </a>
+                        
+                        <a href="/tags/Flink/">
+                            <span class="chip bg-color">Flink</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2019/05/16/flink_ji_chu/">
                         <div class="card-image">
                             
@@ -288,14 +342,8 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                一、Flink概述
-官网：http://flink.apache.org/
-MapReduce-&gt;MaxCompute
-HBase-&gt;部门
-QuickBI
-DataV
-Hive-&gt;高德地图
-Storm-&gt;JStorm
+                                一、Flink概述官网：http://flink.apache.org/MapReduce-&gt;MaxComputeHBase-&gt;部门QuickBIDataVHive-&gt;高德地图Storm-&gt;JStorm
+2019年1
                             
                         </div>
                         <div class="publish-info">
@@ -347,19 +395,9 @@ Storm-&gt;JStorm
                         <div class="summary block-with-text">
                             
                                 Storm练习
-一、需求
-需求：统计网站访问量(实时统计)
+一、需求需求：统计网站访问量(实时统计)
 技术选型：特点（数据量大、做计算、实时）
-实时计算框架：storm
-1）spout
-数据源，接入数据
-本地文件
-2）bolt
-业务逻辑处理
-切分数据
-查到网址
-3）bolt
-累加次
+实时计算框架：storm1）spout	数据源，接入数据	本地文件	2）bolt	业务逻辑处理	切分数据	查到网址	3）bolt	累加次数求
                             
                         </div>
                         <div class="publish-info">
@@ -411,19 +449,11 @@ Storm-&gt;JStorm
                         <div class="summary block-with-text">
                             
                                 一、Storm集群任务提交流程
-
 二、Storm内部通信机制
 
-
-三、集成Storm
-1、与JDBC集成
-
-
-将Storm Bolt处理的结果插入MySQL数据库中
-
-
-需要依赖的jar包
-	$STORM_HOME\external\sq
+三、集成Storm1、与JDBC集成
+   将Storm Bolt处理的结果插入MySQL数据库中
+   需要依赖的jar包	$STORM_HOME\external\sql\
                             
                         </div>
                         <div class="publish-info">
@@ -474,9 +504,8 @@ Storm-&gt;JStorm
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                一、私有网络软件仓库
-在集群安装的过程中，要求每个节点都必须挂载光驱， 而对于每台节点都手动的去挂载光驱太麻烦，也不方便。这里使用每个节点都指向同一个私有网络镜像来解决这个问题
-我们的集群采用的是全离线安装，也不可能逐个节点的安装，同样是也
+                                一、私有网络软件仓库在集群安装的过程中，要求每个节点都必须挂载光驱， 而对于每台节点都手动的去挂载光驱太麻烦，也不方便。这里使用每个节点都指向同一个私有网络镜像来解决这个问题
+我们的集群采用的是全离线安装，也不可能逐个节点的安装，同样是也使
                             
                         </div>
                         <div class="publish-info">
@@ -531,22 +560,14 @@ Storm-&gt;JStorm
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、大数据课程概述与大数据背景知识
-（1）数据仓库与大数据
-
+                                1、大数据课程概述与大数据背景知识（1）数据仓库与大数据
 （2）PageRank
-
 （3）MR基本原理
-
 （4）HDFS原理
-
 （5）bigtable与Habase
-
-2、搭建Hadoop的环境
-（1）1.PNG
-
+2、搭建Hadoop的环境（1）1.PNG
 （2）2.PNG
-
+（3）3.PNG
 
                             
                         </div>
@@ -576,61 +597,6 @@ Storm-&gt;JStorm
                         
                         <a href="/tags/%E5%9B%BE%E7%89%87/">
                             <span class="chip bg-color">图片</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/05/04/storm_ji_chu/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/medias/featureimages/17.jpg" class="responsive-img" alt="Storm基础">
-                            
-                            <span class="card-title">Storm基础</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                流式计算专题
-批量计算、实时计算、离线计算、流式计算
-共同点：
-数据源  --&gt;   采集数据   --&gt;   task worker --&gt;   task worker  --&gt;  sink 输出
-批量计算和流式计
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-05-04
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-category">
-                                    大数据
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
-                            <span class="chip bg-color">大数据</span>
-                        </a>
-                        
-                        <a href="/tags/Storm/">
-                            <span class="chip bg-color">Storm</span>
                         </a>
                         
                     </div>
@@ -681,7 +647,7 @@ Storm-&gt;JStorm
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

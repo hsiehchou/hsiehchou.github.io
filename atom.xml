@@ -6,7 +6,7 @@
   <link href="https://hsiehchou.github.io/atom.xml" rel="self"/>
   
   <link href="https://hsiehchou.github.io/"/>
-  <updated>2026-02-08T13:06:59.694Z</updated>
+  <updated>2026-03-10T15:51:36.752Z</updated>
   <id>https://hsiehchou.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何掌控自己的时间和生活</title>
+    <link href="https://hsiehchou.github.io/2026/03/10/ru_he_zhang_kong_zi_ji_de_shi_jian_he_sheng_huo/"/>
+    <id>https://hsiehchou.github.io/2026/03/10/ru_he_zhang_kong_zi_ji_de_shi_jian_he_sheng_huo/</id>
+    <published>2026-03-10T14:16:53.000Z</published>
+    <updated>2026-03-10T15:51:36.752Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;核心观点总结（AI总结）&quot;&gt;&lt;a href=&quot;#核心观点总结（AI总结）&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="读书" scheme="https://hsiehchou.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
+    
+    
+    <category term="读书" scheme="https://hsiehchou.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>如何阅读一本书</title>
@@ -28,8 +53,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;核心观点总结（AI总结）&quot;&gt;核心观点总结（AI总结）&lt;/h2&gt;
-&lt;h3</summary>
+    <summary type="html">&lt;h2 id=&quot;核心观点总结（AI总结）&quot;&gt;&lt;a href=&quot;#核心观点总结（AI总结）&quot; class=&quot;headerlink&quot; title=&quot;核心观点总结（AI总结）&quot;&gt;&lt;/a&gt;核心观点总结（AI总结）&lt;/h2&gt;&lt;h3 id=&quot;一、阅读的本质&quot;&gt;&lt;a</summary>
         
       
     
@@ -54,13 +78,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;第一部分-入门&quot;&gt;第一部分 入门&lt;/h2&gt;
-&lt;h3 id=&quot;第-1-章-R-语言介绍&quot;&gt;第 1 章 R 语言介绍&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;本章内容&lt;br&gt;
-❑ R 的安装&lt;br&gt;
-❑ 熟悉 R 语言&lt;br&gt;
-❑ 运行 R</summary>
+    <summary type="html">&lt;h2 id=&quot;第一部分-入门&quot;&gt;&lt;a href=&quot;#第一部分-入门&quot; class=&quot;headerlink&quot; title=&quot;第一部分 入门&quot;&gt;&lt;/a&gt;第一部分 入门&lt;/h2&gt;&lt;h3 id=&quot;第-1-章-R-语言介绍&quot;&gt;&lt;a href=&quot;#第-1-章-R-语言介绍&quot;</summary>
         
       
     
@@ -85,8 +103,7 @@
       
         
         
-    <summary type="html">&lt;h4 id=&quot;1、周志华教授的《机器学习》&quot;&gt;1、周志华教授的《机器学习》&lt;/h4&gt;
-&lt;h4</summary>
+    <summary type="html">&lt;h4 id=&quot;1、周志华教授的《机器学习》&quot;&gt;&lt;a href=&quot;#1、周志华教授的《机器学习》&quot; class=&quot;headerlink&quot; title=&quot;1、周志华教授的《机器学习》&quot;&gt;&lt;/a&gt;1、周志华教授的《机器学习》&lt;/h4&gt;&lt;h4</summary>
         
       
     
@@ -113,10 +130,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;第七章-机器学习入门&quot;&gt;第七章 机器学习入门&lt;/h2&gt;
-&lt;h3 id=&quot;1、绪论&quot;&gt;1、绪论&lt;/h3&gt;
-&lt;p&gt;学科定义、发展历程、机器学习方法、应用场景、难点与挑战&lt;/p&gt;
-&lt;h4 id=&quot;1-1-什么是机器学习&quot;&gt;1.1</summary>
+    <summary type="html">&lt;h2 id=&quot;第七章-机器学习入门&quot;&gt;&lt;a href=&quot;#第七章-机器学习入门&quot; class=&quot;headerlink&quot; title=&quot;第七章 机器学习入门&quot;&gt;&lt;/a&gt;第七章 机器学习入门&lt;/h2&gt;&lt;h3 id=&quot;1、绪论&quot;&gt;&lt;a href=&quot;#1、绪论&quot;</summary>
         
       
     
@@ -143,9 +157,7 @@
       
         
         
-    <summary type="html">&lt;h3 id=&quot;第一章-MATLAB-介绍&quot;&gt;第一章 MATLAB 介绍&lt;/h3&gt;
-&lt;p&gt;MATLAB(矩阵实验室的简称）是一种专业的计算机程序，用于工程科学的矩阵数学运算。但在以后的几年内，它逐渐发展为一种极其灵活的计算体系，用于解决各种重要的技术问题。&lt;/p&gt;
-&lt;h4</summary>
+    <summary type="html">&lt;h3 id=&quot;第一章-MATLAB-介绍&quot;&gt;&lt;a href=&quot;#第一章-MATLAB-介绍&quot; class=&quot;headerlink&quot; title=&quot;第一章 MATLAB 介绍&quot;&gt;&lt;/a&gt;第一章 MATLAB</summary>
         
       
     
@@ -170,10 +182,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;第六章-Python-机器学习&quot;&gt;第六章 Python 机器学习&lt;/h2&gt;
-&lt;h3 id=&quot;1、机器学习基础&quot;&gt;1、机器学习基础&lt;/h3&gt;
-&lt;h4 id=&quot;1-1-机器学习分类&quot;&gt;1.1 机器学习分类&lt;/h4&gt;
-&lt;h5</summary>
+    <summary type="html">&lt;h2 id=&quot;第六章-Python-机器学习&quot;&gt;&lt;a href=&quot;#第六章-Python-机器学习&quot; class=&quot;headerlink&quot; title=&quot;第六章 Python 机器学习&quot;&gt;&lt;/a&gt;第六章 Python 机器学习&lt;/h2&gt;&lt;h3 id=&quot;1、机器学习基础&quot;&gt;&lt;a</summary>
         
       
     
@@ -200,9 +209,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;第五章-Python-数据可视化&quot;&gt;第五章 Python 数据可视化&lt;/h2&gt;
-&lt;h3 id=&quot;1、Matplotlib-基础&quot;&gt;1、Matplotlib 基础&lt;/h3&gt;
-&lt;h4 id=&quot;1-1-Matplotlib-库介绍&quot;&gt;1.1 Matplotlib</summary>
+    <summary type="html">&lt;h2 id=&quot;第五章-Python-数据可视化&quot;&gt;&lt;a href=&quot;#第五章-Python-数据可视化&quot; class=&quot;headerlink&quot; title=&quot;第五章 Python 数据可视化&quot;&gt;&lt;/a&gt;第五章 Python 数据可视化&lt;/h2&gt;&lt;h3</summary>
         
       
     
@@ -227,10 +234,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;第四章-Python-数据处理&quot;&gt;第四章 Python 数据处理&lt;/h2&gt;
-&lt;h3 id=&quot;1、numpy-数组操作&quot;&gt;1、numpy 数组操作&lt;/h3&gt;
-&lt;h4 id=&quot;1-1-numpy-库概述&quot;&gt;1.1 numpy 库概述&lt;/h4&gt;
-&lt;h5</summary>
+    <summary type="html">&lt;h2 id=&quot;第四章-Python-数据处理&quot;&gt;&lt;a href=&quot;#第四章-Python-数据处理&quot; class=&quot;headerlink&quot; title=&quot;第四章 Python 数据处理&quot;&gt;&lt;/a&gt;第四章 Python 数据处理&lt;/h2&gt;&lt;h3</summary>
         
       
     
@@ -255,8 +259,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;第三章-Python-编程进阶&quot;&gt;&lt;strong&gt;第三章 Python 编程进阶&lt;/strong&gt;&lt;/h2&gt;
-&lt;h3</summary>
+    <summary type="html">&lt;h2 id=&quot;第三章-Python-编程进阶&quot;&gt;&lt;a href=&quot;#第三章-Python-编程进阶&quot; class=&quot;headerlink&quot; title=&quot;第三章 Python 编程进阶&quot;&gt;&lt;/a&gt;&lt;strong&gt;第三章 Python 编程进阶&lt;/strong&gt;&lt;/h2&gt;&lt;h3</summary>
         
       
     
@@ -281,9 +284,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;第一篇-阅读的层次&quot;&gt;第一篇 阅读的层次&lt;/h2&gt;
-&lt;h3 id=&quot;第一章-阅读的活力与艺术&quot;&gt;第一章  阅读的活力与艺术&lt;/h3&gt;
-&lt;h4 id=&quot;1-1-主动的阅读&quot;&gt;1.1</summary>
+    <summary type="html">&lt;h2 id=&quot;第一篇-阅读的层次&quot;&gt;&lt;a href=&quot;#第一篇-阅读的层次&quot; class=&quot;headerlink&quot; title=&quot;第一篇 阅读的层次&quot;&gt;&lt;/a&gt;第一篇 阅读的层次&lt;/h2&gt;&lt;h3 id=&quot;第一章-阅读的活力与艺术&quot;&gt;&lt;a</summary>
         
       
     
@@ -308,10 +309,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;第二章-Python-基础语法&quot;&gt;第二章 Python 基础语法&lt;/h2&gt;
-&lt;h3 id=&quot;1、Python-常用数据类型&quot;&gt;1、Python 常用数据类型&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;在 Python</summary>
+    <summary type="html">&lt;h2 id=&quot;第二章-Python-基础语法&quot;&gt;&lt;a href=&quot;#第二章-Python-基础语法&quot; class=&quot;headerlink&quot; title=&quot;第二章 Python 基础语法&quot;&gt;&lt;/a&gt;第二章 Python 基础语法&lt;/h2&gt;&lt;h3</summary>
         
       
     
@@ -336,9 +334,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;第一章-Python-概述与开发环境安装&quot;&gt;第一章 Python 概述与开发环境安装&lt;/h2&gt;
-&lt;h3 id=&quot;1、Python-开发环境安装&quot;&gt;1、Python 开发环境安装&lt;/h3&gt;
-&lt;h3 id=&quot;2、Anaconda-安装&quot;&gt;2、Anaconda</summary>
+    <summary type="html">&lt;h2 id=&quot;第一章-Python-概述与开发环境安装&quot;&gt;&lt;a href=&quot;#第一章-Python-概述与开发环境安装&quot; class=&quot;headerlink&quot; title=&quot;第一章 Python 概述与开发环境安装&quot;&gt;&lt;/a&gt;第一章 Python</summary>
         
       
     
@@ -363,10 +359,7 @@
       
         
         
-    <summary type="html">&lt;h3 id=&quot;网站在哀悼节日时使整个页面灰色的代码&quot;&gt;网站在哀悼节日时使整个页面灰色的代码&lt;/h3&gt;
-&lt;p&gt;html {&lt;br&gt;
--webkit-filter: grayscale(100%);&lt;br&gt;
--moz-filter:</summary>
+    <summary type="html">&lt;h3 id=&quot;网站在哀悼节日时使整个页面灰色的代码&quot;&gt;&lt;a href=&quot;#网站在哀悼节日时使整个页面灰色的代码&quot; class=&quot;headerlink&quot; title=&quot;网站在哀悼节日时使整个页面灰色的代码&quot;&gt;&lt;/a&gt;网站在哀悼节日时使整个页面灰色的代码&lt;/h3&gt;&lt;p&gt;html</summary>
         
       
     
@@ -443,11 +436,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;Github-Hexo-建站&quot;&gt;Github Hexo 建站&lt;/h2&gt;
-&lt;h3 id=&quot;初始化&quot;&gt;初始化&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;highlight plaintext&quot;&gt;hexo init
-git init
-npm install</summary>
+    <summary type="html">&lt;h2 id=&quot;Github-Hexo-建站&quot;&gt;&lt;a href=&quot;#Github-Hexo-建站&quot; class=&quot;headerlink&quot; title=&quot;Github Hexo 建站&quot;&gt;&lt;/a&gt;Github Hexo 建站&lt;/h2&gt;&lt;h3 id=&quot;初始化&quot;&gt;&lt;a</summary>
         
       
     
@@ -472,9 +461,7 @@ npm install</summary>
       
         
         
-    <summary type="html">&lt;h3 id=&quot;Django阿里云部署详解之服务器安装安装Nginx&quot;&gt;Django阿里云部署详解之服务器安装安装Nginx&lt;/h3&gt;
-&lt;h4 id=&quot;（本系统就是阿里云部署的）&quot;&gt;（本系统就是阿里云部署的）&lt;/h4&gt;
-&lt;h4</summary>
+    <summary type="html">&lt;h3 id=&quot;Django阿里云部署详解之服务器安装安装Nginx&quot;&gt;&lt;a href=&quot;#Django阿里云部署详解之服务器安装安装Nginx&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -499,9 +486,7 @@ npm install</summary>
       
         
         
-    <summary type="html">&lt;h3 id=&quot;github-ssh-连接失败&quot;&gt;github ssh 连接失败&lt;/h3&gt;
-&lt;p&gt;$ ssh -T &lt;a href=&quot;mailto:git@github.com&quot;&gt;git@github.com&lt;/a&gt;&lt;br&gt;
-ssh: connect to host &lt;a</summary>
+    <summary type="html">&lt;h3 id=&quot;github-ssh-连接失败&quot;&gt;&lt;a href=&quot;#github-ssh-连接失败&quot; class=&quot;headerlink&quot; title=&quot;github ssh 连接失败&quot;&gt;&lt;/a&gt;github ssh 连接失败&lt;/h3&gt;&lt;p&gt;$ ssh -T &lt;a</summary>
         
       
     
@@ -526,35 +511,7 @@ ssh: connect to host &lt;a</summary>
       
         
         
-    <summary type="html">&lt;h3 id=&quot;Django阿里云部署详解之服务器安装安装uwsgi&quot;&gt;Django阿里云部署详解之服务器安装安装uwsgi&lt;/h3&gt;
-&lt;h4 id=&quot;（本系统就是阿里云部署的）&quot;&gt;（本系统就是阿里云部署的）&lt;/h4&gt;
-&lt;h4</summary>
-        
-      
-    
-    
-    
-    <category term="Django" scheme="https://hsiehchou.github.io/categories/Django/"/>
-    
-    
-    <category term="Django" scheme="https://hsiehchou.github.io/tags/Django/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Django阿里云部署详解之服务器安装MySQL8.0系列的版本（服务器是Linux的系统）</title>
-    <link href="https://hsiehchou.github.io/2020/02/10/django_a_li_yun_bu_shu_xiang_jie_zhi_fu_wu_qi_an_zhuang_mysql8.0_xi_lie_de_ban_ben_fu_wu_qi_shi_linux_de_xi_tong/"/>
-    <id>https://hsiehchou.github.io/2020/02/10/django_a_li_yun_bu_shu_xiang_jie_zhi_fu_wu_qi_an_zhuang_mysql8.0_xi_lie_de_ban_ben_fu_wu_qi_shi_linux_de_xi_tong/</id>
-    <published>2020-02-10T15:35:30.000Z</published>
-    <updated>2020-04-30T08:56:58.230Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;Django阿里云部署详解之服务器安装MySQL8-0系列的版本（服务器是Linux的系统）&quot;&gt;Django阿里云部署详解之服务器安装MySQL8.0系列的版本（服务器是Linux的系统）&lt;/h3&gt;
-&lt;h4</summary>
+    <summary type="html">&lt;h3 id=&quot;Django阿里云部署详解之服务器安装安装uwsgi&quot;&gt;&lt;a href=&quot;#Django阿里云部署详解之服务器安装安装uwsgi&quot; class=&quot;headerlink&quot;</summary>
         
       
     

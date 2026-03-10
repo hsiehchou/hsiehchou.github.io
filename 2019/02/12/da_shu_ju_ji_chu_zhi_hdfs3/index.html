@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,7 +384,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.6k
                 </div>
                 
 
@@ -407,8 +407,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、hdfs的副本的配置">1、hdfs的副本的配置</h4>
-<p>修改hdfs-site.xml文件</p>
+                <h4 id="1、hdfs的副本的配置"><a href="#1、hdfs的副本的配置" class="headerlink" title="1、hdfs的副本的配置"></a>1、hdfs的副本的配置</h4><p>修改hdfs-site.xml文件</p>
 <pre><code class="highlight plaintext">&lt;!-- 注释配置数据块的冗余度，默认是3 --&gt;
 &lt;property&gt;
     &lt;name&gt;dfs.replication&lt;/name&gt;
@@ -424,86 +423,39 @@
     &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;
     &lt;value&gt;hsiehchou122:50090&lt;/value&gt;
 &lt;/property&gt;</code></pre>
-<p>需要同步到其它机器：<br>
-scp hdfs-site.xml hsiehchou122:<code>$PWD</code><br>
-scp hdfs-site.xml hsiehchou123:<code>$PWD</code><br>
-scp hdfs-site.xml hsiehchou124:<code>$PWD</code></p>
-<p>这里我划重点(亲自经历)<br>
-如果原来的分布式hadoop集群的主节点有Secondary NameNode，需要配置到其他节点，因为如果主节点挂了，其也是挂了，它的作用是在HDFS中提供一个检查点，相当于NameNode的助手节点<br>
-职责是：合并NameNode的edit logs到fsimage文件中</p>
-<h4 id="2、hadoop启动方式">2、hadoop启动方式</h4>
-<p>1）启动hdfs集群<br>
-<a target="_blank" rel="noopener" href="http://start-dfs.sh">start-dfs.sh</a></p>
-<p>2）启动yarn集群<br>
-<a target="_blank" rel="noopener" href="http://start-yarn.sh">start-yarn.sh</a></p>
-<p>3）启动hadoop集群<br>
-<a target="_blank" rel="noopener" href="http://start-all.sh">start-all.sh</a></p>
-<h4 id="3、大数据干什么的">3、大数据干什么的</h4>
-<p>1）海量数据的存储(mysql/oracle)<br>
-分布式文件系统hdfs<br>
-dfs-&gt;Hdfs<br>
-mapreduce-&gt;mapreduce<br>
-bigtable-&gt;hbase<br>
-分而治之！</p>
-<p>2）海量数据的计算<br>
-分布式计算框架mapreduce<br>
-配置checkpoint时间</p>
+
+<p>需要同步到其它机器：<br>scp hdfs-site.xml hsiehchou122:<code>$PWD</code><br>scp hdfs-site.xml hsiehchou123:<code>$PWD</code><br>scp hdfs-site.xml hsiehchou124:<code>$PWD</code></p>
+<p>这里我划重点(亲自经历)<br>如果原来的分布式hadoop集群的主节点有Secondary NameNode，需要配置到其他节点，因为如果主节点挂了，其也是挂了，它的作用是在HDFS中提供一个检查点，相当于NameNode的助手节点<br>职责是：合并NameNode的edit logs到fsimage文件中</p>
+<h4 id="2、hadoop启动方式"><a href="#2、hadoop启动方式" class="headerlink" title="2、hadoop启动方式"></a>2、hadoop启动方式</h4><p>1）启动hdfs集群<br>start-dfs.sh </p>
+<p>2）启动yarn集群<br>start-yarn.sh </p>
+<p>3）启动hadoop集群<br>start-all.sh</p>
+<h4 id="3、大数据干什么的"><a href="#3、大数据干什么的" class="headerlink" title="3、大数据干什么的"></a>3、大数据干什么的</h4><p>1）海量数据的存储(mysql/oracle)<br>分布式文件系统hdfs<br>dfs-&gt;Hdfs<br>mapreduce-&gt;mapreduce<br>bigtable-&gt;hbase<br>分而治之！</p>
+<p>2）海量数据的计算<br>分布式计算框架mapreduce<br>配置checkpoint时间</p>
 <pre><code class="highlight plaintext">&lt;property&gt;
 &lt;name&gt;dfs.namenode.checkpoint.period&lt;/name&gt;
 &lt;value&gt;7200&lt;/value&gt;
 &lt;/property&gt;</code></pre>
-<p>systemctl set-default graphical.target由命令行模式更改为图形界面模式<br>
-systemctl set-default multi-user.target由图形界面模式更改为命令行模式</p>
-<h4 id="4、hdfs-namenode工作机制">4、hdfs-namenode工作机制</h4>
-<p>1）加载编辑日志与镜像文件到内存（NameNode）<br>
-edits_0001<br>
-edits_0002<br>
-fsimage fsimage fsimage</p>
-<p>2）户端发起命令（client）<br>
-hdfs dfs -ls /</p>
-<p>3）动正在写的edits（NameNode）</p>
-<p>4）录操作日志更新 滚动日志（NameNode）</p>
-<p>5）贝到Secondary NameNode<br>
-NameNode请求是否需要checkpoint</p>
-<p>Secondary NameNode 触发checkpoint条件：<br>
-1）定时的时间<br>
-Secondary NameNode询问NameNode是否需要checkpoint<br>
-直接带回NameNode是否检查结果</p>
-<p>2）edits中数据已满<br>
-Secondary NameNode请求执行checkpoint</p>
+
+<p>systemctl set-default graphical.target由命令行模式更改为图形界面模式<br>systemctl set-default multi-user.target由图形界面模式更改为命令行模式</p>
+<h4 id="4、hdfs-namenode工作机制"><a href="#4、hdfs-namenode工作机制" class="headerlink" title="4、hdfs-namenode工作机制"></a>4、hdfs-namenode工作机制</h4><p>1）加载编辑日志与镜像文件到内存（NameNode）<br>edits_0001<br>edits_0002<br>fsimage fsimage fsimage </p>
+<p>2）户端发起命令（client）<br>hdfs dfs -ls / </p>
+<p>3）动正在写的edits（NameNode） </p>
+<p>4）录操作日志更新 滚动日志（NameNode） </p>
+<p>5）贝到Secondary NameNode<br>NameNode请求是否需要checkpoint</p>
+<p>Secondary NameNode 触发checkpoint条件：<br>1）定时的时间<br>Secondary NameNode询问NameNode是否需要checkpoint<br>直接带回NameNode是否检查结果</p>
+<p>2）edits中数据已满<br>Secondary NameNode请求执行checkpoint </p>
 <p>3）NameNode滚动正在写的edits日志</p>
 <p>4）将滚动前的编辑日志和镜像文件拷贝到Secondary NameNode</p>
-<p>5）Secondary NameNode加载编辑日志和镜像文件到内存，并行合并</p>
-<p>6）生成新的镜像文件fsimage.checkpoint</p>
-<p>7）拷贝fsimage.chkpoint到NameNode</p>
+<p>5）Secondary NameNode加载编辑日志和镜像文件到内存，并行合并 </p>
+<p>6）生成新的镜像文件fsimage.checkpoint </p>
+<p>7）拷贝fsimage.chkpoint到NameNode </p>
 <p>8）NameNode对fsimage.checkpoint重命名成fsimage</p>
-<h4 id="5、hadoop2-8-4安装部署">5、hadoop2.8.4安装部署</h4>
-<p>1）准备工作<br>
-设置主机名：vi /etc/hostname<br>
-注意：需要重启 reboot<br>
-设置映射：vi /etc/hosts<br>
-设置免密登录：ssh-keygen<br>
-ssh-copy-id hsiehchou121</p>
-<p>2）安装jdk<br>
-上传安装包<br>
-CRT:alt+p</p>
-<p>解压<br>
-tar -zxvf .tar.gz</p>
-<p>配置环境变量<br>
-export JAVA_HOME=/root/hd/jdk1.8.0_192<br>
-export PATH=<code>$JAVA_HOME/bin:$PATH</code></p>
-<p>注意：需要source /etc/profile<br>
-分发jdk<br>
-scp jdk hsiehchou122:/root/hd<br>
-scp /etc/profile hsiehchou122:/etc/<br>
-source /etc/profile</p>
-<p>3）安装hadoop<br>
-上传安装包<br>
-alt + p<br>
-解压<br>
-tar -zxvf .tar.gz<br>
-修改配置文件<br>
-core-site.xml</p>
+<h4 id="5、hadoop2-8-4安装部署"><a href="#5、hadoop2-8-4安装部署" class="headerlink" title="5、hadoop2.8.4安装部署"></a>5、hadoop2.8.4安装部署</h4><p>1）准备工作<br>设置主机名：vi /etc/hostname<br>注意：需要重启 reboot<br>设置映射：vi /etc/hosts<br>设置免密登录：ssh-keygen<br>ssh-copy-id hsiehchou121 </p>
+<p>2）安装jdk<br>上传安装包<br>CRT:alt+p </p>
+<p>解压<br>tar -zxvf .tar.gz</p>
+<p>配置环境变量<br>export JAVA_HOME=/root/hd/jdk1.8.0_192<br>export PATH=<code>$JAVA_HOME/bin:$PATH</code></p>
+<p>注意：需要source /etc/profile<br>分发jdk<br>scp jdk hsiehchou122:/root/hd<br>scp /etc/profile hsiehchou122:/etc/<br>source /etc/profile</p>
+<p>3）安装hadoop<br>上传安装包<br>alt + p<br>解压<br>tar -zxvf .tar.gz<br>修改配置文件<br>core-site.xml</p>
 <pre><code class="highlight plaintext">&lt;property&gt;
     &lt;name&gt;fs.defaultFS&lt;/name&gt;
     &lt;value&gt;hdfs://hsiehchou121:9000&lt;/value&gt;
@@ -551,113 +503,58 @@ yarn-site.xml
         &lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;
         &lt;value&gt;false&lt;/value&gt;
 &lt;/property&gt;</code></pre>
-<h4 id="6、配置环境变量">6、配置环境变量</h4>
-<p>export HADOOP_HOME=/root/hd/hadoop-2.8.4<br>
-export PATH=<code>$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH</code><br>
-修改slaves文件加入从节点<br>
-格式化namenode<br>
-hadoop namenode -format<br>
-启动:start-all.sh</p>
-<h4 id="7、hadoopMapReduce">7、hadoopMapReduce</h4>
-<p>官方：Apache™Hadoop®项目开发了用于可靠，可扩展的分布式计算的开源软件<br>
-Apache Hadoop软件库是一个框架，允许使用简单的编程模型跨计算机集群分布式处理 大型数据集。它旨在从单个服务器扩展到数千台计算机，每台计算机都提供本地计算和 存储。该库本身不是依靠硬件来提供高可用性，而是设计用于检测和处理应用层的故 障，从而在计算机集群之上提供高可用性服务，每个计算机都可能容易出现故障<br>
-阿里的Flink（9000万欧元） Blink</p>
-<p>MapReduce分布式计算程序的编程框架。基于hadoop的数据分析的应用<br>
-MR优点：<br>
-1)框架易于编程<br>
-2)可靠容错（集群）<br>
-3)可以处理海量数据（1T+ PB+） 1PB = 1024TB<br>
-4)拓展性，可以通过动态的增减节点来拓展计算能力</p>
-<h4 id="8、MapReduce的思想">8、MapReduce的思想</h4>
-<p>数据:海量单词<br>
-hello reba<br>
-hello mimi<br>
-hello liya<br>
-mimi big<br>
-需求：对每个单词出现的次数统计出来<br>
-思想：分而治之！<br>
-解决方式：<br>
-1）每个单词记录一次(map阶段)<br>
-&lt;hello,1&gt; &lt;reba,1&gt; &lt;hello,1&gt; &lt;mimi,1&gt;</p>
-<p>2）相同单词的key不变，value累加求和即可（reduce阶段）<br>
-&lt;hello,1+1+1&gt;<br>
-对数据进行计算</p>
-<h4 id="9、对wordcount例子程序分析">9、对wordcount例子程序分析</h4>
-<p>1）整个wordcount分为几个阶段？<br>
-三个</p>
-<p>2）有哪几个阶段？<br>
-mapper<br>
-reducer<br>
-driver</p>
-<p>3）每个阶段有什么作用<br>
-mapper:对数据进行打散&lt;hello,1&gt;&lt;mimi,1&gt;<br>
-reducer:对数据进行聚合&lt;hello,1+1+1&gt;<br>
-driver:提交任务</p>
+
+<h4 id="6、配置环境变量"><a href="#6、配置环境变量" class="headerlink" title="6、配置环境变量"></a>6、配置环境变量</h4><p>export HADOOP_HOME=/root/hd/hadoop-2.8.4<br>export PATH=<code>$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH</code><br>修改slaves文件加入从节点<br>格式化namenode<br>hadoop namenode -format<br>启动:start-all.sh</p>
+<h4 id="7、hadoopMapReduce"><a href="#7、hadoopMapReduce" class="headerlink" title="7、hadoopMapReduce"></a>7、hadoopMapReduce</h4><p>官方：Apache™Hadoop®项目开发了用于可靠，可扩展的分布式计算的开源软件<br>Apache Hadoop软件库是一个框架，允许使用简单的编程模型跨计算机集群分布式处理 大型数据集。它旨在从单个服务器扩展到数千台计算机，每台计算机都提供本地计算和 存储。该库本身不是依靠硬件来提供高可用性，而是设计用于检测和处理应用层的故 障，从而在计算机集群之上提供高可用性服务，每个计算机都可能容易出现故障<br>阿里的Flink（9000万欧元） Blink</p>
+<p>MapReduce分布式计算程序的编程框架。基于hadoop的数据分析的应用<br>MR优点：<br>1)框架易于编程<br>2)可靠容错（集群）<br>3)可以处理海量数据（1T+ PB+） 1PB = 1024TB<br>4)拓展性，可以通过动态的增减节点来拓展计算能力</p>
+<h4 id="8、MapReduce的思想"><a href="#8、MapReduce的思想" class="headerlink" title="8、MapReduce的思想"></a>8、MapReduce的思想</h4><p>数据:海量单词<br>hello reba<br>hello mimi<br>hello liya<br>mimi big<br>需求：对每个单词出现的次数统计出来<br>思想：分而治之！<br>解决方式：<br>1）每个单词记录一次(map阶段)<br>&lt;hello,1&gt; &lt;reba,1&gt; &lt;hello,1&gt; &lt;mimi,1&gt; </p>
+<p>2）相同单词的key不变，value累加求和即可（reduce阶段）<br>&lt;hello,1+1+1&gt;<br>对数据进行计算</p>
+<h4 id="9、对wordcount例子程序分析"><a href="#9、对wordcount例子程序分析" class="headerlink" title="9、对wordcount例子程序分析"></a>9、对wordcount例子程序分析</h4><p>1）整个wordcount分为几个阶段？<br>三个 </p>
+<p>2）有哪几个阶段？<br>mapper<br>reducer<br>driver </p>
+<p>3）每个阶段有什么作用<br>mapper:对数据进行打散&lt;hello,1&gt;&lt;mimi,1&gt;<br>reducer:对数据进行聚合&lt;hello,1+1+1&gt;<br>driver:提交任务 </p>
 <p>4）详解</p>
 <p><strong>Mapper阶段</strong></p>
-<p>将数据转换为String<br>
-对数据进行切分处理<br>
-把每个单词后加1<br>
-输出到reducer阶段</p>
-<p>Reducer阶段<br>
-根据key进行聚合<br>
-输出key出现总的次数</p>
-<p>Driver阶段<br>
-创建任务<br>
-关联使用的Mapper/Reducer类<br>
-指定mapper输出数据的kv类型<br>
-指定reducer输出的数据的kv类型<br>
-指定数据的输入路径与输出路径<br>
-提交</p>
-<h4 id="10、hadoop数据类型">10、hadoop数据类型</h4>
-<p>我们看到的wordcount程序中的泛型中的数据类型其实是hadoop的序列化的数据类<br>
-型<br>
-为什么要进行序列化？用java的类型行不行？（可以）<br>
-Java的序列化:Serliazable太重<br>
-hadoop自己开发了一套序列化机制。Writable，精简高效。海量数据<br>
-hadoop序列化类型与Java数据类型</p>
+<p>将数据转换为String<br>对数据进行切分处理<br>把每个单词后加1<br>输出到reducer阶段</p>
+<p>Reducer阶段<br>根据key进行聚合<br>输出key出现总的次数</p>
+<p>Driver阶段<br>创建任务<br>关联使用的Mapper/Reducer类<br>指定mapper输出数据的kv类型<br>指定reducer输出的数据的kv类型<br>指定数据的输入路径与输出路径<br>提交</p>
+<h4 id="10、hadoop数据类型"><a href="#10、hadoop数据类型" class="headerlink" title="10、hadoop数据类型"></a>10、hadoop数据类型</h4><p>我们看到的wordcount程序中的泛型中的数据类型其实是hadoop的序列化的数据类<br>型<br>为什么要进行序列化？用java的类型行不行？（可以）<br>Java的序列化:Serliazable太重<br>hadoop自己开发了一套序列化机制。Writable，精简高效。海量数据<br>hadoop序列化类型与Java数据类型</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">Java数据类型</th>
-<th style="text-align:center">Hadoop序列化类型</th>
+<th align="center">Java数据类型</th>
+<th align="center">Hadoop序列化类型</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">int</td>
-<td style="text-align:center">IntWritable</td>
+<tbody><tr>
+<td align="center">int</td>
+<td align="center">IntWritable</td>
 </tr>
 <tr>
-<td style="text-align:center">long</td>
-<td style="text-align:center">LongWritable</td>
+<td align="center">long</td>
+<td align="center">LongWritable</td>
 </tr>
 <tr>
-<td style="text-align:center">boolean</td>
-<td style="text-align:center">BooleanWritable</td>
+<td align="center">boolean</td>
+<td align="center">BooleanWritable</td>
 </tr>
 <tr>
-<td style="text-align:center">byte</td>
-<td style="text-align:center">ByteWritable</td>
+<td align="center">byte</td>
+<td align="center">ByteWritable</td>
 </tr>
 <tr>
-<td style="text-align:center">float</td>
-<td style="text-align:center">FloatWritable</td>
+<td align="center">float</td>
+<td align="center">FloatWritable</td>
 </tr>
 <tr>
-<td style="text-align:center">double</td>
-<td style="text-align:center">DoubleWritable</td>
+<td align="center">double</td>
+<td align="center">DoubleWritable</td>
 </tr>
 <tr>
-<td style="text-align:center">String</td>
-<td style="text-align:center">Text</td>
+<td align="center">String</td>
+<td align="center">Text</td>
 </tr>
-</tbody>
-</table>
-<h4 id="11、wordcount测试">11、wordcount测试</h4>
-<p>1）本地模式<br>
-2）集群模式<br>
-hadoop jar .jar wordcount /wc/in /wc/out</p>
+</tbody></table>
+<h4 id="11、wordcount测试"><a href="#11、wordcount测试" class="headerlink" title="11、wordcount测试"></a>11、wordcount测试</h4><p>1）本地模式<br>2）集群模式<br>hadoop jar .jar wordcount /wc/in /wc/out</p>
 <p>hadoop jar mapreduce-1.0-SNAPSHOT.jar 全类名 /wc/in /wc/out</p>
 
             </div>
@@ -909,10 +806,8 @@ hadoop jar .jar wordcount /wc/in /wc/out</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            手写wordcount的程序
-1、pom.xml
-&lt;dependencies&gt;
-  &lt;!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs
+                            手写wordcount的程序1、pom.xml&lt;dependencies&gt;
+  &lt;!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs-c
                         
                     </div>
                     <div class="publish-info">
@@ -969,17 +864,7 @@ hadoop jar .jar wordcount /wc/in /wc/out</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、HDFS下载文件原理
-1、请求
-2、创建client
-DFS –&gt;DFSClient
-3、建立RPC通信
-4、得到代理对象proxy，通过代理对象请求得到文件元信息
-5、查找元信息
-6、返回元信息
-7、创建输入流
-8、下载数据块
-
+                            1、HDFS下载文件原理1、请求2、创建clientDFS –&gt;DFSClient3、建立RPC通信4、得到代理对象proxy，通过代理对象请求得到文件元信息5、查找元信息6、返回元信息7、创建输入流8、下载数据块FSDataInpu
                         
                     </div>
                     <div class="publish-info">
@@ -1193,7 +1078,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

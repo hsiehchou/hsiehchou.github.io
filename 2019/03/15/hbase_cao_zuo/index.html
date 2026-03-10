@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -407,10 +407,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、HBase-API操作">1、HBase API操作</h4>
-<p>1）首先将core-site.xml、hbase-site.xml、hdfs-site.xml引入maven工程的resources下面</p>
-<p>2）配置pom.xml文件<br>
-增加hbase依赖</p>
+                <h4 id="1、HBase-API操作"><a href="#1、HBase-API操作" class="headerlink" title="1、HBase API操作"></a>1、HBase API操作</h4><p>1）首先将core-site.xml、hbase-site.xml、hdfs-site.xml引入maven工程的resources下面</p>
+<p>2）配置pom.xml文件<br>增加hbase依赖</p>
 <pre><code class="highlight plaintext">&lt;dependencies&gt;
    &lt;dependency&gt;
        &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
@@ -424,6 +422,7 @@
        &lt;version&gt;1.3.0&lt;/version&gt;
    &lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
+
 <p>3）创建HbaseTest.java</p>
 <pre><code class="highlight plaintext">package com.hsiehchou.hbase;
 
@@ -444,6 +443,7 @@ public class HbaseTest {
 		//alt + enter 
 		conf = HBaseConfiguration.create(); 
 	}</code></pre>
+
 <p><strong>判断HBase中表是否存在</strong></p>
 <pre><code class="highlight plaintext">//1.判断HBase中表是否存在
 public static boolean isExist(String tableName) throws IOException{
@@ -454,6 +454,7 @@ public static boolean isExist(String tableName) throws IOException{
     HBaseAdmin admin = (HBaseAdmin) connection.getAdmin();
     return  admin.tableExists(TableName.valueOf(tableName));
 }</code></pre>
+
 <p><strong>在HBase中创建表</strong></p>
 <pre><code class="highlight plaintext">//2.在HBase中创建表
 public static void createTable(String tableName, String... columnFamily) throws IOException {
@@ -473,10 +474,8 @@ public static void createTable(String tableName, String... columnFamily) throws 
     admin.createTable(hd);
     System.out.println("表已经创建成功！！！！");
 }</code></pre>
-<p><strong>bin/hbase shell操作</strong><br>
-list<br>
-scan ‘ni’<br>
-describe ‘ni’</p>
+
+<p><strong>bin/hbase shell操作</strong><br>list<br>scan ‘ni’<br>describe ‘ni’</p>
 <p><strong>向表中添加数据</strong></p>
 <pre><code class="highlight plaintext">//3,向表中添加数据 put   rowkey  cf:列族
 public static void addData(String tableName, String rowkey, String cf, String column, String value) throws IOException {
@@ -491,6 +490,7 @@ public static void addData(String tableName, String rowkey, String cf, String co
 
   table.put(put);
 }</code></pre>
+
 <p><strong>删除一行数据</strong></p>
 <pre><code class="highlight plaintext">//4.删除一行数据
 public static void deleteRow(String tableName, String rowkey) throws IOException {
@@ -501,6 +501,7 @@ public static void deleteRow(String tableName, String rowkey) throws IOException
 
     table.delete(delete);
 }</code></pre>
+
 <p><strong>删除多个rowkey的数据</strong></p>
 <pre><code class="highlight plaintext">//5.删除多个rowkey的数据
 public static void deleteMore(String tableName, String... rowkey) throws IOException {
@@ -518,6 +519,7 @@ public static void deleteMore(String tableName, String... rowkey) throws IOExcep
 
     table.delete(d);
 }</code></pre>
+
 <p><strong>全表扫描</strong></p>
 <pre><code class="highlight plaintext">//6.全表扫描
 public static void scanAll(String tableName) throws IOException {
@@ -540,6 +542,7 @@ public static void scanAll(String tableName) throws IOException {
         }
     }
 }</code></pre>
+
 <p><strong>删除表</strong></p>
 <pre><code class="highlight plaintext">//7.删除表
 public static void deleteTable(String tableName) throws IOException {
@@ -563,25 +566,14 @@ public static void main(String[] args) throws IOException {
 	deleteTable(“ni”); 
 } 
 }</code></pre>
-<h4 id="2、HBase-MR">2、HBase-MR</h4>
-<p>HBase主要擅长的领域是存储数据，不擅长分析数据</p>
+
+<h4 id="2、HBase-MR"><a href="#2、HBase-MR" class="headerlink" title="2、HBase-MR"></a>2、HBase-MR</h4><p>HBase主要擅长的领域是存储数据，不擅长分析数据</p>
 <p>HBase如果想计算的话需要结合Hadoop的MapReduce</p>
-<p>HBase-MR所需的jar包查看<br>
-bin/hbase mapredcp</p>
+<p>HBase-MR所需的jar包查看<br>bin/hbase mapredcp</p>
 <p>配置临时环境变量</p>
-<p>export HBASE_HOME=/root/hd/hbase-1.3.0<br>
-export HADOOP_HOME=/root/hd/hadoop-2.8.4<br>
-export HADOOP_CLASSPATH=<code>${HBASE_HOME}/bin/hbase mapredcp</code><br>
-跑hbase-mr程序<br>
-bin/yarn jar /root/hd/hbase-1.3.0/lib/hbase-server-1.3.0.jar rowcounter user</p>
-<h4 id="3、HBase的表操作">3、HBase的表操作</h4>
-<p><strong>场景一</strong>：<br>
-region分片<br>
-指定列的过滤<br>
-name age high<br>
-name</p>
-<p><strong>代码实现</strong><br>
-<strong>ReadLoveMapper.java</strong></p>
+<p>export HBASE_HOME=/root/hd/hbase-1.3.0<br>export HADOOP_HOME=/root/hd/hadoop-2.8.4<br>export HADOOP_CLASSPATH=<code>${HBASE_HOME}/bin/hbase mapredcp</code><br>跑hbase-mr程序<br>bin/yarn jar /root/hd/hbase-1.3.0/lib/hbase-server-1.3.0.jar rowcounter user</p>
+<h4 id="3、HBase的表操作"><a href="#3、HBase的表操作" class="headerlink" title="3、HBase的表操作"></a>3、HBase的表操作</h4><p><strong>场景一</strong>：<br>region分片<br>指定列的过滤<br>name age high<br>name</p>
+<p><strong>代码实现</strong><br><strong>ReadLoveMapper.java</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.mr;
 
 import org.apache.hadoop.hbase.Cell;
@@ -620,6 +612,7 @@ public class ReadLoveMapper extends TableMapper&lt;ImmutableBytesWritable, Put&g
         context.write(key,put);
     }
 }</code></pre>
+
 <p><strong>WriteLoveReducer .java</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.mr;
 
@@ -643,6 +636,7 @@ public class WriteLoveReducer extends TableReducer&lt;ImmutableBytesWritable, Pu
         }
     }
 }</code></pre>
+
 <p><strong>LoverDriver .java</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.mr;
 
@@ -711,10 +705,10 @@ public class LoverDriver implements Tool {
         }
     }
 }</code></pre>
+
 <p><strong>场景二</strong></p>
-<p>把HDFS中的数据导入到HBase表中<br>
-HBase-MR</p>
-<p><strong>代码实现</strong></p>
+<p>把HDFS中的数据导入到HBase表中<br>HBase-MR</p>
+<p><strong>代码实现</strong> </p>
 <p><strong>ReadHdfsMapper .java</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.mr1;
 
@@ -755,6 +749,7 @@ public class ReadHdfsMapper extends Mapper&lt;LongWritable, Text, ImmutableBytes
         context.write(new ImmutableBytesWritable(rowkey),put);
     }
 }</code></pre>
+
 <p><strong>WriteHbaseReducer.java</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.mr1;
 
@@ -774,6 +769,7 @@ public class WriteHbaseReducer extends TableReducer&lt;ImmutableBytesWritable, P
         }
     }
 }</code></pre>
+
 <p><strong>LoveDriver.java</strong></p>
 <pre><code class="highlight plaintext">package com.hsiehchou.mr1;
 
@@ -830,90 +826,68 @@ public class LoveDriver implements Tool {
         }
     }
 }</code></pre>
-<h4 id="4、HBase优化">4、HBase优化</h4>
-<p>1）预分区问题<br>
-region分片？表很大 bigtable</p>
+
+<h4 id="4、HBase优化"><a href="#4、HBase优化" class="headerlink" title="4、HBase优化"></a>4、HBase优化</h4><p>1）预分区问题<br>region分片？表很大 bigtable</p>
 <p>分布式？数据量大</p>
-<p>region存储数据，如果有多个region，每个region负责维护一部分的rowkey{startrowkey, endrowkey}<br>
-1~10001<br>
-1~2001 1980<br>
-2001~40002</p>
-<p>分多少片？提前规划好，提高hbase的性能<br>
-进行存储数据前做好rowkey的预分区优化hbase</p>
-<p>实际操作：<br>
-create ‘user_p’,’info’,’partition’,SPLITS =&gt;[‘201’,’202’,’203’,’204’]</p>
+<p>region存储数据，如果有多个region，每个region负责维护一部分的rowkey{startrowkey, endrowkey}<br>1<del>10001<br>1</del>2001 1980<br>2001~40002</p>
+<p>分多少片？提前规划好，提高hbase的性能<br>进行存储数据前做好rowkey的预分区优化hbase</p>
+<p>实际操作：<br>create ‘user_p’,’info’,’partition’,SPLITS =&gt;[‘201’,’202’,’203’,’204’]</p>
 <p><strong>Table Regions</strong></p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">Region Server</th>
-<th style="text-align:center">Start Key</th>
-<th style="text-align:center">End Key</th>
+<th align="center">Region Server</th>
+<th align="center">Start Key</th>
+<th align="center">End Key</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">hsiehchou123:16020</td>
-<td style="text-align:center">-∞</td>
-<td style="text-align:center">201</td>
+<tbody><tr>
+<td align="center">hsiehchou123:16020</td>
+<td align="center">-∞</td>
+<td align="center">201</td>
 </tr>
 <tr>
-<td style="text-align:center">hsiehchou124:16020</td>
-<td style="text-align:center">201</td>
-<td style="text-align:center">202</td>
+<td align="center">hsiehchou124:16020</td>
+<td align="center">201</td>
+<td align="center">202</td>
 </tr>
 <tr>
-<td style="text-align:center">hsiehchou124:16020</td>
-<td style="text-align:center">202</td>
-<td style="text-align:center">203</td>
+<td align="center">hsiehchou124:16020</td>
+<td align="center">202</td>
+<td align="center">203</td>
 </tr>
 <tr>
-<td style="text-align:center">hsiehchou123:16020</td>
-<td style="text-align:center">203</td>
-<td style="text-align:center">204</td>
+<td align="center">hsiehchou123:16020</td>
+<td align="center">203</td>
+<td align="center">204</td>
 </tr>
 <tr>
-<td style="text-align:center">hsiehchou122:16020</td>
-<td style="text-align:center">204</td>
-<td style="text-align:center">+∞</td>
+<td align="center">hsiehchou122:16020</td>
+<td align="center">204</td>
+<td align="center">+∞</td>
 </tr>
-</tbody>
-</table>
-<p>create ‘user_pppp’,’partition’,SPLITS_FILE =&gt; ‘partitions.txt’</p>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">create ‘user_pppp’,’partition’,SPLITS_FILE =&gt; ‘partitions.txt’</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 <p>partitions.txt’放在hbase-shell路径下</p>
-<p>2）rowkey如何设计<br>
-rowkey是数据的唯一标识，这条数据存储在哪个分区由预分区范围决定</p>
-<p>合理设计rowkey<br>
-如一份数据分为5个region存储<br>
-但是我们需要尽可能的保持每个region中的数据量差不多</p>
+<p>2）rowkey如何设计<br>rowkey是数据的唯一标识，这条数据存储在哪个分区由预分区范围决定</p>
+<p>合理设计rowkey<br>如一份数据分为5个region存储<br>但是我们需要尽可能的保持每个region中的数据量差不多</p>
 <p>尽可能的打散数据，平均分配到每个region中即可</p>
-<p>解决方案：<br>
-生成随机数、hash/散列值<br>
-原本的rowkey是201，hash后<br>
-dfgyfugpgdcjhgfd11412nod<br>
-202变为：<br>
-21dqddwdgjohfxsovbxiufq12</p>
-<p>字符串拼接：<br>
-20190316_a3d4<br>
-20190316_g04f</p>
-<p>反转字符串：<br>
-201903161-&gt;161309102<br>
-201903162-&gt;261309102</p>
-<p>3）HBase基础优化<br>
-HBase用的HDFS存储<br>
-DataNode允许最大文件打开数<br>
-默认4096 调大<br>
-dfs.datanode.max.transfer.threads<br>
-hdfs-site.xml</p>
-<p>优化等待时间<br>
-dfs.image.transfer.timeout<br>
-默认60000毫秒<br>
-调大</p>
-<p>内存优化：<br>
-hadoop-env.sh设置内存的堆大小<br>
-30%~40%最好</p>
-<p>2G<br>
-512m</p>
+<p>解决方案：<br>生成随机数、hash/散列值<br>原本的rowkey是201，hash后<br>dfgyfugpgdcjhgfd11412nod<br>202变为：<br>21dqddwdgjohfxsovbxiufq12</p>
+<p>字符串拼接：<br>20190316_a3d4<br>20190316_g04f</p>
+<p>反转字符串：<br>201903161-&gt;161309102<br>201903162-&gt;261309102</p>
+<p>3）HBase基础优化<br>HBase用的HDFS存储<br>DataNode允许最大文件打开数<br>默认4096 调大<br>dfs.datanode.max.transfer.threads<br>hdfs-site.xml</p>
+<p>优化等待时间<br>dfs.image.transfer.timeout<br>默认60000毫秒<br>调大</p>
+<p>内存优化：<br>hadoop-env.sh设置内存的堆大小<br>30%~40%最好</p>
+<p>2G<br>512m</p>
 <p>export HADOOP_PORTMAP_OPTS=’-Xmx512m $HADOOP_PORTMAP_OPTS’</p>
 
             </div>
@@ -1165,13 +1139,8 @@ hadoop-env.sh设置内存的堆大小<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. 全文检索技术简介
-什么是搜索？
-搜索，就是在任何场景下，找寻你想要的信息，这个时候，会输入一段你要搜索的关键字，然后就期望找到这个关键字相关的有些信息
-如何实现搜索？
-OA系统，比如：通过名字搜索员工等等
-mysql :
-select
+                            1. 全文检索技术简介什么是搜索？搜索，就是在任何场景下，找寻你想要的信息，这个时候，会输入一段你要搜索的关键字，然后就期望找到这个关键字相关的有些信息
+如何实现搜索？OA系统，比如：通过名字搜索员工等等mysql :select * fr
                         
                     </div>
                     <div class="publish-info">
@@ -1224,13 +1193,9 @@ select
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、hbase
-google:
-gfs –&gt; hdfs
-mapreduce –&gt; mapreduce
-bigtable –&gt; hbase
+                            1、hbasegoogle:gfs –&gt; hdfsmapreduce –&gt; mapreducebigtable –&gt; hbase
 Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据存储
-当
+当您需要对
                         
                     </div>
                     <div class="publish-info">
@@ -1444,7 +1409,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

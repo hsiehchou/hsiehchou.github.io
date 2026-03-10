@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    110
+                    108
                 </div>
                 
 
@@ -403,26 +403,23 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Github-Hexo-建站">Github Hexo 建站</h2>
-<h3 id="初始化">初始化</h3>
-<pre><code class="highlight plaintext">hexo init
+                <h2 id="Github-Hexo-建站"><a href="#Github-Hexo-建站" class="headerlink" title="Github Hexo 建站"></a>Github Hexo 建站</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><pre><code class="highlight plaintext">hexo init
 git init
 npm install --save hexo-deployer-git</code></pre>
-<h3 id="代码高亮">代码高亮</h3>
-<pre><code class="highlight plaintext">npm i -S hexo-prism-plugin</code></pre>
-<h3 id="搜索">搜索</h3>
-<pre><code class="highlight plaintext">npm install hexo-generator-search --save</code></pre>
-<h3 id="中文链接转拼音">中文链接转拼音</h3>
-<pre><code class="highlight plaintext">npm i hexo-permalink-pinyin --save</code></pre>
-<h3 id="文章字数统计插件">文章字数统计插件</h3>
-<pre><code class="highlight plaintext">npm i --save hexo-wordcount</code></pre>
-<h3 id="添加-RSS-订阅支持">添加 RSS 订阅支持</h3>
-<pre><code class="highlight plaintext">npm install hexo-generator-feed --save</code></pre>
-<h3 id="添加百度sitemap-xml">添加百度sitemap.xml</h3>
-<pre><code class="highlight plaintext">npm install hexo-generator-sitemap --save-dev
+<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><pre><code class="highlight plaintext">npm i -S hexo-prism-plugin</code></pre>
+
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><pre><code class="highlight plaintext">npm install hexo-generator-search --save</code></pre>
+
+<h3 id="中文链接转拼音"><a href="#中文链接转拼音" class="headerlink" title="中文链接转拼音"></a>中文链接转拼音</h3><pre><code class="highlight plaintext">npm i hexo-permalink-pinyin --save</code></pre>
+
+<h3 id="文章字数统计插件"><a href="#文章字数统计插件" class="headerlink" title="文章字数统计插件"></a>文章字数统计插件</h3><pre><code class="highlight plaintext">npm i --save hexo-wordcount</code></pre>
+
+<h3 id="添加-RSS-订阅支持"><a href="#添加-RSS-订阅支持" class="headerlink" title="添加 RSS 订阅支持"></a>添加 RSS 订阅支持</h3><pre><code class="highlight plaintext">npm install hexo-generator-feed --save</code></pre>
+
+<h3 id="添加百度sitemap-xml"><a href="#添加百度sitemap-xml" class="headerlink" title="添加百度sitemap.xml"></a>添加百度sitemap.xml</h3><pre><code class="highlight plaintext">npm install hexo-generator-sitemap --save-dev
 npm install hexo-generator-baidu-sitemap --save-dev</code></pre>
-<h3 id="生成静态文件和部署到github">生成静态文件和部署到github</h3>
-<pre><code class="highlight plaintext">hexo g
+
+<h3 id="生成静态文件和部署到github"><a href="#生成静态文件和部署到github" class="headerlink" title="生成静态文件和部署到github"></a>生成静态文件和部署到github</h3><pre><code class="highlight plaintext">hexo g
 hexo d</code></pre>
             </div>
             <hr/>
@@ -719,12 +716,9 @@ hexo d</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Django阿里云部署详解之服务器安装安装Nginx
-（本系统就是阿里云部署的）
-大家照做就行，这我试了很多次才总结出来的
-这个在开始准备环境时已经安装了
+                            Django阿里云部署详解之服务器安装安装Nginx（本系统就是阿里云部署的）大家照做就行，这我试了很多次才总结出来的这个在开始准备环境时已经安装了
 yum install epel-release
-yum install -y ng
+yum install -y nginx
                         
                     </div>
                     <div class="publish-info">
@@ -934,7 +928,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

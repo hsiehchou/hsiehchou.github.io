@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    116
+                    115
                 </div>
                 
 
@@ -403,26 +403,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Django开启虚拟环境（Windows中）">Django开启虚拟环境（Windows中）</h3>
-<p>开启本地虚拟环境<br>
-1)避免多个项目之间python库的冲突<br>
-2)完整便捷导出python库的列表</p>
+                <h3 id="Django开启虚拟环境（Windows中）"><a href="#Django开启虚拟环境（Windows中）" class="headerlink" title="Django开启虚拟环境（Windows中）"></a>Django开启虚拟环境（Windows中）</h3><p>开启本地虚拟环境<br>1)避免多个项目之间python库的冲突<br>2)完整便捷导出python库的列表</p>
 <pre><code class="highlight plaintext">pip install virtualenv</code></pre>
+
 <p>创建：virtualenv &lt;虚拟环境名称&gt;</p>
 <pre><code class="highlight plaintext">virtualenv blog_env</code></pre>
+
 <p>启动：Scripts\activate</p>
 <pre><code class="highlight plaintext">pip install Django</code></pre>
+
 <p>退出：deactivate</p>
 <p>建立目录</p>
 <pre><code class="highlight plaintext">django-admin startproject django_introduction</code></pre>
+
 <p>运行</p>
 <pre><code class="highlight plaintext">python manage.py runserver 80</code></pre>
+
 <p>创建应用</p>
 <pre><code class="highlight plaintext">python manage.py startapp blog</code></pre>
+
 <p>制作数据迁移</p>
 <pre><code class="highlight plaintext">python manage.py makemigrations (app)</code></pre>
+
 <p>迁移动作</p>
 <pre><code class="highlight plaintext">python manage.py migrate</code></pre>
+
 <pre><code class="highlight plaintext">python manage.py createsuperuser</code></pre>
 
             </div>
@@ -670,12 +675,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Django阿里云部署详解之服务器安装虚拟环境、Python
-（本系统就是阿里云部署的）
-大家照做就行，这我试了很多次才总结出来的
-yum update -y
+                            Django阿里云部署详解之服务器安装虚拟环境、Python（本系统就是阿里云部署的）大家照做就行，这我试了很多次才总结出来的yum update -y
 yum -y install gcc gcc-c++
-yum -y groupi
+yum -y groupinst
                         
                     </div>
                     <div class="publish-info">
@@ -724,11 +726,8 @@ yum -y groupi
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            pip 一键导出和安装
-将本地使用的虚拟环境pip install 的所有软件导出
-pip freeze &gt; requirements.txt
-另一个新的环境安装
-pip install -r requirements.txt
+                            pip 一键导出和安装将本地使用的虚拟环境pip install 的所有软件导出pip freeze &gt; requirements.txt
+另一个新的环境安装pip install -r requirements.txt
 
                         
                     </div>
@@ -939,7 +938,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

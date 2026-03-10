@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -384,14 +384,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    4.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    22 分
+                    21 分
                 </div>
                 
 
@@ -408,336 +408,182 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Spark SQL 类似于Hive</p>
-<h3 id="一、Spark-SQL-基础">一、Spark SQL 基础</h3>
-<h4 id="1、什么是Spark-SQL">1、什么是Spark SQL</h4>
-<p>Spark SQL is Apache Spark’s module for working with structured data.<br>
-Spark SQL 是spark 的一个模块。来处理 结构化 的数据<br>
-不能处理非结构化的数据</p>
-<p>特点：</p>
-<p><strong>1）容易集成</strong></p>
+<h3 id="一、Spark-SQL-基础"><a href="#一、Spark-SQL-基础" class="headerlink" title="一、Spark SQL 基础"></a>一、Spark SQL 基础</h3><h4 id="1、什么是Spark-SQL"><a href="#1、什么是Spark-SQL" class="headerlink" title="1、什么是Spark SQL"></a>1、什么是Spark SQL</h4><p>Spark SQL is Apache Spark’s module for working with structured data.<br>Spark SQL 是spark 的一个模块。来处理 结构化 的数据<br>不能处理非结构化的数据</p>
+<p>特点： </p>
+<p><strong>1）容易集成</strong> </p>
 <p>不需要单独安装</p>
-<p><strong>2）统一的数据访问方式</strong></p>
-<p>结构化数据的类型：JDBC JSon Hive parquer文件 都可以作为Spark SQL 的数据源<br>
-对接多种数据源，且使用方式类似</p>
-<p><strong>3）完全兼容hive</strong></p>
+<p><strong>2）统一的数据访问方式</strong> </p>
+<p>结构化数据的类型：JDBC JSon Hive parquer文件 都可以作为Spark SQL 的数据源<br>对接多种数据源，且使用方式类似</p>
+<p><strong>3）完全兼容hive</strong> </p>
 <p>把Hive中的数据，读取到Spark SQL中运行</p>
 <p><strong>4）支持标准的数据连接</strong></p>
 <p>JDBC</p>
-<h4 id="2、为什么学习Spark-SQL">2、为什么学习Spark SQL</h4>
-<p>执行效率比Hive高</p>
+<h4 id="2、为什么学习Spark-SQL"><a href="#2、为什么学习Spark-SQL" class="headerlink" title="2、为什么学习Spark SQL"></a>2、为什么学习Spark SQL</h4><p>执行效率比Hive高</p>
 <p>hive 2.x 执行引擎可以使用 Spark</p>
-<h4 id="3、核心概念：表（DataFrame-DataSet）">3、核心概念：表（DataFrame DataSet）</h4>
-<p>mysql中的表：表结构、数据<br>
-DataFrame：Schema、RDD（数据）</p>
+<h4 id="3、核心概念：表（DataFrame-DataSet）"><a href="#3、核心概念：表（DataFrame-DataSet）" class="headerlink" title="3、核心概念：表（DataFrame DataSet）"></a>3、核心概念：表（DataFrame DataSet）</h4><p>mysql中的表：表结构、数据<br>DataFrame：Schema、RDD（数据）</p>
 <p>DataSet 在spark1.6以后，对DataFrame做了一个封装</p>
-<h4 id="4、创建DataFrame">4、创建DataFrame</h4>
-<p>（*）测试数据：员工表、部门表<br>
-第一种方式：使用case class<br>
-<strong>1）定义Schema</strong><br>
-样本类来定义Schema</p>
-<p>case class 特点：<br>
-可以支持模式匹配，使用case class建立表结构</p>
+<h4 id="4、创建DataFrame"><a href="#4、创建DataFrame" class="headerlink" title="4、创建DataFrame"></a>4、创建DataFrame</h4><p>（*）测试数据：员工表、部门表<br>第一种方式：使用case class<br><strong>1）定义Schema</strong><br>样本类来定义Schema</p>
+<p>case class 特点：<br>可以支持模式匹配，使用case class建立表结构</p>
 <p>7521, WARD, SALESMAN,7698, 1981/2/22, 1250, 500, 30</p>
 <p>case class Emp(empno:Int,ename:String,job:String,mgr:Int,hiredate:String,sal:Int,comm:Int,deptno:Int)</p>
-<p><strong>2）读取文件</strong><br>
-val lines = sc.textFile(“/root/hd/tmp_files/emp.csv”).map(_.split(“,”))</p>
-<p><strong>3）把每行数据，映射到Emp上</strong><br>
-val allEmp = lines.map(x =&gt; Emp(x(0).toInt,x(1),x(2),x(3).toInt,x(4),x(5).toInt,x(6).toInt,x(7).toInt))</p>
-<p><strong>4）生成DataFrame</strong><br>
-val df1 = allEmp.toDF</p>
+<p><strong>2）读取文件</strong><br>val lines = sc.textFile(“/root/hd/tmp_files/emp.csv”).map(_.split(“,”))</p>
+<p><strong>3）把每行数据，映射到Emp上</strong><br>val allEmp = lines.map(x =&gt; Emp(x(0).toInt,x(1),x(2),x(3).toInt,x(4),x(5).toInt,x(6).toInt,x(7).toInt))</p>
+<p><strong>4）生成DataFrame</strong><br>val df1 = allEmp.toDF</p>
 <p>df1.show</p>
-<p><strong>第二种方式 使用Spark Session</strong><br>
-（1）什么是Spark Session<br>
-<strong>Spark session available as ‘spark’.</strong><br>
-2.0以后引入的统一访问方式。可以访问所有的Spark组件</p>
+<p><strong>第二种方式 使用Spark Session</strong><br>（1）什么是Spark Session<br><strong>Spark session available as ‘spark’.</strong><br>2.0以后引入的统一访问方式。可以访问所有的Spark组件</p>
 <p>def createDataFrame(rowRDD: RDD[Row], schema: StructType): DataFrame</p>
 <p>（2）使用StructType来创建Schema</p>
-<p>val struct =<br>
-StructType(<br>
-StructField(“a”, IntegerType, true) ::<br>
-StructField(“b”, LongType, false) ::<br>
-StructField(“c”, BooleanType, false) :: Nil)</p>
-<p>case class Emp(<br>
-empno:Int,<br>
-ename:String,<br>
-job:String,<br>
-mgr:Int,<br>
-hiredate:String,<br>
-sal:Int,<br>
-comm:Int,<br>
-deptno:Int)</p>
-<p>—————–分割———————-<br>
-import org.apache.spark.sql.types._</p>
-<p>val myschema = StructType(<br>
-List(<br>
-StructField(“empno”,DataTypes.IntegerType),<br>
-StructField(“ename”,DataTypes.StringType),<br>
-StructField(“job”,DataTypes.StringType),<br>
-StructField(“mgr”,DataTypes.IntegerType),<br>
-StructField(“hiredate”,DataTypes.StringType),<br>
-StructField(“sal”,DataTypes.IntegerType),<br>
-StructField(“comm”,DataTypes.IntegerType),<br>
-StructField(“deptno”,DataTypes.IntegerType)<br>
-))</p>
-<p>准备数据 RDD[Row]<br>
-import org.apache.spark.sql.Row</p>
+<p>val struct =<br>StructType(<br>StructField(“a”, IntegerType, true) ::<br>StructField(“b”, LongType, false) ::<br>StructField(“c”, BooleanType, false) :: Nil)</p>
+<p>case class Emp(<br>empno:Int,<br>ename:String,<br>job:String,<br>mgr:Int,<br>hiredate:String,<br>sal:Int,<br>comm:Int,<br>deptno:Int)</p>
+<p>—————–分割———————-<br>import org.apache.spark.sql.types._</p>
+<p>val myschema = StructType(<br>List(<br>StructField(“empno”,DataTypes.IntegerType),<br>StructField(“ename”,DataTypes.StringType),<br>StructField(“job”,DataTypes.StringType),<br>StructField(“mgr”,DataTypes.IntegerType),<br>StructField(“hiredate”,DataTypes.StringType),<br>StructField(“sal”,DataTypes.IntegerType),<br>StructField(“comm”,DataTypes.IntegerType),<br>StructField(“deptno”,DataTypes.IntegerType)<br>))</p>
+<p>准备数据 RDD[Row]<br>import org.apache.spark.sql.Row</p>
 <p>val allEmp = lines.map(x =&gt; Row(x(0).toInt,x(1),x(2),x(3).toInt,x(4),x(5).toInt,x(6).toInt,x(7).toInt))</p>
 <p>val df2 = spark.createDataFrame(allEmp,myschema)</p>
 <p>df2.show</p>
-<p><strong>第三种方式</strong></p>
-<p>直接读取一个带格式的文件<br>
-在/root/hd/spark-2.1.0-bin-hadoop2.7/examples/src/main/resources有现成的json代码</p>
-<p>val df3 = spark.read 读文件，默认是Parquet文件<br>
-val df3 = spark.read.json(“/uroot/hd/tmp_files/people.json”)</p>
+<p><strong>第三种方式</strong> </p>
+<p>直接读取一个带格式的文件<br>在/root/hd/spark-2.1.0-bin-hadoop2.7/examples/src/main/resources有现成的json代码</p>
+<p>val df3 = spark.read 读文件，默认是Parquet文件<br>val df3 = spark.read.json(“/uroot/hd/tmp_files/people.json”)</p>
 <p>df3.show</p>
 <p>val df4 = spark.read.format(“json”).load(“/root/hd/tmp_files/people.json”)</p>
 <p>df4.show</p>
-<h4 id="5、操作DataFrame">5、操作DataFrame</h4>
-<p><strong>1）DSL语句</strong><br>
-mybatis Hibernate</p>
+<h4 id="5、操作DataFrame"><a href="#5、操作DataFrame" class="headerlink" title="5、操作DataFrame"></a>5、操作DataFrame</h4><p><strong>1）DSL语句</strong><br>mybatis Hibernate</p>
 <p>df1.printSchema</p>
-<p>df1.select(“ename”,“sal”).show</p>
-<p>df1.select($“ename”,$“sal”,$“sal”+100).show<br>
-$”sal” 可以看做是一个变量</p>
-<p>查询薪水大于2000的员工<br>
-df1.filter($”sal” &gt; 2000).show</p>
-<p>求每个部门的员工人数<br>
-df1.groupBy($”deptno”).count.show</p>
+<p>df1.select(“ename”,”sal”).show</p>
+<p>df1.select($”ename”,$”sal”,$”sal”+100).show<br>$”sal” 可以看做是一个变量</p>
+<p>查询薪水大于2000的员工<br>df1.filter($”sal” &gt; 2000).show</p>
+<p>求每个部门的员工人数<br>df1.groupBy($”deptno”).count.show</p>
 <p>相当于select deptno,count(1) from emp group by deptno</p>
-<p><strong>2）SQL语句</strong></p>
+<p><strong>2）SQL语句</strong> </p>
 <p>注意：不能直接执行SQL，需要生成一个视图，再执行sql</p>
-<p>scala&gt; df1.create<br>
-createGlobalTempView createOrReplaceTempView createTempView</p>
-<p>一般用到 createOrReplaceTempView createTempView<br>
-视图：类似于表，但不保存数据</p>
+<p>scala&gt; df1.create<br>createGlobalTempView createOrReplaceTempView createTempView</p>
+<p>一般用到 createOrReplaceTempView createTempView<br>视图：类似于表，但不保存数据</p>
 <p>df1.createOrReplaceTempView(“emp”)</p>
-<p>操作：<br>
-spark.sql(“select * from emp”).show</p>
-<p>查询薪水大于2000的员工<br>
-spark.sql(“select * from emp where sal &gt; 2000”).show</p>
-<p>求每个部门的员工人数<br>
-spark.sql(“select deptno,count(1) from emp group by deptno”).show</p>
-<p><strong>3）多表查询</strong></p>
+<p>操作：<br>spark.sql(“select * from emp”).show</p>
+<p>查询薪水大于2000的员工<br>spark.sql(“select * from emp where sal &gt; 2000”).show</p>
+<p>求每个部门的员工人数<br>spark.sql(“select deptno,count(1) from emp group by deptno”).show</p>
+<p><strong>3）多表查询</strong> </p>
 <p>10,ACCOUNTING,NEW YORK</p>
-<p>case class Dept(deptno:Int,dname:String,loc:String)<br>
-val lines = sc.textFile(“/root/hd/tmp_files/dept.csv”).map(_.split(“,”))<br>
-val allDept = lines.map(x=&gt;Dept(x(0).toInt,x(1),x(2)))</p>
+<p>case class Dept(deptno:Int,dname:String,loc:String)<br>val lines = sc.textFile(“/root/hd/tmp_files/dept.csv”).map(_.split(“,”))<br>val allDept = lines.map(x=&gt;Dept(x(0).toInt,x(1),x(2)))</p>
 <p>df5.createOrReplaceTempView(“dept”)</p>
 <p>spark.sql(“select dname,ename from emp,dept where emp.deptno=dept.deptno”).show</p>
-<h4 id="6、操作DataSet">6、操作DataSet</h4>
-<p>Dataset是一个分布式的数据收集器。这是在Spark1.6之后新加的一个接口，兼顾了RDD的优点（强类型，可以使用功能强大的lambda）以及Spark SQL的执行器高效性的优点。所以可以把DataFrames看成是一种特殊的Datasets，即：Dataset(Row)</p>
+<h4 id="6、操作DataSet"><a href="#6、操作DataSet" class="headerlink" title="6、操作DataSet"></a>6、操作DataSet</h4><p>Dataset是一个分布式的数据收集器。这是在Spark1.6之后新加的一个接口，兼顾了RDD的优点（强类型，可以使用功能强大的lambda）以及Spark SQL的执行器高效性的优点。所以可以把DataFrames看成是一种特殊的Datasets，即：Dataset(Row)</p>
 <p>Dataset跟DataFrame类似，是一套新的接口，是高级的Dataframe</p>
-<p>举例：</p>
+<p>举例： </p>
 <p><strong>1）创建DataSet</strong></p>
-<p>（1）使用序列来创建DataSet<br>
-定义一个case class<br>
-case class MyData(a:Int,b:String)</p>
-<p>生成序列，并创建DataSet<br>
-val ds = Seq(MyData(1,”Tom”),MyData(2,”Merry”)).toDS</p>
+<p>（1）使用序列来创建DataSet<br>定义一个case class<br>case class MyData(a:Int,b:String)</p>
+<p>生成序列，并创建DataSet<br>val ds = Seq(MyData(1,”Tom”),MyData(2,”Merry”)).toDS</p>
 <p>.toDS 生成DataSet</p>
 <p>ds.show</p>
 <p>（2）使用JSON数据来创建DataSet</p>
-<p>定义case class<br>
-case class Person(name:String,age:BigInt)</p>
-<p>通过Json数据来生成DataFrame<br>
-val df = spark.read.format(“json”).load(“/root/hd/tmp_files/people.json”)</p>
-<p>将DataFrame转换成DataSet<br>
-<a target="_blank" rel="noopener" href="http://df.as">df.as</a>[Person].show</p>
-<p><a target="_blank" rel="noopener" href="http://df.as">df.as</a>[Person] 就是一个DataSet</p>
-<p>（3）使用其他数据<br>
-RDD操作和DataFrame操作相结合 —&gt; DataSet</p>
-<p>读取数据，创建DataSet<br>
-val linesDS = spark.read.text(“/root/hd/tmp_files/test_WordCount.txt”).as[String]</p>
-<p>对DataSet进行操作：<br>
-val words = linesDS.flatMap(.split(” “)).filter(.length &gt; 3)</p>
-<p>words.show<br>
-words.collect</p>
-<p>执行一个WordCount程序<br>
-val result = linesDS.flatMap(.split(” “)).map((,1)).groupByKey( x =&gt; x._1).count<br>
-result.show</p>
+<p>定义case class<br>case class Person(name:String,age:BigInt)</p>
+<p>通过Json数据来生成DataFrame<br>val df = spark.read.format(“json”).load(“/root/hd/tmp_files/people.json”)</p>
+<p>将DataFrame转换成DataSet<br>df.as[Person].show</p>
+<p>df.as[Person] 就是一个DataSet</p>
+<p>（3）使用其他数据<br>RDD操作和DataFrame操作相结合 —&gt; DataSet</p>
+<p>读取数据，创建DataSet<br>val linesDS = spark.read.text(“/root/hd/tmp_files/test_WordCount.txt”).as[String]</p>
+<p>对DataSet进行操作：<br>val words = linesDS.flatMap(.split(” “)).filter(.length &gt; 3)</p>
+<p>words.show<br>words.collect</p>
+<p>执行一个WordCount程序<br>val result = linesDS.flatMap(.split(” “)).map((,1)).groupByKey( x =&gt; x._1).count<br>result.show</p>
 <p>排序：</p>
 <pre><code class="highlight plaintext">result.orderBy($"value").show
 result.orderBy($"count(1)").show</code></pre>
-<p><strong>2）DataSet操作案例</strong></p>
-<p>使用emp.json 生成一个DataFrame<br>
-val empDF = spark.read.json(“/root/hd/tmp_files/emp.json”)</p>
-<p>查询工资大于3000的员工<br>
-empDF.where($”sal” &gt;= 3000).show</p>
+
+<p><strong>2）DataSet操作案例</strong> </p>
+<p>使用emp.json 生成一个DataFrame<br>val empDF = spark.read.json(“/root/hd/tmp_files/emp.json”)</p>
+<p>查询工资大于3000的员工<br>empDF.where($”sal” &gt;= 3000).show</p>
 <p>创建case class</p>
 <p>case class Emp(empno:BigInt,ename:String,job:String,mgr:String,hiredate:String,sal:BigInt,comm:String,deptno:BigInt)</p>
-<p>生成DataSet<br>
-val empDS = <a target="_blank" rel="noopener" href="http://empDF.as">empDF.as</a>[Emp]</p>
-<p>查询工资大于3000的员工<br>
-empDS.filter(_.sal &gt; 3000).show</p>
-<p>查询10号部门的员工<br>
-empDS.filter(_.deptno == 10).show</p>
-<p><strong>3）多表查询</strong></p>
-<p>（1）创建部门表<br>
-val deptRDD = sc.textFile(“/root/hd/tmp_files/dept.csv”).map(_.split(“,”))<br>
-case class Dept(deptno:Int,dname:String,loc:String)</p>
+<p>生成DataSet<br>val empDS = empDF.as[Emp]</p>
+<p>查询工资大于3000的员工<br>empDS.filter(_.sal &gt; 3000).show</p>
+<p>查询10号部门的员工<br>empDS.filter(_.deptno == 10).show</p>
+<p><strong>3）多表查询</strong> </p>
+<p>（1）创建部门表<br>val deptRDD = sc.textFile(“/root/hd/tmp_files/dept.csv”).map(_.split(“,”))<br>case class Dept(deptno:Int,dname:String,loc:String)</p>
 <p>val deptDS = deptRDD.map( x=&gt; Dept(x(0).toInt,x(1),x(2))).toDS</p>
-<p>（2）创建员工表<br>
-case class Emp(empno:Int,ename:String,job:String,mgr:Int,hiredate:String,sal:Int,comm:Int,deptno:Int)<br>
-val empRDD = sc.textFile(“/root/hd/tmp_files/emp.csv”).map(_.split(“,”))</p>
-<p>7369,SMITH,CLERK,7902,1980/12/17,800,0,20<br>
-val empDS = empRDD.map(x=&gt; Emp(x(0).toInt,x(1),x(2),x(3).toInt,x(4),x(5).toInt,x(6).toInt,x(7).toInt)).toDS</p>
-<p>（3）执行多表查询：等值连接<br>
-val result = deptDS.join(empDS,”deptno”)<br>
-result.show<br>
-result.printSchema</p>
-<p>val result1 = deptDS.joinWith(empDS, deptDS(“deptno”) === empDS(“deptno”) )<br>
-result1.show<br>
-result1.printSchema</p>
+<p>（2）创建员工表<br>case class Emp(empno:Int,ename:String,job:String,mgr:Int,hiredate:String,sal:Int,comm:Int,deptno:Int)<br>val empRDD = sc.textFile(“/root/hd/tmp_files/emp.csv”).map(_.split(“,”))</p>
+<p>7369,SMITH,CLERK,7902,1980/12/17,800,0,20<br>val empDS = empRDD.map(x=&gt; Emp(x(0).toInt,x(1),x(2),x(3).toInt,x(4),x(5).toInt,x(6).toInt,x(7).toInt)).toDS</p>
+<p>（3）执行多表查询：等值连接<br>val result = deptDS.join(empDS,”deptno”)<br>result.show<br>result.printSchema</p>
+<p>val result1 = deptDS.joinWith(empDS, deptDS(“deptno”) === empDS(“deptno”) )<br>result1.show<br>result1.printSchema</p>
 <p>join 和 joinWith 区别：连接后schema不同</p>
-<p>join ：将两张表展开成一张更大的表<br>
-joinWith ：把两张表的数据分别做成一列，然后直接拼在一起</p>
-<p><strong>4）多表连接后再筛选</strong></p>
+<p>join ：将两张表展开成一张更大的表<br>joinWith ：把两张表的数据分别做成一列，然后直接拼在一起</p>
+<p><strong>4）多表连接后再筛选</strong> </p>
 <p>deptDS.join(empDS,”deptno”).where(“deptno == 10”).show</p>
 <p>result.explain：执行计划</p>
-<h4 id="7、Spark-SQL-中的视图">7、Spark SQL 中的视图</h4>
-<p>视图是一个虚表，不存储数据<br>
-两种类型：</p>
+<h4 id="7、Spark-SQL-中的视图"><a href="#7、Spark-SQL-中的视图" class="headerlink" title="7、Spark SQL 中的视图"></a>7、Spark SQL 中的视图</h4><p>视图是一个虚表，不存储数据<br>两种类型： </p>
 <p><strong>1）普通视图（本地视图）</strong></p>
 <p>只在当前Session中有效createOrReplaceTempView createTempView</p>
-<p><strong>2）全局视图</strong></p>
-<p>createGlobalTempView<br>
-在不同的Session中都有用，把全局视图创建在命名空间中：global_temp中。类似于一个库</p>
-<p>scala&gt; df1.create<br>
-createGlobalTempView createOrReplaceTempView createTempView</p>
-<p>举例：<br>
-创建一个新session，读取不到emp视图，报错<br>
-df1.createOrReplaceTempView(“emp”)<br>
-spark.sql(“select * from emp”).show<br>
-spark.newSession.sql(“select * from emp”)</p>
-<p>以下两种方式均可读到全局视图中的数据<br>
-df1.createGlobalTempView(“emp1”)</p>
+<p><strong>2）全局视图</strong> </p>
+<p>createGlobalTempView<br>在不同的Session中都有用，把全局视图创建在命名空间中：global_temp中。类似于一个库</p>
+<p>scala&gt; df1.create<br>createGlobalTempView createOrReplaceTempView createTempView</p>
+<p>举例：<br>创建一个新session，读取不到emp视图，报错<br>df1.createOrReplaceTempView(“emp”)<br>spark.sql(“select * from emp”).show<br>spark.newSession.sql(“select * from emp”)</p>
+<p>以下两种方式均可读到全局视图中的数据<br>df1.createGlobalTempView(“emp1”)</p>
 <p>spark.newSession.sql(“select * from global_temp.emp1”).show</p>
 <p>spark.sql(“select * from global_temp.emp1”).show</p>
-<h3 id="二、使用数据源">二、使用数据源</h3>
-<p>在Spark SQL中，可以使用各种各样的数据源来操作。 结构化</p>
-<h4 id="1、使用load函数、save函数">1、使用load函数、save函数</h4>
-<p>load函数是加载数据，save是存储数据</p>
+<h3 id="二、使用数据源"><a href="#二、使用数据源" class="headerlink" title="二、使用数据源"></a>二、使用数据源</h3><p>在Spark SQL中，可以使用各种各样的数据源来操作。 结构化</p>
+<h4 id="1、使用load函数、save函数"><a href="#1、使用load函数、save函数" class="headerlink" title="1、使用load函数、save函数"></a>1、使用load函数、save函数</h4><p>load函数是加载数据，save是存储数据</p>
 <p>注意：使用load 或 save时，默认是Parquet文件。列式存储文件</p>
-<p>举例:<br>
-读取 users.parquet 文件<br>
-val userDF = spark.read.load(“/root/hd/tmp_files/users.parquet”)</p>
-<p>userDF.printSchema<br>
-userDF.show</p>
+<p>举例:<br>读取 users.parquet 文件<br>val userDF = spark.read.load(“/root/hd/tmp_files/users.parquet”)</p>
+<p>userDF.printSchema<br>userDF.show</p>
 <p>val userDF = spark.read.load(“/root/hd/tmp_files/emp.json”)</p>
 <p>保存parquet文件</p>
 <pre><code class="highlight plaintext">userDF.select($"name",$"favorite_color").write.save("/root/hd/tmp_files/parquet")</code></pre>
-<p>读取刚刚写入的文件：<br>
-val userDF1 = spark.read.load(“/root/hd/tmp_files/parquet/part-00000-f9a3d6bb-d481-4fc9-abf6-5f20139f97c5.snappy.parquet”)—&gt; 不推荐</p>
-<p>生产中直接读取存放的目录即可：<br>
-val userDF2 = spark.read.load(“/root/hd/tmp_files/parquet”)</p>
-<p>读json文件 必须format<br>
-val userDF = spark.read.format(“json”).load(“/root/hd/tmp_files/emp.json”)<br>
-val userDF3 = spark.read.json(“/root/hd/tmp_files/emp.json”)</p>
-<p>关于<strong>save函数</strong>：</p>
-<p>调用save函数的时候，可以指定存储模式，追加、覆盖等等<br>
-userDF.write.save(“/root/hd/tmp_files/parquet”)</p>
-<p>userDF.write.save(“/root/hd/tmp_files/parquet”)<br>
-org.apache.spark.sql.AnalysisException: path file:/root/hd/tmp_files/parquet already exists.;</p>
-<p>save的时候覆盖<br>
-userDF.write.mode(“overwrite”).save(“/root/hd/tmp_files/parquet”)</p>
-<p>将结果保存成表<br>
-userDF.select($”name”).write.saveAsTable(“table1”)</p>
+
+<p>读取刚刚写入的文件：<br>val userDF1 = spark.read.load(“/root/hd/tmp_files/parquet/part-00000-f9a3d6bb-d481-4fc9-abf6-5f20139f97c5.snappy.parquet”)—&gt; 不推荐</p>
+<p>生产中直接读取存放的目录即可：<br>val userDF2 = spark.read.load(“/root/hd/tmp_files/parquet”)</p>
+<p>读json文件 必须format<br>val userDF = spark.read.format(“json”).load(“/root/hd/tmp_files/emp.json”)<br>val userDF3 = spark.read.json(“/root/hd/tmp_files/emp.json”)</p>
+<p>关于<strong>save函数</strong>： </p>
+<p>调用save函数的时候，可以指定存储模式，追加、覆盖等等<br>userDF.write.save(“/root/hd/tmp_files/parquet”)</p>
+<p>userDF.write.save(“/root/hd/tmp_files/parquet”)<br>org.apache.spark.sql.AnalysisException: path file:/root/hd/tmp_files/parquet already exists.;</p>
+<p>save的时候覆盖<br>userDF.write.mode(“overwrite”).save(“/root/hd/tmp_files/parquet”)</p>
+<p>将结果保存成表<br>userDF.select($”name”).write.saveAsTable(“table1”)</p>
 <p>scala&gt; userDF.select($”name”).write.saveAsTable(“table1”)</p>
-<p>scala&gt; spark.sql(“select * from table1”).show<br>
-+——+<br>
-| name|<br>
-+——+<br>
-|Alyssa|<br>
-| Ben|<br>
-+——+</p>
-<h4 id="2、Parquet文件">2、Parquet文件</h4>
-<p>列式存储文件，是Spark SQL 默认的数据源<br>
-就是一个普通的文件</p>
-<p>举例：<br>
-1）把其他文件，转换成Parquet文件<br>
-调用save函数<br>
-把数据读进来，再写出去，就是Parquet文件</p>
-<p>val empDF = spark.read.json(“/root/hd/tmp_files/emp.json”)<br>
-empDF.write.mode(“overwrite”).save(“/root/hd/tmp_files/parquet”)<br>
-empDF.write.mode(“overwrite”).parquet(“/root/hd/tmp_files/parquet”)</p>
-<p>val emp1 = spark.read.parquet(“/root/hd/tmp_files/parquet”)<br>
-emp1.createOrReplaceTempView(“emp1”)<br>
-spark.sql(“select * from emp1”)</p>
-<p>2）支持Schema的合并<br>
-项目开始 表结构简单 schema简单<br>
-项目越来越大 schema越来越复杂</p>
-<p>举例：<br>
-通过RDD来创建DataFrame<br>
-val df1 = sc.makeRDD(1 to 5).map( i =&gt; (i,i*2)).toDF(“single”,”double”)<br>
-“single”,”double” 是表结构<br>
-df1.show</p>
+<p>scala&gt; spark.sql(“select * from table1”).show<br>+——+<br>| name|<br>+——+<br>|Alyssa|<br>| Ben|<br>+——+</p>
+<h4 id="2、Parquet文件"><a href="#2、Parquet文件" class="headerlink" title="2、Parquet文件"></a>2、Parquet文件</h4><p>列式存储文件，是Spark SQL 默认的数据源<br>就是一个普通的文件</p>
+<p>举例：<br>1）把其他文件，转换成Parquet文件<br>调用save函数<br>把数据读进来，再写出去，就是Parquet文件</p>
+<p>val empDF = spark.read.json(“/root/hd/tmp_files/emp.json”)<br>empDF.write.mode(“overwrite”).save(“/root/hd/tmp_files/parquet”)<br>empDF.write.mode(“overwrite”).parquet(“/root/hd/tmp_files/parquet”)</p>
+<p>val emp1 = spark.read.parquet(“/root/hd/tmp_files/parquet”)<br>emp1.createOrReplaceTempView(“emp1”)<br>spark.sql(“select * from emp1”)</p>
+<p>2）支持Schema的合并<br>项目开始 表结构简单 schema简单<br>项目越来越大 schema越来越复杂</p>
+<p>举例：<br>通过RDD来创建DataFrame<br>val df1 = sc.makeRDD(1 to 5).map( i =&gt; (i,i*2)).toDF(“single”,”double”)<br>“single”,”double” 是表结构<br>df1.show</p>
 <p>df1.write.mode(“overwrite”).save(“/root/hd/tmp_files/test_table/key=1”)</p>
-<p>val df2 = sc.makeRDD(6 to 10).map( i =&gt; (i,i*3)).toDF(“single”,”triple”)<br>
-df2.show<br>
-df2.write.mode(“overwrite”).save(“/root/hd/tmp_files/test_table/key=2”)</p>
-<p>合并两个部分<br>
-val df3 = spark.read.parquet(“/root/hd/tmp_files/test_table”)</p>
+<p>val df2 = sc.makeRDD(6 to 10).map( i =&gt; (i,i*3)).toDF(“single”,”triple”)<br>df2.show<br>df2.write.mode(“overwrite”).save(“/root/hd/tmp_files/test_table/key=2”)</p>
+<p>合并两个部分<br>val df3 = spark.read.parquet(“/root/hd/tmp_files/test_table”)</p>
 <p>val df3 = spark.read.option(“mergeSchema”,true).parquet(“/root/hd/tmp_files/test_table”)</p>
 <p><strong>key是可以随意取名字的，两个key需要一致，不然合并会报错</strong></p>
-<p>通过RDD来创建DataFrame<br>
-val df1 = sc.makeRDD(1 to 5).map( i =&gt; (i,i*2)).toDF(“single”,”double”)<br>
-“single”,”double” 是表结构<br>
-df1.show</p>
+<p>通过RDD来创建DataFrame<br>val df1 = sc.makeRDD(1 to 5).map( i =&gt; (i,i*2)).toDF(“single”,”double”)<br>“single”,”double” 是表结构<br>df1.show</p>
 <p>df1.write.mode(“overwrite”).save(“/root/hd/tmp_files/test_table/kt=1”)</p>
-<p>val df2 = sc.makeRDD(6 to 10).map( i =&gt; (i,i*3)).toDF(“single”,”triple”)<br>
-df2.show<br>
-df2.write.mode(“overwrite”).save(“/root/hd/tmp_files/test_table/kt=2”)</p>
-<p>合并两个部分<br>
-val df3 = spark.read.parquet(“/root/hd/tmp_files/test_table”)</p>
+<p>val df2 = sc.makeRDD(6 to 10).map( i =&gt; (i,i*3)).toDF(“single”,”triple”)<br>df2.show<br>df2.write.mode(“overwrite”).save(“/root/hd/tmp_files/test_table/kt=2”)</p>
+<p>合并两个部分<br>val df3 = spark.read.parquet(“/root/hd/tmp_files/test_table”)</p>
 <p>val df3 = spark.read.option(“mergeSchema”,true).parquet(“/root/hd/tmp_files/test_table”)</p>
-<h4 id="3、json文件">3、json文件</h4>
-<p>读取Json文件，生成DataFrame<br>
-val peopleDF = spark.read.json(“/root/hd/tmp_files/people.json”)</p>
+<h4 id="3、json文件"><a href="#3、json文件" class="headerlink" title="3、json文件"></a>3、json文件</h4><p>读取Json文件，生成DataFrame<br>val peopleDF = spark.read.json(“/root/hd/tmp_files/people.json”)</p>
 <p>peopleDF.printSchema</p>
 <p>peopleDF.createOrReplaceTempView(“peopleView”)</p>
 <p>spark.sql(“select * from peopleView”).show</p>
 <p>Spark SQL 支持统一的访问接口。对于不同的数据源，读取进来，生成DataFrame后，操作完全一样</p>
-<h4 id="4、JDBC">4、JDBC</h4>
-<p>使用JDBC操作关系型数据库，加载到Spark中进行分析和处理</p>
+<h4 id="4、JDBC"><a href="#4、JDBC" class="headerlink" title="4、JDBC"></a>4、JDBC</h4><p>使用JDBC操作关系型数据库，加载到Spark中进行分析和处理</p>
 <p>方式一：</p>
 <pre><code class="highlight plaintext">./spark-shell --master spark://hsiehchou121:7077 --jars /root/hd/tmp_files/mysql-connector-java-8.0.12.jar --driver-class-path /root/hd/tmp_files/mysql-connector-java-8.0.12.jar</code></pre>
+
 <pre><code class="highlight plaintext">val mysqlDF = spark.read.format("jdbc")
 .option("url","jdbc:mysql://192.168.116.1/company?serverTimezone=UTC&amp;characterEncoding=utf-8")
 .option("driver","com.mysql.cj.jdbc.Driver")
 .option("user","root")
 .option("password","123456")
 .option("dbtable","emp").load</code></pre>
+
 <pre><code class="highlight plaintext">val mysqlDF = spark.read.format("jdbc").option("url","jdbc:mysql://192.168.116.1/company?serverTimezone=UTC&amp;characterEncoding=utf-8").option("driver","com.mysql.cj.jdbc.Driver").option("user","root").option("password","123456").option("dbtable","emp").load
 mysqlDF.show</code></pre>
+
 <p><strong>问题解决</strong></p>
-<p>如果遇到下面问题，就是你本机的mysql数据库没有权限给你虚拟机访问<br>
-java.sql.SQLException: null, message from server: “Host ‘hsiehchou121’ is not allowed to connect to this MySQL server”</p>
+<p>如果遇到下面问题，就是你本机的mysql数据库没有权限给你虚拟机访问<br>java.sql.SQLException: null, message from server: “Host ‘hsiehchou121’ is not allowed to connect to this MySQL server”</p>
 <p><strong>解决方案</strong></p>
-<p>1）进入你本机的数据库<br>
-mysql -u root -p<br>
-2）use mysql;<br>
-3）修改root用户前面的Host，改为%，意思是全部IP都能访问<br>
-4）flush privileges;</p>
-<p><strong>方式二</strong><br>
-定义一个Properties类<br>
-import java.util.Properties<br>
-val mysqlProps = new Properties()<br>
-mysqlProps.setProperty(“driver”,“com.mysql.cj.jdbc.Driver”)<br>
-mysqlProps.setProperty(“user”,“root”)<br>
-mysqlProps.setProperty(“password”,“123456”)</p>
-<p>val mysqlDF1 = spark.read.jdbc(“jdbc:mysql://192.168.116.1:3306/company?serverTimezone=UTC&amp;characterEncoding=utf-8”,“emp”,mysqlProps)</p>
+<p>1）进入你本机的数据库<br>mysql -u root -p<br>2）use mysql;<br>3）修改root用户前面的Host，改为%，意思是全部IP都能访问<br>4）flush privileges;</p>
+<p><strong>方式二</strong><br>定义一个Properties类<br>import java.util.Properties<br>val mysqlProps = new Properties()<br>mysqlProps.setProperty(“driver”,”com.mysql.cj.jdbc.Driver”)<br>mysqlProps.setProperty(“user”,”root”)<br>mysqlProps.setProperty(“password”,”123456”)</p>
+<p>val mysqlDF1 = spark.read.jdbc(“jdbc:mysql://192.168.116.1:3306/company?serverTimezone=UTC&amp;characterEncoding=utf-8”,”emp”,mysqlProps)</p>
 <p>mysqlDF1.show</p>
-<h4 id="5、使用Hive">5、使用Hive</h4>
-<p>比较常见<br>
-（<em>）spark SQL 完全兼容hive<br>
-（</em>）需要进行配置<br>
-拷贝一下文件到spark/conf目录下：<br>
-Hive 配置文件： hive-site.xml<br>
-Hadoop 配置文件：core-site.xml hdfs-site.xml</p>
+<h4 id="5、使用Hive"><a href="#5、使用Hive" class="headerlink" title="5、使用Hive"></a>5、使用Hive</h4><p>比较常见<br>（<em>）spark SQL 完全兼容hive<br>（</em>）需要进行配置<br>拷贝一下文件到spark/conf目录下：<br>Hive 配置文件： hive-site.xml<br>Hadoop 配置文件：core-site.xml hdfs-site.xml</p>
 <p>配置好后，重启spark</p>
 <p><strong>在hive的lib下和spark的jars下面增加mysql-connector-java-8.0.12.jar这边连接数据库的jar包</strong></p>
-<p>启动Hadoop ：<a target="_blank" rel="noopener" href="http://start-all.sh">start-all.sh</a><br>
-启动 hive：</p>
+<p>启动Hadoop ：start-all.sh<br>启动 hive：</p>
 <pre><code class="highlight plaintext">hsiehchou121
 cd hive/bin/
 ./hive --service metastore
@@ -745,16 +591,14 @@ cd hive/bin/
 hsiehchou122
 cd hive/bin
 ./hive</code></pre>
+
 <p><strong>hsiehchou121启动问题</strong></p>
-<p>java.sql.SQLSyntaxErrorException: Table ‘hive.version’ doesn’t exist<br>
-解决：去mysql数据库中的hive库下面创建version表<br>
-这里需要给本地的hive库创建下hive所必须用的表</p>
+<p>java.sql.SQLSyntaxErrorException: Table ‘hive.version’ doesn’t exist<br>解决：去mysql数据库中的hive库下面创建version表<br>这里需要给本地的hive库创建下hive所必须用的表</p>
 <p>我们去/root/hd/hive/scripts/metastore/upgrade/mysql这里面找到hive-schema-1.2.0.mysql.sql，将里面的sql语句在hive库中执行</p>
 <p>hive-txn-schema-0.14.0.mysql.sql，这个也做好执行下，用于事务管理</p>
-<p><strong>显示当前所在库名字</strong></p>
+<p><strong>显示当前所在库名字</strong> </p>
 <p>set hive.cli.print.current.db=true;</p>
-<p>j将emp.csv上传到hdfs中的/tmp_files/下面<br>
-hdfs dfs -put emp.csv /tmp_files</p>
+<p>j将emp.csv上传到hdfs中的/tmp_files/下面<br>hdfs dfs -put emp.csv /tmp_files</p>
 <p>在hive中创建emp_default表</p>
 <pre><code class="highlight plaintext">hive (default)&gt; create table emp(empno int,ename string,job string,mgr int,hiredate string,sal int,comm int,deptno int)
               &gt; row format
@@ -764,18 +608,14 @@ hive (default)&gt; load data inpath '/tmp_files/emp.csv' into table emp;
 Time taken: 1.894 seconds
 hive (default)&gt; show tables;
 hive (default)&gt; select * from emp;</code></pre>
+
 <p>hdfs dfs -put /root/hd/tmp_files/emp.csv /tmp_files</p>
 <pre><code class="highlight plaintext">[root@hsiehchou121 bin]# ./spark-shell --master spark://hsiehchou121:7077</code></pre>
-<p>启动Spatk时，如果出现如下错误<br>
-java.sql.SQLSyntaxErrorException: Table ‘hive.partitions’ doesn’t exist<br>
-在MySQL数据库里面创建partitions表</p>
-<p>scala&gt; spark.sql(“select * from emp_default”).show<br>
-scala&gt; spark.sql(“select * from default.emp_default”).show</p>
-<p>spark.sql(“create table company.emp_4(empno Int,ename String,job String,mgr String,hiredate String,sal Int,comm String,deptno Int)row format delimited fields terminated by ‘,’”)<br>
-spark.sql(“load data local inpath ‘/root/hd/tmp_files/emp.csv’ overwrite into table company.emp_4”)</p>
-<h3 id="三、在IDE中开发Spark-SQL">三、在IDE中开发Spark SQL</h3>
-<h4 id="1、创建DataFrame-StructType方式">1、创建DataFrame StructType方式</h4>
-<pre><code class="highlight plaintext">package day4
+
+<p>启动Spatk时，如果出现如下错误<br>java.sql.SQLSyntaxErrorException: Table ‘hive.partitions’ doesn’t exist<br>在MySQL数据库里面创建partitions表</p>
+<p>scala&gt; spark.sql(“select * from emp_default”).show<br>scala&gt; spark.sql(“select * from default.emp_default”).show</p>
+<p>spark.sql(“create table company.emp_4(empno Int,ename String,job String,mgr String,hiredate String,sal Int,comm String,deptno Int)row format delimited fields terminated by ‘,’”)<br>spark.sql(“load data local inpath ‘/root/hd/tmp_files/emp.csv’ overwrite into table company.emp_4”)</p>
+<h3 id="三、在IDE中开发Spark-SQL"><a href="#三、在IDE中开发Spark-SQL" class="headerlink" title="三、在IDE中开发Spark SQL"></a>三、在IDE中开发Spark SQL</h3><h4 id="1、创建DataFrame-StructType方式"><a href="#1、创建DataFrame-StructType方式" class="headerlink" title="1、创建DataFrame StructType方式"></a>1、创建DataFrame StructType方式</h4><pre><code class="highlight plaintext">package day4
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types.StructType
@@ -824,8 +664,8 @@ object Demo1 {
     spark.stop()
   }
 }</code></pre>
-<h4 id="2、使用case-class来创建DataFrame">2、使用case class来创建DataFrame</h4>
-<pre><code class="highlight plaintext">package day4
+
+<h4 id="2、使用case-class来创建DataFrame"><a href="#2、使用case-class来创建DataFrame" class="headerlink" title="2、使用case class来创建DataFrame"></a>2、使用case class来创建DataFrame</h4><pre><code class="highlight plaintext">package day4
 
 import org.apache.log4j.Logger
 import org.apache.log4j.Level
@@ -865,8 +705,8 @@ object Demo2 {
 
 //定义case class
 case class Student(stuId:Int, stuName:String, stuAge:Int)</code></pre>
-<h4 id="3、写入MySQL">3、写入MySQL</h4>
-<pre><code class="highlight plaintext">package day4
+
+<h4 id="3、写入MySQL"><a href="#3、写入MySQL" class="headerlink" title="3、写入MySQL"></a>3、写入MySQL</h4><pre><code class="highlight plaintext">package day4
 
 import org.apache.log4j.Logger
 import org.apache.log4j.Level
@@ -922,8 +762,8 @@ object Demo3 {
     spark.stop()
   }
 }</code></pre>
-<h4 id="4、使用Spark-SQL-读取Hive中的数据，将计算结果存入MySQL">4、使用Spark SQL 读取Hive中的数据，将计算结果存入MySQL</h4>
-<pre><code class="highlight plaintext">package day4
+
+<h4 id="4、使用Spark-SQL-读取Hive中的数据，将计算结果存入MySQL"><a href="#4、使用Spark-SQL-读取Hive中的数据，将计算结果存入MySQL" class="headerlink" title="4、使用Spark SQL 读取Hive中的数据，将计算结果存入MySQL"></a>4、使用Spark SQL 读取Hive中的数据，将计算结果存入MySQL</h4><pre><code class="highlight plaintext">package day4
 
 import org.apache.spark.sql.SparkSession
 import java.util.Properties
@@ -951,51 +791,28 @@ object Demo4 {
     spark.stop()
   } 
 }</code></pre>
+
 <p><strong>提交任务</strong></p>
 <pre><code class="highlight plaintext">[root@hsiehchou121 bin]# ./spark-submit --master spark://hsiehchou121:7077 --jars /root/hd/tmp_files/mysql-connector-java-8.0.12.jar --driver-class-path /root/hd/tmp_files/mysql-connector-java-8.0.12.jar --class day4.Demo4 /root/hd/tmp_files/Demo4.jar</code></pre>
-<h3 id="四、性能优化">四、性能优化</h3>
-<p>与RDD类似</p>
-<h4 id="1、把内存中缓存表的数据">1、把内存中缓存表的数据</h4>
-<p>直接读取内存的值，来提高性能</p>
-<p>RDD中如何缓存：<br>
-rdd.cache 或者 rdd.persist</p>
+
+<h3 id="四、性能优化"><a href="#四、性能优化" class="headerlink" title="四、性能优化"></a>四、性能优化</h3><p>与RDD类似</p>
+<h4 id="1、把内存中缓存表的数据"><a href="#1、把内存中缓存表的数据" class="headerlink" title="1、把内存中缓存表的数据"></a>1、把内存中缓存表的数据</h4><p>直接读取内存的值，来提高性能</p>
+<p>RDD中如何缓存：<br>rdd.cache 或者 rdd.persist</p>
 <p>在Spark SQL中，使用SparkSession.sqlContext.cacheTable</p>
-<p>spark中所有context对象<br>
-1）sparkContext ： SparkCore<br>
-2）sql Context ： SparkSQL<br>
-3）Streaming Context ：SparkStreaming</p>
+<p>spark中所有context对象<br>1）sparkContext ： SparkCore<br>2）sql Context ： SparkSQL<br>3）Streaming Context ：SparkStreaming</p>
 <p>统一起来：SparkSession</p>
-<p>操作mysql，启动spark shell 时，需要：<br>
-./spark-shell <code>--master</code> spark://hsiehchou121:7077 <code>--jars</code> /root/hd/tmp_files/mysql-connector-java-8.0.12.jar <code>--driver-class-path</code> /root/hd/tmp_files/mysql-connector-java-8.0.12.jar</p>
+<p>操作mysql，启动spark shell 时，需要：<br>./spark-shell <code>--master</code> spark://hsiehchou121:7077 <code>--jars</code> /root/hd/tmp_files/mysql-connector-java-8.0.12.jar <code>--driver-class-path</code> /root/hd/tmp_files/mysql-connector-java-8.0.12.jar</p>
 <p>val mysqlDF = spark.read.format(“jdbc”).option(“driver”,”com.mysql.cj.jdbc.Driver”).option(“url”,”jdbc:mysql://192.168.116.1:3306/company?serverTimezone=UTC&amp;characterEncoding=utf-8”).option(“user”,”root”).option(“password”,”123456”).option(“dbtable”,”emp”).load</p>
-<p>mysqlDF.show<br>
-mysqlDF.createOrReplaceTempView(“emp”)</p>
-<p>spark.sqlContext.cacheTable(“emp”) —-&gt; 标识这张表可以被缓存，数据还没有真正被缓存<br>
-spark.sql(“select * from emp”).show —-&gt; 依然读取mysql<br>
-spark.sql(“select * from emp”).show —-&gt; 从缓存中读取数据</p>
+<p>mysqlDF.show<br>mysqlDF.createOrReplaceTempView(“emp”)</p>
+<p>spark.sqlContext.cacheTable(“emp”) —-&gt; 标识这张表可以被缓存，数据还没有真正被缓存<br>spark.sql(“select * from emp”).show —-&gt; 依然读取mysql<br>spark.sql(“select * from emp”).show —-&gt; 从缓存中读取数据</p>
 <p>spark.sqlContext.clearCache</p>
 <p>清空缓存后，执行查询，会触发查询mysql数据库</p>
-<h4 id="2、了解性能优化的相关参数">2、了解性能优化的相关参数</h4>
-<p>将数据缓存到内存中的相关优化参数<br>
-spark.sql.inMemoryColumnarStorage.compressed<br>
-默认为 true<br>
-Spark SQL 将会基于统计信息自动地为每一列选择一种压缩编码方式</p>
-<p>spark.sql.inMemoryColumnarStorage.batchSize<br>
-默认值：10000<br>
-缓存批处理大小。缓存数据时, 较大的批处理大小可以提高内存利用率和压缩率，但同时也会带来 OOM（Out Of Memory）的风险</p>
-<p>其他性能相关的配置选项（不过不推荐手动修改，可能在后续版本自动的自适应修改）<br>
-spark.sql.files.maxPartitionBytes<br>
-默认值：128 MB<br>
-读取文件时单个分区可容纳的最大字节数</p>
-<p>spark.sql.files.openCostInBytes<br>
-默认值：4M<br>
-打开文件的估算成本, 按照同一时间能够扫描的字节数来测量。当往一个分区写入多个文件的时候会使用。高估更好, 这样的话小文件分区将比大文件分区更快 (先被调度)</p>
-<p>spark.sql.autoBroadcastJoinThreshold<br>
-默认值：10M<br>
-用于配置一个表在执行 join 操作时能够广播给所有 worker 节点的最大字节大小。通过将这个值设置为 -1 可以禁用广播。注意，当前数据统计仅支持已经运行了 ANALYZE TABLE COMPUTE STATISTICS noscan 命令的 Hive Metastore 表</p>
-<p>spark.sql.shuffle.partitions<br>
-默认值：200<br>
-用于配置 join 或聚合操作混洗（shuffle）数据时使用的分区数</p>
+<h4 id="2、了解性能优化的相关参数"><a href="#2、了解性能优化的相关参数" class="headerlink" title="2、了解性能优化的相关参数"></a>2、了解性能优化的相关参数</h4><p>将数据缓存到内存中的相关优化参数<br>spark.sql.inMemoryColumnarStorage.compressed<br>默认为 true<br>Spark SQL 将会基于统计信息自动地为每一列选择一种压缩编码方式</p>
+<p>spark.sql.inMemoryColumnarStorage.batchSize<br>默认值：10000<br>缓存批处理大小。缓存数据时, 较大的批处理大小可以提高内存利用率和压缩率，但同时也会带来 OOM（Out Of Memory）的风险</p>
+<p>其他性能相关的配置选项（不过不推荐手动修改，可能在后续版本自动的自适应修改）<br>spark.sql.files.maxPartitionBytes<br>默认值：128 MB<br>读取文件时单个分区可容纳的最大字节数</p>
+<p>spark.sql.files.openCostInBytes<br>默认值：4M<br>打开文件的估算成本, 按照同一时间能够扫描的字节数来测量。当往一个分区写入多个文件的时候会使用。高估更好, 这样的话小文件分区将比大文件分区更快 (先被调度)</p>
+<p>spark.sql.autoBroadcastJoinThreshold<br>默认值：10M<br>用于配置一个表在执行 join 操作时能够广播给所有 worker 节点的最大字节大小。通过将这个值设置为 -1 可以禁用广播。注意，当前数据统计仅支持已经运行了 ANALYZE TABLE COMPUTE STATISTICS noscan 命令的 Hive Metastore 表</p>
+<p>spark.sql.shuffle.partitions<br>默认值：200<br>用于配置 join 或聚合操作混洗（shuffle）数据时使用的分区数</p>
 
             </div>
             <hr/>
@@ -1246,12 +1063,9 @@ spark.sql.files.maxPartitionBytes<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spark Streaming
-流式计算框架，类似于Storm
-常用的实时计算引擎（流式计算）
-1、Apache Storm：真正的流式计算
-2、Spark Streaming ：严格上来说，不是真正的流式计算（实时计算）
-把连续的流式数据
+                            Spark Streaming流式计算框架，类似于Storm
+常用的实时计算引擎（流式计算）1、Apache Storm：真正的流式计算
+2、Spark Streaming ：严格上来说，不是真正的流式计算（实时计算）把连续的流式数据，当成
                         
                     </div>
                     <div class="publish-info">
@@ -1304,12 +1118,8 @@ spark.sql.files.maxPartitionBytes<br>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spark生态圈：
-Spark Core ： RDD（弹性分布式数据集）
-Spark SQL
-Spark Streaming
-Spark MLLib ：协同过滤，ALS，逻辑回归等等 –&gt; 机器学习
-Spark Graphx ： 图计
+                            Spark生态圈：Spark Core ： RDD（弹性分布式数据集）Spark SQLSpark StreamingSpark MLLib ：协同过滤，ALS，逻辑回归等等 –&gt; 机器学习Spark Graphx ： 图计算
+一、S
                         
                     </div>
                     <div class="publish-info">
@@ -1523,7 +1333,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             

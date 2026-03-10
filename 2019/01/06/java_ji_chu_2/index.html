@@ -27,9 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
     <script src="https://cdn.jsdelivr.net/gh/hsiehchou/hsiehchou.github.io/libs/jquery/jquery.min.js"></script>
     <script src="/libs/prism/prism.js"></script>
-<meta name="generator" content="Hexo 8.1.1">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="谢舟的博客" type="application/atom+xml">
 </head>
 
 
@@ -380,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    901
+                    886
                 </div>
                 
 
@@ -403,102 +403,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1、Java注释">1、Java注释</h4>
-<p>(1)单行注释 //<br>
-只能注释一行，而且注释使用实在 // 之后。不会运行<br>
-例如：<br>
-(2)多行注释 /**/<br>
-可以注释多行内容。 主要用来说明一段代码或者一个函数的作用<br>
-(3)文档注释 /*/<br>
-主要用来说明类的功能，包含的函数、字段以及主要的作者、版本 相关的参数 异常等<br>
-author：作者<br>
-version：版本<br>
-see：参考 一个url链接<br>
-param：参数<br>
-return 返回值<br>
-代码注释很重要 因为不止是对别人看你或理解你的代码，而且对自己也有好处</p>
-<h4 id="2、Java标识符">2、Java标识符</h4>
-<p>所谓标识符就是对Java当中的 变量、类名、对象名、函数等自己的名字，<br>
-名字必须得符合规范<br>
-字母、数字、下划线和美元符号组成<br>
-注意：a、不能以数字开头<br>
-例如： 1a 错误 但是可以写成 a1<br>
-b、一般情况下不以美元开头<br>
-c、见名知意：<br>
-例如：zhidao licheng juli xingming—不可取<br>
-Distance Name—推荐用英语 并不是完全的英语照搬<br>
-xuehao –StudentNumber–&gt;StuNumber、 StdNum StdId<br>
-d、Java严格区分大小写<br>
-例如： a 与 A 就是两个变量<br>
-e、不要使用关键字：<br>
-例如： public static void if else switch<br>
-f、驼峰命名法<br>
-变量： 头一个字母小写 stdName<br>
-类名：首字母大写 Student StudentInfo<br>
-具体与单位的要求有关</p>
-<h4 id="3、Java关键字">3、Java关键字</h4>
-<p>（1）所有Java里面被赋予了特殊含义的单词，就叫做关键字<br>
-（2）Java关键字都是小写<br>
-a、用于定义数据类型： int class 等<br>
-b、数据类型值： true false null 等<br>
-c、流程控制的： for if 等<br>
-d、访问控制权限的： public 等<br>
-e、变量、函数等修饰的： static 等<br>
-f、异常处理的： try catch 等</p>
-<h4 id="4、Java基础数据类型">4、Java基础数据类型</h4>
-<p>计算机里面存储设备的最小单元：位（bit）<br>
-最小存储单元：1 B=8位 Bit<br>
-1KB=1024B<br>
-1MB=1024KB<br>
-1GB=1024MB<br>
-1TB=1024GB<br>
-PB级 的数据量 大数据<br>
-1PB=1024TB</p>
-<h4 id="5、基本数据类型-4类8种">5、基本数据类型 4类8种</h4>
-<p>（1）整数类型： byte ：1个字节（8位） 范围比较小：-128~127<br>
-short ：2<br>
-int:4<br>
-long :8<br>
-（2）浮点型（小数）：<br>
-float ：4 单精度<br>
-double ：8 双精度 精度高<br>
-（3）字符型：<br>
-char ：2 一个字符<br>
-例如：’笑’、’A’<br>
-（4）布尔型： boolean ：1个字节 true false</p>
-<h4 id="6、引用数据类型（包含自定义）">6、引用数据类型（包含自定义）</h4>
-<p>String 型<br>
-“大家好，欢迎来TZ学习。”<br>
-数组<br>
-类等</p>
-<h4 id="7、常量">7、常量</h4>
-<p>常量是一种特殊的变量，只不过是值被设定后，不能改变<br>
-例如： final(关键字) PI=3.1415926;</p>
-<h4 id="8、变量">8、变量</h4>
-<p>变量是可以随着程序的变化而改变赋值<br>
-int a=10;<br>
-a=11;</p>
-<h4 id="9、定义基本数据类型变量">9、定义基本数据类型变量</h4>
-<p>三要素： 指明类型（整数型、浮点型等）、变量命名、变量赋值（可以没有）</p>
-<h4 id="10、字符串变量的定义">10、字符串变量的定义</h4>
-<p>字符串变量 引用数据类型。应用比较广泛。<br>
-字符串变量赋值变化时，相当于重新指向了一个对象</p>
-<h4 id="11、数据类型的转换">11、数据类型的转换</h4>
-<p>主要是指的 不同的数据类型之间进行转换<br>
-（1）自动类型转换<br>
-范围小的数据类型值，转换为范围大的数据类型的值<br>
-例如 byte int 自动 byte 转换为 int<br>
-（2）强制数据类型转换<br>
-数据范围大的转换为数据类型小的<br>
-数据类型之间进行强制转换。比如：<br>
-int 转换为 String 或者 String转换为 int<br>
-String与日期类型 转换</p>
-<h4 id="12、算术运算符">12、算术运算符</h4>
-<p>加减 乘除 求余运算<br>
-+=<br>
--=<br>
-/=<br>
-自增自减运算符</p>
+                <h4 id="1、Java注释"><a href="#1、Java注释" class="headerlink" title="1、Java注释"></a>1、Java注释</h4><p>(1)单行注释 //<br>只能注释一行，而且注释使用实在 // 之后。不会运行<br>例如：<br>(2)多行注释 /**/<br>可以注释多行内容。 主要用来说明一段代码或者一个函数的作用<br>(3)文档注释 /*/<br>主要用来说明类的功能，包含的函数、字段以及主要的作者、版本 相关的参数 异常等<br>author：作者<br>version：版本<br>see：参考 一个url链接<br>param：参数<br>return 返回值<br>代码注释很重要 因为不止是对别人看你或理解你的代码，而且对自己也有好处</p>
+<h4 id="2、Java标识符"><a href="#2、Java标识符" class="headerlink" title="2、Java标识符"></a>2、Java标识符</h4><p>所谓标识符就是对Java当中的 变量、类名、对象名、函数等自己的名字，<br>名字必须得符合规范<br>字母、数字、下划线和美元符号组成<br>注意：a、不能以数字开头<br>例如： 1a 错误 但是可以写成 a1<br>b、一般情况下不以美元开头<br>c、见名知意：<br>例如：zhidao licheng juli xingming—不可取<br>Distance Name—推荐用英语 并不是完全的英语照搬<br>xuehao –StudentNumber–&gt;StuNumber、 StdNum StdId<br>d、Java严格区分大小写<br>例如： a 与 A 就是两个变量<br>e、不要使用关键字：<br>例如： public static void if else switch<br>f、驼峰命名法<br>变量： 头一个字母小写 stdName<br>类名：首字母大写 Student StudentInfo<br>具体与单位的要求有关</p>
+<h4 id="3、Java关键字"><a href="#3、Java关键字" class="headerlink" title="3、Java关键字"></a>3、Java关键字</h4><p>（1）所有Java里面被赋予了特殊含义的单词，就叫做关键字<br>（2）Java关键字都是小写<br>a、用于定义数据类型： int class 等<br>b、数据类型值： true false null 等<br>c、流程控制的： for if 等<br>d、访问控制权限的： public 等<br>e、变量、函数等修饰的： static 等<br>f、异常处理的： try catch 等</p>
+<h4 id="4、Java基础数据类型"><a href="#4、Java基础数据类型" class="headerlink" title="4、Java基础数据类型"></a>4、Java基础数据类型</h4><p>计算机里面存储设备的最小单元：位（bit）<br>最小存储单元：1 B=8位 Bit<br>1KB=1024B<br>1MB=1024KB<br>1GB=1024MB<br>1TB=1024GB<br>PB级 的数据量 大数据<br>1PB=1024TB</p>
+<h4 id="5、基本数据类型-4类8种"><a href="#5、基本数据类型-4类8种" class="headerlink" title="5、基本数据类型 4类8种"></a>5、基本数据类型 4类8种</h4><p>（1）整数类型： byte ：1个字节（8位） 范围比较小：-128~127<br>short ：2<br>int:4<br>long :8<br>（2）浮点型（小数）：<br>float ：4 单精度<br>double ：8 双精度 精度高<br>（3）字符型：<br>char ：2 一个字符<br>例如：’笑’、’A’<br>（4）布尔型： boolean ：1个字节 true false</p>
+<h4 id="6、引用数据类型（包含自定义）"><a href="#6、引用数据类型（包含自定义）" class="headerlink" title="6、引用数据类型（包含自定义）"></a>6、引用数据类型（包含自定义）</h4><p>String 型<br>“大家好，欢迎来TZ学习。”<br>数组<br>类等</p>
+<h4 id="7、常量"><a href="#7、常量" class="headerlink" title="7、常量"></a>7、常量</h4><p>常量是一种特殊的变量，只不过是值被设定后，不能改变<br>例如： final(关键字) PI=3.1415926;</p>
+<h4 id="8、变量"><a href="#8、变量" class="headerlink" title="8、变量"></a>8、变量</h4><p>变量是可以随着程序的变化而改变赋值<br>int a=10;<br>a=11;</p>
+<h4 id="9、定义基本数据类型变量"><a href="#9、定义基本数据类型变量" class="headerlink" title="9、定义基本数据类型变量"></a>9、定义基本数据类型变量</h4><p>三要素： 指明类型（整数型、浮点型等）、变量命名、变量赋值（可以没有）</p>
+<h4 id="10、字符串变量的定义"><a href="#10、字符串变量的定义" class="headerlink" title="10、字符串变量的定义"></a>10、字符串变量的定义</h4><p>字符串变量 引用数据类型。应用比较广泛。<br>字符串变量赋值变化时，相当于重新指向了一个对象</p>
+<h4 id="11、数据类型的转换"><a href="#11、数据类型的转换" class="headerlink" title="11、数据类型的转换"></a>11、数据类型的转换</h4><p>主要是指的 不同的数据类型之间进行转换<br>（1）自动类型转换<br>范围小的数据类型值，转换为范围大的数据类型的值<br>例如 byte int 自动 byte 转换为 int<br>（2）强制数据类型转换<br>数据范围大的转换为数据类型小的<br>数据类型之间进行强制转换。比如：<br>int 转换为 String 或者 String转换为 int<br>String与日期类型 转换</p>
+<h4 id="12、算术运算符"><a href="#12、算术运算符" class="headerlink" title="12、算术运算符"></a>12、算术运算符</h4><p>加减 乘除 求余运算<br>+=<br>-=<br>/=<br>自增自减运算符</p>
 
             </div>
             <hr/>
@@ -745,12 +661,7 @@ String与日期类型 转换</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、数据类型的转换
-主要是指的 不同的数据类型之间进行转换
-（1）自动类型转换
-范围小的数据类型值，转换为范围大的数据类型的值
-例如 byte int 自动 byte 转换为 int
-byte-&gt;short-&gt;int-&gt;l
+                            1、数据类型的转换主要是指的 不同的数据类型之间进行转换（1）自动类型转换范围小的数据类型值，转换为范围大的数据类型的值例如 byte int 自动 byte 转换为 intbyte-&gt;short-&gt;int-&gt;long-&
                         
                     </div>
                     <div class="publish-info">
@@ -799,11 +710,7 @@ byte-&gt;short-&gt;int-&gt;l
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1、计算机语言发展史
-Java语言是计算机语言的一种
-（1）语言：汉语 英语 阿拉伯语 日语—&gt;人与人进行沟通的 一种方式
-语义。—-》自然语言处理 人工智能中 文本分析 NLP
-（2）机器语言：人与计算机沟通的语言。—Java 就是
+                            1、计算机语言发展史Java语言是计算机语言的一种（1）语言：汉语 英语 阿拉伯语 日语—&gt;人与人进行沟通的 一种方式语义。—-》自然语言处理 人工智能中 文本分析 NLP（2）机器语言：人与计算机沟通的语言。—Java 就是其中一种
                         
                     </div>
                     <div class="publish-info">
@@ -1013,7 +920,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">552.6k</span>&nbsp;字
+                class="white-color">607.8k</span>&nbsp;字
             
             
             
